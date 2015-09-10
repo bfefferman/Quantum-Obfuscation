@@ -93,6 +93,48 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Background}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Summary of results}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Quantum black-box obfuscation}
+%%%%
+
+\begin{enumerate}
+\item define quantum black-box obfuscation
+\item show several applications:
+\begin{itemize}
+\item classical algorithm for it implies quantum-secure OWFs;
+\item quantum obfuscator implies IND-CPA SKE for quantum states;
+\item obfuscator + qOWFs implies IND-CPA PKE for quantum states;
+\item obfuscator (plus what else?) implies QFHE;
+\item obfuscator implies quantum money (details?);
+\end{itemize}
+\item impossibility results:
+\begin{itemize}
+\item two-state black-box obfuscation impossible
+\item obfuscation with cloneable outputs impossible
+\end{itemize}
+\end{enumerate}
+
+\subsubsection{Quantum indistinguishability obfuscation}
+%%%%
+
+\begin{enumerate}
+\item define quantum indistinguishability obfuscation;
+\item define quantum best-possible obfuscation;
+\item three variants: perfect, statistical, computational;
+\item \ga{can we give any applications? Even simple ones, like patching?}
+\item proved each indistinguishability variant is equivalent to its corresponding best-possible variant;
+\item proved impossibility of perfect and statistical indistinguishability obfuscators.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
 \section{Preliminaries}
 %%%%%%%%%%%%%%%%%%%%%%
 
@@ -109,6 +151,26 @@ A quantum algorithm $\mathcal Q$ will mean an infinite family of quantum circuit
 We will sometimes also allow for algorithms which are allowed to mix probabilistic and quantum computation in a straightforward way: a classical probabilistic circuit first uses a string of classical randomness to decide which quantum circuit to run on the given quantum input state, and the chosen quantum circuit is then executed. We will call such algorithms probabilistic-quantum and refer to output states with or without specified randomness as above. The computational power of such algorithms can already be captured by quantum algorithms alone by reversibly implementing the classical pre-processing; the classical probabilistic mixtures are then absorbed into the density operator of the quantum state as it evolves under the quantum circuit. However, the distinction does have a difference: the final density operator outputted by the resulting quantum algorithm could exhibit some important property which is \emph{not} true for any of the outputs of the original probabilistic-quantum algorithm. We will discuss an explicit example later.
 
 An algorithm will be referred to as polynomial-time (or efficient) if all of the relevant circuit families are polynomial-time uniform~\cite{ccreference}; this applies to all classes of algorithm discussed above.
+
+\subsection{Some primitives}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{definition}\label{def:quantum-secure-owf}
+A function $f:\{0,1\}^* \rightarrow \{0, 1\}^*$ is a quantum-secure one-way function if 
+\begin{enumerate}
+\item $f$ can be computed exactly by a polynomial-time classical algorithm, and
+\item for every quantum algorithm $\mathcal A$, every polynomial $p$, and all sufficiently large $n$,
+$$
+\emph{Pr}\left[\mathcal A (f(x), 1^n) \in f^{-1}(f(x)) \right] < \frac{1}{p(n)}~,
+$$
+where the probability is taken over uniformly random $x \in \{0, 1\}^n$ and the measurement of $\mathcal A$.
+\end{enumerate}
+\end{definition}
+
+\subsection{Encryption of quantum states}
+%%%%%%%%%%%%%%%%%%%%%%
+
+\ga{Move the discussions of quantum encryption in here}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Black-box obfuscation}
@@ -182,6 +244,7 @@ The problem of constructing cryptographically useful primitives from a fully qua
 %%%
 
 In order to talk about some further applications, we will need to discuss some basics about \emph{quantum encryption schemes.} These are schemes for encrypting quantum states under (in general) computational assumptions. The details will appear in another forthcoming paper. It suffices for now to say that these are schemes which consist of:
+\ga{should define this formally, since we'll reuse it.}
 \begin{itemize}
 \item a key generation algorithm $\KeyGen$ which produces classical bitstrings $k$ as keys;
 \item a QPT encryption algorithm $\Enc_k$;
@@ -238,6 +301,8 @@ One curious feature of the above construction is that, in general, the public ke
 \subsubsection{Quantum money}
 %%%
 
+\subsubsection{Some old content}
+%%%
 \ga{formalize this fully; do we have classical or quantum security?}
 First, we show how black-box quantum obfuscation would allow one to generically turn any classical private-key encryption scheme into a public-key encryption scheme with quantum keys. Suppose we have a private-key encryption scheme which is secure against chosen plaintext attacks. We might try to turn it into a public-key scheme where the public key is an obfuscation $\mathcal O(\text{Enc}_k)$ of the classical circuit ``encrypt with the private key $k$.'' As shown by Barak et al., this is not possible if $\mathcal O$ is a classical algorithm. But what if we are willing to consider a public key which is a quantum state? Suppose that $\mathcal O$ is a black-box quantum obfuscator, and an adversary $\mathcal A$ came along and discovered the private key $k$ from the quantum public key $\ket{\mathcal O(\text{Enc}_k)}$. By the virtual black-box property, there would also be a simulator $\mathcal S$ which only uses Enc$_k$ as a black box and \emph{still} breaks the scheme. This would contradict the security of the private-key scheme against chosen plaintext attacks.
 
