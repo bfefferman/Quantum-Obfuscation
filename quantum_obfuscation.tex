@@ -26,6 +26,7 @@
 \numberwithin{equation}{section}
 
 \newtheorem{theorem}{Theorem}
+\newtheorem{prop}{Proposition}
 \newtheorem{proposition}{Proposition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{conjecture}{Conjecture}
@@ -70,6 +71,14 @@
 \newcommand{\error}{\varepsilon}
 \newcommand{\recon}{R}
 \newcommand{\idim}{\dim_{\opn{I}}}
+
+%%% added by GA 9/10/2015
+\newcommand{\algo}{\mathcal}
+\newcommand{\negl}{\opn{negl}}
+\newcommand{\KeyGen}{\ensuremath{\mathsf{KeyGen}}\xspace}
+\newcommand{\Enc}{\ensuremath{\mathsf{Enc}}\xspace}
+\newcommand{\Dec}{\ensuremath{\mathsf{Dec}}\xspace}
+%%%
 
 \newcommand{\ga}[1]{{ \textcolor{purple}{(Gorjan:  #1)}}{}}
 
@@ -136,14 +145,92 @@ $$
 
 Note that allowing $\mathcal O$ to be probabilistic-quantum allows it to output different states $\mathcal O(C; r)$ depending on the choice of classical randomness $r$. Why is this different from just letting $\mathcal O$ be fully quantum? Suppose that we were to change the above definition to that effect, and consider the case where $C$ is used to flip a single bit. The obfuscator could then, with equal probability, output either a state which always outputs $1$ or a state which always outputs $0$. Because we combined this choice into a density matrix, the functional equivalence condition would technically be satisfied. On the other hand, the actual output state of the algorithm would \emph{never} satisfy functional equivalence -- a frustrating situation for the end-user, to say the least.
 
+\noindent \ga{New work starts here. I begin with another attempt at a definition, this time without explicitly defining an interpreter.}
+
+For shorthand, we will denote CPTP maps by, e.g., $\algo A ( \cdot )$, which is to mean the map $\rho \mapsto \algo A(\rho)$. We also use ``QPT'' as shorthand for quantum polynomial-time algorithm, and ``$\negl$'' as shorthand for some function which grows inverse-superpolynomially.
+
+\begin{definition}
+A \textbf{black-box quantum obfuscator} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is an $m$-qubit state $\algo O(C)$ satisfying
+\begin{enumerate}
+\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
+\item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
+\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that
+$$
+\Bigl| \emph{Pr}[\mathcal A(\mathcal O(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
+$$
+\end{enumerate}
+\end{definition}
+
+\noindent \ga{Here should discuss alternative definition (where obfuscator provides a state as well as a circuit to run), and prove that since we are only interested in existence, the two definitions are equivalent.}
+
 \subsection{Applications}
 %%%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{Quantum-secure one-way functions}
+%%%
+
+\begin{prop}
+If there exists a classical probabilistic algorithm which is a quantum black-box obfuscator, then quantum-secure one-way functions exist.
+\end{prop}
+\begin{proof}
+Essentially just as in Barak. 
+\end{proof}
+
+The problem of constructing cryptographically useful primitives from a fully quantum obfuscator is open. This ties in nicely with the question about quantum-secure primitives from quantum encryption in the other paper. 
 
 \subsubsection{Plaintext-secure private-key quantum encryption}
 %%%
 
+In order to talk about some further applications, we will need to discuss some basics about \emph{quantum encryption schemes.} These are schemes for encrypting quantum states under (in general) computational assumptions. The details will appear in another forthcoming paper. It suffices for now to say that these are schemes which consist of:
+\begin{itemize}
+\item a key generation algorithm $\KeyGen$ which produces classical bitstrings $k$ as keys;
+\item a QPT encryption algorithm $\Enc_k$;
+\item a QPT decryption algorithm $\Dec_k$;
+\end{itemize}
+such that encryption followed by decryption is (at least approximately) equivalent to the identity. One can then define suitable notions of indistinguishability of ciphertexts under chosen plaintext attacks (IND-CPA) and under non-adaptive chosen ciphertext attacks (IND-CCA1). See Anne and Stacey's paper, as well as our forthcoming paper.
+
+\begin{prop}
+If quantum black-box obfuscators exist, then so do IND-CPA-secure symmetric-key quantum encryption schemes.
+\end{prop}
+\begin{proof}
+Waiting for Bill to look this up in his notes, I forgot the construction.
+\end{proof}
+
 \subsubsection{Public-key encryption from private-key encryption}
 %%%
+
+We first show the following lemma. It also appears in contemporaneous work (cite other paper.)
+\begin{lemma}\label{lem:cca1-encryption}
+If quantum-secure one-way functions exist, then IND-CCA1-secure symmetric-key quantum encryption schemes exist.
+\end{lemma}
+\begin{proof}
+Sketch is as follows, details will appear in other paper.
+\begin{enumerate}
+\item qOWFs imply qPRFs (Zhandry);
+\item using a qPRF, define encryption scheme like this: (i.) $\KeyGen$ produces random bitstrings $k$ which index a qPRF $f_k$; (ii.) To encrypt an $n$-qubit state $\rho$, pick classical randomness $r \in \{0, 1\}^{2n}$, and perform
+$$
+\rho \longmapsto \ket{r}\bra{r} \otimes P_{f_k(r)} \rho P_{f_k(r)}^\dagger\,,
+$$
+where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$; (iii.) To decrypt, evaluate the qPRF at the randomness, and undo the Paulis.
+\item to show IND-CCA1 security, prove that a polynomial number of (quantum) queries to encryption and decryption oracles is no more useful than a polynomial number of (classical) evaluations $f_k(x)$ at inputs $x$ of the adversary's choice; it's then straightforward to show that breaking the scheme implies breaking the qPRF.
+\end{enumerate}
+\end{proof}
+
+\begin{prop}
+If quantum black-box obfuscators exist, and quantum-secure one-way functions exist, then so do IND-CPA-secure public-key encryption schemes.
+\end{prop}
+\begin{proof}
+Sketch is as follows. \ga{This needs to be fleshed out more carefully, especially the last step.}
+\begin{enumerate}
+\item qOWFs imply qPRFs (Zhandry);
+\item qPRFs imply IND-CCA1 secure encryption (Lemma \ref{lem:cca1-encryption}).
+\item the private key in the public scheme is the same as the key $k$ produced by the $\KeyGen$ algorithm of the IND-CCA1 scheme;
+\item the public key is $\algo O(\Enc_k)$, where $\Enc_k$ is the encryption circuit of the IND-CCA1 scheme;
+\item by the virtual black-box property, any interaction with $\algo O(\Enc_k)$ can be simulated by black-box access to the encryption map, where we are allowed to input our own randomness;
+\item now show that IND-CCA1 implies that the scheme is secure even if the adversary gets to provide their own randomness in the queries; IND-CPA for the public scheme follows.
+\end{enumerate}
+\end{proof}
+One curious feature of the above construction is that, in general, the public keys might be quantum, and even consumable. This is an aspect of public-key encryption that does not exist classically, and might be of interest in other applications.
 
 \subsubsection{Fully homomorphic encryption from public-key encryption}
 %%%
