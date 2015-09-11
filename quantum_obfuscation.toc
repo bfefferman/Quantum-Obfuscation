@@ -9,18 +9,18 @@
 \contentsline {section}{\numberline {3}Quantum encryption}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Quantum-secure pseudorandomness}{5}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Private-key encryption of quantum states}{5}{subsection.3.2}
-\contentsline {section}{\numberline {4}Black-box obfuscation}{6}{section.4}
-\contentsline {subsection}{\numberline {4.1}Definitions}{6}{subsection.4.1}
+\contentsline {section}{\numberline {4}Black-box obfuscation}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Definitions}{7}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Applications}{8}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}Quantum-secure one-way functions}{8}{subsubsection.4.2.1}
 \contentsline {subsubsection}{\numberline {4.2.2}Plaintext-secure private-key quantum encryption}{8}{subsubsection.4.2.2}
-\contentsline {subsubsection}{\numberline {4.2.3}Public-key encryption from private-key encryption}{8}{subsubsection.4.2.3}
+\contentsline {subsubsection}{\numberline {4.2.3}Public-key encryption from private-key encryption}{9}{subsubsection.4.2.3}
 \contentsline {subsubsection}{\numberline {4.2.4}(Quantum?) Fully homomorphic encryption encryption}{9}{subsubsection.4.2.4}
-\contentsline {subsubsection}{\numberline {4.2.5}Quantum money}{9}{subsubsection.4.2.5}
-\contentsline {subsubsection}{\numberline {4.2.6}Some old content}{9}{subsubsection.4.2.6}
-\contentsline {subsection}{\numberline {4.3}Some impossibility results}{10}{subsection.4.3}
-\contentsline {subsubsection}{\numberline {4.3.1}Impossibility of two-circuit obfuscation}{10}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{11}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.2.5}Quantum money}{10}{subsubsection.4.2.5}
+\contentsline {subsubsection}{\numberline {4.2.6}Some old content}{10}{subsubsection.4.2.6}
+\contentsline {subsection}{\numberline {4.3}Some impossibility results}{11}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Impossibility of two-circuit obfuscation}{11}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{12}{subsubsection.4.3.2}
 \contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{12}{section.5}
 \contentsline {subsection}{\numberline {5.1}Definitions}{12}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Equivalence of indistinguishability and best-possible}{12}{subsection.5.2}

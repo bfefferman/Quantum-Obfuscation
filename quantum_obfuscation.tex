@@ -60,7 +60,6 @@
 \newcommand{\GL}{\textsf{GL}}
 \newcommand{\SU}{\textsf{SU}}
 
-\newcommand\supp{\textbf{supp}}
 
 \newcommand{\expref}[2]{\texorpdfstring{\hyperref[#2]{#1~\ref{#2}}}{#1~\ref{#2}}}
 
@@ -81,6 +80,7 @@
 \newcommand{\inrand}{\in_R} 
 \newcommand{\prob}{\opn{Pr}}
 \newcommand{\states}{\mathfrak D}
+\newcommand\supp{\textbf{supp}}
 %%%
 
 \newcommand{\ga}[1]{{ \textcolor{purple}{(Gorjan:  #1)}}{}}
@@ -246,7 +246,7 @@ It is well-known how to encrypt quantum states with information-theoretic securi
 \end{equation}
 where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$. 
 
-One disadvantage of the quantum one-time pad, just as in the classical case, is that the number of bits of key is quite large. Moreover, keys are not reusable. To resolve these issues, we must settle for computational security assumptions and use pseudorandomness to select $r$. A general encryption scheme for quantum states is then defined as follows.
+One disadvantage of the quantum one-time pad is that parties must share two bits of randomness for every qubit which they wish to transmit securely. In particular, one cannot securely exchange multiple messages with the same key. To address this issue, we must settle for computational security assumptions and use pseudorandomness to select $r$. A general encryption scheme for quantum states is then defined as follows.
 
 \begin{definition}
 A symmetric-key quantum encryption scheme is a triple of QPTs:
@@ -255,10 +255,10 @@ A symmetric-key quantum encryption scheme is a triple of QPTs:
 \item (encryption) $\Enc_k : \states (\mathcal H_m) \longrightarrow \states (\mathcal H_c)$;
 \item (decryption) $\Dec_k : \states (\mathcal H_c) \longrightarrow \states (\mathcal H_m)$;
 \end{itemize}
-where $m$ and $c$ are polynomial functions of $n$, and the QPTs satisfy $\| \Dec_k \circ \Enc_k - \one_m \|_\diamond \leq \negl(n)$ for all $k \in \supp \KeyGen(1^n)$\,.
+where $m$ and $c$ are polynomial functions of $n$, and the QPTs satisfy $\| \Dec_k \circ \Enc_k - \one_m \|_\diamond \leq \negl(n)$ for all $k \in \emph{\supp}\,\KeyGen(1^n)$.
 \end{definition}
 
-The public-key version of the above is defined in an analogous manner. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable. In some cases, the ciphertexts will need to remain indistinguishable even to adversaries which possess oracle access to the encryption algorithm (and sometimes also even the decryption algorithm.) This security notion is captured by the following definition (cite Broadbent and Jeffery and our encryption paper.)
+Public-key quantum encryption schemes are defined in an analogous manner. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable. In some cases, the ciphertexts will need to remain indistinguishable even to adversaries which possess oracle access to the encryption algorithm (and sometimes also even the decryption algorithm.) This security notion is captured by the following definition (cite Broadbent and Jeffery and our encryption paper.)
 
 \begin{definition}
 A symmetric-key quantum encryption scheme is IND-secure if for all QPTs $\algo A, \algo A'$,
@@ -267,8 +267,12 @@ $$
 \prob[ (\algo A' \circ \Xi_{\Enc_k \ket{0^m}\bra{0^m}} \otimes \one_s \circ \algo A) \cdot 1^n = 1] \right|
 \leq \negl(n)\,,
 $$ 
-where $\Xi_\sigma$ denotes the forgetful map $\rho \mapsto \sigma$ for all $\rho$, and $s$ is a polynomial function of $n$.
+where $\Xi_\sigma$ denotes the forgetful map $\rho \mapsto \sigma$ for all $\rho$, and $s$ is a polynomial function of $n$. If $\algo A$ and $\algo A'$ have oracle access to $\Enc_k$, then we say that the scheme is IND-CPA secure. If in addition $\algo A'$ has oracle access to $\Dec_k$, then we say that the scheme is IND-CCA1 secure.
 \end{definition}
+
+The two QPTs $\algo A$ and $\algo A'$ together model the adversary. The definition above captures a ``security experiment'' in which (i.) the key is selected and the adversary receives access to the appropriate oracles, (ii.) after a polynomial number of computation steps, the adversary transmits the first part of a bipartite state $\rho_{ms}$ to a challenger, (iii.) the challenger either encrypts the first $m$ qubits or replaces them with the encryption of $\ket{0^m}\bra{0^m}$, and then returns them to the adversary, and (iv.) the adversary must decide which choice the challenger made. The scheme is considered secure if the adversary can do no better than random guessing.
+
+\ga{stopped editing here}\\
 
 Things to add here:
 \begin{itemize}
