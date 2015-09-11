@@ -80,6 +80,7 @@
 \newcommand{\Dec}{\ensuremath{\mathsf{Dec}}\xspace}
 \newcommand{\inrand}{\in_R} 
 \newcommand{\prob}{\opn{Pr}}
+\newcommand{\states}{\mathfrak D}
 %%%
 
 \newcommand{\ga}[1]{{ \textcolor{purple}{(Gorjan:  #1)}}{}}
@@ -185,6 +186,8 @@ Things to cover:
 \begin{itemize}
 \item PT, PPT, QPT, etc. (might be partially covered in the next subsection)
 \item the notation $x \inrand \{0,1\}^n$.
+\item $\mathcal H_m$ is the space of $m$-qubit pure states, and $\states(\mathcal H_m)$ is the corresponding space of density operators
+\item $\one_m$ is the $m$-qubit identity.
 \end{itemize}
 
 \subsection{Probabilistic and quantum algorithms}
@@ -235,16 +238,37 @@ If qOWFs exist, then so do qPRFs.
 \subsection{Private-key encryption of quantum states}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Some of our later proofs regarding obfuscation will require a notion of \emph{encryption of quantum states} with computational assumptions. In what follows, we describe the basic notions and results that we will need. A much more thorough treatment of this topic will be given in (cite new paper).
+Some of our proofs in later sections will require a notion of encryption of quantum states with computational assumptions. Interestingly, this topic has not received much attention before. In what follows, we describe the basic idea and a new result that we will need. A much more thorough treatment of this topic will be given in (cite new paper).
 
-
-It is well-known how to encrypt quantum states with information-theoretic security, via the so-called quantum one-time pad. To encrypt a single-qubit (possibly mixed) state $\rho$, we choose two classical bits at random, use them to select a random Pauli matrix $P \in \{\one, X, Y, Z\}$, and perform $\rho \mapsto P \rho P^\dagger$. For an $n$-qubit quantum state $\rho$, we need only select $r \inrand \{0,1\}^{2n}$ and apply
+It is well-known how to encrypt quantum states with information-theoretic security, via the so-called quantum one-time pad. To encrypt a single-qubit state $\rho$, we choose two classical bits at random, use them to select a random Pauli matrix $P \in \{\one, X, Y, Z\}$, and perform $\rho \mapsto P \rho P^\dagger$. To encrypt an $n$-qubit quantum state $\rho$, we select $r \inrand \{0,1\}^{2n}$ and apply
 \begin{equation}\label{eq:quantum-one-time-pad}
-\rho \longmapsto P_r \rho P_r^\dagger
+\rho \longmapsto P_r \rho P_r^\dagger\,,
 \end{equation}
-where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$.
+where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$. 
 
 One disadvantage of the quantum one-time pad, just as in the classical case, is that the number of bits of key is quite large. Moreover, keys are not reusable. To resolve these issues, we must settle for computational security assumptions and use pseudorandomness to select $r$. A general encryption scheme for quantum states is then defined as follows.
+
+\begin{definition}
+A symmetric-key quantum encryption scheme is a triple of QPTs:
+\begin{itemize}
+\item (key generation) $\KeyGen : 1^n \longmapsto k \in \{0, 1\}^n$;
+\item (encryption) $\Enc_k : \states (\mathcal H_m) \longrightarrow \states (\mathcal H_c)$;
+\item (decryption) $\Dec_k : \states (\mathcal H_c) \longrightarrow \states (\mathcal H_m)$;
+\end{itemize}
+where $m$ and $c$ are polynomial functions of $n$, and the QPTs satisfy $\| \Dec_k \circ \Enc_k - \one_m \|_\diamond \leq \negl(n)$ for all $k \in \supp \KeyGen(1^n)$\,.
+\end{definition}
+
+The public-key version of the above is defined in an analogous manner. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable. In some cases, the ciphertexts will need to remain indistinguishable even to adversaries which possess oracle access to the encryption algorithm (and sometimes also even the decryption algorithm.) This security notion is captured by the following definition (cite Broadbent and Jeffery and our encryption paper.)
+
+\begin{definition}
+A symmetric-key quantum encryption scheme is IND-secure if for all QPTs $\algo A, \algo A'$,
+$$
+\left|\prob[ (\algo A' \circ \Enc_k \otimes \one_s \circ \algo A) \cdot 1^n = 1] -
+\prob[ (\algo A' \circ \Xi_{\Enc_k \ket{0^m}\bra{0^m}} \otimes \one_s \circ \algo A) \cdot 1^n = 1] \right|
+\leq \negl(n)\,,
+$$ 
+where $\Xi_\sigma$ denotes the forgetful map $\rho \mapsto \sigma$ for all $\rho$, and $s$ is a polynomial function of $n$.
+\end{definition}
 
 Things to add here:
 \begin{itemize}
