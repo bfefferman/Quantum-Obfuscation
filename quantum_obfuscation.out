@@ -6,28 +6,31 @@
 \BOOKMARK [1][-]{section.2}{Preliminaries}{}% 6
 \BOOKMARK [2][-]{subsection.2.1}{Notation etc.}{section.2}% 7
 \BOOKMARK [2][-]{subsection.2.2}{Probabilistic and quantum algorithms}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.3}{Some primitives}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.4}{Encryption of quantum states}{section.2}% 10
-\BOOKMARK [1][-]{section.3}{Black-box obfuscation}{}% 11
-\BOOKMARK [2][-]{subsection.3.1}{Definitions}{section.3}% 12
-\BOOKMARK [2][-]{subsection.3.2}{Applications}{section.3}% 13
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Quantum-secure one-way functions}{subsection.3.2}% 14
-\BOOKMARK [3][-]{subsubsection.3.2.2}{Plaintext-secure private-key quantum encryption}{subsection.3.2}% 15
-\BOOKMARK [3][-]{subsubsection.3.2.3}{Public-key encryption from private-key encryption}{subsection.3.2}% 16
-\BOOKMARK [3][-]{subsubsection.3.2.4}{Fully homomorphic encryption from public-key encryption}{subsection.3.2}% 17
-\BOOKMARK [3][-]{subsubsection.3.2.5}{Quantum money}{subsection.3.2}% 18
-\BOOKMARK [3][-]{subsubsection.3.2.6}{Some old content}{subsection.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.3}{Some impossibility results}{section.3}% 20
-\BOOKMARK [3][-]{subsubsection.3.3.1}{Impossibility of two-circuit obfuscation}{subsection.3.3}% 21
-\BOOKMARK [3][-]{subsubsection.3.3.2}{Impossibility of obfuscation for cloneable outputs}{subsection.3.3}% 22
-\BOOKMARK [1][-]{section.4}{Quantum indistinguishability obfuscation}{}% 23
-\BOOKMARK [2][-]{subsection.4.1}{Definitions}{section.4}% 24
-\BOOKMARK [2][-]{subsection.4.2}{Equivalence of indistinguishability and best-possible}{section.4}% 25
-\BOOKMARK [2][-]{subsection.4.3}{Impossibility of statistical obfuscators}{section.4}% 26
-\BOOKMARK [1][-]{section.5}{[OLD NOTES]}{}% 27
-\BOOKMARK [2][-]{subsection.5.1}{Preliminaries}{section.5}% 28
-\BOOKMARK [2][-]{subsection.5.2}{Black-box Quantum circuit obfuscation}{section.5}% 29
-\BOOKMARK [2][-]{subsection.5.3}{Best-possible}{section.5}% 30
-\BOOKMARK [2][-]{subsection.5.4}{Indistinguishability}{section.5}% 31
-\BOOKMARK [2][-]{subsection.5.5}{Relationships between the definitions}{section.5}% 32
-\BOOKMARK [2][-]{subsection.5.6}{Example: Clifford circuits}{section.5}% 33
+\BOOKMARK [1][-]{section.3}{Quantum encryption}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Two primitives}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Private-key encryption of quantum states}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Black-box obfuscation}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Definitions}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Applications}{section.4}% 14
+\BOOKMARK [3][-]{subsubsection.4.2.1}{Quantum-secure one-way functions}{subsection.4.2}% 15
+\BOOKMARK [3][-]{subsubsection.4.2.2}{Plaintext-secure private-key quantum encryption}{subsection.4.2}% 16
+\BOOKMARK [3][-]{subsubsection.4.2.3}{Public-key encryption from private-key encryption}{subsection.4.2}% 17
+\BOOKMARK [3][-]{subsubsection.4.2.4}{\(Quantum?\) Fully homomorphic encryption encryption}{subsection.4.2}% 18
+\BOOKMARK [3][-]{subsubsection.4.2.5}{Quantum money}{subsection.4.2}% 19
+\BOOKMARK [3][-]{subsubsection.4.2.6}{Some old content}{subsection.4.2}% 20
+\BOOKMARK [2][-]{subsection.4.3}{Some impossibility results}{section.4}% 21
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Impossibility of two-circuit obfuscation}{subsection.4.3}% 22
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Impossibility of obfuscation for cloneable outputs}{subsection.4.3}% 23
+\BOOKMARK [1][-]{section.5}{Quantum indistinguishability obfuscation}{}% 24
+\BOOKMARK [2][-]{subsection.5.1}{Definitions}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.2}{Equivalence of indistinguishability and best-possible}{section.5}% 26
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Relationships between the definitions}{subsection.5.2}% 27
+\BOOKMARK [2][-]{subsection.5.3}{Impossibility of statistical obfuscators}{section.5}% 28
+\BOOKMARK [1][-]{section.6}{Discussion}{}% 29
+\BOOKMARK [1][-]{section.7}{[OLD NOTES]}{}% 30
+\BOOKMARK [2][-]{subsection.7.1}{Preliminaries}{section.7}% 31
+\BOOKMARK [2][-]{subsection.7.2}{Black-box Quantum circuit obfuscation}{section.7}% 32
+\BOOKMARK [2][-]{subsection.7.3}{Best-possible}{section.7}% 33
+\BOOKMARK [2][-]{subsection.7.4}{Indistinguishability}{section.7}% 34
+\BOOKMARK [2][-]{subsection.7.5}{Relationships between the definitions}{section.7}% 35
+\BOOKMARK [2][-]{subsection.7.6}{Example: Clifford circuits}{section.7}% 36

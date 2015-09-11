@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  10 SEP 2015 20:22
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  11 SEP 2015 12:15
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
 bfuscation/quantum_obfuscation.tex
@@ -799,37 +799,42 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 92.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 92.
+ [1
+
+{C:/Users/Gorjan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 95.
 
 (quantum_obfuscation.toc
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 1.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
- [1
-
-{C:/Users/Gorjan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
+)
 \tf@toc=\write5
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 99.
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 112.
+ [2]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 105.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
 File: omsppl.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 105.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 117.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 140.
+ [3]
 
+Package natbib Warning: Citation `ccreference' on page 4 undefined on input lin
+e 186.
 
-Package natbib Warning: Citation `ccreference' on page 2 undefined on input lin
-e 147.
-
-LaTeX Font Info:    Try loading font information for U+eus on input line 147.
+LaTeX Font Info:    Try loading font information for U+eus on input line 186.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
 File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
@@ -837,60 +842,60 @@ File: ueus.fd 2013/01/14 v3.01 Euler Script
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 147.
- [2]
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 186.
 
-Package natbib Warning: Citation `ccreference' on page 3 undefined on input lin
-e 153.
 
-[3]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 185.
- [4] [5]
+Package natbib Warning: Citation `ccreference' on page 4 undefined on input lin
+e 192.
+
+[4]
+LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 243.
+ [5] [6]
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [6]
+ [7]
 
-Package natbib Warning: Citation `goldreich' on page 7 undefined on input line 
-309.
+Package natbib Warning: Citation `goldreich' on page 8 undefined on input line 
+373.
 
-[7]
+[8]
 
-Package natbib Warning: Citation `kashefi_kerinidis' on page 8 undefined on inp
-ut line 331.
+Package natbib Warning: Citation `kashefi_kerinidis' on page 9 undefined on inp
+ut line 395.
 
 
-Package natbib Warning: Citation `Baraketal' on page 8 undefined on input line 
-337.
+Package natbib Warning: Citation `Baraketal' on page 9 undefined on input line 
+401.
 
-[8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19]
+[9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
 
 Package natbib Warning: There were undefined citations.
 
-[20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 818.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 818.
+[22]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 969.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 969.
  (quantum_obfuscation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 818.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 818.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 969.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 969.
 Package rerunfilecheck Info: File `quantum_obfuscation.out' has not changed.
-(rerunfilecheck)             Checksum: 5CE04699779115746737CFEA9BB25B58;2591.
+(rerunfilecheck)             Checksum: A828F7B370D1BE4B3EDBA19A8592123F;2799.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 818.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 969.
  ) 
 Here is how much of TeX's memory you used:
- 18844 strings out of 493698
- 344832 string characters out of 3141991
- 435140 words of memory out of 3000000
- 21471 multiletter control sequences out of 15000+200000
- 62886 words of font info for 256 fonts, out of 3000000 for 9000
+ 18869 strings out of 493698
+ 345120 string characters out of 3141991
+ 436141 words of memory out of 3000000
+ 21479 multiletter control sequences out of 15000+200000
+ 64293 words of font info for 259 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 55i,8n,54p,1584b,499s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,54p,1581b,490s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
@@ -898,6 +903,7 @@ les (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program Files (
 x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x8
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/eusm10.pfb><C:/Program Files (x
+86)/MiKTeX 2.9/fonts/type1/public/amsfonts/euler/eusm7.pfb><C:/Program Files (x
 86)/MiKTeX 2.9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Program Files
  (x86)/MiKTeX 2.9/fonts/type1/urw/palatino/uplb8a.pfb><C:/Program Files (x86)/M
 iKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Program Files (x86)/MiKTeX 2
@@ -906,9 +912,9 @@ iKTeX 2.9/fonts/type1/urw/palatino/uplbi8a.pfb><C:/Program Files (x86)/MiKTeX 2
 urw/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/u
 syr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:
 /Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on quantum_obfuscation.pdf (20 pages, 270479 bytes).
+Output written on quantum_obfuscation.pdf (22 pages, 289604 bytes).
 PDF statistics:
- 424 PDF objects out of 1000 (max. 8388607)
- 124 named destinations out of 1000 (max. 500000)
- 34581 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 462 PDF objects out of 1000 (max. 8388607)
+ 136 named destinations out of 1000 (max. 500000)
+ 39213 words of extra memory for PDF output out of 42996 (max. 10000000)
 
