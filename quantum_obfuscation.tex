@@ -72,12 +72,14 @@
 \newcommand{\recon}{R}
 \newcommand{\idim}{\dim_{\opn{I}}}
 
-%%% added by GA 9/10/2015
+%%% added by GA  Sept 2015
 \newcommand{\algo}{\mathcal}
 \newcommand{\negl}{\opn{negl}}
 \newcommand{\KeyGen}{\ensuremath{\mathsf{KeyGen}}\xspace}
 \newcommand{\Enc}{\ensuremath{\mathsf{Enc}}\xspace}
 \newcommand{\Dec}{\ensuremath{\mathsf{Dec}}\xspace}
+\newcommand{\inrand}{\in_R} 
+\newcommand{\prob}{\opn{Pr}}
 %%%
 
 \newcommand{\ga}[1]{{ \textcolor{purple}{(Gorjan:  #1)}}{}}
@@ -180,6 +182,11 @@ Things to cover:
 \subsection{Notation etc.}
 %%%%%%%%%%%%%%%%%%%%%%
 
+\begin{itemize}
+\item PT, PPT, QPT, etc. (might be partially covered in the next subsection)
+\item the notation $x \inrand \{0,1\}^n$.
+\end{itemize}
+
 \subsection{Probabilistic and quantum algorithms}
 %%%%%%%%%%%%%%%%%%%%%%
 
@@ -196,29 +203,48 @@ An algorithm will be referred to as polynomial-time (or efficient) if all of the
 \section{Quantum encryption}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Two primitives}
+\subsection{Quantum-secure pseudorandomness}
 %%%%%%%%%%%%%%%%%%%%%%
 
+We begin with two primitives for encryption: quantum-secure one-way functions, and quantum-secure pseudorandom functions. These are both classical, efficiently computable functions which are in some sense resistant to quantum analysis. In the case of one-way functions, we demand that inversion is hard; in the case of pseudorandom functions, we demand that distinguishing from perfectly random functions is hard.
+
 \begin{definition}\label{def:quantum-secure-owf}
-A function $f:\{0,1\}^* \rightarrow \{0, 1\}^*$ is a quantum-secure one-way function if 
-\begin{enumerate}
-\item $f$ can be computed exactly by a polynomial-time classical algorithm, and
-\item for every quantum algorithm $\mathcal A$, every polynomial $p$, and all sufficiently large $n$,
+A PT-computable function $f:\{0,1\}^* \rightarrow \{0, 1\}^*$ is a quantum-secure one-way function (qOWF) if for every QPT $\algo A$, 
 $$
-\emph{Pr}\left[\mathcal A (f(x), 1^n) \in f^{-1}(f(x)) \right] < \frac{1}{p(n)}~,
+\emph{Pr}_{x \inrand \{0, 1\}^n} \left[\algo A (f(x), 1^n) \in f^{-1}(f(x)) \right] \leq \negl(n)\,,
 $$
-where the probability is taken over uniformly random $x \in \{0, 1\}^n$ and the measurement of $\mathcal A$.
-\end{enumerate}
+where the probability is taken over $x \inrand \{0, 1\}^n$ as well as the measurements of $\algo A$.
 \end{definition}
 
-Things to add here:
-\begin{itemize}
-\item qPRF definition
-\item Zhandry result that qOWF implies qPRF
-\end{itemize}
+\begin{definition}\label{def:quantum-secure-prf}
+A PT-computable function family $f_k : \{0,1\}^n \rightarrow \{0, 1\}^m$ is a quantum-secure pseudorandom function (qPRF) if for every QPT $\algo A$, 
+$$
+\left|\prob_{k \inrand \{0, 1\}^n} [\algo A^{f_k}(1^n) = 1] - \prob_{g \inrand \mathcal F_{n, m}}[ \algo A^g(1^n) = 1]\right|
+\leq \negl(n)\,,
+$$
+where $\mathcal F_{n, m}$ denotes the space of all functions from $\{0,1\}^n$ to $\{0,1\}^m$.
+\end{definition}
+
+Classically, one-way functions are the fundamental primitive underpinning encryption. A series of basic results shows that one-way functions can be turned into pseudorandom functions, which can then be used for defining probabilistic encryption schemes. This series of results carries over to the quantum-secure case without much of a change (although some proofs are somewhat more involved.) For example, it is known how to construct qPRFs from qOWFs.
+
+\begin{theorem}\label{thm:qOWF-implies-qPRF}
+\emph{[Zhandry, cite]}
+If qOWFs exist, then so do qPRFs.
+\end{theorem}
 
 \subsection{Private-key encryption of quantum states}
 %%%%%%%%%%%%%%%%%%%%%%
+
+Some of our later proofs regarding obfuscation will require a notion of \emph{encryption of quantum states} with computational assumptions. In what follows, we describe the basic notions and results that we will need. A much more thorough treatment of this topic will be given in (cite new paper).
+
+
+It is well-known how to encrypt quantum states with information-theoretic security, via the so-called quantum one-time pad. To encrypt a single-qubit (possibly mixed) state $\rho$, we choose two classical bits at random, use them to select a random Pauli matrix $P \in \{\one, X, Y, Z\}$, and perform $\rho \mapsto P \rho P^\dagger$. For an $n$-qubit quantum state $\rho$, we need only select $r \inrand \{0,1\}^{2n}$ and apply
+\begin{equation}\label{eq:quantum-one-time-pad}
+\rho \longmapsto P_r \rho P_r^\dagger
+\end{equation}
+where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$.
+
+One disadvantage of the quantum one-time pad, just as in the classical case, is that the number of bits of key is quite large. Moreover, keys are not reusable. To resolve these issues, we must settle for computational security assumptions and use pseudorandomness to select $r$. A general encryption scheme for quantum states is then defined as follows.
 
 Things to add here:
 \begin{itemize}
