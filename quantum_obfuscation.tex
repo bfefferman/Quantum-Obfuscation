@@ -112,6 +112,7 @@ Things to cover:
 \begin{itemize}
 \item can one obfuscate quantum programs? 
 \item what are some reasonable definitions of what this even means?
+\item let's say we \emph{can} obfuscate quantum programs; what does this buy us?
 \item in order to properly address these question, we also need to address encryption of quantum data with computational assumptions (where only info-theoretic has been considered before); but the main part of this work will appear in another paper, etc.
 \end{itemize}
 \end{itemize}
@@ -150,6 +151,7 @@ Things to cover:
 \item quantum obfuscator implies IND-CPA SKE for quantum states;
 \item obfuscator + qOWFs implies IND-CPA PKE for quantum states;
 \item obfuscator (plus what else?) implies QFHE;
+\item emphasize that all these encryption schemes also work for \emph{classical data}, but may require quantum ciphertexts (and hence also quantum encryption and decryption algorithms);
 \item obfuscator implies quantum money (details?);
 \end{itemize}
 \item impossibility results:
@@ -232,7 +234,7 @@ Classically, one-way functions are the fundamental primitive underpinning encryp
 \begin{theorem}\label{thm:qOWF-implies-qPRF}
 If quantum-secure one-way functions exist, then so do quantum-secure pseudorandom functions.
 \end{theorem}
-\begin{proof} (Sketch.) It is folklore that the well-known H{\aa}stad et al. result that pseudorandom generators can be constructed from any one-way function~\cite{HILL99} carries over to the quantum-secure case. Roughly speaking, the reasoning is that the reduction in the proof is done in a ``black-box'' way, i.e., only by feeding inputs into the adversary and then analyzing the resulting outputs. The quantum-secure case then simply involves replacing PPTs with QPTs in the appropriate places. The proof that PRGs can then be constructed from PRFs is more involved than the standard classical GGM construction~\cite{GGM86}, and was given by Zhandry~\cite{Zhandry2012}.
+\begin{proof} (Sketch.) It is folklore that the well-known H{\aa}stad et al. result that pseudorandom generators can be constructed from any one-way function~\cite{HILL99} carries over to the quantum-secure case. Roughly speaking, the reasoning is that the reduction in the proof is done in a ``black-box'' way, i.e., only by feeding inputs into the adversary and then analyzing the resulting outputs. The quantum-secure case then simply involves replacing PPTs with QPTs in the appropriate places. Proving that the standard GGM construction~\cite{GGM86} of PRFs from pseudorandom generators is still secure in the setting of quantum adversaries is more involved; this was established by Zhandry~\cite{Zhandry2012}.
 \end{proof}
 
 \subsection{Symmetric-key encryption of quantum states}
@@ -372,7 +374,7 @@ U_{a, b} : \ket{x,\, y} \longmapsto
 \ket{x,\, y} &\text{ otherwise}.
 \end{cases}
 $$
-Define a function $f : \{0, 1\}^* \rightarrow \{0, 1\}^*$ by $f(a, b, r) = \algo O_r(U_{a, b})$ where $\algo O$ is the obfuscator as in the hypothesis, and $\algo O_r$ denotes the same algorithm, but with randomness coins initialized to $r$. Note that, by the functionality-preserving property of $\mathcal O$, inverting $f$ requires computing $b$. Moreover, with only black-box access to $U_{a, b}$ (for uniformly random $a, b$) the probability of correctly outputing $b$ in polynomial time is at most $1/2 + \negl(n)$.  By the black-box property of $\mathcal O$, we then have
+Define a function $f : \{0, 1\}^* \rightarrow \{0, 1\}^*$ by $f(a, b, r) = \algo O_r(U_{a, b})$ where $\algo O$ is the obfuscator\footnote{For simplicity of notation, we omit $\algo J$ and assume that $f(a, b, r) = \algo O_r(U_{a, b})$ is in fact a classical circuit for $U_{a, b}$.} as in the hypothesis, and $\algo O_r$ denotes the same algorithm, but with randomness coins initialized to $r$. Clearly, inverting $f$ requires computing $b$ from $\algo O_r(U_{a, b})$. Moreover, with only black-box access to $U_{a, b}$ (for uniformly random $a, b$) the probability of correctly outputing $b$ in polynomial time is at most $1/2 + \negl(n)$.  By the black-box property of $\mathcal O$, we then have
 \begin{align*}
 \prob_{a, b} [ A(f(a, b, r)) = b] 
 &= \prob_{a, b} [ A(\mathcal O_r(a, b)) = b ]\\
@@ -384,7 +386,7 @@ which completes the proof.
 
 We remark that the above proof fails if the obfuscator is a quantum algorithm---even if its output is itself classical. The issue is that one-way functions must be deterministic; while one can turn a classical probabilistic algorithm into a deterministic one by making the coins part of the input, this is not possible quantumly. We leave the problem of constructing cryptographically useful primitives from a fully quantum obfuscator (or even just from a quantum encryption scheme) as an interesting open question. 
 
-\subsubsection{Plaintext-secure private-key quantum encryption}
+\subsubsection{CPA-secure private-key quantum encryption}
 %%%
 
 Can we say anything about encryption of data if we know that \emph{quantum} algorithms for quantum black-box obfuscation exist? While we do not know how to extract one-way functions, we can nonetheless produce useful encryption schemes, as follows.
@@ -393,7 +395,29 @@ Can we say anything about encryption of data if we know that \emph{quantum} algo
 If quantum black-box obfuscators exist, then so do IND-CPA-secure symmetric-key quantum encryption schemes.
 \end{prop}
 \begin{proof}
-\ga{Waiting for Bill to look this up in his notes, I forgot the construction.}
+Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two $n$-bit registers:
+$$
+U'_{r, k} : \ket{x,\, y} \longmapsto
+\begin{cases}
+\ket{x,\, P_r^\dagger y} &\text{ if } x = k;\\
+\ket{x,\, y} &\text{ otherwise},
+\end{cases}
+$$
+Now consider the following scheme for encrypting $n$-qubit quantum states.
+\begin{itemize}
+\item $\KeyGen(1^n)$: output $k \inrand \{0, 1\}^n$;
+\item $\Enc_{k}(\rho)$: choose $r \inrand \{0, 1\}^n$; output $P_r \rho P_r^\dagger \otimes \algo O(U_{r, k})$;
+\item $\Dec_{k}(\sigma \otimes \tau)$: output  the second register of $\algo J(\tau \otimes \ket{k}\bra{k} \otimes \sigma)$.
+\end{itemize}
+To check correctness, we apply the functionality-preserving property of the obfuscator. A decryption of a valid encryption with the same key yields
+\begin{align*}
+\Dec_k (\Enc_k (\rho))  
+&= \tr_1 \left[\algo J(\algo O(U_{r, k}) \otimes \ket{k}\bra{k} \otimes P_r \rho P_r^\dagger)\right] \\
+&= \tr_1 \left[U_{r, k} (\ket{k}\bra{k} \otimes P_r \rho P_r^\dagger) U_{r, k}^\dagger\right] \\
+&= \tr_1 \left[\ket{k}\bra{k} \otimes \rho \right] \\
+& = \rho\,.
+\end{align*}
+as desired. IND-CPA security follows from the black-box property of the obfuscator, as follows. Let $\algo A$ be an adversary with access to the encryption oracle. Since the output of the encryption is a product state, $\algo A$ can be simulated by an adversary $\algo S$ that has only the first register of the ciphertext (i.e., $P_r \rho P_r^\dagger$) and black-box access to the unitary $U'_{r, k}$. It's then clear that $\algo S$ can only succeed in the challenge stage of \expref{Definition}{def:IND} by discovering the secret input for $U'_{r, k}$ or by guessing the response to the challenge. In any case, $\algo S$ (and hence also $\algo A$) succeeds with probability at most $1/2 + \negl(n)$.
 \end{proof}
 
 \subsubsection{Public-key encryption from private-key encryption}
@@ -411,7 +435,9 @@ Under the hypothesis, \expref{Theorem}{thm:qOWF-implies-qSKE} implies the existe
 \item $\Enc'_{pk}(\rho)$: choose $r \inrand \{0, 1\}^n$; output $pk( \ket{r}\bra{r} \otimes \rho)$;
 \item $\Dec'_{sk}(\sigma)$: output  $\Dec_{sk}(\sigma)$\,.
 \end{itemize}
-The correctness of this scheme follows directly from the functionality-preserving property of $\algo O$ and the correctness of the private-key scheme. To prove IND-CPA security for the public-key scheme, we rely on the black-box property. It implies that any QPT adversary $\algo A$ with access to the public key can be simulated by a QPT $\algo S$ having only black-box access to $\Enc_{(sk)}$. The QPT $\algo S$, in turn, can be simulated by a QPT $\algo S'$ which has both decryption and encryption oracles for the private-key scheme $(\KeyGen, \Enc, \Dec)$. It may not be immediately obvious that the decryption oracle is necessary; this is the case because black-box access to $\Enc_{(sk)}$ enables $\algo S$ to select the randomness used for encryption, thus gaining the ability to evaluate pairs $(r, f_{sk}(r))$ where $f$ is the qPRF from the private-key scheme. It then follows that, if $\algo A$ can distinguish ciphertexts during the challenge, then so can $\algo S'$, which contradicts the IND-CCA1 security of the private-key scheme.
+The correctness of this scheme follows directly from the functionality-preserving property of $\algo O$ and the correctness of the private-key scheme. To prove IND-CPA security for the public-key scheme, we rely on the black-box property. It implies that any QPT adversary $\algo A$ with access to the public key can be simulated by a QPT $\algo S$ having only black-box access to $\Enc_{(sk)}$. The QPT $\algo S$, in turn, can be simulated by a QPT $\algo S'$ which has both decryption and encryption oracles for the private-key scheme $(\KeyGen, \Enc, \Dec)$. It may not be immediately obvious that the decryption oracle is necessary; this is the case because black-box access to $\Enc_{(sk)}$ enables $\algo S$ to select the randomness used for encryption, thus gaining the ability to evaluate pairs $(r, f_{sk}(r))$ where $f$ is the qPRF from the private-key scheme. 
+
+Now we have that, if $\algo A$ can distinguish ciphertexts during the challenge, then so can $\algo S'$; since the ciphertexts themselves are the same for the public-key scheme and the private-key scheme, this contradicts the IND-CCA1 security of the private-key scheme.
 \end{proof}
 
 A few remarks are in order. First, in~\cite{ABGFSS15} it is shown that IND-CPA-secure public-key quantum encryption schemes exist under the assumption that quantum-secure trapdoor permutations exist. This is a stronger assumption than one-way functions. \expref{Proposition}{prop:PKE} can then be thought of as replacing this strengthening of assumptions with an obfuscator. In~\cite{BJ15} it is shown how to use quantum-secure classical public-key encryption to produce quantum public-key encryption (by encrypting the key for the quantum one-time pad); this amounts to the same assumption on primitives as in~\cite{ABGFSS15}. An important difference between~\cite{ABGFSS15, BJ15} and \expref{Proposition}{prop:PKE} is that the scheme from \expref{Proposition}{prop:PKE} may have public keys which are quantum states. Such schemes have not been considered before, and (due to no-cloning) would have significantly different features from their classical counterparts.
@@ -421,12 +447,16 @@ An interesting question is if there could be public-key encryption for classical
 \subsubsection{(Quantum?) Fully homomorphic encryption encryption}
 %%%
 
+\ga{TODO: write this}
+
 The idea: obfuscate the universal decrypt-gate-encrypt circuit and hand it to the server. Unfortunately, to make QFHE useful, this would have to be reusable. In fact, one might imagine a way for doing classical FHE using quantum obfuscation.
 
 For now maybe concentrate only on the private-key setting?
 
 \subsubsection{Quantum money}
 %%%
+
+\ga{TODO: write this}
 
 The idea: obfuscate the verification circuit to turn private-key money into public-key money. Mention previous discussions of this idea by Mike and Stebila. Can this work even if the verification circuit turns out to be a state? Do we also need to obfuscate measurements if, e.g., the underlying private-key scheme is Wiesner's money?
 
@@ -436,7 +466,24 @@ The idea: obfuscate the verification circuit to turn private-key money into publ
 \subsubsection{Impossibility of two-circuit obfuscation}
 %%%
 
-\ga{this is old and needs to be reviewed and checked.}
+\ga{Bill, below are the new functions that I think we should use. Of course, you should check them!}
+
+We will show two-circuit impossibility for the following unitary operators. Here $a$ and $b$ are chosen uniformly at random from $\{0,1\}^n$. The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ where $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one.
+\begin{align}\label{eq:pair-impossible}
+U_{a, b} &: \ket{x,\, y} \longmapsto
+\begin{cases}
+\ket{x,\, y \oplus b} &\text{ if } x = a;\\
+\ket{x,\, y} &\text{ otherwise}.
+\end{cases}\\
+V_{a, b} &: \ket{C,\, z} \longmapsto
+\begin{cases}
+\ket{x,\, z \oplus 1} &\text{ if } C(a) = b;\\
+\ket{x,\, z} &\text{ otherwise}.
+\end{cases}
+\end{align}
+
+
+~\\ \noindent \ga{the stuff below is old and needs to be redone.}
 
 Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
 

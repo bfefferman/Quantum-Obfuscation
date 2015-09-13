@@ -8,29 +8,29 @@
 \contentsline {subsection}{\numberline {2.2}Probabilistic and quantum algorithms}{4}{subsection.2.2}
 \contentsline {section}{\numberline {3}Quantum encryption}{5}{section.3}
 \contentsline {subsection}{\numberline {3.1}Quantum-secure pseudorandomness}{5}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Symmetric-key encryption of quantum states}{5}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Symmetric-key encryption of quantum states}{6}{subsection.3.2}
 \contentsline {section}{\numberline {4}Quantum black-box obfuscation}{7}{section.4}
 \contentsline {subsection}{\numberline {4.1}Definitions}{7}{subsection.4.1}
 \contentsline {subsection}{\numberline {4.2}Applications}{9}{subsection.4.2}
 \contentsline {subsubsection}{\numberline {4.2.1}Quantum-secure one-way functions}{9}{subsubsection.4.2.1}
-\contentsline {subsubsection}{\numberline {4.2.2}Plaintext-secure private-key quantum encryption}{10}{subsubsection.4.2.2}
+\contentsline {subsubsection}{\numberline {4.2.2}CPA-secure private-key quantum encryption}{10}{subsubsection.4.2.2}
 \contentsline {subsubsection}{\numberline {4.2.3}Public-key encryption from private-key encryption}{10}{subsubsection.4.2.3}
 \contentsline {subsubsection}{\numberline {4.2.4}(Quantum?) Fully homomorphic encryption encryption}{11}{subsubsection.4.2.4}
 \contentsline {subsubsection}{\numberline {4.2.5}Quantum money}{11}{subsubsection.4.2.5}
 \contentsline {subsection}{\numberline {4.3}Impossibility results}{11}{subsection.4.3}
 \contentsline {subsubsection}{\numberline {4.3.1}Impossibility of two-circuit obfuscation}{11}{subsubsection.4.3.1}
-\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{12}{subsubsection.4.3.2}
-\contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{12}{section.5}
-\contentsline {subsection}{\numberline {5.1}Definitions}{12}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Applications}{13}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{13}{subsubsection.4.3.2}
+\contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{13}{section.5}
+\contentsline {subsection}{\numberline {5.1}Definitions}{13}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Applications}{14}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{14}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{15}{subsection.5.4}
-\contentsline {section}{\numberline {6}Discussion}{16}{section.6}
-\contentsline {section}{\numberline {7}[OLD NOTES]}{18}{section.7}
-\contentsline {subsection}{\numberline {7.1}Preliminaries}{18}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Black-box Quantum circuit obfuscation}{19}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}Best-possible}{20}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Indistinguishability}{21}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}Relationships between the definitions}{21}{subsection.7.5}
-\contentsline {subsection}{\numberline {7.6}Example: Clifford circuits}{22}{subsection.7.6}
-\contentsline {paragraph}{Why is this uninteresting}{24}{section*.2}
+\contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{16}{subsection.5.4}
+\contentsline {section}{\numberline {6}Discussion}{17}{section.6}
+\contentsline {section}{\numberline {7}[OLD NOTES]}{19}{section.7}
+\contentsline {subsection}{\numberline {7.1}Preliminaries}{19}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Black-box Quantum circuit obfuscation}{20}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Best-possible}{21}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Indistinguishability}{22}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.5}Relationships between the definitions}{22}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}Example: Clifford circuits}{23}{subsection.7.6}
+\contentsline {paragraph}{Why is this uninteresting}{25}{section*.2}
