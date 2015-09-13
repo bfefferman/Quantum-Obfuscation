@@ -2,50 +2,49 @@ This is BibTeX, Version 0.99d (TeX Live 2014)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/wjf/quantum-obfuscation/Quantum-Obfuscation/.texpadtmp/quantum_obfuscation.aux
 The style file: plainnat.bst
-I found no \bibdata command---while reading file /Users/wjf/quantum-obfuscation/Quantum-Obfuscation/.texpadtmp/quantum_obfuscation.aux
+Database file #1: ../QuantumCrypto.bib
 Warning--I didn't find a database entry for "ccreference"
-Warning--I didn't find a database entry for "goldreich"
-Warning--I didn't find a database entry for "kashefi_kerinidis"
-Warning--I didn't find a database entry for "Baraketal"
-You've used 0 entries,
+Warning--empty year in ABGFSS15
+Warning--empty year in ABGFSS15
+You've used 6 entries,
             2773 wiz_defined-function locations,
-            596 strings with 5029 characters,
-and the built_in function-call counts, 33 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
-chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+            644 strings with 6176 characters,
+and the built_in function-call counts, 3379 in all, are:
+= -- 306
+> -- 223
+< -- 3
++ -- 75
+- -- 69
+* -- 300
+:= -- 531
+add.period$ -- 27
+call.type$ -- 6
+change.case$ -- 41
+chr.to.int$ -- 6
+cite$ -- 14
+duplicate$ -- 134
+empty$ -- 240
+format.name$ -- 77
+if$ -- 697
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 0
+missing$ -- 6
+newline$ -- 46
+num.names$ -- 24
+pop$ -- 76
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 35
 quote$ -- 0
-skip$ -- 1
+skip$ -- 103
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 124
+swap$ -- 19
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
+type$ -- 66
+warning$ -- 2
+while$ -- 26
 width$ -- 0
-write$ -- 7
-(There was 1 error message)
+write$ -- 99
+(There were 3 warnings)

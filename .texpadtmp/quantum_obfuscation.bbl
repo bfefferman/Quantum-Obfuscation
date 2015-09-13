@@ -1,8 +1,52 @@
-\begin{thebibliography}{0}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Alagic et~al.()Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner,
+  and StJules]{ABGFSS15}
+Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
+  Schaffner, and Michael StJules.
+\newblock Computational security for quantum encryption.
+\newblock \emph{To appear.}
+
+\bibitem[Barak et~al.(2012)Barak, Goldreich, Impagliazzo, Rudich, Sahai,
+  Vadhan, and Yang]{BGIRSVY12}
+Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
+  Salil Vadhan, and Ke~Yang.
+\newblock On the (im)possibility of obfuscating programs.
+\newblock \emph{J. ACM}, 59\penalty0 (2):\penalty0 6:1--6:48, May 2012.
+\newblock ISSN 0004-5411.
+\newblock \doi{10.1145/2160158.2160159}.
+\newblock URL \url{http://doi.acm.org/10.1145/2160158.2160159}.
+
+\bibitem[Broadbent and Jeffery(2015.)]{BJ15}
+Anne Broadbent and Stacey Jeffery.
+\newblock {Quantum homomorphic encryption for circuits of low {$T$}-gate
+  complexity}.
+\newblock \emph{Crypto 2015 (to appear)}, December 2015.
+
+\bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
+Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
+\newblock How to construct random functions.
+\newblock \emph{Journal of the ACM}, 33\penalty0 (4):\penalty0 792--807, 1986.
+\newblock ISSN 0004-5411.
+\newblock \doi{http://doi.acm.org/10.1145/6490.6503}.
+
+\bibitem[H{\aa}stad et~al.(1999)H{\aa}stad, Impagliazzo, Levin, and
+  Luby]{HILL99}
+Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
+\newblock A pseudorandom generator from any one-way function.
+\newblock \emph{SIAM J. Comput.}, 28:\penalty0 1364--1396, March 1999.
+\newblock ISSN 0097-5397.
+\newblock \doi{http://dx.doi.org/10.1137/S0097539793244708}.
+\newblock URL \url{http://dx.doi.org/10.1137/S0097539793244708}.
+
+\bibitem[Zhandry(2012)]{Zhandry2012}
+Mark Zhandry.
+\newblock {How to Construct Quantum Random Functions}.
+\newblock In \emph{FOCS 2012}, pages 679--687. IEEE, 2012.
 
 \end{thebibliography}

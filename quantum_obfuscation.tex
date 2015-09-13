@@ -84,6 +84,7 @@
 %%%
 
 \newcommand{\ga}[1]{{ \textcolor{purple}{(Gorjan:  #1)}}{}}
+\newcommand{\wf}[1]{{ \textcolor{orange}{(Bill:  #1)}}{}}
 
 \bibliographystyle{plainnat}
 \begin{document}
@@ -336,7 +337,7 @@ Note that allowing $\mathcal O$ to be probabilistic-quantum allows it to output 
 
 For shorthand, we will denote CPTP maps by, e.g., $\algo A ( \cdot )$, which is to mean the map $\rho \mapsto \algo A(\rho)$. We also use ``QPT'' as shorthand for quantum polynomial-time algorithm, and ``$\negl$'' as shorthand for some function which grows inverse-superpolynomially.
 
-\begin{definition}
+\begin{definition}\label{blackbox}
 A \textbf{black-box quantum obfuscator} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is an $m$-qubit state $\algo O(C)$ satisfying
 \begin{enumerate}
 \item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
@@ -465,10 +466,20 @@ The idea: obfuscate the verification circuit to turn private-key money into publ
 
 \subsubsection{Impossibility of two-circuit obfuscation}
 %%%
-
-\ga{Bill, below are the new functions that I think we should use. Of course, you should check them!}
-
-We will show two-circuit impossibility for the following unitary operators. Here $a$ and $b$ are chosen uniformly at random from $\{0,1\}^n$. The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ where $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one.
+Barak et. al. \cite{BGIRSVY12} shows that black-box obfuscation is impossible by showing an explicit circuit family that cannot be black-box obfuscated.  Here we present a similar result for {\bf black-box quantum two-circuit obfuscation},  defined as in Definition \ref{blackbox} with the following strengthening of the virtual black-box condition:
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
+$$
+\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1) \otimes \mathcal O(C_2)) = 1] - \text{Pr}\bigl[\mathcal S^{U_{C_1}, U_{C_2}}\bigl(\ket{0}^{\otimes |C_1| + |C_2|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, \min\{|C_1|,|C_2|\})\,.
+$$
+\end{enumerate}
+\begin{theorem}
+There exist pairs of unitaries $(U, V)$ such that no pair of quantum circuits is a two-circuit black-box obfuscation of $(U, V)$. \wf{Should the result be stated in terms of ensembles or distributions over circuits?}
+\end{theorem}
+\begin{proof}
+Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
+We will show two-circuit impossibility for the following unitary operators. Here $a$ and $b$ are chosen uniformly at random from $\{0,1\}^n$.  The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ where $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one.
 \begin{align}\label{eq:pair-impossible}
 U_{a, b} &: \ket{x,\, y} \longmapsto
 \begin{cases}
@@ -477,46 +488,59 @@ U_{a, b} &: \ket{x,\, y} \longmapsto
 \end{cases}\\
 V_{a, b} &: \ket{C,\, z} \longmapsto
 \begin{cases}
-\ket{x,\, z \oplus 1} &\text{ if } C(a) = b;\\
-\ket{x,\, z} &\text{ otherwise}.
+\ket{C,\, z \oplus 1} &\text{ if } C(a) = b;\\
+\ket{C,\, z} &\text{ otherwise}.
 \end{cases}
 \end{align}
 
+Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable \wf{This needs to be formalized...}.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $Z_{2n}$.
 
-~\\ \noindent \ga{the stuff below is old and needs to be redone.}
+Now we notice that, for every QPT algorithm $\mathcal S$ there exists a negligible $\epsilon_1$ so that:
+$$\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |V_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{U_{a,b}, Id_{2n}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |Id_{2n}|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n, \min\{|U_{a,b}|,|V_{a,b}|\})\,.$$
+Where the probability is taken over choice of $a,b$ and the measurement outcome of the quantum algorithms.
+ This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.\wf{Again, this needs proof}
+  
+However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$ simply runs $\mathcal{J}_{2n}(\mathcal{O}(D))$ on $|\mathcal{J}_{2n}(\mathcal{O}(C))\rangle|0\rangle$ and measures the second register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $A$ accepts with at most negligible probability when given input states $\mathcal{O}(Z_{2n})$ and $\mathcal{O}(D_{a,b})$, since the only way this happens is if $b=0^n$, which happens with negligible probability.  
 
-Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
+Thus for any QPT algorithm $\mathcal{S}$ there exists some negligible function $\epsilon_2$ so that:
 
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
-$$
-\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1) \otimes \mathcal O(C_2)) = 1] - \text{Pr}\bigl[\mathcal S^{U_{C_1}, U_{C_2}}\bigl(\ket{0}^{\otimes |C_1| + |C_2|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, |C|)\,.
-$$
-\end{enumerate}
+$$\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |V_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(C_{a,b})\otimes\mathcal{O}(D_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n,\min\{|U_{a,b}|,|V_{a,b}|\})\,.$$
 
-\begin{theorem}
-There exist pairs of unitaries $(U, V)$ such that no pair of quantum circuits is a two-circuit black-box obfuscation of $(U, V)$.
-\end{theorem}
-\begin{proof}
-Let $(\mathcal O, \mathcal J)$ be an obfuscator. Choose a uniformly random $z \in \{0,1\}^n$. Define the following $(n+1)$-qubit unitaries:
-$$
-U_0 : \ket{x} \ket{y} \mapsto \ket{x} \ket{\delta_z(x) \oplus y}
-\qquad \text{and} \qquad
-U_1 : \ket{x} \ket{y} \mapsto \ket{x} \ket{y}\,,
-$$
-where $\delta_z : x \mapsto \delta_{xz}$ is the delta function at $z$. Using standard methods for building reversible circuits, we can specify a unitary poly$(n)$-length circuit $C_0$ that implements $U_0$. We also easily build a circuit $C_1$ which implements $U_1$ (i.e., the identity) such that $|C_0| = |C_1|$. We also define a circuit
-$$
-D_z : \ket{s} \ket{t} \mapsto \ket{s} \ket{f_z(s) \oplus t}
-$$
-on two registers: a register of size $m := |\mathcal O(C_0)| = |\mathcal O(C_1)|$, and a one-qubit register (as well as an ancilla we omit for simplicity.) The circuit $D_z$ initializes a portion of the ancilla to $\ket{z}\ket{0}$, and runs the interpreter circuit $J_{n+1, m}$ on $\ket{z}\ket{0}\ket{s}$. Finally, controlled by the second register of that computation, a CNOT is applied to $\ket{t}$. 
-
-We now describe the adversary $\mathcal A$, who will essentially run the second state it receives on the first one. More precisely, on input $\mathcal O(C_j) \otimes \mathcal O(D_z)$ where $j \in \{0, 1\}$, the adversary will run the interpreter circuit $J_{m+1, |\mathcal O(D_z)|}$ on the input state $\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out}$ with advice state $\mathcal O(D_z)$, and then measure the single-qubit ``out'' register. Prior to measurement, by the functional equivalence property of the obfuscator, the $m+1$-qubit output register of $J_{m+1, |\mathcal O(D_z)|}$ will be close (in trace distance) to the state $D_z(\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out})$. Recall that $D_z$ uses its input (via the interpreter) as an advice state, runs it on $\ket{z}\ket{y}$, and then flips the ``out'' qubit iff the computation flipped $\ket{y}$. We conclude that the ``out'' qubit will be (nearly) in the state $\ket{j}$ at the end of the computation; this allows the adversary to detect if it was given the obfuscation of $C_0$ or the obfuscation of $C_1$.
-
-Now suppose $\mathcal S^{U_{C_j}, U_{D_z}}$ is a simulator with black-box access to the unitary applied by $D_z$ and either $C_0$ or $C_1$. Since $\mathcal S$ is polynomial-time, it can only use $C_j$ a polynomial number of times. Without knowledge of $j$ or $z$, the success probability of $\mathcal S$ will be no better than exponentially close to $1/2$, while the success probability of $\mathcal A$ is exponentially close to $1$.
+In contradiction to the virtual black-box condition of the obfuscation procedure.
 \end{proof}
+%%-------OLD--------
+%Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
 
-Next, we should address the following question: if the obfuscated states are cloneable (or if we are allowed to ask the obfuscator for more than one copy), does one-circuit black-box obfuscation become impossible? In other words, can we change the above proof so that it works even when $C_0$ and $C_1$ are functionally equivalent? The natural function choice is one that, conditioned on a control wire, applies either $C_j$ or $D_z$ for random $z \in \{0, 1\}^n$ and random $j \in \{0, 1\}$. Does this work?
+%\begin{enumerate}
+%\setcounter{enumi}{2}
+%\item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
+%$$
+%\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1) \otimes \mathcal O(C_2)) = 1] - \text{Pr}\bigl[\mathcal S^{U_{C_1}, U_{C_2}}\bigl(\ket{0}^{\otimes |C_1| + |C_2|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, |C|)\,.
+%$$
+%\end{enumerate}
+%
+%\begin{theorem}
+%There exist pairs of unitaries $(U, V)$ such that no pair of quantum circuits is a two-circuit black-box obfuscation of $(U, V)$.
+%\end{theorem}
+%\begin{proof}
+%Let $(\mathcal O, \mathcal J)$ be an obfuscator. Choose a uniformly random $z \in \{0,1\}^n$. Define the following $(n+1)$-qubit unitaries:
+%$$
+%U_0 : \ket{x} \ket{y} \mapsto \ket{x} \ket{\delta_z(x) \oplus y}
+%\qquad \text{and} \qquad
+%U_1 : \ket{x} \ket{y} \mapsto \ket{x} \ket{y}\,,
+%$$
+%where $\delta_z : x \mapsto \delta_{xz}$ is the delta function at $z$. Using standard methods for building reversible circuits, we can specify a unitary poly$(n)$-length circuit $C_0$ that implements $U_0$. We also easily build a circuit $C_1$ which implements $U_1$ (i.e., the identity) such that $|C_0| = |C_1|$. We also define a circuit
+%$$
+%D_z : \ket{s} \ket{t} \mapsto \ket{s} \ket{f_z(s) \oplus t}
+%$$
+%on two registers: a register of size $m := |\mathcal O(C_0)| = |\mathcal O(C_1)|$, and a one-qubit register (as well as an ancilla we omit for simplicity.) The circuit $D_z$ initializes a portion of the ancilla to $\ket{z}\ket{0}$, and runs the interpreter circuit $J_{n+1, m}$ on $\ket{z}\ket{0}\ket{s}$. Finally, controlled by the second register of that computation, a CNOT is applied to $\ket{t}$. 
+%
+%We now describe the adversary $\mathcal A$, who will essentially run the second state it receives on the first one. More precisely, on input $\mathcal O(C_j) \otimes \mathcal O(D_z)$ where $j \in \{0, 1\}$, the adversary will run the interpreter circuit $J_{m+1, |\mathcal O(D_z)|}$ on the input state $\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out}$ with advice state $\mathcal O(D_z)$, and then measure the single-qubit ``out'' register. Prior to measurement, by the functional equivalence property of the obfuscator, the $m+1$-qubit output register of $J_{m+1, |\mathcal O(D_z)|}$ will be close (in trace distance) to the state $D_z(\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out})$. Recall that $D_z$ uses its input (via the interpreter) as an advice state, runs it on $\ket{z}\ket{y}$, and then flips the ``out'' qubit iff the computation flipped $\ket{y}$. We conclude that the ``out'' qubit will be (nearly) in the state $\ket{j}$ at the end of the computation; this allows the adversary to detect if it was given the obfuscation of $C_0$ or the obfuscation of $C_1$.
+%
+%Now suppose $\mathcal S^{U_{C_j}, U_{D_z}}$ is a simulator with black-box access to the unitary applied by $D_z$ and either $C_0$ or $C_1$. Since $\mathcal S$ is polynomial-time, it can only use $C_j$ a polynomial number of times. Without knowledge of $j$ or $z$, the success probability of $\mathcal S$ will be no better than exponentially close to $1/2$, while the success probability of $\mathcal A$ is exponentially close to $1$.
+%\end{proof}
+%
+%Next, we should address the following question: if the obfuscated states are cloneable (or if we are allowed to ask the obfuscator for more than one copy), does one-circuit black-box obfuscation become impossible? In other words, can we change the above proof so that it works even when $C_0$ and $C_1$ are functionally equivalent? The natural function choice is one that, conditioned on a control wire, applies either $C_j$ or $D_z$ for random $z \in \{0, 1\}^n$ and random $j \in \{0, 1\}$. Does this work?
 
 \subsubsection{Impossibility of obfuscation for cloneable outputs}
 %%%
