@@ -475,7 +475,7 @@ $$
 $$
 \end{enumerate}
 \begin{theorem}
-There exist pairs of unitaries $(U, V)$ such that no pair of quantum circuits is a two-circuit black-box obfuscation of $(U, V)$. \wf{Should the result be stated in terms of ensembles or distributions over circuits?}
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no pair of quantum circuits is a two-circuit black-box obfuscation of this ensemble of distributions. \wf{TODO: Define what it means to be an obfuscation over ensembles of distributions of circuits}
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
@@ -493,20 +493,19 @@ V_{a, b} &: \ket{C,\, z} \longmapsto
 \end{cases}
 \end{align}
 
-Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable \wf{This needs to be formalized...}.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $Z_{2n}$.
+Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $Z_{2n}$.
 
 Now we notice that, for every QPT algorithm $\mathcal S$ there exists a negligible $\epsilon_1$ so that:
-$$\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |V_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{U_{a,b}, Id_{2n}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |Id_{2n}|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n, \min\{|U_{a,b}|,|V_{a,b}|\})\,.$$
+\begin{equation}\label{eqn1}\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |C_{a,b}| + |D_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{Id_{2n}, V_{a,b}}\bigl(\ket{0}^{\otimes |Z_{2n}| + |D_{a,b}|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n, \min\{|C_{a,b}|,|D_{a,b}|\})\,.\end{equation}
+\wf{I suggest defining the notion of oracle access to a quantum circuit as being equivalent to oracle access to its unitary, to simplify notation here.}
 Where the probability is taken over choice of $a,b$ and the measurement outcome of the quantum algorithms.
- This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.\wf{Again, this needs proof}
+ This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.  This is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}.
   
-However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$ simply runs $\mathcal{J}_{2n}(\mathcal{O}(D))$ on $|\mathcal{J}_{2n}(\mathcal{O}(C))\rangle|0\rangle$ and measures the second register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $A$ accepts with at most negligible probability when given input states $\mathcal{O}(Z_{2n})$ and $\mathcal{O}(D_{a,b})$, since the only way this happens is if $b=0^n$, which happens with negligible probability.  
+However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$ simply runs $\mathcal{J}_{2n}(\mathcal{O}(D))$ on $|\mathcal{J}_{2n}(\mathcal{O}(C))\rangle|0\rangle$ and measures the second register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(Z_{2n})$, since the only way this happens is if $b=0^n$, which happens with negligible probability.  
+Thus, for any $\mathcal S$ there exists a negligible function $\epsilon_2$ so that:
+\begin{equation}\label{eqn2}\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D_{a,b}),\mathcal{O}(Z_{2n})) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n,\min\{|C_{a,b}|,|D_{a,b}|\})\,.\end{equation}
 
-Thus for any QPT algorithm $\mathcal{S}$ there exists some negligible function $\epsilon_2$ so that:
-
-$$\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |U_{a,b}| + |V_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(C_{a,b})\otimes\mathcal{O}(D_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n,\min\{|U_{a,b}|,|V_{a,b}|\})\,.$$
-
-In contradiction to the virtual black-box condition of the obfuscation procedure.
+Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $(C_{a,b},D_{a,b})$ with probability $1/2$ and probability $1/2$ outputting $(Z_{2n},D_{a,b})$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
 \end{proof}
 %%-------OLD--------
 %Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
@@ -552,6 +551,10 @@ The main impossibility proof goes here. Outline:
 \item running circuit on itself computes something a simulator cannot;
 \item but running circuits on themselves doesn't work, so we need to patch it with encryption...
 \end{itemize}
+This proof will now be divided into three parts.  In the first part we 
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum indistinguishability obfuscation}\label{sec:indistinguishability}
