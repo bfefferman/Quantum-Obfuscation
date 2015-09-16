@@ -1,5 +1,6 @@
 \documentclass[11pt]{article}
 
+\input{Qcircuit}
 \usepackage{color}
 \usepackage{amsmath,amsthm,amsbsy,amssymb,dsfont}
 \usepackage{mathtools}
@@ -54,8 +55,8 @@
 \newcommand{\U}{\textsf{U}}
 \newcommand{\outerprod}[2]{|#1\rangle\langle #2|}
 \newcommand{\innerprod}[2]{\langle #1, #2\rangle}
-\newcommand{\ket}[1]{|#1\rangle}
-\newcommand{\bra}[1]{\langle #1|}
+%\newcommand{\ket}[1]{|#1\rangle}
+%\newcommand{\bra}[1]{\langle #1|}
 \newcommand{\Hom}{\operatorname{Hom}}
 \newcommand{\GL}{\textsf{GL}}
 \newcommand{\SU}{\textsf{SU}}
@@ -398,7 +399,7 @@ Can we say anything about encryption of data if we know that \emph{quantum} algo
 \begin{prop}
 If quantum black-box obfuscators exist, then so do IND-CPA-secure symmetric-key quantum encryption schemes.
 \end{prop}
-\begin{proof}
+\begin{proof} (Sketch.)
 Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two $n$-bit registers:
 $$
 U'_{r, k} : \ket{x,\, y} \longmapsto
@@ -432,7 +433,7 @@ As we now show, combining black-box obfuscation with one-way functions yields ev
 \begin{prop}\label{prop:PKE}
 If quantum black-box obfuscators and quantum-secure one-way functions exist, then so do IND-CPA-secure public-key quantum encryption schemes.
 \end{prop}
-\begin{proof}
+\begin{proof} (Sketch.)
 Under the hypothesis, \expref{Theorem}{thm:qOWF-implies-qSKE} implies the existence of IND-CCA1-secure symmetric-key encryption schemes for quantum states. Let $(\KeyGen, \Enc, \Dec)$ be such a scheme; for concreteness, we may take the scheme described in \expref{Theorem}{thm:IND-CCA1}. For $x \in \{0, 1\}^n$, let $\Enc_{(x)}$ denote the encryption circuit for key $x$; this is the circuit that accepts two input registers (one for randomness, and one for the plaintext) and outputs the ciphertext. Now define a public-key encryption scheme $(\KeyGen', \Enc', \Dec')$ as follows.
 \begin{itemize}
 \item $\KeyGen'(1^n)$: output $sk : = k \inrand \{0, 1\}^n$ (secret key) and $pk := \algo O\left(\Enc_{(sk)}\right)$ (public key);
@@ -455,21 +456,28 @@ We briefly recall the idea of fully homomorphic encryption (FHE). For thorough d
 \begin{itemize}
 \item $\Eval_{k_{\opn{eval}}} : \states (\mathcal H_m \otimes \mathcal H_g) \longrightarrow \states (\mathcal H_m)$.
 \end{itemize}
-We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. The choice of $G$ and which qubits (say $(k, k+1)$) of $\rho$ it should be applied to is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
+We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. A classical string describing the choice of gate $G$ (and which qubits $k, k+1, \dots$ of $\rho$ it should be applied to) is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
 
 \begin{prop}\label{prop:QFHE}
 If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
 \end{prop}
-\begin{proof}
+\begin{proof} (Sketch.)
 We will consider the public-key case, which turns out to be simpler. Let $(\algo O, \algo J)$ be a quantum obfuscator, and $(\KeyGen, \Enc, \Dec)$ an IND-CPA-secure public-key scheme. We adapt $\KeyGen$ to produce an evaluation key, and describe the evaluation algorithm. We will require a universal circuit $U_\mu$ for performing gates on $m$-qubit states; this circuit accepts two inputs: an $m$-qubit state, and a description of a gate and indices of the qubits to which the gate should be applied. In our usage, $m$ will be the number of qubits of the ciphertext state.
 \begin{itemize}
 \item $\KeyGen'(1^n)$: output $\KeyGen(1^n) = (sk, pk)$ and $k_{\opn{eval}} = \mathcal O(\Enc_{pk} \circ U_\mu \circ \Dec_{sk})$;
 \item $\Eval_{k_{\opn{eval}}} : \rho \otimes \ket{G}\bra{G} \longmapsto \algo J (k_{\opn{eval}} \otimes \rho \otimes \ket{G}\bra{G})$.
 \end{itemize}
-where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate.\\ 
-\ga{TODO: draw the circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ here}\\
-We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows from the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$.
-\ga{TODO: finish proof, basically just point out that black-box means that the server just gets more encryptions, but with even *less* control than before (he knows that they are related to previous plaintexts via single gates, but unlike with the encryption oracle he can't directly pick the plaintexts.)}
+where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate. A circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ is given below; the gate register is represented by the bottom wire.\\ 
+$$
+\Qcircuit @C=1em @R=1.0em {
+&\gate{\Dec_{sk}} 	&\multigate{1}{~~U_\mu~~} 	&\gate{\Enc_{pk}} 	&\qw\\
+&\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
+}
+$$
+
+We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows directly from the definition of $\Eval$ and the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$. The black-box property implies that each execution of the $\Eval$ algorithm is no more useful than providing the server with an encryption of $G\rho G^\dagger$. However, in the IND-CPA setting, the adversary can already use the CPA oracle to produce encryptions of \emph{arbitrary} plaintexts of her choice (as opposed to just ones which are modifications of the plaintext provided by the client.) There is one additional wrinkle: by repeatedly applying gates (or even just the identity), the adversary can also produce multiple encryptions during the challenge round. However, as shown in~\cite{BJ15}, single-message IND-CPA is equivalent to multiple-message IND-CPA. By the assumption that $(\KeyGen, \Enc, \Dec)$ is IND-CPA secure, it follows that the homomorphic scheme is also secure.
+
+We remark that, in general, the encryption procedure $\Enc_{pk}$ may require an external source of randomness. This is certainly the case in classical encryption, but may not be required if the $\Enc$ algorithm is allowed to perform measurements. In any case, since we are starting with an IND-CPA public-key scheme, the adversary already has access to the public key and the ability to encrypt with randomness of her choice; the ability to choose randomness in $\Eval$ is of no additional benefit.
 \end{proof}
 
 \subsubsection{Quantum money}
