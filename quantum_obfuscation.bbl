@@ -1,13 +1,13 @@
-\begin{thebibliography}{6}
+\begin{thebibliography}{7}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Alagic et~al.()Alagic, Broadbent, Gagliardoni, Fefferman, Schaffner,
+\bibitem[Alagic et~al.()Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner,
   and StJules]{ABGFSS15}
-Gorjan Alagic, Anne Broadbent, Tommaso Gagliardoni, Bill Fefferman, Christian
+Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
   Schaffner, and Michael StJules.
 \newblock Computational security for quantum encryption.
 \newblock \emph{To appear.}
@@ -21,6 +21,13 @@ Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
 \newblock ISSN 0004-5411.
 \newblock \doi{10.1145/2160158.2160159}.
 \newblock URL \url{http://doi.acm.org/10.1145/2160158.2160159}.
+
+\bibitem[Bennett et~al.(1997)Bennett, Bernstein, Brassard, and Vazirani]{BBBV}
+Charles~H. Bennett, Ethan Bernstein, Gilles Brassard, and Umesh~V. Vazirani.
+\newblock Strengths and weaknesses of quantum computing.
+\newblock \emph{{SIAM} J. Comput.}, 26\penalty0 (5):\penalty0 1510--1523, 1997.
+\newblock \doi{10.1137/S0097539796300933}.
+\newblock URL \url{http://dx.doi.org/10.1137/S0097539796300933}.
 
 \bibitem[Broadbent and Jeffery(2015.)]{BJ15}
 Anne Broadbent and Stacey Jeffery.
