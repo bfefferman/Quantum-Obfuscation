@@ -78,6 +78,7 @@
 \newcommand{\KeyGen}{\ensuremath{\mathsf{KeyGen}}\xspace}
 \newcommand{\Enc}{\ensuremath{\mathsf{Enc}}\xspace}
 \newcommand{\Dec}{\ensuremath{\mathsf{Dec}}\xspace}
+\newcommand{\Homorcl}{\ensuremath{\mathsf{Hom}}\xspace}
 \newcommand{\inrand}{\in_R} 
 \newcommand{\prob}{\opn{Pr}}
 \newcommand{\states}{\mathfrak D}
@@ -344,7 +345,13 @@ $$
 
 \noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}\\
 
+<<<<<<< Updated upstream
 \noindent \ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}\\
+=======
+\noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}
+
+\ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}
+>>>>>>> Stashed changes
 
 \subsection{Applications}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -446,6 +453,7 @@ We briefly recall the idea of fully homomorphic encryption (FHE). For thorough d
 \item $\Eval_{k_{\opn{eval}}} : \states (\mathcal H_m \otimes \mathcal H_g) \longrightarrow \states (\mathcal H_m)$.
 \end{itemize}
 We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. A classical string describing the choice of gate $G$ (and which qubits $k, k+1, \dots$ of $\rho$ it should be applied to) is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
+<<<<<<< Updated upstream
 
 \begin{prop}\label{prop:QFHE}
 If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
@@ -464,6 +472,26 @@ $$
 }
 $$
 
+=======
+\end{proof}
+\begin{prop}\label{prop:QFHE}
+If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
+\end{prop}
+\begin{proof} (Sketch.)
+We will consider the public-key case, which turns out to be simpler. Let $(\algo O, \algo J)$ be a quantum obfuscator, and $(\KeyGen, \Enc, \Dec)$ an IND-CPA-secure public-key scheme. We adapt $\KeyGen$ to produce an evaluation key, and describe the evaluation algorithm. We will require a universal circuit $U_\mu$ for performing gates on $m$-qubit states; this circuit accepts two inputs: an $m$-qubit state, and a description of a gate and indices of the qubits to which the gate should be applied. In our usage, $m$ will be the number of qubits of the ciphertext state.
+\begin{itemize}
+\item $\KeyGen'(1^n)$: output $\KeyGen(1^n) = (sk, pk)$ and $k_{\opn{eval}} = \mathcal O(\Enc_{pk} \circ U_\mu \circ \Dec_{sk})$;
+\item $\Eval_{k_{\opn{eval}}} : \rho \otimes \ket{G}\bra{G} \longmapsto \algo J (k_{\opn{eval}} \otimes \rho \otimes \ket{G}\bra{G})$.
+\end{itemize}
+where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate. A circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ is given below; the gate register is represented by the bottom wire.\\ 
+$$
+\Qcircuit @C=1em @R=1.0em {
+&\gate{\Dec_{sk}} 	&\multigate{1}{~~U_\mu~~} 	&\gate{\Enc_{pk}} 	&\qw\\
+&\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
+}
+$$
+
+>>>>>>> Stashed changes
 We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows directly from the definition of $\Eval$ and the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$. The black-box property implies that each execution of the $\Eval$ algorithm is no more useful than providing the server with an encryption of $G\rho G^\dagger$. However, in the IND-CPA setting, the adversary can already use the CPA oracle to produce encryptions of \emph{arbitrary} plaintexts of her choice (as opposed to just ones which are modifications of the plaintext provided by the client.) There is one additional wrinkle: by repeatedly applying gates (or even just the identity), the adversary can also produce multiple encryptions during the challenge round. However, as shown in~\cite{BJ15}, single-message IND-CPA is equivalent to multiple-message IND-CPA. By the assumption that $(\KeyGen, \Enc, \Dec)$ is IND-CPA secure, it follows that the homomorphic scheme is also secure.
 
 We remark that, in general, the encryption procedure $\Enc_{pk}$ may require an external source of randomness. This is certainly the case in classical encryption, but may not be required if the $\Enc$ algorithm is allowed to perform measurements. In any case, since we are starting with an IND-CPA public-key scheme, the adversary already has access to the public key and the ability to encrypt with randomness of her choice; the ability to choose randomness in $\Eval$ is of no additional benefit.
@@ -479,7 +507,7 @@ The idea: obfuscate the verification circuit to turn private-key money into publ
 \subsection{Impossibility results}\label{vbb:impossibility}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Impossibility of two-circuit obfuscation}
+\subsubsection{Impossibility of two-circuit obfuscation}\label{sec-twocircuit}
 %%%
 Barak et. al. \cite{BGIRSVY12} shows that black-box obfuscation is impossible by showing an explicit circuit family that cannot be black-box obfuscated.  Here we present a similar result for {\bf black-box quantum two-circuit obfuscation},  defined as in Definition \ref{blackbox} with the following strengthening of the virtual black-box condition:
 \begin{enumerate}
@@ -517,7 +545,7 @@ Where the probability is taken over choice of $a,b$ and the measurement outcome 
  This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.  This is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}.
   
 However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$ simply runs $\mathcal{J}_{2n}(\mathcal{O}(D))$ on $|\mathcal{J}_{2n}(\mathcal{O}(C))\rangle|0\rangle$ and measures the second register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(Z_{2n})$, since the only way this happens is if $b=0^n$, which happens with negligible probability.  
-Thus, for any $\mathcal S$ there exists a negligible function $\epsilon_2$ so that:
+Thus there exists a negligible function $\epsilon_2$ so that:
 \begin{equation}\label{eqn2}\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D_{a,b}),\mathcal{O}(Z_{2n})) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n,\min\{|C_{a,b}|,|D_{a,b}|\})\,.\end{equation}
 
 Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $(C_{a,b},D_{a,b})$ with probability $1/2$ and probability $1/2$ outputting $(Z_{2n},D_{a,b})$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
@@ -559,14 +587,80 @@ Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b
 \subsubsection{Impossibility of obfuscation for cloneable outputs}
 %%%
 
-The main impossibility proof goes here. Outline:
+Our goal in this section is to modify the black-box quantum two-circuit impossibility proof, in the prior section, to demonstrate impossibility of quantum circuit obfuscation with cloneable outputs:
 
-\begin{itemize}
-\item show how to paste the above pair of circuits to make a single circuit;
-\item running circuit on itself computes something a simulator cannot;
-\item but running circuits on themselves doesn't work, so we need to patch it with encryption...
-\end{itemize}
-This proof will now be divided into three parts.  In the first part we 
+\begin{definition}\label{blackboxclone}
+A \textbf{black-box quantum obfuscator with cloneable outputs} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is a $2m$-qubit state $\algo O(C)\otimes \algo O(C)$ satisfying
+\begin{enumerate}
+\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
+\item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
+\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that
+$$
+\Bigl| \emph{Pr}[\mathcal A(\mathcal O(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
+$$
+\end{enumerate}
+\end{definition}
+Our main impossibility result is, in analogue to the proof in the prior section and in the classical proof \cite{BGIRSVY12}:
+\begin{theorem}
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no pair of quantum circuits is a black-box quantum obfuscation with cloneable outputs, of this ensemble of distributions.
+\end{theorem}
+\begin{proof}
+This proof works by carefully extending the two-circuit construction to show that a similar construction establishes impossibility for the cloneable case.  
+First we give a general definition which will be useful:
+\begin{definition}We define the {\bf combined quantum circuit} of a finite collection of quantum circuits each with $n$ input qubits, $\lbrace C_1,C_2,...,C_k \rbrace$, to be the circuit that takes two registers, a control register of $\log{k}$ qubits, and an input register of $n$ qubits, and controlled on the value of the first register applies the respective quantum circuit to the input register.   
+\end{definition}
+
+Notice that if each circuit $C_i$ in the collection is polynomial size, and $k$ is bounded by a polynomial in $n$, then the associated combined quantum circuit is also polynomial sized.   
+
+Now consider the two unitaries  $U_{a,b}$ and $V_{a,b}$ from Section \ref{sec-twocircuit}, and their respective quantum circuits $C_{a,b}$ and $D_{a,b}$, as well as the circuit $Z_{2n}$, which simply implements the identity operator on $2n$ qubits.  Also consider the combined circuits of $C_{a,b}$ and $D_{a,b}$ which we denote $C_{a,b}\#D_{a,b}$ and the combined quantum circuit of $Z_{2n}$ and $D_{a,b}$ which we denote by $Z_{2n}\#D_{a,b}$.  Using the reasoning of the argument from Section \ref{sec-twocircuit}, these combined quantum circuits are indistinguishable from the perspective of any QPT simulator that is given only black-box access.  On the other hand it is not immediately apparent that there exists an algorithm $\algo{A}$ that can distinguish inputs $\algo{O}(C_{a,b}\#D_{a,b})$ from $\algo{O}(Z_{2n}\#D_{a,b})$.  This is because the naive algorithm that runs one copy of the output of the obfuscation on the other does not work, since the size of the obfuscated circuit generated by one copy of the obfuscation may be polynomially longer than the input register of the circuit generated by the second copy of the obfuscation.  
+
+To fix this issue, following the construction in the classical impossibility case \cite{BGIRSVY12}, our solution is to prove the following theorem about the existence of a distribution over circuits that allows us to test whether a given circuit $C$ of arbitrary polynomial size maps an input $a$ to an output $b$. In particular, we show:
+\begin{lemma}
+	If quantum-secure one-way functions exists, then for each $n\in\mathbb{N}$ and $a,b\in\{0,1\}^n$ there exists a distribution $\mathcal{D}_{a,b}$ over circuits with the following properties:
+\begin{enumerate}
+\item{Every $D\in \supp(\mathcal{D}_{a,b})$ is a circuit of size $poly(n)$.  Furthermore, there exists a QPT algorithm that, for for every $n\in\mathbb{N}$ on input $a,b\in\{0,1\}^n$, samples the distribution $\mathcal{D}_{a,b}$.}
+\item{There is a QPT algorithm $\algo{A}$ so that for all $n \in \mathbb{N}$,   $a,b\in\{0,1\}^n$ and $D\in \supp(\mathcal{D}_{a,b})$, and for every circuit $C$, if $C|a\rangle|0^n\rangle=|a\rangle|b\rangle$, then $\algo{A}^D(C,1^n)=a$.}
+\item{For any QPT $S$, $\Pr[S^{U_D}(1^n)=a]\leq neg(n)$, where the probability is over $a,b\in\{0,1\}^n$, $D\sim \mathcal{D}_{a,b}$, and the measurement of $S$.}	
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}  We follow closely the proof of Lemma 3.6 from the classical impossibility result \cite{BGIRSVY12}, basically constructing a quantum private-key "homomorphic encryption".  We think of each circuit $D\in \supp(\mathcal{D}_{a,b})$ to be the combined quantum circuit of the following three circuits which depend on a fixed private key $K\in\{0,1\}^{2n}$ with respect to the IND-CCA1-secure symmetric-key quantum encryption scheme from Theorem \ref{thm:IND-CCA1}.
+\begin{enumerate}
+\item{$E_{K,a}$ outputs  $\Enc_{K}(|a\rangle)$}.  
+\item{$\Homorcl_K(C,\rho)$ takes a quantum circuit $C$, and a state $\rho$ and outputs $\Enc_K(C(\Dec_K(\rho)))$}\wf{TODO: add the randomness as input}
+\item{$B_{K,a,b}$ takes a quantum state $\rho$ and outputs $|a\rangle$, if $\Dec_{K}(\rho)=|b\rangle$, and otherwise outputs $|0^n\rangle$.}	
+\end{enumerate}
+Now, consider uniformly distributed $a,b,K$, and the resulting combined quantum circuit consisting of $C_{a,b}$ and each of the three circuits composing $D_{K,a,b}$.  Notice that the QPT algorithm $\algo{A}$ that receives two copies of the obfuscation of this combined quantum circuit can check if $C(a)=b$ by using the three circuits comprising $D_{K,a,b}$ to run the circuit gate-by-gate, using $\Homorcl_K$ initialized on the output of the $E_{K,a}$ circuit, and finally outputs the value of the circuit $B_{K,a,b}$.  
+
+It remains to verify that no QPT simulator algorithm that has black-box access to $C_{a,b}$ and each of the three algorithms comprising $D_{K,a,b}$ can discover $a$ with non-negligible probability.  We'll need the following lemma:
+\begin{lemma}
+Let (Enc,Dec) be an IND-CCA1-secure symmetric-key quantum encryption, and $\Homorcl_K$ be as in the prior discussion.  Then, for all $n$ qubit quantum states $\rho$ and every QPT algorithm $\algo{A}$:
+$$
+\Bigl| \emph{Pr}[\mathcal A^{\Homorcl_K,\Enc_K}(\Enc_K(|0^n\rangle)) = 1] - \emph{Pr}\bigl[\mathcal A^{\Homorcl_K,\Enc_K}(\Enc_K(\rho)) = 1 \Bigr| \leq \negl(n)\,.
+$$
+Where the probabilities are over $K$ chosen uniformly from $\{0,1\}^n$ and the measurement outcome of $\algo{A}$.
+\end{lemma}
+\begin{proof}
+
+\end{proof}
+
+
+\end{proof}
+\end{proof}
+
+
+
+
+%The main impossibility proof goes here. Outline:
+%
+%\begin{itemize}
+%\item show how to paste the above pair of circuits to make a single circuit;
+%\item running circuit on itself computes something a simulator cannot;
+%\item but running circuits on themselves doesn't work, so we need to patch it with encryption...
+%\end{itemize}
+%This proof will now be divided into three parts.  In the first part we 
+%
+%
 
 
 
