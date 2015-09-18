@@ -39,23 +39,7 @@
 	Besitz eines Algorithmus, der eine Kollision in H findet...},
   timestamp = {2010.07.19}
 }
-@article{BBBV,
-  author    = {Charles H. Bennett and
-               Ethan Bernstein and
-               Gilles Brassard and
-               Umesh V. Vazirani},
-  title     = {Strengths and Weaknesses of Quantum Computing},
-  journal   = {{SIAM} J. Comput.},
-  volume    = {26},
-  number    = {5},
-  pages     = {1510--1523},
-  year      = {1997},
-  url       = {http://dx.doi.org/10.1137/S0097539796300933},
-  doi       = {10.1137/S0097539796300933},
-  timestamp = {Mon, 12 Sep 2011 16:10:10 +0200},
-  biburl    = {http://dblp.uni-trier.de/rec/bib/journals/siamcomp/BennettBBV97},
-  bibsource = {dblp computer science bibliography, http://dblp.org}
-}
+
 @INPROCEEDINGS{Aar2009,
   author = {Aaronson, Scott},
   title = {Quantum copy-protection and quantum money},
@@ -220,7 +204,8 @@
 }
 
 @ARTICLE{ABGFSS15,
-  author = {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni and Christian Schaffner and Michael StJules},
+  author = {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni
+	and Christian Schaffner and Michael StJules},
   title = {Computational security for quantum encryption},
   journal = {To appear.},
   owner = {Gorjan},
@@ -344,12 +329,12 @@
 	its attending problems of key redistribution, storage of state information,
 	and greater need for interaction, an identity-based scheme was proposed
 	in [1], while a fully key-exposure free construction, based on the
-	elliptic curves with pairings, appeared later in [7]. Herein we provide
-	several constructions of exposure-free chameleon hash functions based
-	on different cryptographic assumptions, such as the RSA and the discrete
-	logarithm assumptions. One of the schemes is a novel construction
-	that relies on a single trapdoor and therefore may potentially be
-	realized over a large set of cryptographic groups (where the discrete
+	elliptic curves with pairings, appeared later in [7]. Herein we
+	provide several constructions of exposure-free chameleon hash functions
+	based on different cryptographic assumptions, such as the RSA and
+	the discrete logarithm assumptions. One of the schemes is a novel
+	construction that relies on a single trapdoor and therefore may potentially
+	be realized over a large set of cryptographic groups (where the discrete
 	logarithm is hard). Keywords: Digital signatures, undeniable signatures,
 	collision-resistant hashing, trapdoor commitments, chameleon signatures,
 	chameleon hashing.},
@@ -616,8 +601,8 @@
   review = {Wie baue ich aus einer Fixed-Input-Length PRF eine Varible -I-L PRF?
 	Konstruktion a la PRF-Ausgabe ist neuer Schlüssel, näxter Inputblock
 	ist Eingabe. Zusätzlich muss bei Gefahr von LengthExtension Attacken
-	vorne und hinten Schlüsselmaterial angehängt werden, a la HMAC. Die
-	Beweise sind mal wieder Hybriden wie bei dem Paper mit Yee},
+	vorne und hinten Schlüsselmaterial angehängt werden, a la HMAC.
+	Die Beweise sind mal wieder Hybriden wie bei dem Paper mit Yee},
   timestamp = {2010.11.03},
   url = {http://www-cse.ucsd.edu/\~{}mihir/papers/cascade.html}
 }
@@ -1084,6 +1069,39 @@
   timestamp = {2015.06.05}
 }
 
+@INCOLLECTION{BBBW83,
+  author = {Bennett, CharlesH. and Brassard, Gilles and Breidbart, Seth and Wiesner,
+	Stephen},
+  title = {Quantum Cryptography, or Unforgeable Subway Tokens},
+  booktitle = {Advances in Cryptology},
+  publisher = {Springer US},
+  year = {1983},
+  editor = {Chaum, David and Rivest, RonaldL. and Sherman, AlanT.},
+  pages = {267-275},
+  doi = {10.1007/978-1-4757-0602-4_26},
+  isbn = {978-1-4757-0604-8},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.18},
+  url = {http://dx.doi.org/10.1007/978-1-4757-0602-4_26}
+}
+
+@ARTICLE{BBBV,
+  author = {Charles H. Bennett and Ethan Bernstein and Gilles Brassard and Umesh
+	V. Vazirani},
+  title = {Strengths and Weaknesses of Quantum Computing},
+  journal = {{SIAM} J. Comput.},
+  year = {1997},
+  volume = {26},
+  pages = {1510--1523},
+  number = {5},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl = {http://dblp.uni-trier.de/rec/bib/journals/siamcomp/BennettBBV97},
+  doi = {10.1137/S0097539796300933},
+  timestamp = {Mon, 12 Sep 2011 16:10:10 +0200},
+  url = {http://dx.doi.org/10.1137/S0097539796300933}
+}
+
 @INPROCEEDINGS{BCG+2006,
   author = {Ben-Or, Michael and Cr{\'e}peau, Claude and Gottesman, Daniel and
 	Hassidim, Avinatan and Smith, Adam},
@@ -1165,6 +1183,25 @@
   timestamp = {2011.04.28}
 }
 
+@INCOLLECTION{Bloemer2003,
+  author = {Blömer, Johannes and Seifert, Jean-Pierre},
+  title = {{Fault Based Cryptanalysis of the Advanced Encryption Standard ({AES})}},
+  booktitle = {Financial Cryptography},
+  publisher = {Springer},
+  year = {2003},
+  editor = {Wright, Rebecca N.},
+  volume = {2742},
+  series = {LNCS},
+  pages = {162-181},
+  doi = {10.1007/978-3-540-45126-6_12},
+  isbn = {978-3-540-40663-1},
+  keywords = {AES; Fault Attacks; Implementation Issues; Secure Banking; Smart Cards},
+  language = {English},
+  owner = {huelsing},
+  timestamp = {2014.09.26},
+  url = {http://dx.doi.org/10.1007/978-3-540-45126-6_12}
+}
+
 @ARTICLE{springerlink:10.1007/s00145-008-9030-1,
   author = {Black, J. and Cochran, M. and Shrimpton, T.},
   title = {On the Impossibility of Highly-Efficient Blockcipher-Based Hash Functions},
@@ -1182,9 +1219,9 @@
 	to construct a highly-efficient iterated blockcipher-based hash function
 	that is provably secure. Our result implies, in particular, that
 	the Tweakable Chain Hash (TCH) construction suggested by Liskov,
-	Rivest, and Wagner (Advances in CryptologyCRYPTO 02, Lecture Notes
-	in Computer Science, vol. 2442, pp. 3146, Springer, Berlin, 2002)
-	is not correct under an instantiation suggested for this construction,
+	Rivest, and Wagner (Advances in CryptologyCRYPTO 02, Lecture
+	Notes in Computer Science, vol. 2442, pp. 3146, Springer, Berlin,
+	2002) is not correct under an instantiation suggested for this construction,
 	nor can TCH be correctly instantiated by any other efficient means.},
   affiliation = {430 UCB Department of Computer Science Boulder CO 80309 USA},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Black (2005) - On the Impossibility of Highly-Effcient Blockcipher-Based Hash Functions.pdf:PDF},
@@ -1283,8 +1320,8 @@
   owner = {huelsing},
   posted-at = {2006-08-21 12:20:04},
   priority = {2},
-  review = {Wie groß ist der Nachrichten Raum bei Verwendung von einem Graph mit
-	n Knoten....},
+  review = {Wie groß ist der Nachrichten Raum bei Verwendung von einem Graph
+	mit n Knoten....},
   timestamp = {2010.08.27},
   url = {http://portal.acm.org/citation.cfm?id=695153}
 }
@@ -1320,25 +1357,6 @@
 	gehen...},
   timestamp = {2010.08.27},
   url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.45.905}
-}
-
-@INCOLLECTION{Bloemer2003,
-  author = {Blömer, Johannes and Seifert, Jean-Pierre},
-  title = {{Fault Based Cryptanalysis of the Advanced Encryption Standard ({AES})}},
-  booktitle = {Financial Cryptography},
-  publisher = {Springer},
-  year = {2003},
-  editor = {Wright, Rebecca N.},
-  volume = {2742},
-  series = {LNCS},
-  pages = {162-181},
-  doi = {10.1007/978-3-540-45126-6_12},
-  isbn = {978-3-540-40663-1},
-  keywords = {AES; Fault Attacks; Implementation Issues; Secure Banking; Smart Cards},
-  language = {English},
-  owner = {huelsing},
-  timestamp = {2014.09.26},
-  url = {http://dx.doi.org/10.1007/978-3-540-45126-6_12}
 }
 
 @INCOLLECTION{Boldyreva2012,
@@ -1592,6 +1610,15 @@
   year = {2000}
 }
 
+@MISC{Brassard97,
+  author = {Gilles Brassard and Peter Høyer and Alain Tapp},
+  title = {Quantum Algorithm for the Collision Problem},
+  howpublished = {arXiv:quant-ph/9705002},
+  year = {1997},
+  owner = {Gorjan},
+  timestamp = {2015.09.12}
+}
+
 @INCOLLECTION{Brassard1998,
   author = {Brassard, Gilles and HÃyer, Peter and Tapp, Alain},
   title = {Quantum cryptanalysis of hash and claw-free functions},
@@ -1608,15 +1635,6 @@
   owner = {huelsing},
   timestamp = {2013.04.10},
   url = {http://dx.doi.org/10.1007/BFb0054319}
-}
-
-@MISC{Brassard97,
-  author = {Gilles Brassard and Peter Høyer and Alain Tapp},
-  title = {Quantum Algorithm for the Collision Problem},
-  howpublished = {arXiv:quant-ph/9705002},
-  year = {1997},
-  owner = {Gorjan},
-  timestamp = {2015.09.12}
 }
 
 @INPROCEEDINGS{Braun2012,
@@ -1834,8 +1852,8 @@
 }
 
 @ARTICLE{springerlink:10.1007/s00607-009-0042-y,
-  author = {Buchmann, Johannes and Lindner, Richard and Rückert, Markus and Schneider,
-	Michael},
+  author = {Buchmann, Johannes and Lindner, Richard and Rückert, Markus and
+	Schneider, Michael},
   title = {Post-quantum cryptography: lattice signatures},
   journal = {Computing},
   year = {2009},
@@ -2314,8 +2332,8 @@
 }
 
 @INCOLLECTION{springerlink:10.1007/11535218_26,
-  author = {Coron, Jean-Sébastien and Dodis, Yevgeniy and Malinaud, Cécile and
-	Puniya, Prashant},
+  author = {Coron, Jean-Sébastien and Dodis, Yevgeniy and Malinaud, Cécile
+	and Puniya, Prashant},
   title = {Merkle-Damgård Revisited: How to Construct a Hash Function},
   booktitle = {Advances in Cryptology  CRYPTO 2005},
   publisher = {Springer Berlin / Heidelberg},
@@ -2518,8 +2536,8 @@
 	invertible watermarks allow to recover the original media object
 	(given a secret encryption key), as required for example in some
 	medical applications where the distortion must be removable. Here
-	we revisit the approach of Dittmann et al. from a cryptographic viewpoint,
-	clarifying some important aspects of their security definitions.
+	we revisit the approach of Dittmann et al. from a cryptographic
+	viewpoint, clarifying some important aspects of their security definitions.
 	Namely, we first discuss that their notion of unforgeability may
 	not suffice in all settings, and we therefore propose a strictly
 	stronger notion. We then show that the basic scheme suggested by
@@ -3087,6 +3105,27 @@
   timestamp = {2010.07.27}
 }
 
+@INPROCEEDINGS{FGHLS12,
+  author = {Farhi, Edward and Gosset, David and Hassidim, Avinatan and Lutomirski,
+	Andrew and Shor, Peter},
+  title = {Quantum Money from Knots},
+  booktitle = {Proceedings of the 3rd Innovations in Theoretical Computer Science
+	Conference},
+  year = {2012},
+  series = {ITCS '12},
+  pages = {276--289},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {2090260},
+  doi = {10.1145/2090236.2090260},
+  isbn = {978-1-4503-1115-1},
+  location = {Cambridge, Massachusetts},
+  numpages = {14},
+  owner = {Gorjan},
+  timestamp = {2015.09.18},
+  url = {http://doi.acm.org/10.1145/2090236.2090260}
+}
+
 @MISC{cryptoeprint:2010:331,
   author = {Jean-Charles Faugère and Ayoub Otmani and Ludovic Perret and and
 	Jean-Pierre Tillich},
@@ -3184,8 +3223,8 @@
 	i.e., where each ciphertext corresponds to exactly one plaintext
 	 independently of the choice of the secret key or the random bits
 	used in the encryption process.},
-  affiliation = {Johann Wolfgang Goethe-Universität Frankfurt am Main Fachbereich Mathematik
-	(AG 7.2) Postfach 111932 60054 Frankfurt/Main Germany},
+  affiliation = {Johann Wolfgang Goethe-Universität Frankfurt am Main Fachbereich
+	Mathematik (AG 7.2) Postfach 111932 60054 Frankfurt/Main Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Fischlin (1996) - Pseudorandom Function Tribe Ensembles Based on One-Way Permutations_-Improvements and Applications.pdf:PDF},
   isbn = {978-3-540-65889-4},
   keyword = {Computer Science},
@@ -3262,6 +3301,24 @@
   timestamp = {2015.09.12}
 }
 
+@INPROCEEDINGS{GazMau09b,
+  author = {Peter Gai and Ueli Maurer},
+  title = {Free-Start Distinguishing: Combining Two Types of Indistinguishability
+	Amplification},
+  booktitle = {The 4th International Conference on Information Theoretic Security
+	- ICITS 2009},
+  year = {2010},
+  editor = {K. Kurosawa},
+  volume = {5973},
+  series = {Lecture Notes in Computer Science},
+  pages = {28--44},
+  publisher = {Springer-Verlag},
+  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Gazi (2009) - Free-Start Distinguishing-Combining Two Types of Indistinguishability Amplification.pdf:PDF},
+  owner = {huelsing},
+  review = {Security Amplification for PRF in the information theoretic setting},
+  timestamp = {2011.02.09}
+}
+
 @ARTICLE{Gagliardoni2015,
   author = {Gagliardoni, Tommaso and H\"ulsing, Andreas and Schaffner, Christian},
   title = {Semantic Security and Indistinguishability in the Quantum World},
@@ -3321,24 +3378,6 @@
   review = {attack on eTCR},
   timestamp = {2011.01.25},
   url = {http://dx.doi.org/10.1007/978-3-642-01001-9_5}
-}
-
-@INPROCEEDINGS{GazMau09b,
-  author = {Peter Gai and Ueli Maurer},
-  title = {Free-Start Distinguishing: Combining Two Types of Indistinguishability
-	Amplification},
-  booktitle = {The 4th International Conference on Information Theoretic Security
-	- ICITS 2009},
-  year = {2010},
-  editor = {K. Kurosawa},
-  volume = {5973},
-  series = {Lecture Notes in Computer Science},
-  pages = {28--44},
-  publisher = {Springer-Verlag},
-  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Gazi (2009) - Free-Start Distinguishing-Combining Two Types of Indistinguishability Amplification.pdf:PDF},
-  owner = {huelsing},
-  review = {Security Amplification for PRF in the information theoretic setting},
-  timestamp = {2011.02.09}
 }
 
 @ARTICLE{gennaro:217,
@@ -5260,8 +5299,8 @@
   volume = {7237},
   series = {Lecture Notes in Computer Science},
   pages = {700-718},
-  abstract = {We give new methods for generating and using strong trapdoors in
-	cryptographic lattices, which are simultaneously simple, efficient,
+  abstract = {We give new methods for generating and using strong trapdoors
+	in cryptographic lattices, which are simultaneously simple, efficient,
 	easy to implement (even in parallel), and asymptotically optimal
 	with very small hidden constants. Our methods involve a new kind
 	of trapdoor, and include specialized algorithms for inverting LWE
@@ -5731,8 +5770,8 @@
 	on-line/off-line, forward-secure signatures, and multicast/stream
 	authentication. We propose a multiple-time signature scheme with
 	very efficient signing and verifying. Our construction is based on
-	a combination of one-way functions and cover-free families, and it
-	is secure against the adaptive chosen-message attack.},
+	a combination of one-way functions and cover-free families, and
+	it is secure against the adaptive chosen-message attack.},
   affiliation = {Centre for Advanced Computing  Algorithms and Cryptography Department
 	of Computing, Macquarie University Australia},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Pieprzyk (2003) - Multiple-time signature schemes against adaptive chosen message attacks.pdf:PDF},
@@ -5790,6 +5829,17 @@
   review = {Key collisions},
   timestamp = {2011.04.26},
   url = {http://dx.doi.org/10.1007/3-540-46885-4_43}
+}
+
+@MISC{cryptoeprint:2010:137,
+  author = {Markus Rückert and Michael Schneider},
+  title = {Estimating the Security of Lattice-based Cryptosystems},
+  howpublished = {Cryptology ePrint Archive, Report 2010/137},
+  year = {2010},
+  note = {\url{http://eprint.iacr.org/}},
+  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Rueckert (2010) - Estimating the Security of latice-based Cryptosystems.pdf:PDF},
+  owner = {huelsing},
+  timestamp = {2010.11.30}
 }
 
 @INCOLLECTION{springerlink:10.1007/978-3-642-03317-9_20,
@@ -6131,17 +6181,6 @@
 	really only of theoretical interest.},
   timestamp = {2010.07.23},
   url = {http://dx.doi.org/10.1145/100216.100269}
-}
-
-@MISC{cryptoeprint:2010:137,
-  author = {Markus Rückert and Michael Schneider},
-  title = {Estimating the Security of Lattice-based Cryptosystems},
-  howpublished = {Cryptology ePrint Archive, Report 2010/137},
-  year = {2010},
-  note = {\url{http://eprint.iacr.org/}},
-  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Rueckert (2010) - Estimating the Security of latice-based Cryptosystems.pdf:PDF},
-  owner = {huelsing},
-  timestamp = {2010.11.30}
 }
 
 @INCOLLECTION{springerlink:10.1007/3-540-39568-7_5,
