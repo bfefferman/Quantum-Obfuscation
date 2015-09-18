@@ -514,7 +514,7 @@ $$
 $$
 \end{enumerate}
 \begin{theorem}
-There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no pair of quantum circuits is a two-circuit black-box obfuscation of this ensemble of distributions. \wf{TODO: Define what it means to be an obfuscation over ensembles of distributions of circuits}
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no pair of quantum circuits is a two-circuit black-box obfuscation of this ensemble of distributions.
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
@@ -536,7 +536,6 @@ Note that both of these unitaries can be implemented by efficient quantum circui
 
 Now we notice that, for every QPT algorithm $\mathcal S$ there exists a negligible $\epsilon_1$ so that:
 \begin{equation}\label{eqn1}\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes |C_{a,b}| + |D_{a,b}|}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{Id_{2n}, V_{a,b}}\bigl(\ket{0}^{\otimes |Z_{2n}| + |D_{a,b}|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n, \min\{|C_{a,b}|,|D_{a,b}|\})\,.\end{equation}
-\wf{I suggest defining the notion of oracle access to a quantum circuit as being equivalent to oracle access to its unitary, to simplify notation here.}
 Where the probability is taken over choice of $a,b$ and the measurement outcome of the quantum algorithms.
  This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.  This is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}.
   
@@ -620,16 +619,18 @@ To fix this issue, following the construction in the classical impossibility cas
 \end{enumerate}
 \end{lemma}
 
-\begin{proof}  We follow closely the proof of Lemma 3.6 from the classical impossibility result \cite{BGIRSVY12}, basically constructing a quantum private-key "homomorphic encryption".  We think of each circuit $D\in \supp(\mathcal{D}_{a,b})$ to be the combined quantum circuit of the following three circuits which depend on a fixed private key $K\in\{0,1\}^{2n}$ with respect to the IND-CCA1-secure symmetric-key quantum encryption scheme from Theorem \ref{thm:IND-CCA1}.
+\begin{proof}  We follow closely the proof of Lemma 3.6 from the classical impossibility result \cite{BGIRSVY12}, basically constructing a primitive quantum private-key "homomorphic encryption" scheme.  We think of each circuit $D\in \supp(\mathcal{D}_{a,b})$ to be the combined quantum circuit of the following three circuits which depend on a private key $K\in\{0,1\}^{2n}$ with respect to the IND-CCA1-secure symmetric-key quantum encryption scheme from Theorem \ref{thm:IND-CCA1}.
 \begin{enumerate}
 \item{$E_{K,a}$ outputs  $\Enc_{K}(|a\rangle)$}.  
 \item{$\Homorcl_K(C,\rho)$ takes a quantum circuit $C$, and a state $\rho$ and outputs $\Enc_K(C(\Dec_K(\rho)))$}\wf{TODO: add the randomness as input}
 \item{$B_{K,a,b}$ takes a quantum state $\rho$ and outputs $|a\rangle$, if $\Dec_{K}(\rho)=|b\rangle$, and otherwise outputs $|0^n\rangle$.}	
 \end{enumerate}
-Now, consider uniformly distributed $a,b,K$, and the resulting combined quantum circuit consisting of $C_{a,b}$ and each of the three circuits composing $D_{K,a,b}$.  Notice that the QPT algorithm $\algo{A}$ that receives two copies of the obfuscation of this combined quantum circuit can check if $C(a)=b$ by using the three circuits comprising $D_{K,a,b}$ to run the circuit gate-by-gate, using $\Homorcl_K$ initialized on the output of the $E_{K,a}$ circuit, and finally outputs the value of the circuit $B_{K,a,b}$.  
+Consider uniformly distributed $K$, and the resulting distribution over combined quantum circuits consisting of $C_{a,b}$ and each of the three circuits that comprise $D_{K,a,b}$.  
 
-It remains to verify that no QPT simulator algorithm that has black-box access to $C_{a,b}$ and each of the three algorithms comprising $D_{K,a,b}$ can discover $a$ with non-negligible probability.  We'll need the following lemma:
-\begin{lemma}
+It is clear this distribution can be sampled efficiently, establishing Property 1 from the Lemma.  Furthermore, notice that the QPT algorithm $\algo{A}$ that receives two copies of the obfuscation of this combined quantum circuit can check if $C(a)=b$ by using the three circuits comprising $D_{K,a,b}$ to run the circuit gate-by-gate, using $\Homorcl_K$ initialized on the output of the $E_{K,a}$ circuit, and finally outputs the value of the circuit $B_{K,a,b}$, establishing Property 2.  
+
+It remains to verify Property 3, that no QPT simulator algorithm that has black-box access to $C_{a,b}$ and each of the three algorithms comprising $D_{K,a,b}$ can discover $a$ with non-negligible probability.  We'll need the following lemma:
+\begin{lemma}\label{hybridlemma}
 Let (Enc,Dec) be an IND-CCA1-secure symmetric-key quantum encryption, and $\Homorcl_K$ be as in the prior discussion.  Then, for all $n$ qubit quantum states $\rho$ and every QPT algorithm $\algo{A}$:
 $$
 \Bigl| \emph{Pr}[\mathcal A^{\Homorcl_K,\Enc_K}(\Enc_K(|0^n\rangle)) = 1] - \emph{Pr}\bigl[\mathcal A^{\Homorcl_K,\Enc_K}(\Enc_K(\rho)) = 1 \Bigr| \leq \negl(n)\,.
@@ -637,10 +638,13 @@ $$
 Where the probabilities are over $K$ chosen uniformly from $\{0,1\}^n$ and the measurement outcome of $\algo{A}$.
 \end{lemma}
 \begin{proof}
+Assume there's an algorithm $\algo{A}$ that violates the claim.  We'll show that this would break the IND-CCA1 security of the quantum encryption scheme.
 
+To do this we first argue that we can replace the responses to all of $\algo{A}$'s queries to the $Hom_K$ oracle with Encryptions of $|0^n\rangle$, with only a negligible loss in $\algo{A}$'s distinguishing gap.  Consider the computation of $\algo{A}$ on input $\Enc_K(\rho)$ for each quantum state $\rho$ on $n$ qubits, and consider "hybrid" computations, where in the $i-th$ hybrid, the first $i$ queries of $\algo{A}$ to the $\Homorcl_K$ oracle are answered using the $\Homorcl_K$ oracle and the rest are answered using $\Enc_K(|0^n\rangle)$.  Notice that any gap in distinguishing between the $i$ and $i+1$st hybrid must be due to the $i+1$st query $\algo{A}$ makes to $\Homorcl_K$, which is what differs between the hybrids. But we can now use this algorithm to create an adversary in violation of $IND-CCA1$ security of the encryption scheme.  In particular, consider the algorithm that uses the $\Enc_k$ and $\Dec_k$ oracles to simulate all calls to the $\Homorcl_K$ oracle before receiving the challenge ciphertext, uses the challenge ciphertext as our answer to the $i+1$st query to $\Homorcl_K$, and then answers all subsequent queries to $\Homorcl_K$ with $\Enc_K(|0^n\rangle)$.  Thus, we've used any gap between the $i$ and $i+1$st hybrid amounts to a distinguishing gap between quantum ciphertexts, in violation to $IND-CCA1$ security.
+
+After this is established, we have that $\algo{A}$ can distinguish an encryption of $|0^n\rangle$ from an encryption of $\rho$, when given access to only an encryption oracle, again in violation of $IND-CCA1$. 
 \end{proof}
-
-
+Notice that Lemma \ref{hybrid-lemma} suffices to establish property 3, since giving the simulator algorithm black-box access to the three unitaries that comprise $D_{a,b}$ is equivalent to giving $S$ black-box access to each circuit separately.  Notice that black-box access to  $E_{K,a}$ is no more powerful than giving it access to polynomially many queries of $\Enc_{K}$, and giving black-box access to $B_{K,a,b}$ does not allow $S$ to discover $a$, since it returns $|0^n\rangle$ on all but an exponentially small fraction of the space.  Lemma \ref{hybrid-lemma} proves security in the presence of the $\Homorcl$ and $\Enc$ oracle, establishing Property 3.
 \end{proof}
 \end{proof}
 
@@ -659,6 +663,46 @@ Where the probabilities are over $K$ chosen uniformly from $\{0,1\}^n$ and the m
 %
 
 
+\begin{definition}\label{blackboxclone}
+A \textbf{black-box quantum obfuscator with cloneable outputs} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is a $2m$-qubit state $\algo O(C)\otimes \algo O(C)$ satisfying
+\begin{enumerate}
+\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
+\item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
+\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that
+$$
+\Bigl| \emph{Pr}[\mathcal A(\mathcal O(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
+$$
+\end{enumerate}
+\end{definition}
+Our main impossibility result is, in analogue to the proof in the prior section and in \cite{BGIRSVY12}:
+\begin{theorem}
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no pair of quantum circuits is a black-box quantum obfuscation with cloneable outputs, of this ensemble of distributions.
+\end{theorem}
+\begin{proof}
+This proof works by carefully extending the two-circuit construction to show that a similar construction establishes impossibility for the cloneable case.  
+First we give a general definition which will be useful:
+\begin{definition}We define the {\bf combined quantum circuit} of a finite collection of quantum circuits each with $n$ input qubits, $\lbrace C_1,C_2,...,C_k \rbrace$, to be the circuit that takes two registers, a control register of $\log{k}$ qubits, and an input register of $n$ qubits, and controlled on the value of the first register applies the respective quantum circuit to the input register.   
+\end{definition}
+
+Notice that if each circuit $C_i$ in the collection is polynomial size, and $k$ is bounded by a polynomial in $n$, then the associated combined quantum circuit is also polynomial size. 
+
+Now consider the two unitaries  $U_{a,b}$ and $V_{a,b}$ from Section \ref{sec-twocircuit}, and their respective quantum circuits $C_{a,b}$ and $D_{a,b}$, as well as the circuit $Z_{2n}$, which simply implements the identity operator on $2n$ qubits.  Also consider the combined circuits of $C_{a,b}$ and $D_{a,b}$ which we denote $C_{a,b}\#D_{a,b}$ and the combined quantum circuit of $Z_{2n}$ and $D_{a,b}$ which we denote by $Z_{2n}\#D_{a,b}$.  Clearly, the     	
+\end{proof}
+
+
+
+
+
+%The main impossibility proof goes here. Outline:
+%
+%\begin{itemize}
+%\item show how to paste the above pair of circuits to make a single circuit;
+%\item running circuit on itself computes something a simulator cannot;
+%\item but running circuits on themselves doesn't work, so we need to patch it with encryption...
+%\end{itemize}
+%This proof will now be divided into three parts.  In the first part we 
+%
+%
 
 
 %%%%%%%%%%%%%%%%%%%%%%
