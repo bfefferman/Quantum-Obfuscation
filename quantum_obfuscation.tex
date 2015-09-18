@@ -79,6 +79,8 @@
 \newcommand{\Enc}{\ensuremath{\mathsf{Enc}}\xspace}
 \newcommand{\Dec}{\ensuremath{\mathsf{Dec}}\xspace}
 \newcommand{\Homorcl}{\ensuremath{\mathsf{Hom}}\xspace}
+\newcommand{\Mint}{\ensuremath{\mathsf{Mint}}\xspace}
+\newcommand{\Verify}{\ensuremath{\mathsf{Verify}}\xspace}
 \newcommand{\inrand}{\in_R} 
 \newcommand{\prob}{\opn{Pr}}
 \newcommand{\states}{\mathfrak D}
@@ -137,6 +139,7 @@ Things to cover:
 \begin{itemize}
 \item Scott's semi-grand challenge question
 \item Mosca and Stebila suggestion of obfuscating circuits to get quantum money
+\item Scott's claims that were never published
 \item our paper on "partial-indistinguishability."
 \end{itemize}
 \end{itemize}
@@ -345,13 +348,9 @@ $$
 
 \noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}\\
 
-<<<<<<< Updated upstream
 \noindent \ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}\\
-=======
-\noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}
 
-\ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}
->>>>>>> Stashed changes
+\noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}
 
 \subsection{Applications}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -392,7 +391,7 @@ We remark that the above proof fails if the obfuscator is a quantum algorithm---
 
 Can we say anything about encryption of data if we know that \emph{quantum} algorithms for quantum black-box obfuscation exist? While we do not know how to extract one-way functions, we can nonetheless produce useful encryption schemes, as follows.
 
-\begin{prop}
+\begin{prop}\label{prop:PKE-from-SKE}
 If quantum black-box obfuscators exist, then so do IND-CPA-secure symmetric-key quantum encryption schemes.
 \end{prop}
 \begin{proof} (Sketch.)
@@ -453,7 +452,6 @@ We briefly recall the idea of fully homomorphic encryption (FHE). For thorough d
 \item $\Eval_{k_{\opn{eval}}} : \states (\mathcal H_m \otimes \mathcal H_g) \longrightarrow \states (\mathcal H_m)$.
 \end{itemize}
 We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. A classical string describing the choice of gate $G$ (and which qubits $k, k+1, \dots$ of $\rho$ it should be applied to) is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
-<<<<<<< Updated upstream
 
 \begin{prop}\label{prop:QFHE}
 If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
@@ -471,45 +469,43 @@ $$
 &\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
 }
 $$
-
-=======
-\end{proof}
-\begin{prop}\label{prop:QFHE}
-If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
-\end{prop}
-\begin{proof} (Sketch.)
-We will consider the public-key case, which turns out to be simpler. Let $(\algo O, \algo J)$ be a quantum obfuscator, and $(\KeyGen, \Enc, \Dec)$ an IND-CPA-secure public-key scheme. We adapt $\KeyGen$ to produce an evaluation key, and describe the evaluation algorithm. We will require a universal circuit $U_\mu$ for performing gates on $m$-qubit states; this circuit accepts two inputs: an $m$-qubit state, and a description of a gate and indices of the qubits to which the gate should be applied. In our usage, $m$ will be the number of qubits of the ciphertext state.
-\begin{itemize}
-\item $\KeyGen'(1^n)$: output $\KeyGen(1^n) = (sk, pk)$ and $k_{\opn{eval}} = \mathcal O(\Enc_{pk} \circ U_\mu \circ \Dec_{sk})$;
-\item $\Eval_{k_{\opn{eval}}} : \rho \otimes \ket{G}\bra{G} \longmapsto \algo J (k_{\opn{eval}} \otimes \rho \otimes \ket{G}\bra{G})$.
-\end{itemize}
-where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate. A circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ is given below; the gate register is represented by the bottom wire.\\ 
-$$
-\Qcircuit @C=1em @R=1.0em {
-&\gate{\Dec_{sk}} 	&\multigate{1}{~~U_\mu~~} 	&\gate{\Enc_{pk}} 	&\qw\\
-&\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
-}
-$$
-
->>>>>>> Stashed changes
 We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows directly from the definition of $\Eval$ and the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$. The black-box property implies that each execution of the $\Eval$ algorithm is no more useful than providing the server with an encryption of $G\rho G^\dagger$. However, in the IND-CPA setting, the adversary can already use the CPA oracle to produce encryptions of \emph{arbitrary} plaintexts of her choice (as opposed to just ones which are modifications of the plaintext provided by the client.) There is one additional wrinkle: by repeatedly applying gates (or even just the identity), the adversary can also produce multiple encryptions during the challenge round. However, as shown in~\cite{BJ15}, single-message IND-CPA is equivalent to multiple-message IND-CPA. By the assumption that $(\KeyGen, \Enc, \Dec)$ is IND-CPA secure, it follows that the homomorphic scheme is also secure.
 
 We remark that, in general, the encryption procedure $\Enc_{pk}$ may require an external source of randomness. This is certainly the case in classical encryption, but may not be required if the $\Enc$ algorithm is allowed to perform measurements. In any case, since we are starting with an IND-CPA public-key scheme, the adversary already has access to the public key and the ability to encrypt with randomness of her choice; the ability to choose randomness in $\Eval$ is of no additional benefit.
 \end{proof}
 
-\subsubsection{Quantum money}
+\subsubsection{Public-key quantum money}
 %%%
 
-\ga{TODO: write this}
+\paragraph{Quantum money.}
+The idea of ``quantum money'' first arose in work by Wiesner~\cite{Wie1983}. The core idea is simple: use a quantum state for representing currency in such a way that the no-cloning theorem of quantum mechanics prevents counterfeiting. These ideas were refined and developed further in several works~\cite{Aar2009, AC2012, BBBW83, FGHLS12, MS2010}; some of these works also included explicit proposals based on various hardness assumptions. 
 
-The idea: obfuscate the verification circuit to turn private-key money into public-key money. Mention previous discussions of this idea by Mike and Stebila. Can this work even if the verification circuit turns out to be a state? Do we also need to obfuscate measurements if, e.g., the underlying private-key scheme is Wiesner's money?
+Informally, a \emph{quantum money scheme} consists of two algorithms: \Mint, which produces quantum states, and \Verify, which accepts an input state and then either accepts or rejects. If the different states produced by \Mint are distinguishable, then we refer to them as \emph{bills}; if they are indistinguishable, then we call them \emph{tokens} (if \Verify consumes them) or \emph{coins} (if \Verify does not consume them.) In all quantum money schemes, we imagine an authority (typically called the bank) which runs \Mint repeatedly to produce money; in addition, the \Verify algorithm should accept only on states produced by the bank. Depending on the particular scheme, this might only be true if \Verify is executed by the bank (private-key money), or it might be true for any party (public-key money.)
+
+In this language, Wiesner's original idea~\cite{Wie1983} was for a private-key scheme for bills, which is as follows. Each execution of \Mint produces two random classical bitstrings $r, s \in \{0, 1\}^{2n}$ as well as an $n$-qubit quantum state $\ket{\psi_r}$, with each qubit initialized in one of the states $\ket{0}, \ket{1}, \ket{+}, \ket{-}$, as determined by the bits of $r$. The bank records the pair $(r, s)$ in a secret table, and publishes $(s, \ket{\psi_r})$. The bank verifies by using $s$ to look up the correct $r$ in the table, and then performing the measurements in the correct basis and checking the results against $r$. 
+
+\paragraph{Public-key money from circuit obfuscation.}
+While private-key money schemes are relatively straightforward to construct, public-key proposals appear to be much more difficult, and require computational assumptions. In analogy to its role in producing public-key encryption schemes from private-key ones (\expref{Proposition}{prop:PKE-from-SKE}), an obfuscator can sometimes be used to turn private-key money schemes to public-key ones. The use of an obfuscator to create a particular quantum money scheme was considered by Mosca and Stebila~\cite{MS2010}. Their scheme (in our language) is as follows. Each execution of \Mint produces a Haar-random $n$-qubit quantum state $\ket{\psi}$, together with the obfuscation $\mathcal O(U_\psi)$ of a circuit\footnote{For most $\ket{\psi}$, the circuit $U_\psi$ will not have polynomial length. However, as pointed out by~\cite{Aar2009}, one can instead select $\ket{\psi}$ from an approximate $t$-design without a significant loss in security.} for $U_\psi = \one - 2\ket{\psi}\bra{\psi}$. The bill consists of the pair $(\mathcal O(U_\psi), \ket{\psi})$. $\Verify(\ket{\varphi})$ consists of executing the following:
+$$
+\Qcircuit @C=1em @R=1.0em {
+\lstick{\ket{0}} &\gate{H} 	&\ctrl{1}				&\gate{H} 	&\qw &\meter\\
+\lstick{\ket{\varphi}} &\qw 	&\gate{\algo O(U_\psi)}	&\qw 	&\qw &\qw\\ \\
+}
+$$
+and accepting iff the measurement returns $1$. It's easy to check that the above succeeds only on valid states; moreover, in that case, the state $\ket{\psi}$ is output in the second register, so that verification can be repeated. To show resistance of the above scheme to counterfeiting, one can use Aaronson's Complexity-Theoretic No-Cloning Theorem~\cite{Aar2009}, which states that cloning the state $\ket{\psi}$ while in possession of oracle access to $\ket{U_\psi}$ requires $\Omega(2^{n/2})$ queries. The first published proof of this theorem (as well as its first appearance in the form required here) was in~\cite{AC2012}. 
+
+Unfortunately, we will later show that obfuscation of quantum circuits in the form required by Mosca and Stebila is impossible. What remains possible is a setting in which both $\ket{\psi}$ and $\mathcal O(U_\psi)$ are quantum states, and another circuit (which is publicly known and independent of $\ket{\psi}$) is used for verification. Moreover, as we will also show, any black-box obfuscation scheme which outputs states that can be efficiently cloned is also impossible. We thus conjecture the following.
+\begin{conjecture}
+If quantum black-box obfuscators exist, then so do public-key quantum money schemes.
+\end{conjecture}
+If the relevant obfuscation is a consumable state, then this would result in a token scheme. If it can be reused to perform verification repeatedly\footnote{This might seem to contradict no-cloning, but it does not: it is conceivable that the state can be used as an input to a unitary circuit where the desired output register contains a classical string with very high probability; this string can then be measured, copied and the unitary reversed to (approximately) recover the state.}, then the result would be a bills scheme. We remark that, in any case, all of the public-key money states discussed above should be authenticated by the bank; otherwise a merchant would only know that he was handed \emph{some} pair (state, circuit) where the circuit executed on the state outputs ``accept''---a clearly inadequate state of affairs.
 
 \subsection{Impossibility results}\label{vbb:impossibility}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Impossibility of two-circuit obfuscation}\label{sec-twocircuit}
 %%%
-Barak et. al. \cite{BGIRSVY12} shows that black-box obfuscation is impossible by showing an explicit circuit family that cannot be black-box obfuscated.  Here we present a similar result for {\bf black-box quantum two-circuit obfuscation},  defined as in Definition \ref{blackbox} with the following strengthening of the virtual black-box condition:
+Barak et. al. \cite{BGIRSVY12} shows that black-box obfuscation is impossible by showing an explicit circuit family that cannot be black-box obfuscated.  Here we present a similar result for {\bf black-box quantum two-circuit obfuscation},  defined as in Definition \ref{def:vbb-obfuscator}  with the following strengthening of the virtual black-box condition:
 \begin{enumerate}
 \setcounter{enumi}{2}
 \item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
