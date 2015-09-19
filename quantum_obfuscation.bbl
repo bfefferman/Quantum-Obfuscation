@@ -1,4 +1,4 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{17}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -67,12 +67,42 @@ Edward Farhi, David Gosset, Avinatan Hassidim, Andrew Lutomirski, and Peter
 \newblock \doi{10.1145/2090236.2090260}.
 \newblock URL \url{http://doi.acm.org/10.1145/2090236.2090260}.
 
+\bibitem[Garg et~al.(2013{\natexlab{a}})Garg, Gentry, Halevi, Raykova, Sahai,
+  and Waters]{GGHRSW13}
+S.~Garg, C.~Gentry, S.~Halevi, M.~Raykova, A.~Sahai, and B.~Waters.
+\newblock Candidate indistinguishability obfuscation and functional encryption
+  for all circuits.
+\newblock In \emph{Foundations of Computer Science (FOCS), 2013 IEEE 54th
+  Annual Symposium on}, pages 40--49, Oct 2013{\natexlab{a}}.
+\newblock \doi{10.1109/FOCS.2013.13}.
+
+\bibitem[Garg et~al.(2013{\natexlab{b}})Garg, Gentry, Sahai, and
+  Waters]{GGSW13}
+Sanjam Garg, Craig Gentry, Amit Sahai, and Brent Waters.
+\newblock Witness encryption and its applications.
+\newblock In \emph{Proceedings of the Forty-fifth Annual ACM Symposium on
+  Theory of Computing}, STOC '13, pages 467--476, New York, NY, USA,
+  2013{\natexlab{b}}. ACM.
+\newblock ISBN 978-1-4503-2029-0.
+\newblock \doi{10.1145/2488608.2488667}.
+\newblock URL \url{http://doi.acm.org/10.1145/2488608.2488667}.
+
 \bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
 Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
 \newblock How to construct random functions.
 \newblock \emph{Journal of the ACM}, 33\penalty0 (4):\penalty0 792--807, 1986.
 \newblock ISSN 0004-5411.
 \newblock \doi{http://doi.acm.org/10.1145/6490.6503}.
+
+\bibitem[Goldwasser and Rothblum(2007)]{GR07}
+Shafi Goldwasser and GuyN. Rothblum.
+\newblock On best-possible obfuscation.
+\newblock In SalilP. Vadhan, editor, \emph{Theory of Cryptography}, volume 4392
+  of \emph{Lecture Notes in Computer Science}, pages 194--213. Springer Berlin
+  Heidelberg, 2007.
+\newblock ISBN 978-3-540-70935-0.
+\newblock \doi{10.1007/978-3-540-70936-7_11}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-70936-7_11}.
 
 \bibitem[H{\aa}stad et~al.(1999)H{\aa}stad, Impagliazzo, Levin, and
   Luby]{HILL99}
@@ -88,6 +118,16 @@ Michele Mosca and Douglas Stebila.
 \newblock Quantum coins.
 \newblock \emph{Error-Correcting Codes, Finite Geometries and Cryptography},
   523:\penalty0 35--47, 2010.
+
+\bibitem[Sahai and Waters(2014)]{SW14}
+Amit Sahai and Brent Waters.
+\newblock How to use indistinguishability obfuscation: Deniable encryption, and
+  more.
+\newblock In \emph{Proceedings of the 46th Annual ACM Symposium on Theory of
+  Computing}, STOC '14, pages 475--484, New York, NY, USA, 2014. ACM.
+\newblock ISBN 978-1-4503-2710-7.
+\newblock \doi{10.1145/2591796.2591825}.
+\newblock URL \url{http://doi.acm.org/10.1145/2591796.2591825}.
 
 \bibitem[Wiesner(1983)]{Wie1983}
 Stephen Wiesner.
