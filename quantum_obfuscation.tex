@@ -98,7 +98,11 @@
 \title{Quantum obfuscation}
 \author{Gorjan Alagic and Bill Fefferman}
 \maketitle
-\abstract{\ga{just a placeholder:} We consider the question of obufscating quantum programs. We consider a few formalizations: black-box, indistinguishability, and best-possible. We prove that black-box obfuscation of quantum circuits is impossible. This result leaves open one possibility: obfuscating a quantum circuit into a quantum state (but only once; the presence of multiple obfuscations are impossible in general.) We also show that indistinguishability and best-possible obfuscation are equivalent, and that they are impossible to satisfy in the exact or statistical case.} Our black-box impossibility proof requirers a notion of encrypting quantum states with computational assumptions; we show that this can be done in a way that is secure against non-adaptive chosen-ciphertext attacks, provided quantum-secure one-way functions exist. 
+\abstract{Encryption of data is fundamental to secure communication in the modern world. Beyond encryption of data lies \emph{obfuscation}, i.e., encryption of functionality. It has been known since 2001 that the most powerful means of obfuscating classical programs, so-called ``black-box obfuscation,'' is provably impossible. For years since, obfuscation was believed to always be either impossible or useless, depending on the particulars of its formal definition. However, several recent results have yielded candidate schemes that satisfy a definition weaker than black-box, and yet still have numerous applications.
+
+In this work, we initialize the rigorous study of obfuscating programs \emph{via quantum-mechanical means.} We define notions of quantum obfuscation which encompass several natural variants. For instance, the input can describe classical or quantum functionality, and the output can be either a classical description or a quantum state. The obfuscator can also satisfy one of a number of obfuscation conditions: black-box, information-theoretic black-box, indistinguishability, and best-possible. We discuss a number of applications, including CPA-secure quantum encryption, quantum fully-homomorphic encryption, and quantum money. We then prove several impossibility results, extending a number of foundational papers on classical obfuscation to the quantum setting. In particular, we prove that black-box obfuscation which outputs quantum circuits is impossible, and that statistical indistinguishability obfuscation which outputs circuits or states is impossible (up to an unlikely complexity-theoretic collapse.) Our proofs involve a new tool: chosen-ciphertext-secure encryption of quantum data, which we show is possible provided that quantum-secure one-way functions exist. 
+
+We emphasize that our results leave open one intriguing possibility: obfuscating a classical or quantum circuit into a single, uncloneable quantum state. This indicates that, in spite of our results, quantum obfuscation may be significantly more powerful than its classical counterpart.
 
 \newpage
 \tableofcontents
@@ -109,19 +113,28 @@
 \section{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Things to cover:
+The ability to encrypt data is central to modern communications. In our daily lives, we frequently make use of a number of powerful tasks in encryption, such as private-key encryption, key exchange, public-key encryption; in the near future, this may even include fully homomorphic encryption. Arguably the most powerful cryptographic ability is \emph{obfuscation}, which enables \emph{encryption of functionality}. Obfuscation implies (with some caveats) the ability to perform almost any other task in encryption; this includes everything in the list above, and much more. 
+
+To understand obfuscation, it is useful to think about an obvious application: protecting intellectual property in software. In this setting, a software developer wishes to distribute their software to end users. However, the code undoubtedly contains a number of trade secrets which the developer does not want to become public. In order to accomplish this, the software is first passed through an obfuscator, and then published. The obfuscator must thus be an efficient algorithm that satisfies three core properties: 
+\begin{enumerate}
+\item \emph{functional equivalence:} the input/output functionality does not change;
+\item \emph{polynomial slowdown:} if the input program is efficient, then the output program is efficient;
+\item \emph{obfuscation:} the code of the output program is ``hard to understand.''
+\end{enumerate}
+The last condition can be formulated rigorously in a number of ways. One possibility is the so-called ``virtual black-box'' condition, which says that the obfuscated program is no more useful than an impenetrable box which simply accepts inputs and produces outputs. While this condition appears to be too strong, there are other formulations as well, with varying levels of strength and usefulness.
+
+The above scenario of encrypting classical programs (and classical data) is significantly complicated by the advent of \emph{quantum computation.} One widely-known complication is that certain encryption schemes are no longer secure in the presence of quantum adversaries. The same may hold for obfuscation schemes. On the other hand, quantum mechanics may also enable us to perform cryptographic tasks that are impossible classically. It is thus natural to ask what quantum computation means for obfuscation of programs. In particular, we would like to answer the following questions:
+
 \begin{itemize}
-\item data encryption is central to modern classical crypto;
-\item it's reasonable to ask if there is also program encryption;
-\item at the same time, the appearance of quantum computers has complicated everything;
-\item we ask: 
-\begin{itemize}
-\item can one obfuscate quantum programs? 
-\item what are some reasonable definitions of what this even means?
-\item let's say we \emph{can} obfuscate quantum programs; what does this buy us?
-\item in order to properly address these question, we also need to address encryption of quantum data with computational assumptions (where only info-theoretic has been considered before); but the main part of this work will appear in another paper, etc.
+\item is it possible to quantumly obfuscate classical programs?
+\item is it possible to obfuscate quantum programs?
+\item how should we formulate quantum obfuscation in a rigorous manner?
+\item which of the classical results about obfuscation carry over to the quantum setting?
+\item can one use quantum mechanics to obfuscate in ways that are impossible classically?
+\item are there interesting applications of any of the above?
 \end{itemize}
-\end{itemize}
+
+We remark that, in order to address the above questions, we must also properly address the question of encrypting quantum data---a strictly simpler task than encrypting functionality. While information-theoretic encryption of quantum data has been considered before, in this setting we are interested in encryption of quantum data \emph{with computational assumptions}\footnote{Note that information-theoretic obfuscation is impossible if the adversary can execute the obfuscated program multiple times: a computationally unbounded adversary can then simply evaluate the program on all possible inputs, and use this to learn everything there is to know about the program.}. This latter subject has not yet received significant attention in literature.
 
 \subsection{Background}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -147,8 +160,23 @@ Things to cover:
 \subsection{Summary of results}
 %%%%%%%%%%%%%%%%%%%%%%
 
+In this section, we summarize our results. The results are divided by subject, with quantum encryption covered in \expref{Section}{sec:encryption}, quantum black-box obfuscation in \expref{Section}{sec:black-box}, and quantum indistinguishability obfuscation in \expref{Section}{sec:indistinguishability}.
+
+\subsubsection{Quantum encryption}
+%%%%
+
+For us, \emph{quantum encryption} will mean the encryption of quantum states under computational assumptions. The advantages of this form of encryption over information-theoretic are well-known in the classical setting; for us the crucial advantages will be (i.) reusability of the key, and (ii.) chosen-ciphertext security. The results on quantum encryption which we will present are summarized below, and will be necessary in order to establish some of our results about black-box obfuscation.
+\begin{enumerate}
+\item We define a notion of symmetric-key encryption scheme for quantum states, with reusable keys; these schemes consist of three quantum algorithms (key generation, encryption, and decryption) which satisfy correctness: under a fixed key, encryption followed by decryption must be equivalent to the identity.
+\item We define a notion of IND-CCA1 (or \emph{indistinguishability of ciphertexts under non-adaptive chosen ciphertext attacks}) for these schemes; this formalizes the idea of a ``lunchtime attack,'' where an adversary has complete access to all aspects of the encryption except the key itself, and is tasked with decrypting a challenge ciphertext later (presumably after lunch.)
+\item We give a construction for an IND-CCA1-secure symmetric-key encryption scheme for quantum states, under the assumption that quantum-secure one-way functions exist. These are deterministic classical functions which are easy to compute, but hard to invert for quantum adversaries.
+\end{enumerate}
+A number of other contemporaneous works consider quantum encryption with computational assumptions. A complete treatment of the basic notions will appear in~\cite{ABFGSS15}. Broadbent and Jeffrey considered IND-CPA-secure public-key and symmetric-key quantum encryption, together with partial homomorphism~\cite{BJ15}. 
+
 \subsubsection{Quantum black-box obfuscation}
 %%%%
+
+Our main results concern the questions of definitions, applications, and (im)possibility of quantum obfuscation in the virtual black-box setting.
 
 \begin{enumerate}
 \item define quantum black-box obfuscation
@@ -214,7 +242,9 @@ An algorithm will be referred to as polynomial-time (or efficient) if all of the
 \section{Quantum encryption}\label{sec:encryption}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Quantum-secure pseudorandomness}
+In this section, we discuss a notion of encryption for quantum states with computational assumptions.  Interestingly, this topic has not received significant attention as yet. In \expref{Section}{sec:pseudo}, we will recall how to construct a classical function which appears pseudorandom to quantum adversaries, by means of a function which is one-way against quantum adversaries. In \expref{Section}{sec:scheme}, we define a notion of symmetric-key quantum encryption, together with associated notions of IND-CPA and IND-CCA1 security. We then describe a scheme which is IND-CCA1-secure under the assumption that quantum-secure one-way functions exist. While this particular scheme is new, encryption of quantum states with computational assumptions was also recently (and independently) considered by Broadbent and Jeffrey~\cite{BJ15}. A complete framework, including considerations about semantic security, will appear in an upcoming work~\cite{ABFGSS15}.
+
+\subsection{Quantum-secure pseudorandomness}\label{sec:pseudo}
 %%%%%%%%%%%%%%%%%%%%%%
 
 We begin with two primitives for encryption: quantum-secure one-way functions, and quantum-secure pseudorandom functions. These are both classical, efficiently computable functions which are in some sense resistant to quantum analysis. In the case of one-way functions, we demand that inversion is hard; in the case of pseudorandom functions, we demand that distinguishing from perfectly random functions is hard.
@@ -244,10 +274,8 @@ If quantum-secure one-way functions exist, then so do quantum-secure pseudorando
 \begin{proof} (Sketch.) It is folklore that the well-known H{\aa}stad et al. result that pseudorandom generators can be constructed from any one-way function~\cite{HILL99} carries over to the quantum-secure case. Roughly speaking, the reasoning is that the reduction in the proof is done in a ``black-box'' way, i.e., only by feeding inputs into the adversary and then analyzing the resulting outputs. The quantum-secure case then simply involves replacing PPTs with QPTs in the appropriate places. Proving that the standard GGM construction~\cite{GGM86} of PRFs from pseudorandom generators is still secure in the setting of quantum adversaries is more involved; this was established by Zhandry~\cite{Zhandry2012}.
 \end{proof}
 
-\subsection{Symmetric-key encryption of quantum states}
+\subsection{Symmetric-key encryption of quantum states}\label{sec:scheme}
 %%%%%%%%%%%%%%%%%%%%%%
-
-Some of our proofs in later sections will require a notion of encryption of quantum states with computational assumptions. Interestingly, this topic has not received significant attention as yet. In what follows, we describe the basic idea and prove a new result that we will need later. A much more thorough treatment of this topic will be given in an upcoming work~\cite{ABGFSS15}. Ciphertext indistinguishability for quantum encryption was also recently considered in~\cite{BJ15}.
 
 It is well-known how to encrypt quantum states with information-theoretic security, via the so-called quantum one-time pad. To encrypt a single-qubit state $\rho$, we choose two classical bits at random, use them to select a random Pauli matrix $P \in \{\one, X, Y, Z\}$, and perform $\rho \mapsto P \rho P^\dagger$. To encrypt an $n$-qubit quantum state $\rho$, we select $r \inrand \{0,1\}^{2n}$ and apply
 \begin{equation}\label{eq:quantum-one-time-pad}
@@ -279,7 +307,7 @@ $$
 where $\Xi_\sigma: \rho \mapsto \sigma$ is the ``forgetful'' map, and $s$ is a polynomial function of $n$. If $\algo A$ and $\algo A'$ have oracle access to $\Enc_k$, then we say that the scheme is IND-CPA secure. If in addition $\algo A'$ has oracle access to $\Dec_k$, then we say that the scheme is IND-CCA1 secure.
 \end{definition}
 
-The two QPTs $\algo A$ and $\algo A'$ together model the adversary. The definition above captures the idea of a certain ``security game'' between an adversary and a challenger. The game proceeds in steps: (i.) the key is selected and the adversary receives access to the appropriate oracles, (ii.) after some computation, the adversary transmits the first part of a bipartite state $\rho_{ms}$ to a challenger, (iii.) the challenger either encrypts this or replaces it with the encryption of $\ket{0^m}\bra{0^m}$, and then returns the result to the adversary, and (iv.) the adversary must decide which choice the challenger made. The scheme is considered secure if the adversary can do no better than random guessing. As shown in \cite{ABGFSS15}, this definition is equivalent to a security notion called \emph{semantic security}; roughly speaking, this notion captures the idea that anyone that tries to compute anything about a plaintext gains no advantage by possessing its encryption. In addition, \expref{Definition}{def:IND} is equivalent to several natural variants, where e.g., the challenger chooses to encrypt one of two messages provided by the adversary, or where the game is played over multiple rounds. The latter guarantees security of transmitting multiple ciphertexts produced via encryption with the same key.
+The two QPTs $\algo A$ and $\algo A'$ together model the adversary. The definition above captures the idea of a certain ``security game'' between an adversary and a challenger. The game proceeds in steps: (i.) the key is selected and the adversary receives access to the appropriate oracles, (ii.) after some computation, the adversary transmits the first part of a bipartite state $\rho_{ms}$ to a challenger, (iii.) the challenger either encrypts this or replaces it with the encryption of $\ket{0^m}\bra{0^m}$, and then returns the result to the adversary, and (iv.) the adversary must decide which choice the challenger made. The scheme is considered secure if the adversary can do no better than random guessing. As shown in~\cite{ABFGSS15}, this definition is equivalent to a security notion called \emph{semantic security}; roughly speaking, this notion captures the idea that anyone that tries to compute anything about a plaintext gains no advantage by possessing its encryption. In addition, \expref{Definition}{def:IND} is equivalent to several natural variants, where e.g., the challenger chooses to encrypt one of two messages provided by the adversary, or where the game is played over multiple rounds. The latter guarantees security of transmitting multiple ciphertexts produced via encryption with the same key.
 
 We now show how to use qPRFs to construct simple symmetric-key quantum encryption schemes that satisfy all of the above security conditions.
 

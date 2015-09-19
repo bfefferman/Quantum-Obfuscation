@@ -1,12 +1,24 @@
-\begin{thebibliography}{7}
+\begin{thebibliography}{13}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
+\bibitem[Aaronson(2009)]{Aar2009}
+Scott Aaronson.
+\newblock Quantum copy-protection and quantum money.
+\newblock In \emph{Computational Complexity, 2009. CCC'09. 24th Annual IEEE
+  Conference on}, pages 229--242. IEEE, 2009.
+
+\bibitem[Aaronson and Christiano(2012)]{AC2012}
+Scott Aaronson and Paul Christiano.
+\newblock Quantum money from hidden subspaces.
+\newblock In \emph{Proceedings of the forty-fourth annual ACM symposium on
+  Theory of computing}, pages 41--60. ACM, 2012.
+
 \bibitem[Alagic et~al.()Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner,
-  and StJules]{ABGFSS15}
+  and StJules]{ABFGSS15}
 Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
   Schaffner, and Michael StJules.
 \newblock Computational security for quantum encryption.
@@ -29,11 +41,31 @@ Charles~H. Bennett, Ethan Bernstein, Gilles Brassard, and Umesh~V. Vazirani.
 \newblock \doi{10.1137/S0097539796300933}.
 \newblock URL \url{http://dx.doi.org/10.1137/S0097539796300933}.
 
+\bibitem[Bennett et~al.(1983)Bennett, Brassard, Breidbart, and Wiesner]{BBBW83}
+CharlesH. Bennett, Gilles Brassard, Seth Breidbart, and Stephen Wiesner.
+\newblock Quantum cryptography, or unforgeable subway tokens.
+\newblock In David Chaum, RonaldL. Rivest, and AlanT. Sherman, editors,
+  \emph{Advances in Cryptology}, pages 267--275. Springer US, 1983.
+\newblock ISBN 978-1-4757-0604-8.
+\newblock \doi{10.1007/978-1-4757-0602-4_26}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-1-4757-0602-4_26}.
+
 \bibitem[Broadbent and Jeffery(2015.)]{BJ15}
 Anne Broadbent and Stacey Jeffery.
 \newblock {Quantum homomorphic encryption for circuits of low {$T$}-gate
   complexity}.
 \newblock \emph{Crypto 2015 (to appear)}, December 2015.
+
+\bibitem[Farhi et~al.(2012)Farhi, Gosset, Hassidim, Lutomirski, and
+  Shor]{FGHLS12}
+Edward Farhi, David Gosset, Avinatan Hassidim, Andrew Lutomirski, and Peter
+  Shor.
+\newblock Quantum money from knots.
+\newblock In \emph{Proceedings of the 3rd Innovations in Theoretical Computer
+  Science Conference}, ITCS '12, pages 276--289, New York, NY, USA, 2012. ACM.
+\newblock ISBN 978-1-4503-1115-1.
+\newblock \doi{10.1145/2090236.2090260}.
+\newblock URL \url{http://doi.acm.org/10.1145/2090236.2090260}.
 
 \bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
 Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
@@ -50,6 +82,17 @@ Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
 \newblock ISSN 0097-5397.
 \newblock \doi{http://dx.doi.org/10.1137/S0097539793244708}.
 \newblock URL \url{http://dx.doi.org/10.1137/S0097539793244708}.
+
+\bibitem[Mosca and Stebila(2010)]{MS2010}
+Michele Mosca and Douglas Stebila.
+\newblock Quantum coins.
+\newblock \emph{Error-Correcting Codes, Finite Geometries and Cryptography},
+  523:\penalty0 35--47, 2010.
+
+\bibitem[Wiesner(1983)]{Wie1983}
+Stephen Wiesner.
+\newblock Conjugate coding.
+\newblock \emph{ACM Sigact News}, 15\penalty0 (1):\penalty0 78--88, 1983.
 
 \bibitem[Zhandry(2012)]{Zhandry2012}
 Mark Zhandry.

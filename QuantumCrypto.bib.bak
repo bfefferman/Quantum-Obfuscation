@@ -30,7 +30,7 @@
   owner = {huelsing},
   review = {Idee: Konstruktive Beweise anstatt existentielle - In echt werden
 	eigentlich keine keyed-Hashs verwendet. Diese sind nur notwendig,
-	um die formalen Beweise für CR zu führen (AUch PRF?) da es immer
+	um die formalen Beweise fÃ¼r CR zu fÃ¼hren (AUch PRF?) da es immer
 	einen trivialen effizienten algorithmus gibt der mir eine Kollision
 	ausgibt, wenn eine existiert. Das Problem ist ja eigentlich nur,
 	dass niemand diesen Algorithmus kennt :-) -> Schreiben wir also einfach,
@@ -94,7 +94,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-45353-9_32,
   author = {Abdalla, Michel and Miner, Sara and Namprempre, Chanathip},
   title = {Forward-Secure Threshold Signature Schemes},
-  booktitle = {Topics in Cryptology — CT-RSA 2001},
+  booktitle = {Topics in Cryptology Â— CT-RSA 2001},
   publisher = {Springer Berlin / Heidelberg},
   year = {2001},
   editor = {Naccache, David},
@@ -127,14 +127,14 @@
 @INCOLLECTION{springerlink:10.1007/3-540-44448-3_10,
   author = {Abdalla, Michel and Reyzin, Leonid},
   title = {A New Forward-Secure Digital Signature Scheme},
-  booktitle = {Advances in Cryptology — ASIACRYPT 2000},
+  booktitle = {Advances in Cryptology Â— ASIACRYPT 2000},
   publisher = {Springer Berlin / Heidelberg},
   year = {2000},
   editor = {Okamoto, Tatsuaki},
   volume = {1976},
   series = {Lecture Notes in Computer Science},
   pages = {116-129},
-  abstract = {We improve the Bellare-Miner (Crypto’ 99) construction of signature
+  abstract = {We improve the Bellare-Miner (CryptoÂ’ 99) construction of signature
 	schemes with forward security in the random oracle model. Our scheme
 	has significantly shorter keys and is, therefore, more practical.
 	By using a direct proof technique not used for forward-secure schemes
@@ -148,7 +148,7 @@
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Abdalla (2000) - A New Forward-Secure Digital Signature Scheme.pdf:PDF},
   owner = {huelsing},
   review = {Reissen das thema binary tree based signatures kurz an. Aber Beweise
-	& Konstruktionen nur für die Zahlentheoretischen Verfahren (basierend
+	& Konstruktionen nur fÃ¼r die Zahlentheoretischen Verfahren (basierend
 	auf Blum Integers / Quadratic Residues)},
   timestamp = {2010.10.04},
   url = {http://dx.doi.org/10.1007/3-540-44448-3_10}
@@ -176,7 +176,7 @@
   author = {Agrawal, Shweta and Boneh, Dan and Boyen, Xavier},
   title = {Lattice Basis Delegation in Fixed Dimension and Shorter-Ciphertext
 	Hierarchical IBE},
-  booktitle = {Advances in Cryptology – CRYPTO 2010},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2010},
   publisher = {Springer Berlin / Heidelberg},
   year = {2010},
   editor = {Rabin, Tal},
@@ -204,8 +204,8 @@
 }
 
 @ARTICLE{ABGFSS15,
-  author = {Gorjan Alagic and Anne Broadbent and Tommaso Gagliardoni and Bill
-	Fefferman and Christian Schaffner and Michael StJules},
+  author = {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni
+	and Christian Schaffner and Michael StJules},
   title = {Computational security for quantum encryption},
   journal = {To appear.},
   owner = {Gorjan},
@@ -280,7 +280,7 @@
 	Gene},
   title = {A Practical and Provably Secure Coalition-Resistant Group Signature
 	Scheme},
-  booktitle = {Advances in Cryptology — CRYPTO 2000},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2000},
   publisher = {Springer Berlin / Heidelberg},
   year = {2000},
   editor = {Bellare, Mihir},
@@ -289,7 +289,7 @@
   pages = {255-270},
   abstract = {A group signature scheme allows a group member to sign messages anonymously
 	on behalf of the group. However, in the case of a dispute, the identity
-	of a signature’s originator can be revealed (only) by a designated
+	of a signatureÂ’s originator can be revealed (only) by a designated
 	entity. The interactive counterparts of group signatures are identity
 	escrow schemes or group identification scheme with revocable anonymity.
 	This work introduces a new provably secure group signature and a
@@ -325,21 +325,21 @@
 	from a key exposure problem: The non-transferability property requires
 	willingness of the recipient in consequentially exposing a secret
 	key, and therefore invalidating all signatures issued to the same
-	recipient’s public key. To address this key-revocation issue, and
+	recipientÂ’s public key. To address this key-revocation issue, and
 	its attending problems of key redistribution, storage of state information,
 	and greater need for interaction, an identity-based scheme was proposed
-	in [1], while a fully key-exposure free construction, based on the
-	elliptic curves with pairings, appeared later in [7]. Herein we provide
-	several constructions of exposure-free chameleon hash functions based
-	on different cryptographic assumptions, such as the RSA and the discrete
-	logarithm assumptions. One of the schemes is a novel construction
-	that relies on a single trapdoor and therefore may potentially be
-	realized over a large set of cryptographic groups (where the discrete
+	inÂ [1], while a fully key-exposure free construction, based on the
+	elliptic curves with pairings, appeared later inÂ [7]. Herein we
+	provide several constructions of exposure-free chameleon hash functions
+	based on different cryptographic assumptions, such as the RSA and
+	the discrete logarithm assumptions. One of the schemes is a novel
+	construction that relies on a single trapdoor and therefore may potentially
+	be realized over a large set of cryptographic groups (where the discrete
 	logarithm is hard). Keywords: Digital signatures, undeniable signatures,
 	collision-resistant hashing, trapdoor commitments, chameleon signatures,
 	chameleon hashing.},
   affiliation = {Information Security Institute and Department of Computer Science,
-	The Johns Hopkins University  },
+	The Johns Hopkins University Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Anteniese (2005) - On the Key Exposure Problem in Chameleon Hashes.pdf:PDF},
   owner = {huelsing},
   timestamp = {2011.03.08},
@@ -382,7 +382,7 @@
 @INCOLLECTION{Banerjee2012,
   author = {Banerjee, Abhishek and Peikert, Chris and Rosen, Alon},
   title = {Pseudorandom Functions and Lattices},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2012},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2012},
   publisher = {Springer Berlin / Heidelberg},
   year = {2012},
   editor = {Pointcheval, David and Johansson, Thomas},
@@ -396,7 +396,7 @@
 	small low-depth arithmetic or boolean circuits (e.g., in NC 1 or
 	even TC 0 ). In addition, they are the first low-depth PRFs that
 	have no known attack by efficient quantum algorithms. Central to
-	our results is a new “derandomization” technique for the learning
+	our results is a new Â“derandomizationÂ” technique for the learning
 	with errors ( LWE ) problem which, in effect, generates the error
 	terms deterministically.},
   affiliation = {Georgia Institute of Technology, USA},
@@ -406,6 +406,30 @@
   owner = {huelsing},
   timestamp = {2012.06.19},
   url = {http://dx.doi.org/10.1007/978-3-642-29011-4_42}
+}
+
+@ARTICLE{BGIRSVY12,
+  author = {Barak, Boaz and Goldreich, Oded and Impagliazzo, Russell and Rudich,
+	Steven and Sahai, Amit and Vadhan, Salil and Yang, Ke},
+  title = {On the (Im)Possibility of Obfuscating Programs},
+  journal = {J. ACM},
+  year = {2012},
+  volume = {59},
+  pages = {6:1--6:48},
+  number = {2},
+  month = may,
+  acmid = {2160159},
+  address = {New York, NY, USA},
+  articleno = {6},
+  doi = {10.1145/2160158.2160159},
+  issn = {0004-5411},
+  issue_date = {April 2012},
+  keywords = {Complexity theory, Rice's Theorem, cryptography, homomorphic encryption,
+	pseudorandom functions, software protection, software watermarking,
+	statistical zero knowledge},
+  numpages = {48},
+  publisher = {ACM},
+  url = {http://doi.acm.org/10.1145/2160158.2160159}
 }
 
 @INPROCEEDINGS{BCG+2002,
@@ -427,7 +451,7 @@
   booktitle = {Lectures on Data Security},
   publisher = {Springer Berlin / Heidelberg},
   year = {1999},
-  editor = {Damgård, Ivan},
+  editor = {DamgÃ¥rd, Ivan},
   volume = {1561},
   series = {Lecture Notes in Computer Science},
   pages = {1-15},
@@ -495,7 +519,7 @@
 	function meets the very weak requirement of being computationally
 	almost universal, where again the value lies in the fact that known
 	attacks do not invalidate the assumptions made.},
-  affiliation = {Dept. of Computer Science &amp; Engineering 0404, University of California
+  affiliation = {Dept.Â of Computer Science &amp; Engineering 0404, University of California
 	San Diego, 9500 Gilman Drive, La Jolla, CA 92093-0404 USA USA},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Bellare (2006) - New Proofs for NMAC and HMAC - Security Without Collision-Resistance.pdf:PDF},
   owner = {huelsing},
@@ -507,7 +531,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-68697-5_1,
   author = {Bellare, Mihir and Canetti, Ran and Krawczyk, Hugo},
   title = {Keying Hash Functions for Message Authentication},
-  booktitle = {Advances in Cryptology — CRYPTO ’96},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’96},
   publisher = {Springer Berlin / Heidelberg},
   year = {1996},
   editor = {Koblitz, Neal},
@@ -575,10 +599,10 @@
   posted-at = {2006-11-02 14:29:44},
   priority = {3},
   review = {Wie baue ich aus einer Fixed-Input-Length PRF eine Varible -I-L PRF?
-	Konstruktion a la PRF-Ausgabe ist neuer Schlüssel, näxter Inputblock
-	ist Eingabe. Zusätzlich muss bei Gefahr von LengthExtension Attacken
-	vorne und hinten Schlüsselmaterial angehängt werden, a la HMAC. Die
-	Beweise sind mal wieder Hybriden wie bei dem Paper mit Yee},
+	Konstruktion a la PRF-Ausgabe ist neuer SchlÃ¼ssel, nÃ¤xter Inputblock
+	ist Eingabe. ZusÃ¤tzlich muss bei Gefahr von LengthExtension Attacken
+	vorne und hinten SchlÃ¼sselmaterial angehÃ¤ngt werden, a la HMAC.
+	Die Beweise sind mal wieder Hybriden wie bei dem Paper mit Yee},
   timestamp = {2010.11.03},
   url = {http://www-cse.ucsd.edu/\~{}mihir/papers/cascade.html}
 }
@@ -628,7 +652,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-48658-5_32,
   author = {Bellare, Mihir and Kilian, Joe and Rogaway, Phillip},
   title = {The Security of Cipher Block Chaining},
-  booktitle = {Advances in Cryptology — CRYPTO ’94},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’94},
   publisher = {Springer Berlin / Heidelberg},
   year = {1994},
   editor = {Desmedt, Yvo},
@@ -636,7 +660,7 @@
   series = {Lecture Notes in Computer Science},
   pages = {341-358},
   note = {10.1007/3-540-48658-5_32},
-  abstract = {The Cipher Block Chaining — Message Authentication Code (CBC MAC)
+  abstract = {The Cipher Block Chaining Â— Message Authentication Code (CBC MAC)
 	specifies that a message x = x 1 . . . x m be authenticated among
 	parties who share a secret key a by tagging x with a prefix of $$f_a^{(m)}
 	(x)\mathop = \limits^{def} f_a (f_a ( \ldots f_a (f_a (x_1 ) \oplus
@@ -692,7 +716,7 @@
 @INPROCEEDINGS{bellare1990sign,
   author = {Bellare, M. and Micali, S.},
   title = {How to sign given any trapdoor function},
-  booktitle = {Advances in Cryptology—CRYPTO’88},
+  booktitle = {Advances in CryptologyÂ—CRYPTOÂ’88},
   year = {1990},
   pages = {200--215},
   organization = {Springer},
@@ -706,7 +730,7 @@
   author = {Bellare, Mihir and Micciancio, Daniele and Warinschi, Bogdan},
   title = {Foundations of Group Signatures: Formal Definitions, Simplified Requirements,
 	and a Construction Based on General Assumptions},
-  booktitle = {Advances in Cryptology — EUROCRYPT 2003},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT 2003},
   publisher = {Springer Berlin / Heidelberg},
   year = {2003},
   editor = {Biham, Eli},
@@ -732,7 +756,7 @@
 @INPROCEEDINGS{Bellare1999,
   author = {Bellare, Mihir and Miner, Sara},
   title = {A Forward-Secure Digital Signature Scheme},
-  booktitle = {Advances in Cryptology — CRYPTO’ 99},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 99},
   year = {1999},
   editor = {Wiener, Michael},
   volume = {1666},
@@ -786,7 +810,7 @@
   series = {Lecture Notes in Computer Science},
   pages = {399-410},
   abstract = {In the dedicated-key setting, one uses a compression function f:{0,1}
-	k × {0,1} n?+?d ?{0,1} n to build a family of hash functions indexed
+	k Ã— {0,1} n?+?d ?{0,1} n to build a family of hash functions indexed
 	by a key space . This is different from the more traditional design
 	approach used to build hash functions such as MD5 or SHA-1, in which
 	compression functions and hash functions do not have dedicated key
@@ -809,7 +833,7 @@
 @INCOLLECTION{springerlink:10.1007/11935230_20,
   author = {Bellare, Mihir and Ristenpart, Thomas},
   title = {Multi-Property-Preserving Hash Domain Extension and the EMD Transform},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2006},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2006},
   publisher = {Springer Berlin / Heidelberg},
   year = {2006},
   editor = {Lai, Xuejia and Chen, Kefei},
@@ -818,7 +842,7 @@
   pages = {299-314},
   abstract = {We point out that the seemingly strong pseudorandom oracle preserving
 	(PRO-Pr) property of hash function domain-extension transforms defined
-	and implemented by Coron et. al. [1] can actually weaken our guarantees
+	and implemented by Coron et.Â al. [1] can actually weaken our guarantees
 	on the hash function, in particular producing a hash function that
 	fails to be even collision-resistant (CR) even though the compression
 	function to which the transform is applied is CR. Not only is this
@@ -879,7 +903,7 @@
 @INCOLLECTION{springerlink:10.1007/BFb0052256,
   author = {Bellare, Mihir and Rogaway, Phillip},
   title = {Collision-Resistant hashing: Towards making {UOWHF}s practical},
-  booktitle = {Advances in Cryptology — CRYPTO '97},
+  booktitle = {Advances in Cryptology Â— CRYPTO '97},
   publisher = {Springer Berlin / Heidelberg},
   year = {1997},
   editor = {Kaliski, Burton},
@@ -913,7 +937,7 @@
   author = {Bellare, Mihir and Rogaway, Phillip},
   title = {The Exact Security of Digital Signatures-How to Sign with RSA and
 	Rabin},
-  booktitle = {Advances in Cryptology — EUROCRYPT ’96},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT Â’96},
   publisher = {Springer Berlin / Heidelberg},
   year = {1996},
   editor = {Maurer, Ueli},
@@ -925,7 +949,7 @@
 	one RSA decryption plus some hashing, verification takes one RSA
 	encryption plus some hashing, and the size of the signature is the
 	size of the modulus. Assuming the underlying hash functions are ideal,
-	our schemes are not only provably secure, but are so in a tight way—an
+	our schemes are not only provably secure, but are so in a tight wayÂ—an
 	ability to forge signatures with a certain amount of computational
 	resources implies the ability to invert RSA (on the same size modulus)
 	with about the same computational effort. Furthermore, we provide
@@ -972,7 +996,7 @@
   author = {Bellare, Mihir and Shoup, Sarah},
   title = {Two-Tier Signatures, Strongly Unforgeable Signatures, and Fiat-Shamir
 	Without Random Oracles},
-  booktitle = {Public Key Cryptography – PKC 2007},
+  booktitle = {Public Key Cryptography Â– PKC 2007},
   publisher = {Springer Berlin / Heidelberg},
   year = {2007},
   editor = {Okamoto, Tatsuaki and Wang, Xiaoyun},
@@ -1028,7 +1052,7 @@
 	San Diego 9500 Gilman Drive 92093 La Jolla CA USA},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Bellare (2000) - Forward-Security in Private-Key Cryptography.pdf:PDF},
   owner = {huelsing},
-  review = {Enthält die Konstruktion PRF -> PRG ! Adv_fsprg(t) \leq 2n Adv_prf(q,t')
+  review = {EnthÃ¤lt die Konstruktion PRF -> PRG ! Adv_fsprg(t) \leq 2n Adv_prf(q,t')
 	t' = t +O( n( b+s ) ) q = ceil( (b+s) / L )},
   timestamp = {2010.07.23},
   url = {http://dx.doi.org/10.1007/3-540-36563-X_1}
@@ -1043,6 +1067,39 @@
   pages = {175--179},
   owner = {albraodb},
   timestamp = {2015.06.05}
+}
+
+@INCOLLECTION{BBBW83,
+  author = {Bennett, CharlesH. and Brassard, Gilles and Breidbart, Seth and Wiesner,
+	Stephen},
+  title = {Quantum Cryptography, or Unforgeable Subway Tokens},
+  booktitle = {Advances in Cryptology},
+  publisher = {Springer US},
+  year = {1983},
+  editor = {Chaum, David and Rivest, RonaldL. and Sherman, AlanT.},
+  pages = {267-275},
+  doi = {10.1007/978-1-4757-0602-4_26},
+  isbn = {978-1-4757-0604-8},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.18},
+  url = {http://dx.doi.org/10.1007/978-1-4757-0602-4_26}
+}
+
+@ARTICLE{BBBV,
+  author = {Charles H. Bennett and Ethan Bernstein and Gilles Brassard and Umesh
+	V. Vazirani},
+  title = {Strengths and Weaknesses of Quantum Computing},
+  journal = {{SIAM} J. Comput.},
+  year = {1997},
+  volume = {26},
+  pages = {1510--1523},
+  number = {5},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl = {http://dblp.uni-trier.de/rec/bib/journals/siamcomp/BennettBBV97},
+  doi = {10.1137/S0097539796300933},
+  timestamp = {Mon, 12 Sep 2011 16:10:10 +0200},
+  url = {http://dx.doi.org/10.1137/S0097539796300933}
 }
 
 @INPROCEEDINGS{BCG+2006,
@@ -1126,6 +1183,25 @@
   timestamp = {2011.04.28}
 }
 
+@INCOLLECTION{Bloemer2003,
+  author = {BlÃ¶mer, Johannes and Seifert, Jean-Pierre},
+  title = {{Fault Based Cryptanalysis of the Advanced Encryption Standard ({AES})}},
+  booktitle = {Financial Cryptography},
+  publisher = {Springer},
+  year = {2003},
+  editor = {Wright, Rebecca N.},
+  volume = {2742},
+  series = {LNCS},
+  pages = {162-181},
+  doi = {10.1007/978-3-540-45126-6_12},
+  isbn = {978-3-540-40663-1},
+  keywords = {AES; Fault Attacks; Implementation Issues; Secure Banking; Smart Cards},
+  language = {English},
+  owner = {huelsing},
+  timestamp = {2014.09.26},
+  url = {http://dx.doi.org/10.1007/978-3-540-45126-6_12}
+}
+
 @ARTICLE{springerlink:10.1007/s00145-008-9030-1,
   author = {Black, J. and Cochran, M. and Shrimpton, T.},
   title = {On the Impossibility of Highly-Efficient Blockcipher-Based Hash Functions},
@@ -1134,18 +1210,18 @@
   volume = {22},
   pages = {311-329},
   note = {10.1007/s00145-008-9030-1},
-  abstract = {Fix a small nonempty set of blockcipher keys  . We say a blockcipher-based
+  abstract = {Fix a small nonempty set of blockcipher keysÂ  . We say a blockcipher-based
 	hash function is highly-efficient if it makes exactly one blockcipher
 	call for each message block hashed, and all blockcipher calls use
-	a key from  . Although a few highly-efficient constructions have
+	a key fromÂ  . Although a few highly-efficient constructions have
 	been proposed, no one has been able to prove their security. In this
 	paper we prove, in the ideal-cipher model, that it is impossible
 	to construct a highly-efficient iterated blockcipher-based hash function
 	that is provably secure. Our result implies, in particular, that
 	the Tweakable Chain Hash (TCH) construction suggested by Liskov,
-	Rivest, and Wagner (Advances in Cryptology–CRYPTO ’02, Lecture Notes
-	in Computer Science, vol. 2442, pp. 31–46, Springer, Berlin, 2002)
-	is not correct under an instantiation suggested for this construction,
+	Rivest, and Wagner (Advances in CryptologyÂ–CRYPTO Â’02, Lecture
+	Notes in Computer Science, vol.Â 2442, pp.Â 31Â–46, Springer, Berlin,
+	2002) is not correct under an instantiation suggested for this construction,
 	nor can TCH be correctly instantiated by any other efficient means.},
   affiliation = {430 UCB Department of Computer Science Boulder CO 80309 USA},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Black (2005) - On the Impossibility of Highly-Effcient Blockcipher-Based Hash Functions.pdf:PDF},
@@ -1162,7 +1238,7 @@
   author = {Black, John and Rogaway, Phillip and Shrimpton, Thomas},
   title = {Black-Box Analysis of the Block-Cipher-Based Hash-Function Constructions
 	from {PGV}},
-  booktitle = {Advances in Cryptology — CRYPTO 2002},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Yung, Moti},
@@ -1171,14 +1247,14 @@
   pages = {103-118},
   abstract = {Preneel, Govaerts, and Vandewalle [6] considered the 64 most basic
 	ways to construct a hash function H: (0, 1)* ? (0, 1)n from a block
-	cipher E: (0, 1)n × (0, 10n ? (0, 1)n. They regarded 12 of these
+	cipher E: (0, 1)n Ã— (0, 10n ? (0, 1)n. They regarded 12 of these
 	64 schemes as secure, though no proofs or formal claims were given.
 	The remaining 52 schemes were shown to be subject to various attacks.
 	Here we provide a formal and quantitative treatment of the 64 constructions
 	considered by PGV. We prove that, in a black-box model, the 12 schemes
 	that PGV singled out as secure really are secure: we give tight upper
 	and lower bounds on their collision resistance. Furthermore, by stepping
-	outside of the Merkle-Damgåard approach to analysis, we show that
+	outside of the Merkle-DamgÃ¥ard approach to analysis, we show that
 	an additional 8 of the 64 schemes are just as collision resistant
 	(up to a small constant) as the first group of schemes. Nonetheless,
 	we are able to differentiate among the 20 collision-resistant schemes
@@ -1199,7 +1275,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-48658-5_9,
   author = {Bleichenbacher, Daniel and Maurer, Ueli},
   title = {Directed Acyclic Graphs, One-way Functions and Digital Signatures},
-  booktitle = {Advances in Cryptology — CRYPTO ’94},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’94},
   publisher = {Springer Berlin / Heidelberg},
   year = {1994},
   editor = {Desmedt, Yvo},
@@ -1218,7 +1294,7 @@
 	sets of vertices of $$\mathcal{G}$$ with the naturally defined computability
 	relation as the order relation and where a set is verifyable if and
 	only if the public key can be computed from the set.},
-  affiliation = {ETH Zürich Institute for Theoretical Computer Science CH-8092 Zürich
+  affiliation = {ETH ZÃ¼rich Institute for Theoretical Computer Science CH-8092 ZÃ¼rich
 	Switzerland},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Bleichenbacher (1994) - Directed acyclic graphs one way functions and digital signatures.pdf:PDF},
   owner = {huelsing},
@@ -1244,8 +1320,8 @@
   owner = {huelsing},
   posted-at = {2006-08-21 12:20:04},
   priority = {2},
-  review = {Wie groß ist der Nachrichten Raum bei Verwendung von einem Graph mit
-	n Knoten....},
+  review = {Wie groÃŸ ist der Nachrichten Raum bei Verwendung von einem Graph
+	mit n Knoten....},
   timestamp = {2010.08.27},
   url = {http://portal.acm.org/citation.cfm?id=695153}
 }
@@ -1283,29 +1359,10 @@
   url = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.45.905}
 }
 
-@INCOLLECTION{Bloemer2003,
-  author = {Blömer, Johannes and Seifert, Jean-Pierre},
-  title = {{Fault Based Cryptanalysis of the Advanced Encryption Standard ({AES})}},
-  booktitle = {Financial Cryptography},
-  publisher = {Springer},
-  year = {2003},
-  editor = {Wright, Rebecca N.},
-  volume = {2742},
-  series = {LNCS},
-  pages = {162-181},
-  doi = {10.1007/978-3-540-45126-6_12},
-  isbn = {978-3-540-40663-1},
-  keywords = {AES; Fault Attacks; Implementation Issues; Secure Banking; Smart Cards},
-  language = {English},
-  owner = {huelsing},
-  timestamp = {2014.09.26},
-  url = {http://dx.doi.org/10.1007/978-3-540-45126-6_12}
-}
-
 @INCOLLECTION{Boldyreva2012,
   author = {Boldyreva, Alexandra and Kumar, Virendra},
   title = {A New Pseudorandom Generator from Collision-Resistant Hash Functions},
-  booktitle = {Topics in Cryptology – CT-RSA 2012},
+  booktitle = {Topics in Cryptology Â– CT-RSA 2012},
   publisher = {Springer Berlin / Heidelberg},
   year = {2012},
   editor = {Dunkelman, Orr},
@@ -1318,11 +1375,11 @@
 	bits at each iteration step. The latest PRG of this type that relies
 	on reasonable assumptions (regularity and one-wayness) is due to
 	Haitner et al. In addition to a regular one-way function, each iteration
-	in their “randomized iterate” scheme uses a new pairwise-independent
+	in their Â“randomized iterateÂ” scheme uses a new pairwise-independent
 	function, whose descriptions are part of the seed of the PRG. Our
 	construction does not use pairwise-independent functions and is thus
 	more efficient, requiring less computation and a significantly shorter
-	seed. Our scheme’s security relies on the standard notions of collision-resistance
+	seed. Our schemeÂ’s security relies on the standard notions of collision-resistance
 	and regularity of the underlying hash function, where the collision-resistance
 	is required to be exponential . In particular, any polynomial-time
 	adversary should have less than 2 ? n /2 probability of finding collisions,
@@ -1378,7 +1435,7 @@
 @INCOLLECTION{Boneh2004,
   author = {Boneh, Dan and Boyen, Xavier and Shacham, Hovav},
   title = {Short Group Signatures},
-  booktitle = {Advances in Cryptology – CRYPTO 2004},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2004},
   publisher = {Springer Berlin / Heidelberg},
   year = {2004},
   editor = {Franklin, Matt},
@@ -1392,7 +1449,7 @@
 	called the Decision Linear assumption. We prove security of our system,
 	in the random oracle model, using a variant of the security definition
 	for group signatures recently given by Bellare, Micciancio, and Warinschi.},
-  affiliation = {Stanford University  },
+  affiliation = {Stanford University Â },
   isbn = {978-3-540-22668-0},
   keyword = {Computer Science},
   owner = {huelsing},
@@ -1415,7 +1472,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-44647-8_13,
   author = {Boneh, Dan and Franklin, Matt},
   title = {Identity-Based Encryption from the Weil Pairing},
-  booktitle = {Advances in Cryptology — CRYPTO 2001},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2001},
   publisher = {Springer Berlin / Heidelberg},
   year = {2001},
   editor = {Kilian, Joe},
@@ -1463,7 +1520,7 @@
   howpublished = {Cryptology ePrint Archive, Report 2013/088},
   year = {2013},
   note = {{An extended abstract appeared in Ran Canetti and Juan A. Garay,
-	editors, {\em Crypto 2013}, volume 8043 of {\em LNCS}, pages 361–379.
+	editors, {\em Crypto 2013}, volume 8043 of {\em LNCS}, pages 361Â–379.
 	Springer, 2013}},
   file = {:./Zhandry (2013) - Secure Signatures and Chosen Ciphertext Security in a Post-Quantum World.pdf:PDF},
   owner = {huelsing},
@@ -1473,7 +1530,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-48071-4_1,
   author = {Bos, Jurjen and Chaum, David},
   title = {Provably Unforgeable Signatures},
-  booktitle = {Advances in Cryptology — CRYPTO’ 92},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 92},
   publisher = {Springer Berlin / Heidelberg},
   year = {1993},
   editor = {Brickell, Ernest},
@@ -1506,7 +1563,7 @@
   author = {Boyen, Xavier},
   title = {Lattice Mixing and Vanishing Trapdoors: A Framework for Fully Secure
 	Short Signatures and More},
-  booktitle = {Public Key Cryptography – PKC 2010},
+  booktitle = {Public Key Cryptography Â– PKC 2010},
   publisher = {Springer Berlin / Heidelberg},
   year = {2010},
   editor = {Nguyen, Phong and Pointcheval, David},
@@ -1526,7 +1583,7 @@
 	arbitrary choices of subset size. The framework is very general.
 	Here we obtain fully secure signatures, and also IBE, that are compact,
 	simple, and elegant.},
-  affiliation = {Universitas Leodiensis Institut Montefiore Liège Belgium},
+  affiliation = {Universitas Leodiensis Institut Montefiore LiÃ¨ge Belgium},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Boyen (2010) - Lattice Mixing and Vanishing Trapdoors.pdf:PDF},
   owner = {huelsing},
   timestamp = {2010.12.02},
@@ -1553,13 +1610,22 @@
   year = {2000}
 }
 
+@MISC{Brassard97,
+  author = {Gilles Brassard and Peter HÃ¸yer and Alain Tapp},
+  title = {Quantum Algorithm for the Collision Problem},
+  howpublished = {arXiv:quant-ph/9705002},
+  year = {1997},
+  owner = {Gorjan},
+  timestamp = {2015.09.12}
+}
+
 @INCOLLECTION{Brassard1998,
-  author = {Brassard, Gilles and HÃ˜yer, Peter and Tapp, Alain},
+  author = {Brassard, Gilles and HÃƒÂ˜yer, Peter and Tapp, Alain},
   title = {Quantum cryptanalysis of hash and claw-free functions},
   booktitle = {LATIN'98: Theoretical Informatics},
   publisher = {Springer Berlin Heidelberg},
   year = {1998},
-  editor = {Lucchesi, ClÃ¡udioL. and Moura, ArnaldoV.},
+  editor = {Lucchesi, ClÃƒÂ¡udioL. and Moura, ArnaldoV.},
   volume = {1380},
   series = {Lecture Notes in Computer Science},
   pages = {163-169},
@@ -1569,15 +1635,6 @@
   owner = {huelsing},
   timestamp = {2013.04.10},
   url = {http://dx.doi.org/10.1007/BFb0054319}
-}
-
-@MISC{Brassard97,
-  author = {Gilles Brassard and Peter Høyer and Alain Tapp},
-  title = {Quantum Algorithm for the Collision Problem},
-  howpublished = {arXiv:quant-ph/9705002},
-  year = {1997},
-  owner = {Gorjan},
-  timestamp = {2015.09.12}
 }
 
 @INPROCEEDINGS{Braun2012,
@@ -1662,8 +1719,8 @@
 }
 
 @INCOLLECTION{wots2011,
-  author = {Johannes Buchmann and Erik Dahmen and Sarah Ereth and Andreas Hülsing
-	and Markus Rückert},
+  author = {Johannes Buchmann and Erik Dahmen and Sarah Ereth and Andreas HÃ¼lsing
+	and Markus RÃ¼ckert},
   title = {On the Security of the {Winternitz} One-Time Signature Scheme},
   booktitle = {Africacrypt 2011},
   publisher = {Springer Berlin / Heidelberg},
@@ -1678,7 +1735,7 @@
 }
 
 @INCOLLECTION{XMSS,
-  author = {Buchmann, Johannes and Dahmen, Erik and Hülsing, Andreas},
+  author = {Buchmann, Johannes and Dahmen, Erik and HÃ¼lsing, Andreas},
   title = {{XMSS} - A Practical Forward Secure Signature Scheme Based on Minimal
 	Security Assumptions},
   booktitle = {Post-Quantum Cryptography},
@@ -1719,8 +1776,8 @@
 	unlimited (280) number of documents to be signed with one key pair.
 	Compared to recent improvements of the Merkle signature scheme, GMSS
 	reduces the signature size as well as the signature generation cost.},
-  affiliation = {Technische Universität Darmstadt, Department of Computer Science,
-	Hochschulstraße 10, 64289 Darmstadt Germany},
+  affiliation = {Technische UniversitÃ¤t Darmstadt, Department of Computer Science,
+	HochschulstraÃŸe 10, 64289 Darmstadt Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Buchmann (2007) - Merkle Signatures with Virtually Unlimited Signature Capacity.pdf:PDF},
   owner = {Gorjan},
   timestamp = {2015.09.12},
@@ -1740,7 +1797,7 @@
   abstract = {We propose a new algorithm for computing authentication paths in the
 	Merkle signature scheme. Compared to the best algorithm for this
 	task, our algorithm reduces the worst case running time considerably.},
-  affiliation = {Technische Universität Darmstadt Department of Computer Science Hochschulstraße
+  affiliation = {Technische UniversitÃ¤t Darmstadt Department of Computer Science HochschulstraÃŸe
 	10 64289 Darmstadt Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Dahmen (2008) - Merkle tree traversal revisited.pdf:PDF},
   owner = {huelsing},
@@ -1795,8 +1852,8 @@
 }
 
 @ARTICLE{springerlink:10.1007/s00607-009-0042-y,
-  author = {Buchmann, Johannes and Lindner, Richard and Rückert, Markus and Schneider,
-	Michael},
+  author = {Buchmann, Johannes and Lindner, Richard and RÃ¼ckert, Markus and
+	Schneider, Michael},
   title = {Post-quantum cryptography: lattice signatures},
   journal = {Computing},
   year = {2009},
@@ -1806,7 +1863,7 @@
 	schemes with respect to security and performance. Furthermore, we
 	explicitly show how to construct a competitive and provably secure
 	Merkle tree signature scheme solely based on worst-case lattice problems.},
-  affiliation = {Technische Universität Darmstadt Department of Computer Science Hochschulstraße
+  affiliation = {Technische UniversitÃ¤t Darmstadt Department of Computer Science HochschulstraÃŸe
 	10 64289 Darmstadt Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Buchmann (2008) - Post-quantum cryptography - lattice signatures.pdf:PDF},
   issn = {0010-485X},
@@ -1854,7 +1911,7 @@
 @INCOLLECTION{springerlink:10.1007/978-3-540-28628-8_4,
   author = {Camenisch, Jan and Lysyanskaya, Anna},
   title = {Signature Schemes and Anonymous Credentials from Bilinear Maps},
-  booktitle = {Advances in Cryptology – CRYPTO 2004},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2004},
   publisher = {Springer Berlin / Heidelberg},
   year = {2004},
   editor = {Franklin, Matt},
@@ -1872,7 +1929,7 @@
 	schemes. To this end, we provide efficient protocols that allow one
 	to prove in zero-knowledge the knowledge of a signature on a committed
 	(or encrypted) message and to obtain a signature on a committed message.},
-  affiliation = {IBM Research, Zurich Research Laboratory, CH–8803 Rüschlikon  },
+  affiliation = {IBM Research, Zurich Research Laboratory, CHÂ–8803 RÃ¼schlikon Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Camenisch (2004) - Signature Schemes and Anonymous Credentials from Bilinear Maps.pdf:PDF},
   owner = {huelsing},
   review = {Signature Scheme based on a DH-variant and bilinear Maps},
@@ -1896,7 +1953,7 @@
   author = {Canetti, Ran and Gennaro, Rosario and Jarecki, Stanislaw and Krawczyk,
 	Hugo and Rabin, Tal},
   title = {Adaptive Security for Threshold Cryptosystems},
-  booktitle = {Advances in Cryptology — CRYPTO’ 99},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 99},
   publisher = {Springer Berlin / Heidelberg},
   year = {1999},
   editor = {Wiener, Michael},
@@ -1965,11 +2022,11 @@
   abstract = {We propose a simple and efficient construction of a CCA-secure public-key
 	encryption scheme from any CPA-secure identity-based encryption (IBE)
 	scheme. Our construction requires the underlying IBE scheme to satisfy
-	only a relatively “weak” notion of security which is known to be
+	only a relatively Â“weakÂ” notion of security which is known to be
 	achievable without random oracles; thus, our results provide a new
 	approach for constructing CCA-secure encryption schemes in the standard
 	model. Our approach is quite different from existing ones; in particular,
-	it avoids non-interactive proofs of “well-formedness” which were
+	it avoids non-interactive proofs of Â“well-formednessÂ” which were
 	shown to underlie most previous constructions. Furthermore, applying
 	our conversion to some recently-proposed IBE schemes results in CCA-secure
 	schemes whose efficiency makes them quite practical. Our technique
@@ -1978,7 +2035,7 @@
 	attacks. This, in turn, yields more efficient CCA-secure hierarchical
 	identity-based and forward-secure encryption schemes in the standard
 	model.},
-  affiliation = {IBM T. J. Watson Research Center, Hawthorne, NY},
+  affiliation = {IBM T.Â J.Â Watson Research Center, Hawthorne, NY},
   isbn = {978-3-540-21935-4},
   keyword = {Computer Science},
   owner = {huelsing},
@@ -2061,7 +2118,7 @@
 @INCOLLECTION{Cash2010,
   author = {Cash, David and Hofheinz, Dennis and Kiltz, Eike and Peikert, Chris},
   title = {Bonsai Trees, or How to Delegate a Lattice Basis},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2010},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2010},
   publisher = {Springer Berlin / Heidelberg},
   year = {2010},
   editor = {Gilbert, Henri},
@@ -2070,9 +2127,9 @@
   pages = {523-552},
   abstract = {We introduce a new lattice-based cryptographic structure called a
 	bonsai tree, and use it to resolve some important open problems in
-	the area. Applications of bonsai trees include: •  An efficient,
-	stateless ‘hash-and-sign’ signature scheme in the standard model
-	(i.e., no random oracles), and •  The first hierarchical identity-based
+	the area. Applications of bonsai trees include: Â•Â  An efficient,
+	stateless Â‘hash-and-signÂ’ signature scheme in the standard model
+	(i.e., no random oracles), and Â•Â  The first hierarchical identity-based
 	encryption (HIBE) scheme (also in the standard model) that does not
 	rely on bilinear pairings. Interestingly, the abstract properties
 	of bonsai trees seem to have no known realization in conventional
@@ -2101,9 +2158,9 @@
 }
 
 @INCOLLECTION{springerlink:10.1007/3-540-46416-6_22,
-  author = {Chaum, David and van Heyst, Eugène},
+  author = {Chaum, David and van Heyst, EugÃ¨ne},
   title = {Group Signatures},
-  booktitle = {Advances in Cryptology — EUROCRYPT ’91},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT Â’91},
   publisher = {Springer Berlin / Heidelberg},
   year = {1991},
   editor = {Davies, Donald},
@@ -2112,10 +2169,10 @@
   pages = {257-265},
   note = {10.1007/3-540-46416-6_22},
   abstract = {In this paper we present a new type of signature for a group of persons,
-	called a group signature, which has the following properties: – 
-	only members of the group can sign messages; –  the receiver can
+	called a group signature, which has the following properties: Â–Â 
+	only members of the group can sign messages; Â–Â  the receiver can
 	verify that it is a valid group signature, but cannot discover which
-	group member made it; –  if necessary, the signature can be opened
+	group member made it; Â–Â  if necessary, the signature can be opened
 	, so that the person who signed the message is revealed. These group
 	signatures are a generalization of the credential/membership authentication
 	schemes, in which one person proves that he belongs to a certain
@@ -2136,7 +2193,7 @@
 @INCOLLECTION{springerlink:10.1007/978-3-642-10366-7_30,
   author = {Chen, Liqun and Morrissey, Paul and Smart, Nigel and Warinschi, Bogdan},
   title = {Security Notions and Generic Constructions for Client Puzzles},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2009},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2009},
   publisher = {Springer Berlin / Heidelberg},
   year = {2009},
   editor = {Matsui, Mitsuru},
@@ -2165,9 +2222,9 @@
 }
 
 @INCOLLECTION{Chevallier06,
-  author = {Chevallier-Mames, Benoît and Joye, Marc},
-  title = {A Practical and Tightly Secure Signature Scheme Without Hash Function},
-  booktitle = {Topics in Cryptology – CT-RSA 2007},
+  author = {Chevallier-Mames, BenoÃ®t and Joye, Marc},
+  title = {A Practical and Tightly Secure SignatureÂ Scheme Without Hash Function},
+  booktitle = {Topics in Cryptology Â– CT-RSA 2007},
   publisher = {Springer Berlin / Heidelberg},
   year = {2006},
   editor = {Abe, Masayuki},
@@ -2183,8 +2240,8 @@
 	far feature a loose security reduction, which, in turn, implies larger
 	security parameters. The security of the GHR scheme and of its twinning-based
 	variant are shown to be tightly based on the flexible RSA problem
-	but additionally (i) either assumes the existence of division-intractable
-	hash functions, or (ii) requires an injective mapping into the prime
+	but additionally (i)Â either assumes the existence of division-intractable
+	hash functions, or (ii)Â requires an injective mapping into the prime
 	numbers in both the signing and verification algorithms. In this
 	paper, we revisit the GHR signature scheme and completely remove
 	the extra assumption made on the hash functions without relying on
@@ -2249,7 +2306,7 @@
   year = {2007},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Contini et al(2007)-A Critical Look at Cryptographic Hash Function Literature.pdf:PDF},
   owner = {huelsing},
-  review = {Zusammenfassung ueber die unterschiedlichen Definitionen für Hash
+  review = {Zusammenfassung ueber die unterschiedlichen Definitionen fÃ¼r Hash
 	function},
   timestamp = {2010.07.19}
 }
@@ -2275,10 +2332,10 @@
 }
 
 @INCOLLECTION{springerlink:10.1007/11535218_26,
-  author = {Coron, Jean-Sébastien and Dodis, Yevgeniy and Malinaud, Cécile and
-	Puniya, Prashant},
-  title = {Merkle-Damgård Revisited: How to Construct a Hash Function},
-  booktitle = {Advances in Cryptology – CRYPTO 2005},
+  author = {Coron, Jean-SÃ©bastien and Dodis, Yevgeniy and Malinaud, CÃ©cile
+	and Puniya, Prashant},
+  title = {Merkle-DamgÃ¥rd Revisited: How to Construct a Hash Function},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2005},
   publisher = {Springer Berlin / Heidelberg},
   year = {2005},
   editor = {Shoup, Victor},
@@ -2298,12 +2355,12 @@
 	oracle remains secure if one plugs in this construction (still assuming
 	that the underlying fixed-length primitive is ideal). In this paper,
 	we show that the current design principle behind hash functions such
-	as SHA-1 and MD5 — the (strengthened) Merkle-Damgård transformation
-	— does not satisfy this security notion. We provide several constructions
+	as SHA-1 and MD5 Â— the (strengthened) Merkle-DamgÃ¥rd transformation
+	Â— does not satisfy this security notion. We provide several constructions
 	that provably satisfy this notion; those new constructions introduce
-	minimal changes to the plain Merkle-Damgård construction and are
+	minimal changes to the plain Merkle-DamgÃ¥rd construction and are
 	easily implementable in practice.},
-  affiliation = {University of Luxembourg  },
+  affiliation = {University of Luxembourg Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Coron (2005) - Merkle-Damgard Revisited.pdf:PDF},
   owner = {huelsing},
   review = {Weiter ab DEFINITIONS},
@@ -2314,7 +2371,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-45682-1_10,
   author = {Courtois, Nicolas and Finiasz, Matthieu and Sendrier, Nicolas},
   title = {How to Achieve a McEliece-Based Digital Signature Scheme},
-  booktitle = {Advances in Cryptology — ASIACRYPT 2001},
+  booktitle = {Advances in Cryptology Â— ASIACRYPT 2001},
   publisher = {Springer Berlin / Heidelberg},
   year = {2001},
   editor = {Boyd, Colin},
@@ -2338,9 +2395,9 @@
 }
 
 @INCOLLECTION{Cramer96,
-  author = {Cramer, Ronald and Damgård, Ivan},
+  author = {Cramer, Ronald and DamgÃ¥rd, Ivan},
   title = {New Generation of Secure and Practical RSA-Based Signatures},
-  booktitle = {Advances in Cryptology — CRYPTO ’96},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’96},
   publisher = {Springer Berlin / Heidelberg},
   year = {1996},
   editor = {Koblitz, Neal},
@@ -2383,7 +2440,7 @@
   author = {Cramer, Ronald and Shoup, Victor},
   title = {A practical public key cryptosystem provably secure against adaptive
 	chosen ciphertext attack},
-  booktitle = {Advances in Cryptology — CRYPTO '98},
+  booktitle = {Advances in Cryptology Â— CRYPTO '98},
   publisher = {Springer Berlin / Heidelberg},
   year = {1998},
   editor = {Krawczyk, Hugo},
@@ -2479,19 +2536,19 @@
 	invertible watermarks allow to recover the original media object
 	(given a secret encryption key), as required for example in some
 	medical applications where the distortion must be removable. Here
-	we revisit the approach of Dittmann et al. from a cryptographic viewpoint,
-	clarifying some important aspects of their security definitions.
+	we revisit the approach of Dittmann et al.Â from a cryptographic
+	viewpoint, clarifying some important aspects of their security definitions.
 	Namely, we first discuss that their notion of unforgeability may
 	not suffice in all settings, and we therefore propose a strictly
 	stronger notion. We then show that the basic scheme suggested by
-	Dittmann et al. achieves our notion if instantiated with the right
+	Dittmann et al.Â achieves our notion if instantiated with the right
 	cryptographic primitives. Our proof also repairs a flaw in the original
 	scheme, pointed out by Hopper, Molnar and Wagner (TCC 2007). We finally
 	address the issue of secrecy of media authentication schemes, basically
 	preventing unauthorized recovering of the original media object without
 	the encryption key. We give a rigorous security statement (that is,
 	the best security guarantee we can achieve) and prove again that
-	the scheme by Dittmann et al. meets this security level if the right
+	the scheme by Dittmann et al.Â meets this security level if the right
 	cryptographic building blocks are deployed. Together our notions
 	of unforgeability and of secrecy therefore give very strong security
 	guarantees for such media authentication schemes.},
@@ -2503,7 +2560,7 @@
 }
 
 @INCOLLECTION{Dahmen2009,
-  author = {Dahmen, Erik and Krauß, Christoph},
+  author = {Dahmen, Erik and KrauÃŸ, Christoph},
   title = {Short Hash-Based Signatures for Wireless Sensor Networks},
   booktitle = {Cryptology and Network Security},
   publisher = {Springer Berlin / Heidelberg},
@@ -2524,7 +2581,7 @@
 	as well as for securing broadcast authentication. Our scheme minimizes
 	the overhead introduced in the network by the signature verification
 	done by each sensor before relaying the message.},
-  affiliation = {Technische Universität Darmstadt Department of Computer Science Hochschulstraße
+  affiliation = {Technische UniversitÃ¤t Darmstadt Department of Computer Science HochschulstraÃŸe
 	10 64289 Darmstadt Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Dahmen (2009) - Short hash-based signatures for wireless sensor networks.pdf:PDF},
   owner = {huelsing},
@@ -2552,7 +2609,7 @@
 	hash function is second-preimage resistant, yields shorter signatures,
 	and is affected neither by birthday attacks nor by the recent progresses
 	in collision-finding algorithms.},
-  affiliation = {Technische Universität Darmstadt},
+  affiliation = {Technische UniversitÃ¤t Darmstadt},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Dahmen (2008) - Digital Signatures out of Second-Preimage Resistant Hash Functions.pdf:PDF},
   owner = {Gorjan},
   review = {MSS-SPR},
@@ -2561,7 +2618,7 @@
 }
 
 @INCOLLECTION{springerlink:10.1007/978-3-540-88353-1_6,
-  author = {Dallot, Léonard},
+  author = {Dallot, LÃ©onard},
   title = {Towards a Concrete Security Proof of Courtois, Finiasz and Sendrier
 	Signature Scheme},
   booktitle = {Research in Cryptology},
@@ -2586,7 +2643,7 @@
 @INCOLLECTION{Damgaard1990,
   author = {Damg{\aa}rd, Ivan},
   title = {A Design Principle for Hash Functions},
-  booktitle = {Advances in Cryptology — CRYPTO’ 89 Proceedings},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 89 Proceedings},
   publisher = {Springer Berlin / Heidelberg},
   year = {1990},
   editor = {Brassard, Gilles},
@@ -2607,7 +2664,7 @@
 	of hash functions proposed earlier. It also suggests changes to other
 	proposed constructions to make a proof of security potentially easier.
 	We give three concrete examples of constructions, based on modular
-	squaring, on Wolfram’s pseudoranddom bit generator [ Wo ], and on
+	squaring, on WolframÂ’s pseudoranddom bit generator [ Wo ], and on
 	the knapsack problem.},
   isbn = {978-0-387-97317-3},
   keyword = {Computer Science},
@@ -2648,7 +2705,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-48184-2_8,
   author = {Desmedt, Yvo},
   title = {Society and Group Oriented Cryptography: a New Concept},
-  booktitle = {Advances in Cryptology — CRYPTO ’87},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’87},
   publisher = {Springer Berlin / Heidelberg},
   year = {2006},
   editor = {Pomerance, Carl},
@@ -2672,7 +2729,7 @@
 	are combinations of the above two solutions. We now explain briefly
 	why these two obvious solutions are not adapted to security needs
 	specific to the protection of information intended for groups.},
-  affiliation = {Université de Montréal Dépt. I.R.O. Montréal Québec H3C 3J7 Canada},
+  affiliation = {UniversitÃ© de MontrÃ©al DÃ©pt. I.R.O. MontrÃ©al QuÃ©bec H3C 3J7 Canada},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Desmedt (1987) - Society and group oriented cryptography_a new concept.pdf:PDF},
   owner = {huelsing},
   review = {Group Signatures?},
@@ -2683,7 +2740,7 @@
 @INCOLLECTION{springerlink:10.1007/0-387-34805-0_28,
   author = {Desmedt, Yvo and Frankel, Yair},
   title = {Threshold cryptosystems},
-  booktitle = {Advances in Cryptology — CRYPTO’ 89 Proceedings},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 89 Proceedings},
   publisher = {Springer Berlin / Heidelberg},
   year = {1990},
   editor = {Brassard, Gilles},
@@ -2730,7 +2787,7 @@
 }
 
 @ARTICLE{DD10,
-  author = {Desrosiers, Simon Pierre and Dupuis, FrÃ©dÃ©ric},
+  author = {Desrosiers, Simon Pierre and Dupuis, FrÃƒÂ©dÃƒÂ©ric},
   title = {Quantum entropic security and approximate quantum encryption.},
   journal = {IEEE Transactions on Information Theory},
   year = {2010},
@@ -2757,7 +2814,7 @@
   number = {6},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Diffie (1976) - New directions in cryptography.pdf:PDF},
   owner = {huelsing},
-  review = {Erster Vorschlag für digital signatures, owf, ...},
+  review = {Erster Vorschlag fÃ¼r digital signatures, owf, ...},
   timestamp = {2010.07.26}
 }
 
@@ -2800,7 +2857,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-36288-6_10,
   author = {Dodis, Yevgeniy and Katz, Jonathan and Xu, Shouhuai and Yung, Moti},
   title = {Strong Key-Insulated Signature Schemes},
-  booktitle = {Public Key Cryptography — PKC 2003},
+  booktitle = {Public Key Cryptography Â— PKC 2003},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Desmedt, Yvo},
@@ -2808,8 +2865,8 @@
   series = {Lecture Notes in Computer Science},
   pages = {130-144},
   note = {10.1007/3-540-36288-6_10},
-  abstract = {Signature computation is frequently performed on insecure devices—e.g.,
-	mobile phones — operating in an environment where the private (signing)k
+  abstract = {Signature computation is frequently performed on insecure devicesÂ—e.g.,
+	mobile phones Â— operating in an environment where the private (signing)k
 	ey is likely to be exposed. Strong key-insulated signature schemes
 	are one way to mitigate the damage done when this occurs. In the
 	key-insulated model [6], the secret key stored on an insecure device
@@ -2823,13 +2880,13 @@
 	(or an adversary who compromises only this device)is unable to forge
 	signatures for any time period. We present here constructions of
 	strong key-insulated signature schemes based on a variety of assumptions.
-	First, we demonstrate a generic construction of a strong (N— 1,N)-key-insulated
+	First, we demonstrate a generic construction of a strong (NÂ— 1,N)-key-insulated
 	signature scheme using any standard signature scheme. We then give
 	a construction of a strong (t,N)-signature scheme whose security
 	may be based on the discrete logarithm assumption in the random oracle
 	model. This construction offers faster signing and verification than
 	the generic construction, at the expense of O(t)k ey update time
-	and key length. Finally, we construct strong (N —1,N)-key-insulated
+	and key length. Finally, we construct strong (N Â—1,N)-key-insulated
 	schemes based on any trapdoor signature scheme (a notion we introduce
 	here); our resulting construction in fact serves as an identity-based
 	signature scheme as well. This leads to very efficient solutions
@@ -2846,7 +2903,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-46035-7_5,
   author = {Dodis, Yevgeniy and Katz, Jonathan and Xu, Shouhuai and Yung, Moti},
   title = {Key-Insulated Public Key Cryptosystems},
-  booktitle = {Advances in Cryptology — EUROCRYPT 2002},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Knudsen, Lars},
@@ -2912,12 +2969,12 @@
 	a secure hash function H? from a given cascade-based hash function
 	H for various cryptographic applications, such as collision-resistance,
 	one-wayness, pseudorandomness, etc. We require each proposed construction
-	of H? to satisfy the following axioms . 1  The construction consists
-	of one or two black-box calls to H. 1  In particular, one is not
+	of H? to satisfy the following axioms . 1Â  The construction consists
+	of one or two black-box calls to H. 1Â  In particular, one is not
 	allowed to know/use anything about the internals of H, such as modifying
 	the initialization vector or affecting the value of the chaining
-	variable. 1  The construction should support variable-length inputs.
-	1  Compared to a single evaluation of H(M), the evaluation of H?(M)
+	variable. 1Â  The construction should support variable-length inputs.
+	1Â  Compared to a single evaluation of H(M), the evaluation of H?(M)
 	should make at most a fixed (small constant) number of extra calls
 	to the underlying compression function of H. In other words, the
 	efficiency of H? is negligibly close to that of H. We discuss several
@@ -2958,17 +3015,17 @@
   isbn = {978-3-540-30276-6},
   keyword = {Computer Science},
   owner = {huelsing},
-  review = {Gute Zusammenfassung über OTS. Beschreiben Winternitz und BM-Konstruktion,
-	geben Sicherheitsbeweis für graphen-basierte OTS reduziert auf kollision,
+  review = {Gute Zusammenfassung Ã¼ber OTS. Beschreiben Winternitz und BM-Konstruktion,
+	geben Sicherheitsbeweis fÃ¼r graphen-basierte OTS reduziert auf kollision,
 	one way und detectability},
   timestamp = {2010.07.09},
   url = {http://dx.doi.org/10.1007/11586821_8}
 }
 
 @INCOLLECTION{Ducas2012,
-  author = {Ducas, Léo and Nguyen, PhongQ.},
+  author = {Ducas, LÃ©o and Nguyen, PhongQ.},
   title = {Faster Gaussian Lattice Sampling Using Lazy Floating-Point Arithmetic},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2012},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2012},
   publisher = {Springer Berlin Heidelberg},
   year = {2012},
   editor = {Wang, Xiaoyun and Sako, Kazue},
@@ -3048,8 +3105,29 @@
   timestamp = {2010.07.27}
 }
 
+@INPROCEEDINGS{FGHLS12,
+  author = {Farhi, Edward and Gosset, David and Hassidim, Avinatan and Lutomirski,
+	Andrew and Shor, Peter},
+  title = {Quantum Money from Knots},
+  booktitle = {Proceedings of the 3rd Innovations in Theoretical Computer Science
+	Conference},
+  year = {2012},
+  series = {ITCS '12},
+  pages = {276--289},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {2090260},
+  doi = {10.1145/2090236.2090260},
+  isbn = {978-1-4503-1115-1},
+  location = {Cambridge, Massachusetts},
+  numpages = {14},
+  owner = {Gorjan},
+  timestamp = {2015.09.18},
+  url = {http://doi.acm.org/10.1145/2090236.2090260}
+}
+
 @MISC{cryptoeprint:2010:331,
-  author = {Jean-Charles Faugère and Ayoub Otmani and Ludovic Perret and and
+  author = {Jean-Charles FaugÃ¨re and Ayoub Otmani and Ludovic Perret and and
 	Jean-Pierre Tillich},
   title = {A Distinguisher for High Rate McEliece Cryptosystems},
   howpublished = {Cryptology ePrint Archive, Report 2010/331},
@@ -3089,7 +3167,7 @@
 @INCOLLECTION{Fischlin02,
   author = {Fischlin, Marc},
   title = {The Cramer-Shoup Strong-RSA Signature Scheme Revisited},
-  booktitle = {Public Key Cryptography — PKC 2003},
+  booktitle = {Public Key Cryptography Â— PKC 2003},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Desmedt, Yvo},
@@ -3118,7 +3196,7 @@
   author = {Fischlin, Marc},
   title = {Pseudorandom Function Tribe Ensembles Based on One-Way Permutations:
 	Improvements and Applications},
-  booktitle = {Advances in Cryptology — EUROCRYPT ’99},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT Â’99},
   publisher = {Springer Berlin / Heidelberg},
   year = {1999},
   editor = {Stern, Jacques},
@@ -3143,10 +3221,10 @@
 	then so is the derived tribe ensemble. We also show that the latter
 	solution yields so-called committing private-key encryption schemes.
 	i.e., where each ciphertext corresponds to exactly one plaintext
-	— independently of the choice of the secret key or the random bits
+	Â— independently of the choice of the secret key or the random bits
 	used in the encryption process.},
-  affiliation = {Johann Wolfgang Goethe-Universität Frankfurt am Main Fachbereich Mathematik
-	(AG 7.2) Postfach 111932 60054 Frankfurt/Main Germany},
+  affiliation = {Johann Wolfgang Goethe-UniversitÃ¤t Frankfurt am Main Fachbereich
+	Mathematik (AG 7.2) Postfach 111932 60054 Frankfurt/Main Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Fischlin (1996) - Pseudorandom Function Tribe Ensembles Based on One-Way Permutations_-Improvements and Applications.pdf:PDF},
   isbn = {978-3-540-65889-4},
   keyword = {Computer Science},
@@ -3172,8 +3250,8 @@
   booktitle = {Automata, Languages and Programming},
   publisher = {Springer Berlin Heidelberg},
   year = {2008},
-  editor = {Aceto, Luca and DamgÃ¥rd, Ivan and Goldberg, LeslieAnn and HalldÃ³rsson,
-	MagnÃºsM. and IngÃ³lfsdÃ³ttir, Anna and Walukiewicz, Igor},
+  editor = {Aceto, Luca and DamgÃƒÂ¥rd, Ivan and Goldberg, LeslieAnn and HalldÃƒÂ³rsson,
+	MagnÃƒÂºsM. and IngÃƒÂ³lfsdÃƒÂ³ttir, Anna and Walukiewicz, Igor},
   volume = {5126},
   series = {Lecture Notes in Computer Science},
   pages = {655-666},
@@ -3223,6 +3301,24 @@
   timestamp = {2015.09.12}
 }
 
+@INPROCEEDINGS{GazMau09b,
+  author = {Peter GaÂži and Ueli Maurer},
+  title = {Free-Start Distinguishing: Combining Two Types of Indistinguishability
+	Amplification},
+  booktitle = {The 4th International Conference on Information Theoretic Security
+	- ICITS 2009},
+  year = {2010},
+  editor = {K. Kurosawa},
+  volume = {5973},
+  series = {Lecture Notes in Computer Science},
+  pages = {28--44},
+  publisher = {Springer-Verlag},
+  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Gazi (2009) - Free-Start Distinguishing-Combining Two Types of Indistinguishability Amplification.pdf:PDF},
+  owner = {huelsing},
+  review = {Security Amplification for PRF in the information theoretic setting},
+  timestamp = {2011.02.09}
+}
+
 @ARTICLE{Gagliardoni2015,
   author = {Gagliardoni, Tommaso and H\"ulsing, Andreas and Schaffner, Christian},
   title = {Semantic Security and Indistinguishability in the Quantum World},
@@ -3265,8 +3361,8 @@
 	resistance property of the hash functions. They have shown that to
 	forge a RMX-hash-then-sign signature scheme, one has to solve a cryptanalytical
 	task which is related to finding second preimages for the hash function.
-	In this article, we will show how to use Dean’s method of finding
-	expandable messages for finding a second preimage in the Merkle-Damgård
+	In this article, we will show how to use DeanÂ’s method of finding
+	expandable messages for finding a second preimage in the Merkle-DamgÃ¥rd
 	hash function to existentially forge a signature scheme based on
 	a t-bit RMX-hash function which uses the Davies-Meyer compression
 	functions (e.g., MD4, MD5, SHA family) in 2 t/2 chosen messages plus
@@ -3282,24 +3378,6 @@
   review = {attack on eTCR},
   timestamp = {2011.01.25},
   url = {http://dx.doi.org/10.1007/978-3-642-01001-9_5}
-}
-
-@INPROCEEDINGS{GazMau09b,
-  author = {Peter Gaži and Ueli Maurer},
-  title = {Free-Start Distinguishing: Combining Two Types of Indistinguishability
-	Amplification},
-  booktitle = {The 4th International Conference on Information Theoretic Security
-	- ICITS 2009},
-  year = {2010},
-  editor = {K. Kurosawa},
-  volume = {5973},
-  series = {Lecture Notes in Computer Science},
-  pages = {28--44},
-  publisher = {Springer-Verlag},
-  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Gazi (2009) - Free-Start Distinguishing-Combining Two Types of Indistinguishability Amplification.pdf:PDF},
-  owner = {huelsing},
-  review = {Security Amplification for PRF in the information theoretic setting},
-  timestamp = {2011.02.09}
 }
 
 @ARTICLE{gennaro:217,
@@ -3395,7 +3473,7 @@
 @INPROCEEDINGS{goldreich1987two,
   author = {Goldreich, O.},
   title = {Two remarks concerning the Goldwasser-Micali-Rivest signature scheme},
-  booktitle = {Advances in Cryptology—CRYPTO’86},
+  booktitle = {Advances in CryptologyÂ—CRYPTOÂ’86},
   year = {1987},
   pages = {104--110},
   organization = {Springer},
@@ -3523,7 +3601,7 @@
   issn = {0097-5397},
   owner = {huelsing},
   publisher = {Society for Industrial and Applied Mathematics},
-  review = {Definition von - Signaturverfahren - EU-CMA saubere Def für - trapdoor
+  review = {Definition von - Signaturverfahren - EU-CMA saubere Def fÃ¼r - trapdoor
 	perm. - claw free perm.},
   timestamp = {2010.08.02}
 }
@@ -3644,7 +3722,7 @@
   volume = {4052},
   series = {Lecture Notes in Computer Science},
   pages = {228-239},
-  abstract = {In their seminal paper [HILL99], Håstad, Impagliazzo, Levin and Luby
+  abstract = {In their seminal paper [HILL99], HÃ¥stad, Impagliazzo, Levin and Luby
 	show that a pseudorandom generator can be constructed from any one-way
 	function. This plausibility result is one of the most fundamental
 	theorems in cryptography and helps shape our understanding of hardness
@@ -3693,7 +3771,7 @@
   series = {Lecture Notes in Computer Science},
   pages = {22-40},
   abstract = {We consider two of the most fundamental theorems in Cryptography.
-	The first, due to Håstad et al. [HILL99], is that pseudorandom generators
+	The first, due to HÃ¥stad et al. [HILL99], is that pseudorandom generators
 	can be constructed from any one-way function. The second due to Yao
 	[Yao82] states that the existence of weak one-way functions (i.e.
 	functions on which every efficient algorithm fails to invert with
@@ -3706,7 +3784,7 @@
 	given one-way functions on n bits one obtains by [HILL99] pseudorandom
 	generators with seed length ?(n 8). This paper revisits a technique
 	that we call the Randomized Iterate, introduced by Goldreich, et.
-	al.[GKL93]. This technique was used in  to give a construction of
+	al.[GKL93]. This technique was used inÂ  to give a construction of
 	pseudorandom generators from regular one-way functions. We simplify
 	and strengthen this technique in order to obtain a similar reduction
 	where the seed length of the resulting generators is as short as
@@ -3735,7 +3813,7 @@
   author = {Haitner, Iftach and Holenstein, Thomas and Reingold, Omer and Vadhan,
 	Salil and Wee, Hoeteck},
   title = {Universal One-Way Hash Functions via Inaccessible Entropy},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2010},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2010},
   publisher = {Springer Berlin / Heidelberg},
   year = {2010},
   editor = {Gilbert, Henri},
@@ -3865,7 +3943,7 @@
 	We formally show the sufficiency of weaker than collision-resistance
 	assumptions for proving the security of the scheme.},
   affiliation = {IBM T.J. Watson Research Center, Yorktown Heights, New York 10598
-	 },
+	Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Halevi (2007) - Strengthening Digital Signatures via Randomized Hashing.pdf:PDF},
   owner = {huelsing},
   review = {RMX},
@@ -3877,7 +3955,7 @@
   author = {Halevi, Shai and Micali, Silvio},
   title = {Practical and Provably-Secure Commitment Schemes from Collision-Free
 	Hashing},
-  booktitle = {Advances in Cryptology — CRYPTO ’96},
+  booktitle = {Advances in Cryptology Â— CRYPTO Â’96},
   publisher = {Springer Berlin / Heidelberg},
   year = {1996},
   editor = {Koblitz, Neal},
@@ -3893,7 +3971,7 @@
 	that constant round statistical zero-knowledge arguments and constant-round
 	computational zero-knowledge proofs for NP exist based on the existence
 	of collision-free hash functions.},
-  affiliation = {MIT — Laboratory for Computer Science 545 Technology Square Cambridge
+  affiliation = {MIT Â— Laboratory for Computer Science 545 Technology Square Cambridge
 	MA 02139},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Halevi (1996) - Practical and Provably-Secure Commitment Schemes from collision-free hashing.pdf:PDF},
   owner = {huelsing},
@@ -3918,7 +3996,7 @@
   author = {Hevia, Alejandro and Micciancio, Daniele},
   title = {The Provable Security of Graph-Based One-Time Signatures and Extensions
 	to Algebraic Signature Schemes},
-  booktitle = {Advances in Cryptology — ASIACRYPT 2002},
+  booktitle = {Advances in Cryptology Â— ASIACRYPT 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Zheng, Yuliang},
@@ -3955,7 +4033,7 @@
 @INCOLLECTION{Hofheinz08,
   author = {Hofheinz, Dennis and Kiltz, Eike},
   title = {Programmable Hash Functions and Their Applications},
-  booktitle = {Advances in Cryptology – CRYPTO 2008},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2008},
   publisher = {Springer Berlin / Heidelberg},
   year = {2008},
   editor = {Wagner, David},
@@ -4036,18 +4114,18 @@
   volume = {3876},
   series = {Lecture Notes in Computer Science},
   pages = {443-461},
-  abstract = {In a seminal paper, Håstad, Impagliazzo, Levin, and Luby showed that
+  abstract = {In a seminal paper, HÃ¥stad, Impagliazzo, Levin, and Luby showed that
 	pseudorandom generators exist if and only if one-way functions exist.
 	The construction they propose to obtain a pseudorandom generator
-	from an n-bit one-way function uses random bits in the input (which
+	from anÂ n-bit one-way function uses random bits in the input (which
 	is the most important complexity measure of such a construction).
 	In this work we study how much this can be reduced if the one-way
 	function satisfies a stronger security requirement. For example,
 	we show how to obtain a pseudorandom generator which satisfies a
 	standard notion of security using only bits of randomness if a one-way
 	function with exponential security is given, i.e., a one-way function
-	for which no polynomial time algorithm has probability higher than 2???cn
-	in inverting for some constant c. Using the uniform variant of Impagliazzo’s
+	for which no polynomial time algorithm has probability higher thanÂ 2???cn
+	in inverting for some constantÂ c. Using the uniform variant of ImpagliazzoÂ’s
 	hard-core lemma given in [7] our constructions and proofs are self-contained
 	within this paper, and as a special case of our main theorem, we
 	give the first explicit description of the most efficient construction
@@ -4077,7 +4155,7 @@
 	to UOWHFs of order r . We demonstrate that it is possible to build
 	UOWHFs with much shorter keys than existing constructions from fixed-size
 	UOWHFs of order r . UOWHFs of order r can be used both in the linear
-	( r +1)-round Merkle-Damgård construction and in a tree construction.},
+	( r +1)-round Merkle-DamgÃ¥rd construction and in a tree construction.},
   affiliation = {Center for Information Security Technologies (CIST), Korea University,
 	Seoul, Korea},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Hong (2004) - Higher Order Universal One-Way Functions.pdf:PDF},
@@ -4187,7 +4265,7 @@
 	while the public key remains the same, the secret keys evolve with
 	time. In addition, in SiBIR model, the user has two modules, signer
 	and home base: the former generates all signatures on its own, and
-	the latter is needed only to help update the signer’s key from one
+	the latter is needed only to help update the signerÂ’s key from one
 	time period to the next. The main strength of the intrusion-resilient
 	schemes, is that they remain secure even after arbitrarily many compromises
 	of both modules, as long as the compromises are not simultaneous.
@@ -4221,7 +4299,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-44647-8_20,
   author = {Itkis, Gene and Reyzin, Leonid},
   title = {Forward-Secure Signatures with Optimal Signing and Verifying},
-  booktitle = {Advances in Cryptology — CRYPTO 2001},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2001},
   publisher = {Springer Berlin / Heidelberg},
   year = {2001},
   editor = {Kilian, Joe},
@@ -4257,7 +4335,7 @@
   author = {Gene Itkis and Leonid Reyzin},
   title = {Intrusion-resilient signatures, or towards obsoletion of certificate
 	revocation},
-  booktitle = {Advances in Cryptology–CRYPTO 2002},
+  booktitle = {Advances in CryptologyÂ–CRYPTO 2002},
   year = {2002},
   editor = {Moti Yung},
   series = {Lecture Notes in Computer Science},
@@ -4301,7 +4379,7 @@
   author = {Jakobsson, Markus and Leighton, Tom and Micali, Silvio and Szydlo,
 	Michael},
   title = {Fractal {Merkle} Tree Representation and Traversal},
-  booktitle = {Topics in Cryptology — CT-RSA 2003},
+  booktitle = {Topics in Cryptology Â— CT-RSA 2003},
   publisher = {Springer Berlin Heidelberg},
   year = {2003},
   editor = {Joye, Marc},
@@ -4322,7 +4400,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-45760-7_17,
   author = {Johnson, Robert and Molnar, David and Song, Dawn and Wagner, David},
   title = {Homomorphic Signature Schemes},
-  booktitle = {Topics in Cryptology — CT-RSA 2002},
+  booktitle = {Topics in Cryptology Â— CT-RSA 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Preneel, Bart},
@@ -4354,7 +4432,7 @@
 @INCOLLECTION{Kakvi2012,
   author = {Kakvi, SaqibA. and Kiltz, Eike},
   title = {Optimal Security Proofs for Full Domain Hash, Revisited},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2012},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2012},
   publisher = {Springer Berlin Heidelberg},
   year = {2012},
   editor = {Pointcheval, David and Johansson, Thomas},
@@ -4412,7 +4490,7 @@
 @INCOLLECTION{springerlink:10.1007/978-3-540-76900-2_11,
   author = {Kiayias, Aggelos and Tsiounis, Yiannis and Yung, Moti},
   title = {Group Encryption},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2007},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2007},
   publisher = {Springer Berlin / Heidelberg},
   year = {2007},
   editor = {Kurosawa, Kaoru},
@@ -4465,7 +4543,7 @@
 	certificate must securely construct a Certification Authority System
 	and manage it. It is significantly important for a CA to ensure its
 	service to continue to operate properly by preparing for any disaster
-	caused by a CA’s private key compromise no matter what the cause
+	caused by a CAÂ’s private key compromise no matter what the cause
 	is. In this paper, we provide the definitions of PKI disaster recovery
 	and PKI business continuity, which are more clear and specific than
 	ever before. We also present three requirements for a PKI model preparing
@@ -4521,7 +4599,7 @@
 	precisely analyze the total signer costs and show that they are lower
 	when the number of signatures per time period is small; the advantage
 	of our scheme increases considerably as the number of time periods
-	grows. Our scheme’s security relies on the Strong-RSA assumption
+	grows. Our schemeÂ’s security relies on the Strong-RSA assumption
 	and the random-oracle-based Fiat-Shamir transform.},
   affiliation = {Boston University Computer Science 111 Cummington St 02215 Boston
 	MA USA},
@@ -4545,9 +4623,9 @@
   isbn = {1-58113-203-4},
   location = {Athens, Greece},
   owner = {huelsing},
-  review = {FSSIG mittels Zertifikate für prg generierte Schlüssel austellen,
-	alle Secret keys Löschen und dann nach und nach alles wieder generieren.....
-	Der Beweis funktioniert auch nur, weil er asymptotisch ist... Wäre
+  review = {FSSIG mittels Zertifikate fÃ¼r prg generierte SchlÃ¼ssel austellen,
+	alle Secret keys LÃ¶schen und dann nach und nach alles wieder generieren.....
+	Der Beweis funktioniert auch nur, weil er asymptotisch ist... WÃ¤re
 	aber sonst problemlos machbar..},
   timestamp = {2010.10.04}
 }
@@ -4579,7 +4657,7 @@
   author = {Lehmann, Anja and Tessaro, Stefano},
   title = {A Modular Design for Hash Functions: Towards Making the Mix-Compress-Mix
 	Approach Practical},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2009},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2009},
   publisher = {Springer Berlin / Heidelberg},
   year = {2009},
   editor = {Matsui, Mitsuru},
@@ -4630,7 +4708,7 @@
   howpublished = {Contribution to The Handbook of Information Security},
   year = {2004},
   abstract = {The key length used for a cryptographic protocol determines the highest
-	security it can offer. If the key is found or ‘broken’, the security
+	security it can offer. If the key is found or Â‘brokenÂ’, the security
 	is undermined. Thus, key lengths must be chosen in accordance with
 	the desired security. In practice, key lengths are mostly determined
 	by standards, legacy system compatibility issues, and vendors. From
@@ -4718,7 +4796,7 @@
 }
 
 @INCOLLECTION{springerlink:10.1007/11937807_3,
-  author = {Libert, Benoît and Quisquater, Jean-Jacques and Yung, Moti},
+  author = {Libert, BenoÃ®t and Quisquater, Jean-Jacques and Yung, Moti},
   title = {Efficient Intrusion-Resilient Signatures Without Random Oracles},
   booktitle = {Information Security and Cryptology},
   publisher = {Springer Berlin / Heidelberg},
@@ -4742,7 +4820,7 @@
 	provides both short signatures and at most log-squared private storage
 	in the number of time periods. Keywords: Intrusion-resilience, standard
 	model, signatures, pairings.},
-  affiliation = {UCL, Microelectronics Laboratory, Crypto Group (Belgium)  },
+  affiliation = {UCL, Microelectronics Laboratory, Crypto Group (Belgium) Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Libert (2006) - Efficient Intrusion-Resilient Signatures Without Random Oracles.pdf:PDF},
   owner = {huelsing},
   review = {Nice related work section, construction using bilinear maps...},
@@ -4773,7 +4851,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-45708-9_3,
   author = {Liskov, Moses and Rivest, Ronald and Wagner, David},
   title = {Tweakable Block Ciphers},
-  booktitle = {Advances in Cryptology — CRYPTO 2002},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Yung, Moti},
@@ -4781,8 +4859,8 @@
   series = {Lecture Notes in Computer Science},
   pages = {31-46},
   abstract = {We propose a new cryptographic primitive, the tweakable block cipher.
-	Such a cipher has not only the usual inputs — message and cryptographic
-	key — but also a third input, the tweak. The tweak serves much the
+	Such a cipher has not only the usual inputs Â— message and cryptographic
+	key Â— but also a third input, the tweak. The tweak serves much the
 	same purpose that an initialization vector does for CBC mode or that
 	a nonce does for OCB mode. Our proposal thus brings this feature
 	down to the primitive block-cipher level, instead of incorporating
@@ -4816,7 +4894,7 @@
 
 @INCOLLECTION{springerlink:10.1007/11593447_26,
   author = {Lucks, Stefan},
-  title = {A Failure-Friendly Design Principle for Hash Functions},
+  title = {A Failure-Friendly DesignÂ Principle forÂ HashÂ Functions},
   booktitle = {Advances in Cryptology - ASIACRYPT 2005},
   publisher = {Springer Berlin / Heidelberg},
   year = {2005},
@@ -4825,7 +4903,7 @@
   series = {Lecture Notes in Computer Science},
   pages = {474-494},
   note = {10.1007/11593447_26},
-  abstract = {This paper reconsiders the established Merkle-Damgård design principle
+  abstract = {This paper reconsiders the established Merkle-DamgÃ¥rd design principle
 	for iterated hash functions. The internal state size w of an iterated
 	n-bit hash function is treated as a security parameter of its own
 	right. In a formal model, we show that increasing w quantifiably
@@ -4845,7 +4923,7 @@
   author = {Lyubashevsky, Vadim},
   title = {Fiat-Shamir with Aborts: Applications to Lattice and Factoring-Based
 	Signatures},
-  booktitle = {Advances in Cryptology – ASIACRYPT 2009},
+  booktitle = {Advances in Cryptology Â– ASIACRYPT 2009},
   publisher = {Springer Berlin / Heidelberg},
   year = {2009},
   editor = {Matsui, Mitsuru},
@@ -4866,7 +4944,7 @@
 @INCOLLECTION{Lyubashevsky2012,
   author = {Lyubashevsky, Vadim},
   title = {Lattice Signatures without Trapdoors},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2012},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2012},
   publisher = {Springer Berlin / Heidelberg},
   year = {2012},
   editor = {Pointcheval, David and Johansson, Thomas},
@@ -4874,10 +4952,10 @@
   series = {Lecture Notes in Computer Science},
   pages = {738-755},
   abstract = {We provide an alternative method for constructing lattice-based digital
-	signatures which does not use the “hash-and-sign” methodology of
+	signatures which does not use the Â“hash-and-signÂ” methodology of
 	Gentry, Peikert, and Vaikuntanathan (STOC 2008). Our resulting signature
 	scheme is secure, in the random oracle model, based on the worst-case
-	hardness of the Õ ( n 1.5 )-SIVP problem in general lattices. The
+	hardness of the Ã• ( n 1.5 )-SIVP problem in general lattices. The
 	secret key, public key, and the signature size of our scheme are
 	smaller than in all previous instantiations of the hash-and-sign
 	signature, and our signing algorithm is also quite simple, requiring
@@ -4888,7 +4966,7 @@
 	to the ring setting, where the size of the public and secret keys
 	can be significantly shrunk, which results in the most practical
 	to-date provably secure signature scheme based on lattices.},
-  affiliation = {INRIA / École Normale Supérieure, France},
+  affiliation = {INRIA / Ã‰cole Normale SupÃ©rieure, France},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Lyubashevsky (2012) - Lattice Signatures without Trapdoors.pdf:PDF},
   isbn = {978-3-642-29010-7},
   keyword = {Computer Science},
@@ -5006,7 +5084,7 @@
 	presented without formal model and proofs, whereas using our results
 	we can employ the work on key-insulated schemes to suggest new provably
 	secure designs of proxy signatures schemes.},
-  affiliation = {Columbia University  },
+  affiliation = {Columbia University Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Malkin (2004) - The Hierarchy of Key Evolving Signatures and a Characterization of Proxy Signatures - full.pdf:PDF;:C\:\\Users\\huelsing\\Documents\\Literatur\\Malkin (2004) - The Hierarchy of Key Evolving Signatures and a Characterization of Proxy Signatures.pdf:PDF},
   owner = {huelsing},
   review = {Proofs about relations among key-evolving notions and Proxy-Signatures.
@@ -5164,7 +5242,7 @@
 @INCOLLECTION{merk1990a,
   author = {Merkle, Ralph},
   title = {One Way Hash Functions and {DES}},
-  booktitle = {Advances in Cryptology — CRYPTO’ 89 Proceedings},
+  booktitle = {Advances in Cryptology Â— CRYPTOÂ’ 89 Proceedings},
   publisher = {Springer Berlin / Heidelberg},
   year = {1990},
   editor = {Brassard, Gilles},
@@ -5205,8 +5283,8 @@
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Merkle (1989) - A certified digital signature.pdf:PDF},
   owner = {huelsing},
   review = {Erste Vorstellung des Merkle Schemes. Konstruktion von cr-functions
-	basierend auf "random ciphers" mittels skr/kcr für diese Funktionen,
-	erste erwähnung der prg variante....},
+	basierend auf "random ciphers" mittels skr/kcr fÃ¼r diese Funktionen,
+	erste erwÃ¤hnung der prg variante....},
   timestamp = {2010.08.23},
   url = {http://dx.doi.org/10.1007/0-387-34805-0_21}
 }
@@ -5214,15 +5292,15 @@
 @INCOLLECTION{Micciancio2012,
   author = {Micciancio, Daniele and Peikert, Chris},
   title = {Trapdoors for Lattices: Simpler, Tighter, Faster, Smaller},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2012},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2012},
   publisher = {Springer Berlin / Heidelberg},
   year = {2012},
   editor = {Pointcheval, David and Johansson, Thomas},
   volume = {7237},
   series = {Lecture Notes in Computer Science},
   pages = {700-718},
-  abstract = {We give new methods for generating and using “strong trapdoors” in
-	cryptographic lattices, which are simultaneously simple, efficient,
+  abstract = {We give new methods for generating and using Â“strong trapdoorsÂ”
+	in cryptographic lattices, which are simultaneously simple, efficient,
 	easy to implement (even in parallel), and asymptotically optimal
 	with very small hidden constants. Our methods involve a new kind
 	of trapdoor, and include specialized algorithms for inverting LWE
@@ -5255,10 +5333,10 @@
   volume = {6147},
   series = {Lecture Notes in Computer Science},
   pages = {153-167},
-  abstract = {We answer the question of Reyhanitabar et al. from FSE’09 of constructing
+  abstract = {We answer the question of Reyhanitabar et al. from FSEÂ’09 of constructing
 	a domain extension scheme for enhanced target collision-resistant
 	(eTCR) hash functions with sublinear key expansion. The eTCR property,
-	introduced by Halevi and Krawczyk [1], is a natural fit for hash-and-sign
+	introduced by Halevi and KrawczykÂ [1], is a natural fit for hash-and-sign
 	signature schemes, offering an attractive alternative to collision-resistant
 	hash functions. We prove a new composition theorem for eTCR, and
 	demonstrate that eTCR compression functions exist if and only if
@@ -5282,24 +5360,24 @@
   series = {Lecture Notes in Computer Science},
   pages = {140-156},
   note = {10.1007/11745853_10},
-  abstract = {A signature scheme constructed according to the hash-and-sign paradigm—hash
-	the message and then sign the hash, symbolically ?(H(M))—is no more
+  abstract = {A signature scheme constructed according to the hash-and-sign paradigmÂ—hash
+	the message and then sign the hash, symbolically ?(H(M))Â—is no more
 	secure than the hash function H against a collision-finding attack.
 	Recent attacks on standard hash functions call the paradigm into
 	question. It is well known that a simple modification of the hash-and-sign
-	paradigm may replace the collision-resistant hash with a weaker primitive—a
+	paradigm may replace the collision-resistant hash with a weaker primitiveÂ—a
 	target-collision resistant hash function (also known as a universal
 	one-way hash, UOWHF). The signer generates a random key k and outputs
 	the pair (k,?(k||Hk(M))) as a signature on M. The apparent problem
 	with this approach is the increase in the signature size. In this
 	paper we demonstrate that for three concrete signature schemes, DSA,
 	PSS-RSA, and Cramer-Shoup, the message can be hashed simultaneously
-	with computing the signature, using one of the signature’s components
+	with computing the signature, using one of the signatureÂ’s components
 	as the key for the hash function. We prove that our constructions
 	are as secure as the originals for DSA and PSS-RSA in the random
 	oracle model and for the Cramer-Shoup signature scheme in the standard
 	model.},
-  affiliation = {Microsoft Research (Silicon Valley Campus)  },
+  affiliation = {Microsoft Research (Silicon Valley Campus) Â },
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Mironov (2006) - Collision-resistant no more-Hash-and-sign paradigm revisited.pdf:PDF},
   owner = {huelsing},
   review = {Use randomness of the Signature-Scheme as key for TCR},
@@ -5563,7 +5641,7 @@
   location = {Townsville, Australia},
   numpages = {17},
   owner = {huelsing},
-  review = {ROM gedöns},
+  review = {ROM gedÃ¶ns},
   timestamp = {2011.03.30},
   url = {http://portal.acm.org/citation.cfm?id=1770231.1770263}
 }
@@ -5571,7 +5649,7 @@
 @INCOLLECTION{Peikert2010,
   author = {Peikert, Chris},
   title = {An Efficient and Parallel Gaussian Sampler for Lattices},
-  booktitle = {Advances in Cryptology – CRYPTO 2010},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2010},
   publisher = {Springer Berlin Heidelberg},
   year = {2010},
   editor = {Rabin, Tal},
@@ -5684,17 +5762,17 @@
   series = {Lecture Notes in Computer Science},
   pages = {88-100},
   abstract = {Multiple-time signatures are digital signature schemes where the signer
-	is able to sign a predetermined number of messages. They are interesting
+	is able to sign aÂ predetermined number of messages. They are interesting
 	cryptographic primitives because they allow to solve many important
 	cryptographic problems, and at the same time offer substantial efficiency
 	advantage over ordinary digital signature schemes like RSA. Multiple-time
 	signature schemes have found numerous applications, in ordinary,
 	on-line/off-line, forward-secure signatures, and multicast/stream
-	authentication. We propose a multiple-time signature scheme with
+	authentication. We propose aÂ multiple-time signature scheme with
 	very efficient signing and verifying. Our construction is based on
-	a combination of one-way functions and cover-free families, and it
-	is secure against the adaptive chosen-message attack.},
-  affiliation = {Centre for Advanced Computing – Algorithms and Cryptography Department
+	aÂ combination of one-way functions and cover-free families, and
+	it is secure against the adaptive chosen-message attack.},
+  affiliation = {Centre for Advanced Computing Â– Algorithms and Cryptography Department
 	of Computing, Macquarie University Australia},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Pieprzyk (2003) - Multiple-time signature schemes against adaptive chosen message attacks.pdf:PDF},
   owner = {huelsing},
@@ -5705,7 +5783,7 @@
 @INCOLLECTION{Pointcheval1996,
   author = {Pointcheval, David and Stern, Jacques},
   title = {Security Proofs for Signature Schemes},
-  booktitle = {Advances in Cryptology — EUROCRYPT ’96},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT Â’96},
   publisher = {Springer Berlin / Heidelberg},
   year = {1996},
   editor = {Maurer, Ueli},
@@ -5720,7 +5798,7 @@
 	scheme [ 4 ] where committed values are hashed together with the
 	message. This is a rather surprising result since the original El
 	Gamal is, as RSA [ 11 ], subject to existential forgery.},
-  affiliation = {École Normale Supérieure Laboratoire d’informatique 45, rue d’Ulm
+  affiliation = {Ã‰cole Normale SupÃ©rieure Laboratoire dÂ’informatique 45, rue dÂ’Ulm
 	75230 Paris Cedex 05},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Pointcheval (1996) - Security Proofs for Signature Schemes.pdf:PDF},
   isbn = {978-3-540-61186-8},
@@ -5733,7 +5811,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-46885-4_43,
   author = {Quisquater, Jean-Jacques and Delescaille, Jean-Paul},
   title = {How easy is collision search? Application to DES},
-  booktitle = {Advances in Cryptology — EUROCRYPT ’89},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT Â’89},
   publisher = {Springer Berlin / Heidelberg},
   year = {1990},
   editor = {Quisquater, Jean-Jacques and Vandewalle, Joos},
@@ -5751,6 +5829,17 @@
   review = {Key collisions},
   timestamp = {2011.04.26},
   url = {http://dx.doi.org/10.1007/3-540-46885-4_43}
+}
+
+@MISC{cryptoeprint:2010:137,
+  author = {Markus RÃ¼ckert and Michael Schneider},
+  title = {Estimating the Security of Lattice-based Cryptosystems},
+  howpublished = {Cryptology ePrint Archive, Report 2010/137},
+  year = {2010},
+  note = {\url{http://eprint.iacr.org/}},
+  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Rueckert (2010) - Estimating the Security of latice-based Cryptosystems.pdf:PDF},
+  owner = {huelsing},
+  timestamp = {2010.11.30}
 }
 
 @INCOLLECTION{springerlink:10.1007/978-3-642-03317-9_20,
@@ -5777,7 +5866,7 @@
 	(or stronger) than CR property for any arbitrary dedicated-key hash
 	function. Second, we consider the problem of eTCR property preserving
 	domain extension. We study several domain extension methods for this
-	purpose, including (Plain, Strengthened, and Prefix-free) Merkle-Damgård,
+	purpose, including (Plain, Strengthened, and Prefix-free) Merkle-DamgÃ¥rd,
 	Randomized Hashing (considered in dedicated-key hash setting), Shoup,
 	Enveloped Shoup, XOR Linear Hash (XLH), and Linear Hash (LH) methods.
 	Interestingly, we show that the only eTCR preserving method is a
@@ -5865,7 +5954,7 @@
   author = {Ristenpart, Thomas and Shacham, Hovav and Shrimpton, Thomas},
   title = {Careful with Composition: Limitations of the Indifferentiability
 	Framework},
-  booktitle = {Advances in Cryptology – EUROCRYPT 2011},
+  booktitle = {Advances in Cryptology Â– EUROCRYPT 2011},
   publisher = {Springer Berlin / Heidelberg},
   year = {2011},
   editor = {Paterson, Kenneth},
@@ -5888,7 +5977,7 @@
 	but our results show that practical hash constructions cannot be
 	reset indifferentiable. We finish by giving direct security proofs
 	for several important PKE schemes.},
-  affiliation = {Dept. of Computer Sciences, University of Wisconsin–Madison, USA},
+  affiliation = {Dept. of Computer Sciences, University of WisconsinÂ–Madison, USA},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Ristenpart (2011) - Careful with Composition.pdf:PDF},
   owner = {huelsing},
   timestamp = {2011.05.26},
@@ -5976,7 +6065,7 @@
   isbn = {978-3-540-22171-5},
   keyword = {Computer Science},
   owner = {huelsing},
-  review = {Definitionen für Hash Eigenschaften: everywhere, always OW / 2PR},
+  review = {Definitionen fÃ¼r Hash Eigenschaften: everywhere, always OW / 2PR},
   timestamp = {2010.07.19},
   url = {http://dx.doi.org/10.1007/978-3-540-25937-4_24}
 }
@@ -5984,7 +6073,7 @@
 @INCOLLECTION{springerlink:10.1007/978-3-540-85174-5_24,
   author = {Rogaway, Phillip and Steinberger, John},
   title = {Constructing Cryptographic Hash Functions from Fixed-Key Blockciphers},
-  booktitle = {Advances in Cryptology – CRYPTO 2008},
+  booktitle = {Advances in Cryptology Â– CRYPTO 2008},
   publisher = {Springer Berlin / Heidelberg},
   year = {2008},
   editor = {Wagner, David},
@@ -6038,7 +6127,7 @@
   booktitle = {Smart Card Research and Advanced Applications},
   publisher = {Springer Berlin / Heidelberg},
   year = {2008},
-  editor = {Grimaud, Gilles and Standaert, François-Xavier},
+  editor = {Grimaud, Gilles and Standaert, FranÃ§ois-Xavier},
   volume = {5189},
   series = {Lecture Notes in Computer Science},
   pages = {104-117},
@@ -6055,7 +6144,7 @@
 	Merkle signature scheme provides comparable timings compared to state
 	of the art implementations of RSA and ECDSA, while maintaining a
 	smaller code size.},
-  affiliation = {Ruhr University Bochum Horst Görtz Institute for IT Security 44780
+  affiliation = {Ruhr University Bochum Horst GÃ¶rtz Institute for IT Security 44780
 	Bochum Germany},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Rohde (2008) - Fast Hash-Based Signatures on Constrained Devices.pdf:PDF},
   isbn = {978-3-540-85892-8},
@@ -6094,17 +6183,6 @@
   url = {http://dx.doi.org/10.1145/100216.100269}
 }
 
-@MISC{cryptoeprint:2010:137,
-  author = {Markus Rückert and Michael Schneider},
-  title = {Estimating the Security of Lattice-based Cryptosystems},
-  howpublished = {Cryptology ePrint Archive, Report 2010/137},
-  year = {2010},
-  note = {\url{http://eprint.iacr.org/}},
-  file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Rueckert (2010) - Estimating the Security of latice-based Cryptosystems.pdf:PDF},
-  owner = {huelsing},
-  timestamp = {2010.11.30}
-}
-
 @INCOLLECTION{springerlink:10.1007/3-540-39568-7_5,
   author = {Shamir, Adi},
   title = {Identity-Based Cryptosystems and Signature Schemes},
@@ -6118,7 +6196,7 @@
   note = {10.1007/3-540-39568-7_5},
   abstract = {In this paper we introduce a novel type of cryptographic scheme, which
 	enables any pair of users to communicate securely and to verify each
-	other’s signatures without exchanging private or public keys, without
+	otherÂ’s signatures without exchanging private or public keys, without
 	keeping key directories, and without using the services of a third
 	party. The scheme assumes the existence of trusted key generation
 	centers, whose sole purpose is to give each user a personalized smart
@@ -6161,7 +6239,7 @@
   author = {Shikata, Junji and Hanaoka, Goichiro and Zheng, Yuliang and Imai,
 	Hideki},
   title = {Security Notions for Unconditionally Secure Signature Schemes},
-  booktitle = {Advances in Cryptology — EUROCRYPT 2002},
+  booktitle = {Advances in Cryptology Â— EUROCRYPT 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Knudsen, Lars},
@@ -6250,8 +6328,8 @@
   pages = {67-83},
   note = {10.1007/978-3-642-03317-9_5},
   abstract = {We revisit the rate-1 blockcipher based hash functions as first studied
-	by Preneel, Govaerts and Vandewalle (Crypto’93) and later extensively
-	analysed by Black, Rogaway and Shrimpton (Crypto’02). We analyse
+	by Preneel, Govaerts and Vandewalle (CryptoÂ’93) and later extensively
+	analysed by Black, Rogaway and Shrimpton (CryptoÂ’02). We analyse
 	a further generalization where any pre- and postprocessing is considered.
 	This leads to a clearer understanding of the current classification
 	of rate-1 blockcipher based schemes as introduced by Preneel et al.
@@ -6259,7 +6337,7 @@
 	chopped, overloaded and supercharged compression functions. In the
 	latter category we propose two compression functions based on a single
 	call to a blockcipher whose collision resistance exceeds the birthday
-	bound on the cipher’s blocklength.},
+	bound on the cipherÂ’s blocklength.},
   affiliation = {LACAL, EPFL Switzerland},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Stam (2009) - Blockcipher-Based Hashing Revisited.pdf:PDF},
   owner = {huelsing},
@@ -6268,7 +6346,7 @@
 }
 
 @ARTICLE{Steinwandt2008,
-  author = {Rainer Steinwandt and Viktória I. Villányi},
+  author = {Rainer Steinwandt and ViktÃ³ria I. VillÃ¡nyi},
   title = {A one-time signature using run-length encoding},
   journal = {Information Processing Letters},
   year = {2008},
@@ -6295,7 +6373,7 @@
   author = {Suzuki, Kazuhiro and Tonien, Dongvu and Kurosawa, Kaoru and Toyota,
 	Koji},
   title = {Birthday Paradox for Multi-collisions},
-  booktitle = {Information Security and Cryptology – ICISC 2006},
+  booktitle = {Information Security and Cryptology Â– ICISC 2006},
   publisher = {Springer Berlin / Heidelberg},
   year = {2006},
   editor = {Rhee, Min and Lee, Byoungcheon},
@@ -6307,11 +6385,11 @@
 	H:D ?R with |R|=n, it has been believed that we can find an s-collision
 	by hashing Q=n ( s?????1)/ s times. We first show that this probability
 	is at most 1/s! which is very small for large s. We next show that
-	by hashing (s!)1/ s ×Q times, an s-collision is found with probability
+	by hashing (s!)1/ s Ã—Q times, an s-collision is found with probability
 	approximately 0.5 for sufficiently large n. Note that if s=2, it
 	coincides with the usual birthday paradox. Hence it is a generalization
 	of the birthday paradox to multi-collisions.},
-  affiliation = {Venture Business Laboratory, Ibaraki University, 4–12–1 Nakanarusawa,
+  affiliation = {Venture Business Laboratory, Ibaraki University, 4Â–12Â–1 Nakanarusawa,
 	Hitachi, Ibaraki, 316-8511 Japan},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Suzuki (2006) - Birthday Paradox for Multi-collisions.pdf:PDF},
   owner = {huelsing},
@@ -6451,7 +6529,7 @@
 @INCOLLECTION{springerlink:10.1007/3-540-45708-9_19,
   author = {Wagner, David},
   title = {A Generalized Birthday Problem},
-  booktitle = {Advances in Cryptology — CRYPTO 2002},
+  booktitle = {Advances in Cryptology Â— CRYPTO 2002},
   publisher = {Springer Berlin / Heidelberg},
   year = {2002},
   editor = {Yung, Moti},
@@ -6590,15 +6668,15 @@
 	information kept on-card. Since this does not take much more time
 	than the I/O needed to transmit the public key to a reader, we can
 	avoid holding the entire public key in the limited memory of a smart
-	card. We show that this to be a gain for multivariate PKC’s with
+	card. We show that this to be a gain for multivariate PKCÂ’s with
 	relatively few terms per central equation. The literature is not
 	rich in this kind of detailed description of an implementation of
-	a signature scheme — capable of fast on-card public key generation,
+	a signature scheme Â— capable of fast on-card public key generation,
 	on a low-cost smart card without a co-processor, and at NESSIE-approved
 	security levels. We look into other theory issues like safeguarding
 	against side-channel attacks, and using unusual techniques for linear
 	algebra under serious space restrictions, which may help implementations
-	of other multivariate PKC’s such as SFLASH. Keywords: Multivariate
+	of other multivariate PKCÂ’s such as SFLASH. Keywords: Multivariate
 	public-key cryptosystem, finite field, smart card, 8051.},
   affiliation = {Mathematics Department, Tamkang University, Tamsui Taiwan},
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Yang (2004) - TTS_ High-Speed Signatures on a Low-Cost Smart Card.pdf:PDF},

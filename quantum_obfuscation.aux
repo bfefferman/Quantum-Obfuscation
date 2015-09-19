@@ -18,84 +18,118 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \bibstyle{plainnat}
 \@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{3}{section.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Background}{3}{subsection.1.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Summary of results}{3}{subsection.1.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Quantum black-box obfuscation}{3}{subsubsection.1.2.1}}
+\citation{ABFGSS15}
+\citation{BJ15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.1}Background}{4}{subsection.1.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {1.2}Summary of results}{4}{subsection.1.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Quantum encryption}{4}{subsubsection.1.2.1}}
 \citation{ccreference}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}Quantum indistinguishability obfuscation}{4}{subsubsection.1.2.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{4}{section.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Notation etc.}{4}{subsection.2.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Probabilistic and quantum algorithms}{4}{subsection.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}Quantum black-box obfuscation}{5}{subsubsection.1.2.2}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3}Quantum indistinguishability obfuscation}{5}{subsubsection.1.2.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{5}{section.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Notation etc.}{5}{subsection.2.1}}
 \citation{ccreference}
+\citation{BJ15}
+\citation{ABFGSS15}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Probabilistic and quantum algorithms}{6}{subsection.2.2}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Quantum encryption}{6}{section.3}}
+\newlabel{sec:encryption}{{3}{6}{Quantum encryption}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Quantum-secure pseudorandomness}{6}{subsection.3.1}}
+\newlabel{sec:pseudo}{{3.1}{6}{Quantum-secure pseudorandomness}{subsection.3.1}{}}
 \citation{HILL99}
 \citation{GGM86}
 \citation{Zhandry2012}
+\newlabel{def:quantum-secure-owf}{{1}{7}{}{definition.1}{}}
+\newlabel{def:quantum-secure-prf}{{2}{7}{}{definition.2}{}}
+\newlabel{thm:qOWF-implies-qPRF}{{1}{7}{}{theorem.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Symmetric-key encryption of quantum states}{7}{subsection.3.2}}
+\newlabel{sec:scheme}{{3.2}{7}{Symmetric-key encryption of quantum states}{subsection.3.2}{}}
+\newlabel{eq:quantum-one-time-pad}{{3.1}{7}{Symmetric-key encryption of quantum states}{equation.3.1}{}}
+\newlabel{def:encryption-scheme}{{3}{7}{}{definition.3}{}}
+\citation{ABFGSS15}
 \citation{ABGFSS15}
-\citation{BJ15}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Quantum encryption}{5}{section.3}}
-\newlabel{sec:encryption}{{3}{5}{Quantum encryption}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Quantum-secure pseudorandomness}{5}{subsection.3.1}}
-\newlabel{def:quantum-secure-owf}{{1}{5}{}{definition.1}{}}
-\newlabel{def:quantum-secure-prf}{{2}{5}{}{definition.2}{}}
-\newlabel{thm:qOWF-implies-qPRF}{{1}{5}{}{theorem.1}{}}
-\citation{ABGFSS15}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Symmetric-key encryption of quantum states}{6}{subsection.3.2}}
-\newlabel{eq:quantum-one-time-pad}{{3.1}{6}{Symmetric-key encryption of quantum states}{equation.3.1}{}}
-\newlabel{def:encryption-scheme}{{3}{6}{}{definition.3}{}}
-\newlabel{def:IND}{{4}{6}{}{definition.4}{}}
-\citation{ABGFSS15}
-\newlabel{thm:IND-CCA1}{{2}{7}{}{theorem.2}{}}
-\newlabel{thm:qOWF-implies-qSKE}{{3}{7}{}{theorem.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4}Quantum black-box obfuscation}{7}{section.4}}
-\newlabel{sec:black-box}{{4}{7}{Quantum black-box obfuscation}{section.4}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Definitions}{7}{subsection.4.1}}
-\newlabel{blackbox}{{7}{8}{}{definition.7}{}}
+\newlabel{def:IND}{{4}{8}{}{definition.4}{}}
+\newlabel{thm:IND-CCA1}{{2}{8}{}{theorem.2}{}}
 \citation{BGIRSVY12}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Applications}{9}{subsection.4.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Quantum-secure one-way functions}{9}{subsubsection.4.2.1}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}CPA-secure private-key quantum encryption}{10}{subsubsection.4.2.2}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Public-key encryption from private-key encryption}{10}{subsubsection.4.2.3}}
-\newlabel{prop:PKE}{{3}{10}{}{prop.3}{}}
+\newlabel{thm:qOWF-implies-qSKE}{{3}{9}{}{theorem.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Quantum black-box obfuscation}{9}{section.4}}
+\newlabel{sec:black-box}{{4}{9}{Quantum black-box obfuscation}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Definitions}{9}{subsection.4.1}}
+\newlabel{sec:vbb-definitions}{{4.1}{9}{Definitions}{subsection.4.1}{}}
+\newlabel{def:vbb-obfuscator}{{5}{9}{}{definition.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Applications}{10}{subsection.4.2}}
+\newlabel{sec:vbb-applications}{{4.2}{10}{Applications}{subsection.4.2}{}}
+\citation{BGIRSVY12}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Quantum-secure one-way functions}{11}{subsubsection.4.2.1}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}CPA-secure private-key quantum encryption}{11}{subsubsection.4.2.2}}
+\newlabel{prop:PKE-from-SKE}{{2}{11}{}{prop.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.3}Public-key encryption from private-key encryption}{12}{subsubsection.4.2.3}}
+\newlabel{prop:PKE}{{3}{12}{}{prop.3}{}}
 \citation{ABGFSS15}
 \citation{BJ15}
 \citation{ABGFSS15}
 \citation{ABGFSS15,BJ15}
 \citation{BJ15}
 \citation{BJ15}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Quantum fully homomorphic encryption}{11}{subsubsection.4.2.4}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.4}Quantum fully homomorphic encryption}{13}{subsubsection.4.2.4}}
+\newlabel{prop:QFHE}{{4}{13}{}{prop.4}{}}
 \citation{BJ15}
+\citation{Wie1983}
+\citation{Aar2009,AC2012,BBBW83,FGHLS12,MS2010}
+\citation{Wie1983}
+\citation{MS2010}
+\citation{Aar2009}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Public-key quantum money}{14}{subsubsection.4.2.5}}
+\@writefile{toc}{\contentsline {paragraph}{Quantum money.}{14}{section*.2}}
+\citation{Aar2009}
+\citation{AC2012}
 \citation{BGIRSVY12}
-\newlabel{prop:QFHE}{{4}{12}{}{prop.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.5}Quantum money}{12}{subsubsection.4.2.5}}
+\@writefile{toc}{\contentsline {paragraph}{Public-key money from circuit obfuscation.}{15}{section*.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Impossibility results}{15}{subsection.4.3}}
+\newlabel{vbb:impossibility}{{4.3}{15}{Impossibility results}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Impossibility of two-circuit obfuscation}{15}{subsubsection.4.3.1}}
+\newlabel{sec-twocircuit}{{4.3.1}{15}{Impossibility of two-circuit obfuscation}{subsubsection.4.3.1}{}}
 \citation{BBBV}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Impossibility results}{13}{subsection.4.3}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Impossibility of two-circuit obfuscation}{13}{subsubsection.4.3.1}}
-\newlabel{eq:pair-impossible}{{4.1}{13}{Impossibility of two-circuit obfuscation}{equation.4.1}{}}
-\newlabel{eqn1}{{4.3}{13}{Impossibility of two-circuit obfuscation}{equation.4.3}{}}
-\newlabel{eqn2}{{4.4}{14}{Impossibility of two-circuit obfuscation}{equation.4.4}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{14}{subsubsection.4.3.2}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{14}{section.5}}
-\newlabel{sec:indistinguishability}{{5}{14}{Quantum indistinguishability obfuscation}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Definitions}{14}{subsection.5.1}}
-\newlabel{def:indistinguishability}{{8}{14}{}{definition.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Applications}{15}{subsection.5.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{15}{subsection.5.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{17}{subsection.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{18}{section.6}}
-\@writefile{toc}{\contentsline {section}{\numberline {7}[OLD NOTES]}{20}{section.7}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Preliminaries}{20}{subsection.7.1}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Black-box Quantum circuit obfuscation}{21}{subsection.7.2}}
-\newlabel{def:black-box}{{13}{22}{}{definition.13}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Best-possible}{22}{subsection.7.3}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Indistinguishability}{23}{subsection.7.4}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Relationships between the definitions}{23}{subsection.7.5}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Example: Clifford circuits}{24}{subsection.7.6}}
+\newlabel{eq:pair-impossible}{{4.1}{16}{Impossibility of two-circuit obfuscation}{equation.4.1}{}}
+\newlabel{eqn1}{{4.3}{16}{Impossibility of two-circuit obfuscation}{equation.4.3}{}}
+\newlabel{eqn2}{{4.4}{16}{Impossibility of two-circuit obfuscation}{equation.4.4}{}}
+\citation{BGIRSVY12}
+\citation{BGIRSVY12}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{17}{subsubsection.4.3.2}}
+\newlabel{blackboxclone}{{6}{17}{}{definition.6}{}}
+\newlabel{lemma-circuitdistribution}{{6}{17}{}{theorem.6}{}}
+\citation{BGIRSVY12}
+\newlabel{hybrid-lemma}{{7}{18}{}{theorem.7}{}}
+\newlabel{eqn1}{{4.3.2}{19}{Impossibility of obfuscation for cloneable outputs}{Item.31}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{19}{section.5}}
+\newlabel{sec:indistinguishability}{{5}{19}{Quantum indistinguishability obfuscation}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Definitions}{19}{subsection.5.1}}
+\newlabel{def:indistinguishability}{{8}{19}{}{definition.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Applications}{20}{subsection.5.2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{21}{subsection.5.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{22}{subsection.5.4}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{23}{section.6}}
 \bibdata{QuantumCrypto}
-\bibcite{ABGFSS15}{{1}{}{{Alagic et~al.}}{{Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner, and StJules}}}
-\bibcite{BGIRSVY12}{{2}{2012}{{Barak et~al.}}{{Barak, Goldreich, Impagliazzo, Rudich, Sahai, Vadhan, and Yang}}}
-\bibcite{BBBV}{{3}{1997}{{Bennett et~al.}}{{Bennett, Bernstein, Brassard, and Vazirani}}}
-\@writefile{toc}{\contentsline {paragraph}{Why is this uninteresting}{26}{section*.2}}
-\bibcite{BJ15}{{4}{2015.}{{Broadbent and Jeffery}}{{}}}
-\bibcite{GGM86}{{5}{1986}{{Goldreich et~al.}}{{Goldreich, Goldwasser, and Micali}}}
-\bibcite{HILL99}{{6}{1999}{{H{\r a}stad et~al.}}{{H{\r a}stad, Impagliazzo, Levin, and Luby}}}
-\bibcite{Zhandry2012}{{7}{2012}{{Zhandry}}{{}}}
+\bibcite{Aar2009}{{1}{2009}{{Aaronson}}{{}}}
+\bibcite{AC2012}{{2}{2012}{{Aaronson and Christiano}}{{}}}
+\bibcite{ABFGSS15}{{3}{}{{Alagic et~al.}}{{Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner, and StJules}}}
+\bibcite{BGIRSVY12}{{4}{2012}{{Barak et~al.}}{{Barak, Goldreich, Impagliazzo, Rudich, Sahai, Vadhan, and Yang}}}
+\bibcite{BBBV}{{5}{1997}{{Bennett et~al.}}{{Bennett, Bernstein, Brassard, and Vazirani}}}
+\bibcite{BBBW83}{{6}{1983}{{Bennett et~al.}}{{Bennett, Brassard, Breidbart, and Wiesner}}}
+\bibcite{BJ15}{{7}{2015.}{{Broadbent and Jeffery}}{{}}}
+\bibcite{FGHLS12}{{8}{2012}{{Farhi et~al.}}{{Farhi, Gosset, Hassidim, Lutomirski, and Shor}}}
+\bibcite{GGM86}{{9}{1986}{{Goldreich et~al.}}{{Goldreich, Goldwasser, and Micali}}}
+\bibcite{HILL99}{{10}{1999}{{H{\r a}stad et~al.}}{{H{\r a}stad, Impagliazzo, Levin, and Luby}}}
+\bibcite{MS2010}{{11}{2010}{{Mosca and Stebila}}{{}}}
+\bibcite{Wie1983}{{12}{1983}{{Wiesner}}{{}}}
+\bibcite{Zhandry2012}{{13}{2012}{{Zhandry}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Old VBB definitions}{26}{appendix.A}}
+\@writefile{toc}{\contentsline {section}{\numberline {B}[OLD NOTES]}{27}{appendix.B}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Preliminaries}{27}{subsection.B.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.2}Black-box Quantum circuit obfuscation}{28}{subsection.B.2}}
+\newlabel{def:black-box}{{15}{29}{}{definition.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.3}Best-possible}{29}{subsection.B.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.4}Indistinguishability}{30}{subsection.B.4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.5}Relationships between the definitions}{30}{subsection.B.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {B.6}Example: Clifford circuits}{31}{subsection.B.6}}
+\@writefile{toc}{\contentsline {paragraph}{Why is this uninteresting}{33}{section*.5}}
