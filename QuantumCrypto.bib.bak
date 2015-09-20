@@ -40,7 +40,7 @@
   timestamp = {2010.07.19}
 }
 
-@INPROCEEDINGS{Aar2009,
+@INPROCEEDINGS{Aar09,
   author = {Aaronson, Scott},
   title = {Quantum copy-protection and quantum money},
   booktitle = {Computational Complexity, 2009. CCC'09. 24th Annual IEEE Conference
@@ -52,7 +52,18 @@
   timestamp = {2015.06.05}
 }
 
-@INPROCEEDINGS{AC2012,
+@MISC{Aar05,
+  author = {Scott Aaronson},
+  title = {Ten Semi-Grand Challenges for Quantum Computing Theory},
+  howpublished = {http://www.scottaaronson.com/writings/qchallenge.html},
+  month = {July},
+  year = {2005},
+  note = {Retrieved 09/15},
+  owner = {Gorjan},
+  timestamp = {2015.09.20}
+}
+
+@INPROCEEDINGS{AC12,
   author = {Aaronson, Scott and Christiano, Paul},
   title = {Quantum money from hidden subspaces},
   booktitle = {Proceedings of the forty-fourth annual ACM symposium on Theory of
@@ -208,6 +219,7 @@
 	and Christian Schaffner and Michael StJules},
   title = {Computational security for quantum encryption},
   journal = {To appear.},
+  year = {2015},
   owner = {Gorjan},
   timestamp = {2015.09.12}
 }
@@ -408,6 +420,25 @@
   url = {http://dx.doi.org/10.1007/978-3-642-29011-4_42}
 }
 
+@INCOLLECTION{BGKPS14,
+  author = {Barak, Boaz and Garg, Sanjam and Kalai, Yael Tauman and Paneth, Omer
+	and Sahai, Amit},
+  title = {Protecting Obfuscation against Algebraic Attacks},
+  booktitle = {Advances in Cryptology – EUROCRYPT 2014},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Nguyen, PhongQ. and Oswald, Elisabeth},
+  volume = {8441},
+  series = {Lecture Notes in Computer Science},
+  pages = {221-238},
+  doi = {10.1007/978-3-642-55220-5_13},
+  isbn = {978-3-642-55219-9},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-642-55220-5_13}
+}
+
 @ARTICLE{BGIRSVY12,
   author = {Barak, Boaz and Goldreich, Oded and Impagliazzo, Russell and Rudich,
 	Steven and Sahai, Amit and Vadhan, Salil and Yang, Ke},
@@ -430,6 +461,23 @@
   numpages = {48},
   publisher = {ACM},
   url = {http://doi.acm.org/10.1145/2160158.2160159}
+}
+
+@INPROCEEDINGS{BGIRSVY01,
+  author = {Barak, Boaz and Goldreich, Oded and Impagliazzo, Russell and Rudich,
+	Steven and Sahai, Amit and Vadhan, Salil P. and Yang, Ke},
+  title = {On the (Im)Possibility of Obfuscating Programs},
+  booktitle = {Proceedings of the 21st Annual International Cryptology Conference
+	on Advances in Cryptology},
+  year = {2001},
+  series = {CRYPTO '01},
+  pages = {1--18},
+  address = {London, UK, UK},
+  publisher = {Springer-Verlag},
+  acmid = {704152},
+  isbn = {3-540-42456-3},
+  numpages = {18},
+  url = {http://dl.acm.org/citation.cfm?id=646766.704152}
 }
 
 @INPROCEEDINGS{BCG+2002,
@@ -1183,6 +1231,26 @@
   timestamp = {2011.04.28}
 }
 
+@INCOLLECTION{BCCGKPR14,
+  author = {Bitansky, Nir and Canetti, Ran and Cohn, Henry and Goldwasser, Shafi
+	and Kalai, Yael Tauman and Paneth, Omer and Rosen, Alon},
+  title = {The Impossibility of Obfuscation with Auxiliary Input or a Universal
+	Simulator},
+  booktitle = {Advances in Cryptology CRYPTO 2014},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Garay, JuanA. and Gennaro, Rosario},
+  volume = {8617},
+  series = {Lecture Notes in Computer Science},
+  pages = {71-89},
+  doi = {10.1007/978-3-662-44381-1_5},
+  isbn = {978-3-662-44380-4},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-662-44381-1_5}
+}
+
 @INCOLLECTION{Bloemer2003,
   author = {Blömer, Johannes and Seifert, Jean-Pierre},
   title = {{Fault Based Cryptanalysis of the Advanced Encryption Standard ({AES})}},
@@ -1513,6 +1581,25 @@
   timestamp = {2015.09.12}
 }
 
+@INCOLLECTION{BZ14,
+  author = {Boneh, Dan and Zhandry, Mark},
+  title = {Multiparty Key Exchange, Efficient Traitor Tracing, and More from
+	Indistinguishability Obfuscation},
+  booktitle = {Advances in Cryptology – CRYPTO 2014},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Garay, JuanA. and Gennaro, Rosario},
+  volume = {8616},
+  series = {Lecture Notes in Computer Science},
+  pages = {480-499},
+  doi = {10.1007/978-3-662-44371-2_27},
+  isbn = {978-3-662-44370-5},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-662-44371-2_27}
+}
+
 @MISC{Boneh2013,
   author = {Dan Boneh and Mark Zhandry},
   title = {{Secure Signatures and Chosen Ciphertext Security in a Post-Quantum
@@ -1601,6 +1688,25 @@
   owner = {albraodb},
   publisher = {APS},
   timestamp = {2015.06.05}
+}
+
+@INCOLLECTION{BR14,
+  author = {Brakerski, Zvika and Rothblum, GuyN.},
+  title = {Virtual Black-Box Obfuscation for All Circuits via Generic Graded
+	Encoding},
+  booktitle = {Theory of Cryptography},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Lindell, Yehuda},
+  volume = {8349},
+  series = {Lecture Notes in Computer Science},
+  pages = {1-25},
+  doi = {10.1007/978-3-642-54242-8_1},
+  isbn = {978-3-642-54241-1},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-642-54242-8_1}
 }
 
 @MISC{amplitude,
@@ -1947,6 +2053,26 @@
   file = {:C\:\\Users\\huelsing\\Documents\\Literatur\\Canetti (2000) - Universally composable security - A new paradigm for cryptographic Protocols.pdf:PDF},
   owner = {huelsing},
   timestamp = {2011.05.30}
+}
+
+@INCOLLECTION{CD08,
+  author = {Canetti, Ran and Dakdouk, RonnyRamzi},
+  title = {Obfuscating Point Functions with Multibit Output},
+  booktitle = {Advances in Cryptology – EUROCRYPT 2008},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2008},
+  editor = {Smart, Nigel},
+  volume = {4965},
+  series = {Lecture Notes in Computer Science},
+  pages = {489-508},
+  doi = {10.1007/978-3-540-78967-3_28},
+  isbn = {978-3-540-78966-6},
+  keywords = {obfuscation; composable obfuscation; multibit point function obfuscation;
+	digital locker; point function obfuscation},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-540-78967-3_28}
 }
 
 @INCOLLECTION{cane1999adap,
@@ -2804,7 +2930,7 @@
   url = {http://dblp.uni-trier.de/db/journals/tit/tit56.html#DesrosiersD10}
 }
 
-@ARTICLE{hellman1976new,
+@ARTICLE{DH76,
   author = {Diffie, Whitfield and Hellman, Martin E.},
   title = {New directions in cryptography},
   journal = {IEEE transactions on Information Theory},
@@ -3365,6 +3491,25 @@
 	encryption;multilinear maps;obfuscation}
 }
 
+@INCOLLECTION{GGHW14,
+  author = {Garg, Sanjam and Gentry, Craig and Halevi, Shai and Wichs, Daniel},
+  title = {On the Implausibility of Differing-Inputs Obfuscation and Extractable
+	Witness Encryption with Auxiliary Input},
+  booktitle = {Advances in Cryptology – CRYPTO 2014},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Garay, JuanA. and Gennaro, Rosario},
+  volume = {8616},
+  series = {Lecture Notes in Computer Science},
+  pages = {518-535},
+  doi = {10.1007/978-3-662-44371-2_29},
+  isbn = {978-3-662-44370-5},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-662-44371-2_29}
+}
+
 @INPROCEEDINGS{GGSW13,
   author = {Garg, Sanjam and Gentry, Craig and Sahai, Amit and Waters, Brent},
   title = {Witness Encryption and Its Applications},
@@ -3572,6 +3717,22 @@
   location = {Seattle, Washington, USA},
   numpages = {8},
   url = {http://doi.acm.org/10.1145/73007.73010}
+}
+
+@INPROCEEDINGS{GK05,
+  author = {Goldwasser, S. and Kalai, Y.T.},
+  title = {On the impossibility of obfuscation with auxiliary input},
+  booktitle = {Foundations of Computer Science, 2005. FOCS 2005. 46th Annual IEEE
+	Symposium on},
+  year = {2005},
+  pages = {553-562},
+  month = {Oct},
+  doi = {10.1109/SFCS.2005.60},
+  keywords = {programming theory;additional a priori information;complexity assumption;contrived
+	function class;independent auxiliary input;obfuscate point function;obfuscated
+	circuit;obfuscation impossibility;obfuscation notion;point function
+	class;principle general purpose obfuscator;Boolean functions;Circuits;Context
+	modeling;History;Polynomials;Protocols;Security}
 }
 
 @INPROCEEDINGS{Goldwasser2003,
@@ -4120,6 +4281,25 @@
 	and BB-Signatures},
   timestamp = {2010.11.26},
   url = {http://dx.doi.org/10.1007/978-3-540-85174-5_2}
+}
+
+@INCOLLECTION{HSW14,
+  author = {Hohenberger, Susan and Sahai, Amit and Waters, Brent},
+  title = {Replacing a Random Oracle: Full Domain Hash from Indistinguishability
+	Obfuscation},
+  booktitle = {Advances in Cryptology EUROCRYPT 2014},
+  publisher = {Springer Berlin Heidelberg},
+  year = {2014},
+  editor = {Nguyen, PhongQ. and Oswald, Elisabeth},
+  volume = {8441},
+  series = {Lecture Notes in Computer Science},
+  pages = {201-220},
+  doi = {10.1007/978-3-642-55220-5_12},
+  isbn = {978-3-642-55219-9},
+  language = {English},
+  owner = {Gorjan},
+  timestamp = {2015.09.20},
+  url = {http://dx.doi.org/10.1007/978-3-642-55220-5_12}
 }
 
 @INCOLLECTION{Hohenberger09,
@@ -5587,7 +5767,7 @@
   url = {http://tuprints.ulb.tu-darmstadt.de/785/}
 }
 
-@ARTICLE{MS2010,
+@ARTICLE{MS10,
   author = {Mosca, Michele and Stebila, Douglas},
   title = {Quantum coins},
   journal = {Error-Correcting Codes, Finite Geometries and Cryptography},
@@ -6241,6 +6421,25 @@
   url = {http://dx.doi.org/10.1145/100216.100269}
 }
 
+@INPROCEEDINGS{SW14,
+  author = {Sahai, Amit and Waters, Brent},
+  title = {How to Use Indistinguishability Obfuscation: Deniable Encryption,
+	and More},
+  booktitle = {Proceedings of the 46th Annual ACM Symposium on Theory of Computing},
+  year = {2014},
+  series = {STOC '14},
+  pages = {475--484},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {2591825},
+  doi = {10.1145/2591796.2591825},
+  isbn = {978-1-4503-2710-7},
+  keywords = {encryption, obfuscation},
+  location = {New York, New York},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/2591796.2591825}
+}
+
 @INCOLLECTION{springerlink:10.1007/3-540-39568-7_5,
   author = {Shamir, Adi},
   title = {Identity-Based Cryptosystems and Signature Schemes},
@@ -6645,6 +6844,25 @@
   owner = {Gorjan},
   timestamp = {2015.09.12},
   url = {http://doi.acm.org/10.1145/380752.380759}
+}
+
+@INPROCEEDINGS{Wee05,
+  author = {Wee, Hoeteck},
+  title = {On Obfuscating Point Functions},
+  booktitle = {Proceedings of the Thirty-seventh Annual ACM Symposium on Theory
+	of Computing},
+  year = {2005},
+  series = {STOC '05},
+  pages = {523--532},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {1060669},
+  doi = {10.1145/1060590.1060669},
+  isbn = {1-58113-960-8},
+  keywords = {obfuscation},
+  location = {Baltimore, MD, USA},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/1060590.1060669}
 }
 
 @ARTICLE{Wie1983,

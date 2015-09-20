@@ -1,28 +1,50 @@
-\begin{thebibliography}{17}
+\begin{thebibliography}{30}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Aaronson(2009)]{Aar2009}
+\bibitem[Aaronson(2005)]{Aar05}
+Scott Aaronson.
+\newblock Ten semi-grand challenges for quantum computing theory.
+\newblock http://www.scottaaronson.com/writings/qchallenge.html, July 2005.
+\newblock Retrieved 09/15.
+
+\bibitem[Aaronson(2009)]{Aar09}
 Scott Aaronson.
 \newblock Quantum copy-protection and quantum money.
 \newblock In \emph{Computational Complexity, 2009. CCC'09. 24th Annual IEEE
   Conference on}, pages 229--242. IEEE, 2009.
 
-\bibitem[Aaronson and Christiano(2012)]{AC2012}
+\bibitem[Aaronson and Christiano(2012)]{AC12}
 Scott Aaronson and Paul Christiano.
 \newblock Quantum money from hidden subspaces.
 \newblock In \emph{Proceedings of the forty-fourth annual ACM symposium on
   Theory of computing}, pages 41--60. ACM, 2012.
 
-\bibitem[Alagic et~al.()Alagic, Broadbent, Fefferman, Gagliardoni, Schaffner,
-  and StJules]{ABFGSS15}
+\bibitem[Alagic et~al.(2014)Alagic, Jeffery, and Jordan]{ASS14}
+Gorjan Alagic, Stacey Jeffery, and Stephen Jordan.
+\newblock Circuit obfuscation using braids.
+\newblock In \emph{Proceedings of TQC 2014}, volume~27, pages 141--160, 2014.
+
+\bibitem[Alagic et~al.(2015)Alagic, Broadbent, Fefferman, Gagliardoni,
+  Schaffner, and StJules]{ABFGSS15}
 Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
   Schaffner, and Michael StJules.
 \newblock Computational security for quantum encryption.
-\newblock \emph{To appear.}
+\newblock \emph{To appear.}, 2015.
+
+\bibitem[Barak et~al.(2001)Barak, Goldreich, Impagliazzo, Rudich, Sahai,
+  Vadhan, and Yang]{BGIRSVY01}
+Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
+  Salil~P. Vadhan, and Ke~Yang.
+\newblock On the (im)possibility of obfuscating programs.
+\newblock In \emph{Proceedings of the 21st Annual International Cryptology
+  Conference on Advances in Cryptology}, CRYPTO '01, pages 1--18, London, UK,
+  UK, 2001. Springer-Verlag.
+\newblock ISBN 3-540-42456-3.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=646766.704152}.
 
 \bibitem[Barak et~al.(2012)Barak, Goldreich, Impagliazzo, Rudich, Sahai,
   Vadhan, and Yang]{BGIRSVY12}
@@ -33,6 +55,16 @@ Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
 \newblock ISSN 0004-5411.
 \newblock \doi{10.1145/2160158.2160159}.
 \newblock URL \url{http://doi.acm.org/10.1145/2160158.2160159}.
+
+\bibitem[Barak et~al.(2014)Barak, Garg, Kalai, Paneth, and Sahai]{BGKPS14}
+Boaz Barak, Sanjam Garg, Yael~Tauman Kalai, Omer Paneth, and Amit Sahai.
+\newblock Protecting obfuscation against algebraic attacks.
+\newblock In PhongQ. Nguyen and Elisabeth Oswald, editors, \emph{Advances in
+  Cryptology – EUROCRYPT 2014}, volume 8441 of \emph{Lecture Notes in
+  Computer Science}, pages 221--238. Springer Berlin Heidelberg, 2014.
+\newblock ISBN 978-3-642-55219-9.
+\newblock \doi{10.1007/978-3-642-55220-5_13}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-55220-5_13}.
 
 \bibitem[Bennett et~al.(1997)Bennett, Bernstein, Brassard, and Vazirani]{BBBV}
 Charles~H. Bennett, Ethan Bernstein, Gilles Brassard, and Umesh~V. Vazirani.
@@ -50,11 +82,62 @@ CharlesH. Bennett, Gilles Brassard, Seth Breidbart, and Stephen Wiesner.
 \newblock \doi{10.1007/978-1-4757-0602-4_26}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-1-4757-0602-4_26}.
 
+\bibitem[Bitansky et~al.(2014)Bitansky, Canetti, Cohn, Goldwasser, Kalai,
+  Paneth, and Rosen]{BCCGKPR14}
+Nir Bitansky, Ran Canetti, Henry Cohn, Shafi Goldwasser, Yael~Tauman Kalai,
+  Omer Paneth, and Alon Rosen.
+\newblock The impossibility of obfuscation with auxiliary input or a universal
+  simulator.
+\newblock In JuanA. Garay and Rosario Gennaro, editors, \emph{Advances in
+  Cryptology CRYPTO 2014}, volume 8617 of \emph{Lecture Notes in Computer
+  Science}, pages 71--89. Springer Berlin Heidelberg, 2014.
+\newblock ISBN 978-3-662-44380-4.
+\newblock \doi{10.1007/978-3-662-44381-1_5}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44381-1_5}.
+
+\bibitem[Boneh and Zhandry(2014)]{BZ14}
+Dan Boneh and Mark Zhandry.
+\newblock Multiparty key exchange, efficient traitor tracing, and more from
+  indistinguishability obfuscation.
+\newblock In JuanA. Garay and Rosario Gennaro, editors, \emph{Advances in
+  Cryptology – CRYPTO 2014}, volume 8616 of \emph{Lecture Notes in Computer
+  Science}, pages 480--499. Springer Berlin Heidelberg, 2014.
+\newblock ISBN 978-3-662-44370-5.
+\newblock \doi{10.1007/978-3-662-44371-2_27}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44371-2_27}.
+
+\bibitem[Brakerski and Rothblum(2014)]{BR14}
+Zvika Brakerski and GuyN. Rothblum.
+\newblock Virtual black-box obfuscation for all circuits via generic graded
+  encoding.
+\newblock In Yehuda Lindell, editor, \emph{Theory of Cryptography}, volume 8349
+  of \emph{Lecture Notes in Computer Science}, pages 1--25. Springer Berlin
+  Heidelberg, 2014.
+\newblock ISBN 978-3-642-54241-1.
+\newblock \doi{10.1007/978-3-642-54242-8_1}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-54242-8_1}.
+
 \bibitem[Broadbent and Jeffery(2015.)]{BJ15}
 Anne Broadbent and Stacey Jeffery.
 \newblock {Quantum homomorphic encryption for circuits of low {$T$}-gate
   complexity}.
 \newblock \emph{Crypto 2015 (to appear)}, December 2015.
+
+\bibitem[Canetti and Dakdouk(2008)]{CD08}
+Ran Canetti and RonnyRamzi Dakdouk.
+\newblock Obfuscating point functions with multibit output.
+\newblock In Nigel Smart, editor, \emph{Advances in Cryptology – EUROCRYPT
+  2008}, volume 4965 of \emph{Lecture Notes in Computer Science}, pages
+  489--508. Springer Berlin Heidelberg, 2008.
+\newblock ISBN 978-3-540-78966-6.
+\newblock \doi{10.1007/978-3-540-78967-3_28}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-78967-3_28}.
+
+\bibitem[Diffie and Hellman(1976)]{DH76}
+Whitfield Diffie and Martin~E. Hellman.
+\newblock New directions in cryptography.
+\newblock \emph{IEEE transactions on Information Theory}, 22\penalty0
+  (6):\penalty0 644--654, 1976.
 
 \bibitem[Farhi et~al.(2012)Farhi, Gosset, Hassidim, Lutomirski, and
   Shor]{FGHLS12}
@@ -87,12 +170,30 @@ Sanjam Garg, Craig Gentry, Amit Sahai, and Brent Waters.
 \newblock \doi{10.1145/2488608.2488667}.
 \newblock URL \url{http://doi.acm.org/10.1145/2488608.2488667}.
 
+\bibitem[Garg et~al.(2014)Garg, Gentry, Halevi, and Wichs]{GGHW14}
+Sanjam Garg, Craig Gentry, Shai Halevi, and Daniel Wichs.
+\newblock On the implausibility of differing-inputs obfuscation and extractable
+  witness encryption with auxiliary input.
+\newblock In JuanA. Garay and Rosario Gennaro, editors, \emph{Advances in
+  Cryptology – CRYPTO 2014}, volume 8616 of \emph{Lecture Notes in Computer
+  Science}, pages 518--535. Springer Berlin Heidelberg, 2014.
+\newblock ISBN 978-3-662-44370-5.
+\newblock \doi{10.1007/978-3-662-44371-2_29}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44371-2_29}.
+
 \bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
 Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
 \newblock How to construct random functions.
 \newblock \emph{Journal of the ACM}, 33\penalty0 (4):\penalty0 792--807, 1986.
 \newblock ISSN 0004-5411.
 \newblock \doi{http://doi.acm.org/10.1145/6490.6503}.
+
+\bibitem[Goldwasser and Kalai(2005)]{GK05}
+S.~Goldwasser and Y.T. Kalai.
+\newblock On the impossibility of obfuscation with auxiliary input.
+\newblock In \emph{Foundations of Computer Science, 2005. FOCS 2005. 46th
+  Annual IEEE Symposium on}, pages 553--562, Oct 2005.
+\newblock \doi{10.1109/SFCS.2005.60}.
 
 \bibitem[Goldwasser and Rothblum(2007)]{GR07}
 Shafi Goldwasser and GuyN. Rothblum.
@@ -113,7 +214,18 @@ Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
 \newblock \doi{http://dx.doi.org/10.1137/S0097539793244708}.
 \newblock URL \url{http://dx.doi.org/10.1137/S0097539793244708}.
 
-\bibitem[Mosca and Stebila(2010)]{MS2010}
+\bibitem[Hohenberger et~al.(2014)Hohenberger, Sahai, and Waters]{HSW14}
+Susan Hohenberger, Amit Sahai, and Brent Waters.
+\newblock Replacing a random oracle: Full domain hash from indistinguishability
+  obfuscation.
+\newblock In PhongQ. Nguyen and Elisabeth Oswald, editors, \emph{Advances in
+  Cryptology EUROCRYPT 2014}, volume 8441 of \emph{Lecture Notes in Computer
+  Science}, pages 201--220. Springer Berlin Heidelberg, 2014.
+\newblock ISBN 978-3-642-55219-9.
+\newblock \doi{10.1007/978-3-642-55220-5_12}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-55220-5_12}.
+
+\bibitem[Mosca and Stebila(2010)]{MS10}
 Michele Mosca and Douglas Stebila.
 \newblock Quantum coins.
 \newblock \emph{Error-Correcting Codes, Finite Geometries and Cryptography},
@@ -128,6 +240,15 @@ Amit Sahai and Brent Waters.
 \newblock ISBN 978-1-4503-2710-7.
 \newblock \doi{10.1145/2591796.2591825}.
 \newblock URL \url{http://doi.acm.org/10.1145/2591796.2591825}.
+
+\bibitem[Wee(2005)]{Wee05}
+Hoeteck Wee.
+\newblock On obfuscating point functions.
+\newblock In \emph{Proceedings of the Thirty-seventh Annual ACM Symposium on
+  Theory of Computing}, STOC '05, pages 523--532, New York, NY, USA, 2005. ACM.
+\newblock ISBN 1-58113-960-8.
+\newblock \doi{10.1145/1060590.1060669}.
+\newblock URL \url{http://doi.acm.org/10.1145/1060590.1060669}.
 
 \bibitem[Wiesner(1983)]{Wie1983}
 Stephen Wiesner.
