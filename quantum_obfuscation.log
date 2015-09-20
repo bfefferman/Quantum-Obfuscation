@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  20 SEP 2015 15:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  20 SEP 2015 18:10
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
 bfuscation/quantum_obfuscation.tex
@@ -962,50 +962,35 @@ File: ueus.fd 2013/01/14 v3.01 Euler Script
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-eus.cfg"
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 ) [6]
-[7] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-euf.cfg"
+[7] [8] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-euf.cfg"
 File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
 
 )
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 240.
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 247.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\dstroke\udsrom.fd"
 File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
 )
 
-Package natbib Warning: Citation `ccreference' on page 8 undefined on input lin
-e 246.
-
-[8]
-
 Package natbib Warning: Citation `ccreference' on page 9 undefined on input lin
-e 252.
+e 265.
 
 [9]
+
+Package natbib Warning: Citation `ccreference' on page 10 undefined on input li
+ne 271.
+
+[10]
 LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 305.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 324.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [10] [11]
+ [11] [12]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 362.
-
-Underfull \hbox (badness 10000) in paragraph at lines 372--373
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 374--375
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 389--390
-
- []
-
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 381.
 
 Underfull \hbox (badness 10000) in paragraph at lines 391--392
 
@@ -1016,13 +1001,34 @@ Underfull \hbox (badness 10000) in paragraph at lines 393--394
 
  []
 
-[13] [14] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 507--508
+[13]
+Underfull \hbox (badness 10000) in paragraph at lines 408--409
 
  []
 
-<xymatrix 5x3 520> [16] <xymatrix 6x3 672> [17] [18] [19] [20] [21] [22]
-[23] [24] [25] [26] [27] (quantum_obfuscation.bbl
+
+Underfull \hbox (badness 10000) in paragraph at lines 410--411
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 412--413
+
+ []
+
+[14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 526--527
+
+ []
+
+<xymatrix 5x3 520> [17] <xymatrix 6x3 672> [18] [19] [20] [21] [22] [23]
+[24] [25] [26]
+Overfull \hbox (2.21042pt too wide) in paragraph at lines 939--940
+[]\OT1/ppl/m/n/10 (-20) can you achieve single-copy vbb ob-fus-ca-tion with qua
+n-tum states? What about information-
+ []
+
+(quantum_obfuscation.bbl
 Underfull \hbox (badness 4686) in paragraph at lines 9--13
 []\OT1/ppl/m/n/10 (+20) Scott Aaron-son.  Ten semi-grand chal-lenges for quan-t
 um com-put-ing the-ory.
@@ -1045,17 +1051,17 @@ Underfull \hbox (badness 2903) in paragraph at lines 70--75
 , and Umesh V. Vazi-rani.
  []
 
+[27]
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
-[28]
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
-
+ [28]
 Underfull \hbox (badness 2096) in paragraph at lines 185--190
 []\OT1/ppl/m/n/10 (+20) Oded Gol-dre-ich, Shafi Gold-wasser, and Sil-vio Mi-cal
 i.  How to con-struct ran-
@@ -1067,37 +1073,37 @@ Underfull \hbox (badness 4416) in paragraph at lines 185--190
 CM\OT1/ppl/m/n/10 (+20) , 33(4):792--807, 1986.  ISSN 0004-5411.
  []
 
-[29]) [30] [31] [32] [33] [34] [35] [36] [37]
+) [29] [30] [31] [32] [33] [34] [35] [36]
 
 Package natbib Warning: There were undefined citations.
 
-[38]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1295.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1295.
+[37]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1303.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1303.
  (quantum_obfuscation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1295.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1295.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1303.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1303.
 
 Package rerunfilecheck Info: File `quantum_obfuscation.out' has not changed.
-(rerunfilecheck)             Checksum: EDE01876802C894DCFD94E70C1005C99;3003.
+(rerunfilecheck)             Checksum: DB12A0EAF51377A8BD20B7ABF17B94B0;3201.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1295.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1303.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 102 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 21771 strings out of 493698
- 379808 string characters out of 3141991
- 531528 words of memory out of 3000000
- 24152 multiletter control sequences out of 15000+200000
+ 21774 strings out of 493698
+ 379861 string characters out of 3141991
+ 531532 words of memory out of 3000000
+ 24154 multiletter control sequences out of 15000+200000
  84815 words of font info for 350 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 55i,19n,54p,1637b,1085s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,19n,54p,1715b,1085s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.
 enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
@@ -1118,9 +1124,9 @@ ype1/urw/palatino/uplri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
 w/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/usy
 r.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on quantum_obfuscation.pdf (38 pages, 452927 bytes).
+Output written on quantum_obfuscation.pdf (37 pages, 459306 bytes).
 PDF statistics:
- 837 PDF objects out of 1000 (max. 8388607)
- 221 named destinations out of 1000 (max. 500000)
- 42821 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 843 PDF objects out of 1000 (max. 8388607)
+ 222 named destinations out of 1000 (max. 500000)
+ 42837 words of extra memory for PDF output out of 42996 (max. 10000000)
 

@@ -230,6 +230,25 @@ We remark that, in the classical setting, indistinguishability obfuscation also 
 \section{Preliminaries}
 %%%%%%%%%%%%%%%%%%%%%%
 
+In this section, we set down some notation and basic terminology which we will use throughout the rest of the paper.
+
+\subsection{Classical states, transformations, and algorithms}
+%%%%%%%%%%%%%%%%%%%%%%
+
+We will assume that the state space of a classical device can be identified with sets of bitstrings, i.e., $\{0, 1\}^n$ for some positive integer $n$. The notation $x \inrand \{0, 1\}$ will mean that $x$ is an $n$-bit string selected uniformly at random. The set of all bitstrings (of arbitrary length) will be denoted by $\{0, 1\}^*$. Classical functions will then be maps $f : \{0, 1\}^n \rightarrow \{0, 1\}^m$ from one set of bitstrings to another. We will also sometimes consider function families, written $f : \{0, 1\}^* \rightarrow \{0, 1\}^*$; these can be thought of as a function family $\{f_n\}_{n>0}$ indexed by the input size $n$. 
+
+A classical circuit $C$ is a sequence of local logical gates which, when composed together, implement some (in general irreversible) function $f_C: \{0, 1\}^n \rightarrow \{0, 1\}^m$. The input size of $C$ is $n$, the output size is $m$, and the number of gates is denoted $|C|$. A probabilistic circuit is also a circuit, but with the input bits divided into two registers: the input register, and the ``coin'' register. A normal execution of a probabilistic circuit involves initializing the coin register with completely random bits, and inserting the input into the input register. We will frequently discuss ensembles of circuits; these are infinite families $\{C_n\}_{n > 0}$ of circuits, one for each possible input size. We will also sometimes make use of \emph{distributions of circuit ensembles}; these are infinite families $\mathcal C = \{\mathcal C_n\}_{n > 0}$ where each $\mathcal C_n$ is a finite family of circuits of input size $n$, along with a probability distribution $P_{\mathcal C, n}$. For a bitstring $x$, the notation $\mathcal C(x)$ will then denote the probability distribution (on bitstrings) resulting from running a random circuit from the family $\mathcal C_{|x|}$, selected according the distribution $P_{\mathcal C, |x|}$.
+
+A deterministic classical algorithm $\algo A$ is simply a circuit ensemble. Running $\algo A$ on an input bitstring $x$ involves selecting the circuit with the appropriate input size, and executing it with input $x$. If the size of the circuits in the ensemble grows at most polynomially in the input size, we will say that $\algo A$ is efficient; more precisely, it is then a classical deterministic polynomial-time algorithm, or PT for short. A probabilistic algorithm $\algo A'$ is a circuit ensemble consisting of probabilistic circuits. Running $\algo A'$ on an input bitstring $x$ involves selecting the circuit with the appropriate input size, initializing its coin register with uniformly random bits, and then executing it with input $x$. If the circuits of $\algo A'$ have size polynomial in their input size, we say that $\algo A'$ is an efficient, or classical probabilistic polynomial-time algorithm (PPT for short.) We will frequently use PPTs to model the most general efficient classical algorithms.
+
+\subsection{Quantum states, transformations, and algorithms}
+%%%%%%%%%%%%%%%%%%%%%%
+
+For our purposes, the space of pure states of a quantum device will be identified with a Hilbert space $\mathcal H_n \cong (\C_2)^{\otimes n}$ of a finite number $n$ of qubits. We will identify some fixed orthonormal basis (called the \emph{computational basis}) of $\mathcal H_n$ with the corresponding space $\{0, 1\}^n$ of classical states, so that, e.g, $\ket{x}$ for $x \in \{0, 1\}^n$ denotes a basis element of $\mathcal H_n$. The space of density operators of $n$ qubits will be denoted $\states (\mathcal H_n)$; a state in this space can be interpreted as a probabilistic mixture of pure states, albeit not in a unique way. We will discuss valid quantum transformations of three types. The first are measurements, which act on a state $\ket{\psi} \in \mathcal H_n$ by projecting some or all of the qubits into the computational basis states $\{\ket{0}, \ket{1}\}$. The second are unitary maps, i.e., linear operators $U: \mathcal H_n \rightarrow \mathcal H_n$ satisfying $U^\dagger U = \one_n$, where $\one_n$ denotes the $n$-qubit identity operator. The third are CPTP maps, i.e., completely positive trace-preserving maps $\Phi : \states (\mathcal H_n) \rightarrow \states (\mathcal H_m)$. CPTP maps are the most general type of evolution, encompassing unitary maps, measurement, and discarding (or tracing out) of subspaces. For example, a unitary operator $U \in U(\mathcal H_n)$ can be expressed as a CPTP map by writing $\rho \mapsto U\rho U^\dagger$, where $\rho \in \states (\mathcal H_n)$.
+
+
+
+
 \subsection{Notation etc.}
 %%%%%%%%%%%%%%%%%%%%%%
 
@@ -917,22 +936,11 @@ The above amounts to a BQP$^\text{QSZK}$ protocol for a coQMA-hard problem, thus
 
 Open questions:
 \begin{itemize}
-\item can you achieve single-copy vbb obfuscation with quantum states?
+\item can you achieve single-copy vbb obfuscation with quantum states? What about information-theoretic? For classical or quantum computations?
+\item can we extend the proof to show that the state must be consumable? Is that easier in the quantum case?
 \item can you achieve quantum circuit-to-circuit obfuscation under the comp. indistinguishability condition?
 \item what happens if we think about obfuscating measurements, or CPTP circuits?
 \end{itemize}
-
-~\newpage~\newpage
-
-
-
-
-
-
-
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{QuantumCrypto}
