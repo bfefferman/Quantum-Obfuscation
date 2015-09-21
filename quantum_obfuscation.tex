@@ -879,32 +879,30 @@ Let $\mathcal C'$ and $\mathcal C''$ be uniform equivalent subfamilies of $\math
 \begin{proof}
 Let $\mathcal C'$ and $\mathcal C''$ be equivalent subfamilies of $\mathcal C$, and let $\mathcal L$ be a (quantum) learner whose output on $\mathcal C'$ is the ensemble $\mathcal L(\mathcal O (\mathcal C'))$. We define a (quantum) simulator by setting $\mathcal S = \mathcal L \circ \mathcal O$; its output on $\mathcal C''$ is then the ensemble $\mathcal L(\mathcal O(\mathcal C''))$. Since the ensembles $\mathcal O(\mathcal C')$ and $\mathcal O(\mathcal C'')$ are quantum indistinguishable, so are their images under $\mathcal L$.
 \end{proof}
-
 \subsection{Impossibility of statistical obfuscators}
 %%%%%%%%%%%%%%%%%%%%%%
 
 Recall the following computational problems and corresponding completeness results.
 
-\begin{definition} \emph{$(a, b)$-Identity Check.}\\
-\indent Input: an $n$-qubit quantum circuit $C$. \\
+\begin{definition} \emph{Identity Check.}\\
+\indent Input: an $n$-qubit quantum circuit $C$ and parameters $a$,$b$ so that $b-a\geq 1/poly(n)$. \\
 \indent Promise: $\min_\alpha \| U - e^{i \alpha} I \|$ is less than $a$ or greater than $b$.\\
 \indent Output: YES in the former case and NO in the latter.
 \end{definition}
 \begin{theorem} 
-The problem $(a, b)$-Identity Check is coQMA-complete if $b - a \leq 1/\emph{poly}(n)$. 
+The problem Identity Check is coQMA-complete \cite{JWB03}. 
 \end{theorem}
-\noindent \textbf{Note:} apparently Rosgen showed that distinguishing mixed state computations is QIP-complete. Does this mean that we could have even stronger impossibility results if we asked for obfuscators that could obfuscate quantum circuits that included measurements?
 
 Given an $m$-qubit state $\rho$, let $\tr_{(l, m)}[\rho]$ denote the result of tracing out qubits $l$ through $m$. Nothing is traced out if $l > m$.
 
-\begin{definition} \emph{$(a, b)$-Quantum State Distinguishability}\\
-\indent Input: $m$-qubit quantum circuits $C_1$ and $C_2$, positive integer $k \leq m$.\\
+\begin{definition} \emph{Quantum State Distinguishability}\\
+\indent Input: $m$-qubit quantum circuits $C_1$ and $C_2$, positive integer $k \leq m$ and parameters $a,b$ such that $a<b^2$.\\
 \indent Promise: let $\rho_i = \tr_{(k+1, m)}[C_i\ket{0^m}\bra{0^m}C_i^\dagger]$; then $\|\rho_0 - \rho_1\|_\emph{tr}$ is less than $a$ or greater than $b$.\\
 \indent Output: YES in the former case and NO in the latter.
 \end{definition}
 
 \begin{theorem}
-The problem $(a, b)$-Quantum State Distinguishability is QSZK-complete if $a < b^2$.
+The problem Quantum State Distinguishability is QSZK-complete \cite{Watrous02}.
 \end{theorem}
 
 We will in fact only need the containment part of the above theorem.
@@ -913,7 +911,7 @@ We will in fact only need the containment part of the above theorem.
 If there exists a polynomial-time indistinguishability quantum obfuscator, then coQMA is contained in QSZK.
 \end{theorem}
 \begin{proof}
-(parameters should be checked.) We will actually show coQMA $\subset$ BQP$^{\text{QSZK}}$; since BQP is contained in QSZK, the result will follow. Let $a$ and $b$ satisfy $b-a \leq 1 / \text{poly}(n)$. We will solve $(a, b)$-Identity Check using a subroutine that solves $(\alpha, \beta)$-quantum state distinguishability. 
+We will actually show coQMA $\subset$ BQP$^{\text{QSZK}}$; since BQP is contained in QSZK, the result will follow. Let $a$ and $b$ satisfy $b-a = 1 / \text{poly}(n)$. We will solve Identity Check using a subroutine that solves Quantum State Distinguishability. 
 
 Let $C$ be the input, i.e., a classical description of an $n$-qubit quantum circuit. Create an identity circuit $D$ with an equal number of inputs as $C$, and of equal length to $C$. Let $O_C$ be a circuit that initializes a register with the classical state $\ket{C}$ containing the classical description of $C$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|C|$. Likewise, let $O_D$ be be a circuit that initializes a register with the classical state $\ket{D}$ containing the classical description of $D$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|D| = |C|$. Note that, after tracing out ancillas, the outputs of these circuits are given by
 $$
@@ -929,6 +927,56 @@ Now apply the subroutine for solving quantum state distinguishability to the pai
 \end{itemize}
 The above amounts to a BQP$^\text{QSZK}$ protocol for a coQMA-hard problem, thus placing coQMA in QSZK.
 \end{proof}
+
+%\subsection{Impossibility of statistical obfuscators}
+%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Recall the following computational problems and corresponding completeness results.
+%
+%\begin{definition} \emph{$(a, b)$-Identity Check.}\\
+%\indent Input: an $n$-qubit quantum circuit $C$. \\
+%\indent Promise: $\min_\alpha \| U - e^{i \alpha} I \|$ is less than $a$ or greater than $b$.\\
+%\indent Output: YES in the former case and NO in the latter.
+%\end{definition}
+%\begin{theorem} 
+%The problem $(a, b)$-Identity Check is coQMA-complete if $b - a \leq 1/\emph{poly}(n)$. 
+%\end{theorem}
+%\noindent \textbf{Note:} apparently Rosgen showed that distinguishing mixed state computations is QIP-complete. Does this mean that we could have even stronger impossibility results if we asked for obfuscators that could obfuscate quantum circuits that included measurements?
+%
+%Given an $m$-qubit state $\rho$, let $\tr_{(l, m)}[\rho]$ denote the result of tracing out qubits $l$ through $m$. Nothing is traced out if $l > m$.
+%
+%\begin{definition} \emph{$(a, b)$-Quantum State Distinguishability}\\
+%\indent Input: $m$-qubit quantum circuits $C_1$ and $C_2$, positive integer $k \leq m$.\\
+%\indent Promise: let $\rho_i = \tr_{(k+1, m)}[C_i\ket{0^m}\bra{0^m}C_i^\dagger]$; then $\|\rho_0 - \rho_1\|_\emph{tr}$ is less than $a$ or greater than $b$.\\
+%\indent Output: YES in the former case and NO in the latter.
+%\end{definition}
+%
+%\begin{theorem}
+%The problem $(a, b)$-Quantum State Distinguishability is QSZK-complete if $a < b^2$.
+%\end{theorem}
+%
+%We will in fact only need the containment part of the above theorem.
+%
+%\begin{theorem}
+%If there exists a polynomial-time indistinguishability quantum obfuscator, then coQMA is contained in QSZK.
+%\end{theorem}
+%\begin{proof}
+%(parameters should be checked.) We will actually show coQMA $\subset$ BQP$^{\text{QSZK}}$; since BQP is contained in QSZK, the result will follow. Let $a$ and $b$ satisfy $b-a \leq 1 / \text{poly}(n)$. We will solve $(a, b)$-Identity Check using a subroutine that solves $(\alpha, \beta)$-quantum state distinguishability. 
+%
+%Let $C$ be the input, i.e., a classical description of an $n$-qubit quantum circuit. Create an identity circuit $D$ with an equal number of inputs as $C$, and of equal length to $C$. Let $O_C$ be a circuit that initializes a register with the classical state $\ket{C}$ containing the classical description of $C$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|C|$. Likewise, let $O_D$ be be a circuit that initializes a register with the classical state $\ket{D}$ containing the classical description of $D$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|D| = |C|$. Note that, after tracing out ancillas, the outputs of these circuits are given by
+%$$
+%\tr_\text{anc.} \bigl[O_C\ket{0}\bra{0}O_C^\dagger\bigr] = \mathcal O(C)
+%\qquad \text{and} \qquad
+%\tr_\text{anc.} \bigl[O_D\ket{0}\bra{0}O_D^\dagger\bigr] = \mathcal O(D)\,.
+%$$
+%Now apply the subroutine for solving quantum state distinguishability to the pair $(O_C, O_D)$. If it says ``close'', we output YES; otherwise we output NO. Let's show that this has solved $(a, b)$-identity-check. Note that the states $\mathcal O(C)$ and $\mathcal O(D)$ must have the same number of qubits, and denote that number by $m$.
+%\begin{itemize}
+%\item \textbf{completness.} In this case, the obfuscated states satisfy $\|\mathcal O(C) - \mathcal O(D)\|_\text{tr} \leq \alpha$.  By the definition of the induced trace norm, this implies that $\|\mathcal J_{\mathcal O(C)}^n - \mathcal J_{\mathcal O(D)}^n\|_\diamond \leq \alpha$. By functional equivalence for $C$ and $D$ and the triangle inequality, it follows that $\|U_C - U_D\|_\diamond = \|U_C - I\|_\diamond \leq \alpha$, as desired.
+%
+%\item \textbf{soundness.} In this case, the obfuscated states satisfy $\|\mathcal O(C) - \mathcal O(D)\|_\text{tr} \geq \beta$. We claim that this implies $\|U_C - U_D\|_\diamond > b$. Suppose this is not the case, i.e., that these operators are in fact close; then by the indistinguishability property, it would follow that $\mathcal O(C)$ and $\mathcal O(D)$ are close as well, a contradiction.
+%\end{itemize}
+%The above amounts to a BQP$^\text{QSZK}$ protocol for a coQMA-hard problem, thus placing coQMA in QSZK.
+%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Discussion}
