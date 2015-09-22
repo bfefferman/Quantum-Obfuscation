@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  22 SEP 2015 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  22 SEP 2015 09:47
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
-bfuscation/quantum_obfuscation.tex
+bfuscation/QIP_obfuscation.tex
 
 (C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-Ob
-fuscation/quantum_obfuscation.tex
+fuscation/QIP_obfuscation.tex
 LaTeX2e <2014/05/01>
 Babel <3.9l> and hyphenation patterns for 68 languages loaded.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -781,7 +781,7 @@ LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
 \c@definition=\count150
 \c@question=\count151
 
-(quantum_obfuscation.aux
+(QIP_obfuscation.aux
 
 LaTeX Warning: Label `eqn1' multiply defined.
 
@@ -879,7 +879,7 @@ LaTeX Info: Redefining \ref on input line 96.
 LaTeX Info: Redefining \pageref on input line 96.
 LaTeX Info: Redefining \nameref on input line 96.
 
-(quantum_obfuscation.out) (quantum_obfuscation.out)
+(QIP_obfuscation.out) (QIP_obfuscation.out)
 \@outlinefile=\write5
 LaTeX Info: Redefining \microtypecontext on input line 96.
 Package microtype Info: Generating PDF output.
@@ -919,123 +919,136 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 102.
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10> not available
 (Font)              Font shape `OT1/ppl/b/n' tried instead on input line 102.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 104.
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 104.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 109.
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 112.
  [1
 
 {C:/Users/Gorjan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 109.
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
 
-(quantum_obfuscation.toc
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--131
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+
+ []
+
+LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 134.
+
+Overfull \hbox (0.1068pt too wide) in paragraph at lines 146--147
+\OT1/ppl/m/n/10 (-20) symmetric-key en-cryp-tion scheme for quan-tum states, un
+-der the as-sump-tion that quantum-
+ []
+
+LaTeX Font Info:    Try loading font information for U+eus on input line 156.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
+File: ueus.fd 2013/01/14 v3.01 Euler Script
 )
-\tf@toc=\write6
- [2]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 130.
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-eus.cfg"
+File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
+) [3]
+[4] [5] [6]
+LaTeX Font Info:    Try loading font information for U+dsrom on input line 235.
+
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\dstroke\udsrom.fd"
+File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
+)
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 246.
 
 
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\omsppl.fd"
 File: omsppl.fd 
 )
-LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 130.
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 138.
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 142.
- [3]
-LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 147.
- [4]
-Overfull \hbox (0.1068pt too wide) in paragraph at lines 180--181
-\OT1/ppl/m/n/10 (-20) symmetric-key en-cryp-tion scheme for quan-tum states, un
--der the as-sump-tion that quantum-
- []
-
-[5]
-LaTeX Font Info:    Try loading font information for U+eus on input line 190.
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\amsfonts\ueus.fd"
-File: ueus.fd 2013/01/14 v3.01 Euler Script
-)
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-eus.cfg"
-File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
-) [6]
-[7] [8] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-euf.cfg"
-File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
-
-)
-LaTeX Font Info:    Try loading font information for U+dsrom on input line 247.
-
-
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\dstroke\udsrom.fd"
-File: Udsrom.fd 1995/08/01 v0.1 Double stroke roman font definitions
-)
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--250
-
- []
-
-[9] [10]
 LaTeX Font Info:    Font shape `OMS/ppl/m/it' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 306.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 246.
 Package microtype Info: Loading generic settings for font family
 (microtype)             `cmss' (encoding: OT1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
- [11] [12]
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\microtype\mt-euf.cfg"
+File: mt-euf.cfg 2006/07/03 v1.1 microtype config. file: AMS Euler Fraktur (RS)
+
+) [7]
+LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 275.
+
+[8]
 LaTeX Font Info:    Font shape `OT1/ppl/bx/it' in size <10> not available
-(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 363.
+(Font)              Font shape `OT1/ppl/b/it' tried instead on input line 303.
 
-Underfull \hbox (badness 10000) in paragraph at lines 373--374
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 375--376
+Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--391
+Underfull \hbox (badness 10000) in paragraph at lines 315--316
+
+ []
+
+[9]
+Underfull \hbox (badness 10000) in paragraph at lines 330--331
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 392--393
+Underfull \hbox (badness 10000) in paragraph at lines 332--333
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--395
+Underfull \hbox (badness 10000) in paragraph at lines 334--335
 
  []
 
-[13] [14] [15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 508--509
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <5> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 360.
+[10] [11] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 448--449
 
  []
 
-<xymatrix 5x3 520> [17] <xymatrix 6x3 672> [18] [19] [20] [21] [22] [23]
-[24] [25]
-Overfull \hbox (2.21042pt too wide) in paragraph at lines 969--970
+<xymatrix 5x3 520> [13] <xymatrix 6x3 672> [14] [15] [16] [17] [18] [19]
+
+LaTeX Warning: Reference `def:black-box' on page 20 undefined on input line 760
+.
+
+
+LaTeX Warning: Reference `def:black-box' on page 20 undefined on input line 770
+.
+
+[20] [21]
+Overfull \hbox (2.21042pt too wide) in paragraph at lines 859--860
 []\OT1/ppl/m/n/10 (-20) can you achieve single-copy vbb ob-fus-ca-tion with qua
 n-tum states? What about information-
  []
 
-(quantum_obfuscation.bbl
+(QIP_obfuscation.bbl
 Underfull \hbox (badness 4686) in paragraph at lines 9--13
 []\OT1/ppl/m/n/10 (+20) Scott Aaron-son.  Ten semi-grand chal-lenges for quan-t
 um com-put-ing the-ory.
  []
 
+[22]
 LaTeX Font Info:    Try loading font information for OT1+pcr on input line 47.
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
+ ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\psnfss\ot1pcr.fd"
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 Package microtype Info: Loading generic settings for font family
@@ -1045,7 +1058,7 @@ Package microtype Info: Loading generic settings for font family
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
- [26]
+
 Underfull \hbox (badness 2903) in paragraph at lines 70--75
 []\OT1/ppl/m/n/10 (+20) Charles H. Ben-nett, Ethan Bern-stein, Gilles Bras-sard
 , and Umesh V. Vazi-rani.
@@ -1054,52 +1067,51 @@ Underfull \hbox (badness 2903) in paragraph at lines 70--75
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
-Missing character: There is no â in font pplri7t!
-Missing character: There is no € in font pplri7t!
-Missing character: There is no “ in font pplri7t!
-[27]
+[23]
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
 
-Underfull \hbox (badness 2096) in paragraph at lines 185--190
+Underfull \hbox (badness 2096) in paragraph at lines 169--174
 []\OT1/ppl/m/n/10 (+20) Oded Gol-dre-ich, Shafi Gold-wasser, and Sil-vio Mi-cal
 i.  How to con-struct ran-
  []
 
 
-Underfull \hbox (badness 4416) in paragraph at lines 185--190
+Underfull \hbox (badness 4416) in paragraph at lines 169--174
 \OT1/ppl/m/n/10 (+20) dom func-tions.  \OT1/ppl/m/it/10 (+20) Jour-nal of the A
 CM\OT1/ppl/m/n/10 (+20) , 33(4):792--807, 1986.  ISSN 0004-5411.
  []
 
-[28]) [29] [30] [31] [32] [33] [34] [35] [36] [37]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1333.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1333.
- (quantum_obfuscation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1333.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1333.
+[24]) [25]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 869.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 869.
+ (QIP_obfuscation.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 869.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 869.
+Package rerunfilecheck Info: File `QIP_obfuscation.out' has not changed.
+(rerunfilecheck)             Checksum: 2BD62E842FF6382B724C5FE46BF9CA80;2015.
 
-Package rerunfilecheck Info: File `quantum_obfuscation.out' has not changed.
-(rerunfilecheck)             Checksum: 15CA6FA1F371FD33B9B4D46C8E623630;3050.
+
+LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1333.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 869.
  )
 (\end occurred inside a group at level 1)
 
 ### simple group (level 1) entered at line 102 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 21773 strings out of 493698
- 379864 string characters out of 3141991
- 528359 words of memory out of 3000000
- 24157 multiletter control sequences out of 15000+200000
- 84666 words of font info for 348 fonts, out of 3000000 for 9000
+ 21690 strings out of 493698
+ 378852 string characters out of 3141991
+ 528169 words of memory out of 3000000
+ 24134 multiletter control sequences out of 15000+200000
+ 84297 words of font info for 343 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 55i,19n,54p,1715b,1085s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,19n,54p,1633b,1085s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.
 enc}<C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pf
 b><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
@@ -1120,9 +1132,9 @@ ype1/urw/palatino/uplri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
 w/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/usy
 r.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on quantum_obfuscation.pdf (37 pages, 458109 bytes).
+Output written on QIP_obfuscation.pdf (25 pages, 377906 bytes).
 PDF statistics:
- 838 PDF objects out of 1000 (max. 8388607)
- 221 named destinations out of 1000 (max. 500000)
- 42821 words of extra memory for PDF output out of 42996 (max. 10000000)
+ 639 PDF objects out of 1000 (max. 8388607)
+ 171 named destinations out of 1000 (max. 500000)
+ 42709 words of extra memory for PDF output out of 42996 (max. 10000000)
 

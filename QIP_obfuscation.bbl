@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{29}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -123,22 +123,6 @@ Anne Broadbent and Stacey Jeffery.
   complexity}.
 \newblock \emph{Crypto 2015 (to appear)}, December 2015.
 
-\bibitem[Canetti and Dakdouk(2008)]{CD08}
-Ran Canetti and RonnyRamzi Dakdouk.
-\newblock Obfuscating point functions with multibit output.
-\newblock In Nigel Smart, editor, \emph{Advances in Cryptology – EUROCRYPT
-  2008}, volume 4965 of \emph{Lecture Notes in Computer Science}, pages
-  489--508. Springer Berlin Heidelberg, 2008.
-\newblock ISBN 978-3-540-78966-6.
-\newblock \doi{10.1007/978-3-540-78967-3_28}.
-\newblock URL \url{http://dx.doi.org/10.1007/978-3-540-78967-3_28}.
-
-\bibitem[Diffie and Hellman(1976)]{DH76}
-Whitfield Diffie and Martin~E. Hellman.
-\newblock New directions in cryptography.
-\newblock \emph{IEEE transactions on Information Theory}, 22\penalty0
-  (6):\penalty0 644--654, 1976.
-
 \bibitem[Farhi et~al.(2012)Farhi, Gosset, Hassidim, Lutomirski, and
   Shor]{FGHLS12}
 Edward Farhi, David Gosset, Avinatan Hassidim, Andrew Lutomirski, and Peter
@@ -188,13 +172,6 @@ Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
 \newblock ISSN 0004-5411.
 \newblock \doi{http://doi.acm.org/10.1145/6490.6503}.
 
-\bibitem[Goldwasser and Kalai(2005)]{GK05}
-S.~Goldwasser and Y.T. Kalai.
-\newblock On the impossibility of obfuscation with auxiliary input.
-\newblock In \emph{Foundations of Computer Science, 2005. FOCS 2005. 46th
-  Annual IEEE Symposium on}, pages 553--562, Oct 2005.
-\newblock \doi{10.1109/SFCS.2005.60}.
-
 \bibitem[Goldwasser and Rothblum(2007)]{GR07}
 Shafi Goldwasser and GuyN. Rothblum.
 \newblock On best-possible obfuscation.
@@ -236,6 +213,12 @@ Michele Mosca and Douglas Stebila.
 \newblock \emph{Error-Correcting Codes, Finite Geometries and Cryptography},
   523:\penalty0 35--47, 2010.
 
+\bibitem[Peikert(2015)]{Pei15}
+Chris Peikert.
+\newblock What does gchq ``cautionary tale'' mean for lattice cryptography?
+\newblock http://web.eecs.umich.edu/~cpeikert/soliloquy.html, June 2015.
+\newblock Retrieved 09/2015.
+
 \bibitem[Sahai and Waters(2014)]{SW14}
 Amit Sahai and Brent Waters.
 \newblock How to use indistinguishability obfuscation: Deniable encryption, and
@@ -255,15 +238,6 @@ John Watrous.
 \newblock ISBN 0-7695-1822-2.
 \newblock \doi{10.1109/SFCS.2002.1181970}.
 \newblock URL \url{http://dx.doi.org/10.1109/SFCS.2002.1181970}.
-
-\bibitem[Wee(2005)]{Wee05}
-Hoeteck Wee.
-\newblock On obfuscating point functions.
-\newblock In \emph{Proceedings of the Thirty-seventh Annual ACM Symposium on
-  Theory of Computing}, STOC '05, pages 523--532, New York, NY, USA, 2005. ACM.
-\newblock ISBN 1-58113-960-8.
-\newblock \doi{10.1145/1060590.1060669}.
-\newblock URL \url{http://doi.acm.org/10.1145/1060590.1060669}.
 
 \bibitem[Wiesner(1983)]{Wie1983}
 Stephen Wiesner.

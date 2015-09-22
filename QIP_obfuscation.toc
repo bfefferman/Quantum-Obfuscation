@@ -1,0 +1,42 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Background}{4}{subsection.1.1}
+\contentsline {subsubsection}{\numberline {1.1.1}Classical obfuscation}{4}{subsubsection.1.1.1}
+\contentsline {subsubsection}{\numberline {1.1.2}Quantum obfuscation}{5}{subsubsection.1.1.2}
+\contentsline {subsection}{\numberline {1.2}Summary of results}{5}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Quantum encryption}{5}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}Quantum black-box obfuscation}{6}{subsubsection.1.2.2}
+\contentsline {paragraph}{Definitions.}{6}{section*.2}
+\contentsline {paragraph}{Applications.}{6}{section*.3}
+\contentsline {paragraph}{Impossibility.}{7}{section*.4}
+\contentsline {subsubsection}{\numberline {1.2.3}Quantum indistinguishability obfuscation}{7}{subsubsection.1.2.3}
+\contentsline {section}{\numberline {2}Quantum encryption}{8}{section.2}
+\contentsline {subsection}{\numberline {2.1}Quantum-secure pseudorandomness}{8}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Symmetric-key encryption of quantum states}{9}{subsection.2.2}
+\contentsline {section}{\numberline {3}Quantum black-box obfuscation}{11}{section.3}
+\contentsline {subsection}{\numberline {3.1}Definitions}{11}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Applications}{12}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Quantum-secure one-way functions}{12}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}CPA-secure private-key quantum encryption}{13}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Public-key encryption from private-key encryption}{14}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Quantum fully homomorphic encryption}{15}{subsubsection.3.2.4}
+\contentsline {subsubsection}{\numberline {3.2.5}Public-key quantum money}{16}{subsubsection.3.2.5}
+\contentsline {paragraph}{Quantum money.}{16}{section*.5}
+\contentsline {paragraph}{Public-key money from circuit obfuscation.}{16}{section*.6}
+\contentsline {subsection}{\numberline {3.3}Impossibility results}{17}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Impossibility of two-circuit obfuscation}{17}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Impossibility of obfuscation for cloneable outputs}{18}{subsubsection.3.3.2}
+\contentsline {section}{\numberline {4}Quantum indistinguishability obfuscation}{21}{section.4}
+\contentsline {subsection}{\numberline {4.1}Definitions}{21}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Applications}{22}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Equivalence of indistinguishability and best-possible}{22}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Impossibility of statistical obfuscators}{24}{subsection.4.4}
+\contentsline {section}{\numberline {5}Discussion}{25}{section.5}
+\contentsline {section}{\numberline {A}Old VBB definitions}{28}{appendix.A}
+\contentsline {section}{\numberline {B}[OLD NOTES]}{29}{appendix.B}
+\contentsline {subsection}{\numberline {B.1}Preliminaries}{29}{subsection.B.1}
+\contentsline {subsection}{\numberline {B.2}Black-box Quantum circuit obfuscation}{31}{subsection.B.2}
+\contentsline {subsection}{\numberline {B.3}Best-possible}{31}{subsection.B.3}
+\contentsline {subsection}{\numberline {B.4}Indistinguishability}{32}{subsection.B.4}
+\contentsline {subsection}{\numberline {B.5}Relationships between the definitions}{33}{subsection.B.5}
+\contentsline {subsection}{\numberline {B.6}Example: Clifford circuits}{33}{subsection.B.6}
+\contentsline {paragraph}{Why is this uninteresting}{35}{section*.8}
