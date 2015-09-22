@@ -40,6 +40,21 @@
   timestamp = {2010.07.19}
 }
 
+@INPROCEEDINGS{Watrous02,
+  author = {John Watrous},
+  title = {Limits on the Power of Quantum Statistical Zero-Knowledge},
+  booktitle = {43rd Symposium on Foundations of Computer Science {(FOCS} 2002),
+	16-19 November 2002, Vancouver, BC, Canada, Proceedings},
+  year = {2002},
+  pages = {459},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl = {http://dblp.uni-trier.de/rec/bib/conf/focs/Watrous02},
+  crossref = {DBLP:conf/focs/2002},
+  doi = {10.1109/SFCS.2002.1181970},
+  timestamp = {Tue, 16 Dec 2014 09:57:23 +0100},
+  url = {http://dx.doi.org/10.1109/SFCS.2002.1181970}
+}
+
 @INPROCEEDINGS{Aar09,
   author = {Aaronson, Scott},
   title = {Quantum copy-protection and quantum money},
@@ -222,6 +237,17 @@
   year = {2015},
   owner = {Gorjan},
   timestamp = {2015.09.12}
+}
+
+@INPROCEEDINGS{ASS14,
+  author = {Gorjan Alagic and Stacey Jeffery and Stephen Jordan},
+  title = {Circuit obfuscation using braids},
+  booktitle = {Proceedings of TQC 2014},
+  year = {2014},
+  volume = {27},
+  pages = {141-160},
+  owner = {Gorjan},
+  timestamp = {2015.09.20}
 }
 
 @ARTICLE{ABB+2014,
@@ -3189,6 +3215,26 @@
   timestamp = {2015.06.15}
 }
 
+@INPROCEEDINGS{EHKS14,
+  author = {Eisentr\"{a}ger, Kirsten and Hallgren, Sean and Kitaev, Alexei and
+	Song, Fang},
+  title = {A Quantum Algorithm for Computing the Unit Group of an Arbitrary
+	Degree Number Field},
+  booktitle = {Proceedings of the 46th Annual ACM Symposium on Theory of Computing},
+  year = {2014},
+  series = {STOC '14},
+  pages = {293--302},
+  address = {New York, NY, USA},
+  publisher = {ACM},
+  acmid = {2591860},
+  doi = {10.1145/2591796.2591860},
+  isbn = {978-1-4503-2710-7},
+  keywords = {computational algebraic number theory, quantum algorithms, unit group},
+  location = {New York, New York},
+  numpages = {10},
+  url = {http://doi.acm.org/10.1145/2591796.2591860}
+}
+
 @TECHREPORT{ETSI2012,
   author = {{ETSI}},
   title = {{CMS} Advanced Electronic Signatures ({CAdES})},
@@ -4635,6 +4681,13 @@
   url = {http://dx.doi.org/10.1007/3-540-36563-X_21}
 }
 
+@INPROCEEDINGS{JWB03,
+  author = {Dominik Janzing and Pawel Wocjan and Thomas Beth},
+  title = {Non-Identity Check Is QMA-Complete},
+  booktitle = {International Journal of Quantum Information},
+  year = {2005}
+}
+
 @INCOLLECTION{springerlink:10.1007/3-540-45760-7_17,
   author = {Johnson, Robert and Molnar, David and Song, Dawn and Wagner, David},
   title = {Homomorphic Signature Schemes},
@@ -5902,6 +5955,17 @@
   url = {http://dx.doi.org/10.1007/978-3-642-14623-7_5}
 }
 
+@MISC{Pei15,
+  author = {Chris Peikert},
+  title = {What does GCHQ ``cautionary tale'' mean for lattice cryptography?},
+  howpublished = {http://web.eecs.umich.edu/~cpeikert/soliloquy.html},
+  month = {June},
+  year = {2015},
+  note = {Retrieved 09/2015},
+  owner = {Gorjan},
+  timestamp = {2015.09.22}
+}
+
 @INPROCEEDINGS{PW08,
   author = {Peikert, Chris and Waters, Brent},
   title = {Lossy Trapdoor Functions and Their Applications},
@@ -6751,17 +6815,6 @@
   timestamp = {2015.06.05}
 }
 
-@INCOLLECTION{Unr2010,
-  author = {Unruh, Dominique},
-  title = {Universally composable quantum multi-party computation},
-  booktitle = {Advances in Cryptology--EUROCRYPT 2010},
-  publisher = {Springer},
-  year = {2010},
-  pages = {486--505},
-  owner = {albraodb},
-  timestamp = {2015.06.15}
-}
-
 @INPROCEEDINGS{Unruh10,
   author = {Dominique Unruh},
   title = {Universally Composable Quantum Multi-party Computation},
@@ -6893,15 +6946,6 @@
   publisher = {Nature Publishing Group},
   timestamp = {2015.04.21},
   url = {http://dx.doi.org/10.1038/299802a0}
-}
-
-@ARTICLE{WZ1982,
-  author = {Wootters, William K and Zurek, Wojciech H},
-  title = {A single quantum cannot be cloned},
-  year = {1982},
-  owner = {albraodb},
-  publisher = {Nature Publishing Group},
-  timestamp = {2015.06.05}
 }
 
 @ARTICLE{sim3,
@@ -7041,5 +7085,29 @@
 @MISC{GM-Turing,
   owner = {albraodb},
   timestamp = {2015.06.08}
+}
+
+@PROCEEDINGS{DBLP:conf/focs/2002,
+  title = {43rd Symposium on Foundations of Computer Science {(FOCS} 2002),
+	16-19 November 2002, Vancouver, BC, Canada, Proceedings},
+  year = {2002},
+  publisher = {{IEEE} Computer Society},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl = {http://dblp.uni-trier.de/rec/bib/conf/focs/2002},
+  isbn = {0-7695-1822-2},
+  timestamp = {Mon, 15 Dec 2014 18:48:44 +0100},
+  url = {http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=8411}
+}
+
+@PROCEEDINGS{DBLP:conf/focs/2002,
+  title = {43rd Symposium on Foundations of Computer Science {(FOCS} 2002),
+	16-19 November 2002, Vancouver, BC, Canada, Proceedings},
+  year = {2002},
+  publisher = {{IEEE} Computer Society},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl = {http://dblp.uni-trier.de/rec/bib/conf/focs/2002},
+  isbn = {0-7695-1822-2},
+  timestamp = {Mon, 15 Dec 2014 18:48:44 +0100},
+  url = {http://ieeexplore.ieee.org/xpl/mostRecentIssue.jsp?punumber=8411}
 }
 
