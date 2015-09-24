@@ -1,4 +1,4 @@
-\documentclass[11pt]{article}
+\documentclass[11pt]{amsart}
 
 \input{Qcircuit}
 \usepackage{color}
@@ -15,6 +15,7 @@
 \usepackage{mathptmx}
 \usepackage{palatino}
 \usepackage{eucal}
+
 
 \hypersetup{pdfauthor={Gorjan Alagic}}
 
@@ -99,37 +100,40 @@
 \title{Quantum obfuscation}
 \author{Gorjan Alagic and Bill Fefferman}
 \maketitle
-\abstract{Encryption of data is fundamental to secure communication in the modern world. Beyond encryption of data lies \emph{obfuscation}, i.e., encryption of functionality. It has been known for some time that the most powerful classical obfuscation, so-called ``black-box obfuscation,'' is impossible. In this work, we initialize the rigorous study of obfuscating programs \emph{via quantum-mechanical means,} and prove quantum versions of several foundational results in obfuscation. 
+\begin{abstract}
+Encryption of data is fundamental to secure communication. Beyond encryption of data lies \emph{obfuscation}, i.e., encryption of functionality. It has been known for some time that the most powerful classical obfuscation, so-called ``black-box obfuscation,'' is impossible. In this work, we initialize the rigorous study of obfuscating programs \emph{via quantum-mechanical means,} and prove quantum versions of this and several other foundational results in obfuscation. 
 
-In its most powerful ``quantum black-box'' instantiation, a quantum obfuscator would turn a description of a quantum program $f$ into a quantum state $\rho_f$, such that anyone in possession of $\rho_f$ can repeatedly evaluate $f$ on inputs of their choice, but never learn \emph{anything else} about the original program. We formalize this notion of obfuscation, and prove an impossibility result: such obfuscation is only possible in a setting where the adversary never has access to multiple obfuscations (of either the same program, or of different programs.) Nonetheless, we show that even in this remaining setting, some applications of obfuscations remain possible. These include CPA-secure quantum encryption, quantum fully-homomorphic encryption, and quantum money. 
+In its most powerful ``quantum black-box'' instantiation, a quantum obfuscator would turn a description of a quantum program $f$ into a quantum state $\rho_f$, such that anyone in possession of $\rho_f$ can repeatedly evaluate $f$ on inputs of their choice, but never learn \emph{anything else} about the original program. We formalize this notion of obfuscation, and prove an impossibility result: such obfuscation is only possible in a setting where the adversary never has access to multiple obfuscations (of either the same program, or of different programs.) Nonetheless, we show that even in this remaining setting, some applications of obfuscations remain possible. These include CPA-secure encryption, fully-homomorphic encryption, and quantum money. 
 
 We also define quantum versions of indistinguishability obfuscation and best-possible obfuscation. We then show that these notions are equivalent, and that their perfect and statistical variants are impossible to achieve. The remaining (i.e., computational) variant would still have an application of interest: witness encryption for QMA.
+\end{abstract}
+
 
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection*{1. Introduction}\label{sec:intro}
+\section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\paragraph{Obfuscation.} Obfuscation is the ability to encrypt functionality, which is arguably the most powerful cryptographic ability that may yet be possible. It implies (with caveats) the ability to perform almost any other cryptographic task imaginable, including fully homomorphic encryption. A more mundane application is protecting intellectual property in software. In this setting, a developer wishes to publish their software without revealing any trade secrets. To this end, the software program is passed through an \emph{obfuscator}, i.e. an algorithm satisfying
+\subsection{Obfuscation.} Obfuscation is \emph{encryption of functionality}, and is arguably the most powerful cryptographic ability that may yet be possible. It implies (with some caveats) almost any other cryptographic construction imaginable. Outside theoretical cryptography, it would protect intellectual property in software and provide perfectly secure software patching. In all these applications, an \emph{obfuscator} is an efficient algorithm which rewrites programs such that
 \begin{enumerate}\label{def:obf-informal}
-\item \emph{functional equivalence:} does not change input/output functionality;
-\item \emph{polynomial slowdown:} maintains efficiency;
+\item \emph{functional equivalence:} input/output functionality does not change;
+\item \emph{polynomial slowdown:} efficiency is maintained;
 \item \emph{obfuscation:} the code of the output program is ``hard to understand.''
 \end{enumerate}
 The last condition can be formulated rigorously in a number of ways. The strongest is the so-called ``virtual black-box'' condition, which says that the obfuscated program is no more useful than an impenetrable box which simply accepts inputs and produces outputs. 
 
-\paragraph{Classical status.} The first major result in classical obfuscation was the 2001 proof by Barak et al. that virtual black-box obfuscation is impossible, and that many of the applications are impossible to achieve generically~\cite{BGIRSVY01, BGIRSVY12}. An important step in formulating alternative notions of obfuscation was taken by Goldwasser and Rothblum; they defined \emph{indistinguishability obfuscation} and \emph{best-possible obfuscation}~\cite{GR07}. Indistinguishability requires that functionally-equivalent circuits are mapped to indistinguishable distributions; best-possible requires that circuits are mapped to the ``least leaky'' functionally equivalent circuit. Both definitions have perfect, statistical, and computational variants. In~\cite{GR07} it was shown that the two definitions are equivalent, and that the perfect and statistical versions are impossible (unless the PH collapses)~\cite{GR07}. 
+\subsection{Classical status.} The first major result in classical obfuscation was the 2001 proof by Barak et al. that virtual black-box obfuscation is impossible, and that many of the applications are impossible to achieve generically~\cite{BGIRSVY01, BGIRSVY12}. An important step in formulating alternative notions of obfuscation was taken by Goldwasser and Rothblum; they defined \emph{indistinguishability obfuscation} and \emph{best-possible obfuscation}~\cite{GR07}. Indistinguishability requires that functionally-equivalent circuits are mapped to indistinguishable distributions; best-possible requires that circuits are mapped to the ``least leaky'' functionally equivalent circuit. Both definitions have perfect, statistical, and computational variants. In~\cite{GR07} it was shown that the two definitions are equivalent, and that the perfect and statistical versions are impossible (unless the PH collapses)~\cite{GR07}. 
 
 In 2013, in a breakthrough result, Garg et al. proposed a convincing candidate for the one remaining possibility: computational indistinguishability obfuscation. Their proposal was based on the hardness of a certain problem in mutlilinear maps~\cite{GGHRSW13}. It was accompanied by another breakthrough: a range of applications so wide, that it was suggested that indistinguishability obfuscation might become a ``'central hub' for cryptography''~\cite{SW14}. These two breakthroughs were followed by a flurry of new activity in the area, including several new proposals and applications~\cite{BGKPS14, BCCGKPR14, BZ14, BR14, GGHW14, HSW14}. Unfortunately, the quantum security of the underlying hardness assumptions has recently been put into doubt~\cite{Pei15}.
 
-\paragraph{Quantum status.} Quantum obfuscation is essentially an unexplored topic, and the present work appears to be the first rigorous treatment of the foundational questions. The question of whether quantum obfuscation is possible was posed as one of Scott Aaronson's ``semi-grand challenges'' for quantum computation~\cite{Aar05}. Since so little work on quantum obfuscation has appeared, we briefly discuss some related results. In~\cite{Aar09}, Aaronson proposed a \emph{complexity-theoretic no-cloning theorem}; he also claimed that an oracle exists relative to which ``software copy-protection'' is possible. Unfortunately, a full version of~\cite{Aar09} with proofs never appeared, although the complexity-theoretic no-cloning theorem was eventually proved in a paper on quantum money~\cite{AC12}. In related work, Mosca and Stebila proposed a black-box quantum money scheme, and suggested the possibility of using a quantum circuit obfuscator in place of the black box~\cite{MS10}. More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{ASS14}. The proposed obfuscator satisfies indistinguishability for a restricted set of circuit equivalences; its usefulness is unclear at this time.
+\subsection{Quantum status.} Quantum obfuscation is essentially an unexplored topic, and the present work appears to be the first rigorous treatment of the foundational questions. The question of whether quantum obfuscation is possible was posed as one of Scott Aaronson's ``semi-grand challenges'' for quantum computation~\cite{Aar05}. Since so little work on quantum obfuscation has appeared, we briefly discuss some related results. In~\cite{Aar09}, Aaronson proposed a \emph{complexity-theoretic no-cloning theorem}; he also claimed that an oracle exists relative to which ``software copy-protection'' is possible. Unfortunately, a full version of~\cite{Aar09} with proofs never appeared, although the complexity-theoretic no-cloning theorem was eventually proved in a paper on quantum money~\cite{AC12}. In related work, Mosca and Stebila proposed a black-box quantum money scheme, and suggested the possibility of using a quantum circuit obfuscator in place of the black box~\cite{MS10}. More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{ASS14}. The proposed obfuscator satisfies indistinguishability for a restricted set of circuit equivalences; its usefulness is unclear at this time.
 
 %%%%%%%%%%%%%%%%%%%%%%
-\subsection*{2. Our results}\label{sec:intro}
+\section{Our results}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%
 
 We now summarize our contributions; details are explained in the full technical version. In what follows, poly-time algorithms will be called PT, PPT, or QPT; these mean (respectively) classical deterministic, probabilistic, and quantum. For a quantum circuit $C$, the resulting unitary operator is $U_C$. Functions decaying faster than any inverse-polynomial are denoted $\negl(\cdot)$.
 
-\paragraph{Quantum black-box obfuscation.} 
+\subsection{Quantum black-box obfuscation.} 
 %%%%
 
 \begin{definition}\label{def:vbb-obfuscator}
@@ -166,7 +170,7 @@ In addition, we provide several applications of quantum black-box obfuscation, w
 \end{enumerate}
 \noindent We emphasize that applications 1 and 2 also work for achieving \emph{classical functionality} from a quantum obfuscator; however, they use quantum ciphertexts and quantum keys---another approach not considered before.
 
-\paragraph{Quantum indistinguishability obfuscation.}
+\subsection{Quantum indistinguishability obfuscation.}
 %%%%
 
 Following the classical approach of Goldwasser and Rothblum~\cite{GR07}, we define a version of \expref{Definition}{def:vbb-obfuscator} which guarantees indistinguishability of obfuscator outputs, by replacing condition (2.) with:
