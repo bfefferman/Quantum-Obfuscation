@@ -233,26 +233,15 @@ We remark that, in the classical setting, indistinguishability obfuscation also 
 
 In this section, we set down some notation and basic terminology which we will use throughout the rest of the paper.
 
-\subsection{Classical states, transformations, and algorithms}
-%%%%%%%%%%%%%%%%%%%%%%
-
 We will assume that the state space of a classical device can be identified with sets of bitstrings, i.e., $\{0, 1\}^n$ for some positive integer $n$. The notation $x \inrand \{0, 1\}$ will mean that $x$ is an $n$-bit string selected uniformly at random. The set of all bitstrings (of arbitrary length) will be denoted by $\{0, 1\}^*$. Classical functions will then be maps $f : \{0, 1\}^n \rightarrow \{0, 1\}^m$ from one set of bitstrings to another. We will also sometimes consider function families, written $f : \{0, 1\}^* \rightarrow \{0, 1\}^*$; these can be thought of as a function family $\{f_n\}_{n>0}$ indexed by the input size $n$. 
 
 A classical circuit $C$ is a sequence of local logical gates which, when composed together, implement some (in general irreversible) function $f_C: \{0, 1\}^n \rightarrow \{0, 1\}^m$. The input size of $C$ is $n$, the output size is $m$, and the number of gates is denoted $|C|$. A probabilistic circuit is also a circuit, but with the input bits divided into two registers: the input register, and the ``coin'' register. A normal execution of a probabilistic circuit involves initializing the coin register with completely random bits, and inserting the input into the input register. We will frequently discuss ensembles of circuits; these are infinite families $\{C_n\}_{n > 0}$ of circuits, one for each possible input size. We will also sometimes make use of \emph{distributions of circuit ensembles}; these are infinite families $\mathcal C = \{\mathcal C_n\}_{n > 0}$ where each $\mathcal C_n$ is a finite family of circuits of input size $n$, along with a probability distribution $P_{\mathcal C, n}$. For a bitstring $x$, the notation $\mathcal C(x)$ will then denote the probability distribution (on bitstrings) resulting from running a random circuit from the family $\mathcal C_{|x|}$, selected according the distribution $P_{\mathcal C, |x|}$.
 
 A deterministic classical algorithm $\algo A$ is simply a circuit ensemble. Running $\algo A$ on an input bitstring $x$ involves selecting the circuit with the appropriate input size, and executing it with input $x$. If the circuit ensemble is polynomial-time uniform (i.e., there exists a polynomial-time Turing machine that produces them), we will say that $\algo A$ is efficient; more precisely, it is then a classical deterministic polynomial-time algorithm, or PT for short. A probabilistic algorithm $\algo A'$ is an algorithm whose circuits are probabilistic. Running $\algo A'$ on an input bitstring $x$ involves selecting the circuit with the appropriate input size, initializing its coin register with uniformly random bits, and then executing it with input $x$. If the circuits of $\algo A'$ have size polynomial in their input size, we say that $\algo A'$ is an efficient, or classical probabilistic polynomial-time algorithm (PPT for short.) We will frequently use PPTs to model the most general efficient classical algorithms.
 
-\subsection{Quantum states, transformations, and algorithms}
-%%%%%%%%%%%%%%%%%%%%%%
-
 For our purposes, the space of pure states of a quantum device will be identified with a Hilbert space $\mathcal H_n \cong (\C_2)^{\otimes n}$ of a finite number $n$ of qubits. We will identify some fixed orthonormal basis (called the \emph{computational basis}) of $\mathcal H_n$ with the corresponding space $\{0, 1\}^n$ of classical states, so that, e.g, $\ket{x}$ for $x \in \{0, 1\}^n$ denotes a basis element of $\mathcal H_n$. The space of density operators of $n$ qubits will be denoted $\states (\mathcal H_n)$; a state in this space can be interpreted as a probabilistic mixture of pure states, albeit not in a unique way. We will discuss valid quantum transformations of three types. The first are measurements, which act on a state $\ket{\psi} \in \mathcal H_n$ by projecting some or all of the qubits into the computational basis states $\{\ket{0}, \ket{1}\}$. The second are unitary maps, i.e., linear operators $U: \mathcal H_n \rightarrow \mathcal H_n$ satisfying $U^\dagger U = \one_n$, where $\one_n$ denotes the $n$-qubit identity operator. The third are CPTP maps, i.e., completely positive trace-preserving maps $\Phi : \states (\mathcal H_n) \rightarrow \states (\mathcal H_m)$. CPTP maps are the most general type of evolution, encompassing unitary maps, measurement, and discarding (or tracing out) of subspaces. For example, a unitary operator $U \in U(\mathcal H_n)$ can be expressed as a CPTP map by writing $\rho \mapsto U\rho U^\dagger$, where $\rho \in \states (\mathcal H_n)$.
 
-A quantum circuit $C$ is a sequence of local unitary gates on a fixed number (say $n$) of qubits; these gates , when composed together, implement some unitary operator $U_C \in U(2^n)$. Definitions of circuit ensembles and distributions over circuit ensembles are defined precisely as in the classical case. A quantum algorithm $\mathcal A$ is a (classically-)polynomial-time uniform family of quantum circuits; algorithms can also include measurements and discarding (or tracing-out) of subsystems, so long as these also admit efficient classical descriptions. The input and output size of an quantum algorithm can vary, and will have to be deduced from context.\\ \\
-
-\noindent \ga{Bill, add any notations that need to be explained here:}
-\begin{itemize}
-\item quantum one-time pad and the $P_r \rho P_r^\dagger$ notation;
-\end{itemize}
+A quantum circuit $C$ is a sequence of local unitary gates on a fixed number (say $n$) of qubits; these gates , when composed together, implement some unitary operator $U_C \in U(2^n)$. Definitions of circuit ensembles and distributions over circuit ensembles are defined precisely as in the classical case. A quantum algorithm $\mathcal A$ is a (classically-)polynomial-time uniform family of quantum circuits; algorithms can also include measurements and discarding (or tracing-out) of subsystems, so long as these also admit efficient classical descriptions. The input and output size of an quantum algorithm can vary, and will have to be deduced from context.
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum encryption}\label{sec:encryption}
@@ -393,8 +382,6 @@ $$
 \noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}\\
 
 \noindent \ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}\\
-
-\noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}
 
 \subsection{Applications}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -542,14 +529,15 @@ Unfortunately, we will later show that obfuscation of quantum circuits in the fo
 \begin{conjecture}
 If quantum black-box obfuscators exist, then so do public-key quantum money schemes.
 \end{conjecture}
-If the relevant obfuscation is a consumable state, then this would result in a token scheme. If it can be reused to perform verification repeatedly\footnote{This might seem to contradict no-cloning, but it does not: it is conceivable that the state can be used as an input to a unitary circuit where the desired output register contains a classical string with very high probability; this string can then be measured, copied and the unitary reversed to (approximately) recover the state.}, then the result would be a bills scheme. We remark that, in any case, all of the public-key money states discussed above should be authenticated by the bank; otherwise a merchant would only know that he was handed \emph{some} pair (state, circuit) where the circuit executed on the state outputs ``accept''---a clearly inadequate state of affairs.
+If the relevant obfuscation is a consumable state, then this would result in a token scheme. If it can be reused to perform verification repeatedly\footnote{For example, if successful verification also outputs another state which is sufficiently close to the original state.}, then the result would be a bills scheme. We remark that, in any case, all of the public-key money states discussed above should be authenticated by the bank; otherwise a merchant would only know that he was handed \emph{some} pair (state, circuit) where the circuit executed on the state outputs ``accept''---a clearly inadequate state of affairs.
 
 \subsection{Impossibility results}\label{vbb:impossibility}
 %%%%%%%%%%%%%%%%%%%%%%
 
 \subsubsection{Impossibility of two-circuit obfuscation}\label{sec-twocircuit}
 %%%
-Barak et. al. \cite{BGIRSVY12} shows that black-box obfuscation is impossible by showing an explicit circuit family that cannot be black-box obfuscated.  Here we present a similar result for {\bf black-box quantum two-circuit obfuscation},  defined as in Definition \ref{def:vbb-obfuscator}  with the following strengthening of the virtual black-box condition:
+Barak et. al. \cite{BGIRSVY12} showed that black-box obfuscation is impossible by constructing an explicit circuit family that cannot be black-box obfuscated. 
+Here we present a similar result, showing that quantum black-box obfuscation is impossible in any setting where the adversary can gain access to two outputs of the obfuscator on \emph{different} inputs. We formalize this notion by defining a ``black-box two-circuit obfuscator,''  defined just as in Definition \ref{def:vbb-obfuscator} but with the following strengthening of the virtual black-box condition:
 \begin{enumerate}
 \setcounter{enumi}{2}
 \item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
@@ -557,12 +545,21 @@ $$
 \Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1) \otimes \mathcal O(C_2)) = 1] - \text{Pr}\bigl[\mathcal S^{U_{C_1}, U_{C_2}}\bigl(\ket{0}^{\otimes |C_1| + |C_2|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, \min\{|C_1|,|C_2|\})\,.
 $$
 \end{enumerate}
+
+We now show that there exists a family of circuits which is unobfuscatable under the above definition. We emphasize that our result holds even when the outputs of the obfuscator are quantum states, and even if these states are \emph{single-use only}, i.e., if the interpreter $\mathcal J$ irrevocably destroys the obfuscated state during use. 
+
+We first define a \emph{circuit-pair family} to be an ensemble of distributions over pairs of circuits. More precisely, if $\mathcal C$ is a circuit-pair family, then there exists a Turing machine M which, on input a positive integer parameter $n$ (in unary), outputs a classical description of a pair of circuits $(C_n, D_n)$ drawn at random from some distribution $\mathcal C_n$ on pairs of poly$(n)$-size circuits. If $M$ is polynomial-time, then we say that $\mathcal C$ is a \emph{poly-time circuit-pair family.}
+
+We also define a \emph{state-pair family} analogously. If $\mathcal C'$ is a state-pair family, then there exists a (not necessarily polynomial-time) quantum algorithm which, on input $n$ in unary, outputs a pair of density operators $(\rho_n, \sigma_n)$ drawn at random from some distribution $\mathcal C_n'$ on quantum states on poly$(n)$-many qubits. 
+
+With these definitions, we can now state our first impossibility result.
+
 \begin{theorem}
-There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no ensemble of distributions over pairs of quantum circuits is a two-circuit black-box obfuscation of this ensemble of distributions.
+There exists a poly-time quantum circuit-pair family $\mathcal C$ such that no state-pair family is a two-circuit black-box obfuscation of $\mathcal C$.
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
-We will show two-circuit impossibility for the following unitary operators. Here $a$ and $b$ are chosen uniformly at random from $\{0,1\}^n$.  The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ where $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one.
+The poly-time quantum circuit-pair family $\mathcal C$ consists of quantum circuits for implementing the following pairs of unitary operators. Each pair is parameterized by an input size $n$, as well as bitstrings $a, b$ chosen uniformly at random from $\{0, 1\}^n$.
 \begin{align}\label{eq:pair-impossible}
 U_{a, b} &: \ket{x,\, y} \longmapsto
 \begin{cases}
@@ -575,56 +572,36 @@ V_{a, b} &: \ket{C,\, z} \longmapsto
 \ket{C,\, z} &\text{ otherwise}.
 \end{cases}
 \end{align}
+The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ (i.e. of size equal to the number of qubits in the state $\algo O(C_{a, b})$). Here $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one. 
 
-Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable.  In practice we'll use the related circuit $D'_{a,b}$, which acts on three registers, an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state.  $D'_{a,b}$, given as input a quantum state $\rho$ on $m$ qubits, initializes the first $n$ bits of the work register to $|a\rangle$, runs $\mathcal{J}(\rho,|a\rangle)$, and if the output is $|b\rangle$, flips the contents of the output register.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $I_{2n}$.
+Note that both of these unitaries can be implemented by efficient quantum circuits. We choose some particular set of such circuits, and henceforth denote them by $C_{a,b}$ and $D_{a,b}$, respectively. The idea for the proof is as follows. Consider an adversary $\algo A$ which is ignorant of the randomly selected $a$ and $b$, and consider two scenarios: in the first, $\algo A$ is given access to \emph{any} pair of \emph{circuits} that implement $U_{a, b}$ and $V_{a, b}$; in the second, $\algo A$ only has oracle access to $U_{a, b}$ and $V_{a, b}$. The point is that, in the first case, $\algo A$ can execute $V_{a, b}$ on a circuit for $U_{a, b}$; provided that the latter is not too long, $\algo A$ will achieve something that is impossible to do with only black-box access. Specifically, it is only in the first case that $\algo A$ will be able to tell if the first circuit/oracle implements $U_{a, b}$, or if it has surreptitiously been replaced by the identity operator!
 
-Now we notice that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
-\begin{equation}\label{eqn1}\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{Id_{2n}, V_{a,b}}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n)\,.\end{equation}
-Where the probability is taken over choice of $a,b$ and the measurement outcome of the quantum algorithms.
- This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.  This is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}.
+Things are somewhat complicated by the fact that the obfuscator outputs states instead of circuits. We will need to enable $\algo A$ to execute these states on one another. It will thus be necessary to replace $D_{a, b}$ with a related circuit $D_{a, b}'$. Roughly speaking, this circuit will check if its input, when interpreted as a quantum advice state to the algorithm $\algo J$, maps the input $a$ to the output $b$. A precise description follows. First, $D_{a, b}'$ will have three registers: an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state. When given as input a quantum state $\rho$ on $m$ qubits, it will initialize the first $n$ bits of the work register to $|a\rangle$, then execute the appropriate unitary circuit of $\algo J$ on $\rho \otimes \ket{a}$. Finally, if the output register of the latter computation contains $\ket{b}$, $D_{a, b}'$ will flip the contents of the output register. We remark that, by a simple counting argument over circuits, this occurs for only an exponentially small fraction of possible input states $\rho$.
+
+Recall that the $2n$-qubit identity operator is denoted by $\one_{2n}$, and is implemented by the obvious circuit which we will denote by $I_{2n}$. We observe that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
+
+\begin{equation}\label{eqn11}
+\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, D_{a,b}'}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr]
+- \text{Pr}\bigl[\mathcal S^{Id_{2n}, D_{a,b}'}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr] \Bigr| 
+\leq \epsilon_1(n)\,.
+\end{equation}
+Here the probability is taken over the uniformly random choice of $a$ and $b$ as well as all of the measurement outcomes of $\algo S$. The above is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}. Indeed, given the definitions of $U_{a, b}$ and $D_{a, b}'$, it's clear that with only polynomial queries and no knowledge of $a$ or $b$, $\algo S$ is faced precisely with unstructured search for an exponentially small ``marked space.'' This marked space is only encountered if $\algo S$ correctly guesses $a$, or correctly guesses an obfuscation of a circuit that maps $a$ to $b$.
   
-However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply runs $\mathcal{J}(\mathcal{O}(D),\mathcal{O}(C))$ and measures the output register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $\algo A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(I_{2n})$, since the only way this happens is if $a=b$, which happens with negligible probability.  
-Thus there exists a negligible function $\epsilon_2$ so that:
-\begin{equation}\label{eqn2}\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D'_{a,b}),\mathcal{O}(I_{2n})) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D'_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n)\,.\end{equation}
+Now consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply executes the quantum algorithm $\mathcal{J}$ on their tensor product, accepting if and only if the outcome is $1$. Notice that this succeeds with constant probability $\alpha > 0$ if $C$ is functionally equivalent to $C_{a,b}$ and $D$ is functionally equivalent to $D_{a,b}'$. On the other hand, this same algorithm $\algo A$ accepts with at most negligible probability when $C$ is functionally equivalent to $I_{2n}$ (and $D$ is still functionally equivalent to $D_{a, b}'$); indeed, this only happens is if $a = b$. Thus there exists a negligible function $\epsilon_2$ so that:
 
-Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $(C_{a,b},D'_{a,b})$ with probability $1/2$ and probability $1/2$ outputting $(I_{2n},D'_{a,b})$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
+\begin{equation}\label{eqn2}
+\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D'_{a,b}),\mathcal{O}(I_{2n})) = 1\bigr]
+- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D'_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| 
+\geq \alpha-\epsilon_2(n)\,.
+\end{equation}
+
+To complete the proof, we explicitly define the poly-time circuit-pair family $\mathcal C$. The distribution $\mathcal C_n$ is generated by choosing $a, b$ uniformly at random from $\{0,1\}^n$, and then choosing a bit $r \in {0, 1}$ at random; if $r = 0$, we output the circuit pair $(C_{a,b}, D'_{a,b})$, and otherwise we output $(I_{2n}, D'_{a,b})$. For this distribution, equations \eqref{eqn11} and \eqref{eqn2} together show that no state-pair family is an obfuscation of $\mathcal C$.
 \end{proof}
-%%-------OLD--------
-%Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
-
-%\begin{enumerate}
-%\setcounter{enumi}{2}
-%\item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
-%$$
-%\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1) \otimes \mathcal O(C_2)) = 1] - \text{Pr}\bigl[\mathcal S^{U_{C_1}, U_{C_2}}\bigl(\ket{0}^{\otimes |C_1| + |C_2|}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, |C|)\,.
-%$$
-%\end{enumerate}
-%
-%\begin{theorem}
-%There exist pairs of unitaries $(U, V)$ such that no pair of quantum circuits is a two-circuit black-box obfuscation of $(U, V)$.
-%\end{theorem}
-%\begin{proof}
-%Let $(\mathcal O, \mathcal J)$ be an obfuscator. Choose a uniformly random $z \in \{0,1\}^n$. Define the following $(n+1)$-qubit unitaries:
-%$$
-%U_0 : \ket{x} \ket{y} \mapsto \ket{x} \ket{\delta_z(x) \oplus y}
-%\qquad \text{and} \qquad
-%U_1 : \ket{x} \ket{y} \mapsto \ket{x} \ket{y}\,,
-%$$
-%where $\delta_z : x \mapsto \delta_{xz}$ is the delta function at $z$. Using standard methods for building reversible circuits, we can specify a unitary poly$(n)$-length circuit $C_0$ that implements $U_0$. We also easily build a circuit $C_1$ which implements $U_1$ (i.e., the identity) such that $|C_0| = |C_1|$. We also define a circuit
-%$$
-%D_z : \ket{s} \ket{t} \mapsto \ket{s} \ket{f_z(s) \oplus t}
-%$$
-%on two registers: a register of size $m := |\mathcal O(C_0)| = |\mathcal O(C_1)|$, and a one-qubit register (as well as an ancilla we omit for simplicity.) The circuit $D_z$ initializes a portion of the ancilla to $\ket{z}\ket{0}$, and runs the interpreter circuit $J_{n+1, m}$ on $\ket{z}\ket{0}\ket{s}$. Finally, controlled by the second register of that computation, a CNOT is applied to $\ket{t}$. 
-%
-%We now describe the adversary $\mathcal A$, who will essentially run the second state it receives on the first one. More precisely, on input $\mathcal O(C_j) \otimes \mathcal O(D_z)$ where $j \in \{0, 1\}$, the adversary will run the interpreter circuit $J_{m+1, |\mathcal O(D_z)|}$ on the input state $\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out}$ with advice state $\mathcal O(D_z)$, and then measure the single-qubit ``out'' register. Prior to measurement, by the functional equivalence property of the obfuscator, the $m+1$-qubit output register of $J_{m+1, |\mathcal O(D_z)|}$ will be close (in trace distance) to the state $D_z(\mathcal O(C_j) \otimes \ket{0}\bra{0}_\text{out})$. Recall that $D_z$ uses its input (via the interpreter) as an advice state, runs it on $\ket{z}\ket{y}$, and then flips the ``out'' qubit iff the computation flipped $\ket{y}$. We conclude that the ``out'' qubit will be (nearly) in the state $\ket{j}$ at the end of the computation; this allows the adversary to detect if it was given the obfuscation of $C_0$ or the obfuscation of $C_1$.
-%
-%Now suppose $\mathcal S^{U_{C_j}, U_{D_z}}$ is a simulator with black-box access to the unitary applied by $D_z$ and either $C_0$ or $C_1$. Since $\mathcal S$ is polynomial-time, it can only use $C_j$ a polynomial number of times. Without knowledge of $j$ or $z$, the success probability of $\mathcal S$ will be no better than exponentially close to $1/2$, while the success probability of $\mathcal A$ is exponentially close to $1$.
-%\end{proof}
-%
-%Next, we should address the following question: if the obfuscated states are cloneable (or if we are allowed to ask the obfuscator for more than one copy), does one-circuit black-box obfuscation become impossible? In other words, can we change the above proof so that it works even when $C_0$ and $C_1$ are functionally equivalent? The natural function choice is one that, conditioned on a control wire, applies either $C_j$ or $D_z$ for random $z \in \{0, 1\}^n$ and random $j \in \{0, 1\}$. Does this work?
 
 \subsubsection{Impossibility of obfuscation for cloneable outputs}
 %%%
+
+\ga{stopped editing here.}
 
 Our goal in this section is to modify the black-box quantum two-circuit impossibility proof, in the prior section, to demonstrate impossibility of quantum circuit obfuscation with cloneable outputs.
 

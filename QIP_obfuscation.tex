@@ -145,7 +145,9 @@ $| \emph{Pr}[\mathcal A(\mathcal O(C)) = 1] - \emph{Pr}[\mathcal S^{U_C}(0^n) = 
 \end{enumerate}
 \end{definition}
 
-\noindent We prove the following impossibility results for these obfuscators.
+\noindent An important distinction from the classical case is the addition of an ``interpreter'' algorithm $\algo J$. It is natural since, after all, there must be \emph{some efficient way} to run $U_C$ using the state $\algo O(C)$; whatever it is, we denote it by $\algo J$. 
+
+We prove the following impossibility results for these obfuscators.
 
 \begin{theorem}\label{thm:main}
 Black-box quantum obfuscation is impossible for pairs: an adversary with access to two outputs\footnote{If the two outputs came from the same input circuit, then impossibility only holds if the output states are \textbf{reusable}, in the sense that $\algo J$ outputs another state which again satisfies functional equivalence. This is weaker than cloneability.} of the obfuscator can violate the black-box condition.

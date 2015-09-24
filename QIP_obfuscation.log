@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  24 SEP 2015 18:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  24 SEP 2015 21:58
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
 bfuscation/QIP_obfuscation.tex
@@ -939,7 +939,7 @@ File: ueus.fd 2013/01/14 v3.01 Euler Script
 File: mt-eus.cfg 2006/07/28 v1.2 microtype config. file: AMS Euler Script (RS)
 )
 LaTeX Font Info:    Font shape `OT1/ppl/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 151.
+(Font)              Font shape `OT1/ppl/b/n' tried instead on input line 153.
  [2]
 (QIP_obfuscation.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 9--13
@@ -1011,18 +1011,18 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [5])
 [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 214.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 214.
  (QIP_obfuscation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `QIP_obfuscation.out' has not changed.
 (rerunfilecheck)             Checksum: 659CA044A653630B16D3898A41CA0529;538.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 214.
  ) 
 Here is how much of TeX's memory you used:
  21685 strings out of 493698
@@ -1045,7 +1045,7 @@ ype1/urw/palatino/uplr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /palatino/uplri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol
 /usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on QIP_obfuscation.pdf (6 pages, 193081 bytes).
+Output written on QIP_obfuscation.pdf (6 pages, 193398 bytes).
 PDF statistics:
  269 PDF objects out of 1000 (max. 8388607)
  63 named destinations out of 1000 (max. 500000)
