@@ -3,48 +3,44 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: /Users/wjf/quantum-obfuscation/Quantum-Obfuscation/.texpadtmp/quantum_obfuscation.aux
 The style file: plainnat.bst
 Database file #1: ../QuantumCrypto.bib
-Warning--I didn't find a database entry for "ccreference"
-Warning--empty year in ABGFSS15
-Warning--empty year in ABGFSS15
-You've used 6 entries,
+You've used 33 entries,
             2773 wiz_defined-function locations,
-            644 strings with 6176 characters,
-and the built_in function-call counts, 3379 in all, are:
-= -- 306
-> -- 223
-< -- 3
-+ -- 75
-- -- 69
-* -- 300
-:= -- 531
-add.period$ -- 27
-call.type$ -- 6
-change.case$ -- 41
-chr.to.int$ -- 6
-cite$ -- 14
-duplicate$ -- 134
-empty$ -- 240
-format.name$ -- 77
-if$ -- 697
-int.to.chr$ -- 1
+            902 strings with 12808 characters,
+and the built_in function-call counts, 20183 in all, are:
+= -- 1959
+> -- 1077
+< -- 48
++ -- 359
+- -- 325
+* -- 1619
+:= -- 2982
+add.period$ -- 178
+call.type$ -- 33
+change.case$ -- 202
+chr.to.int$ -- 32
+cite$ -- 66
+duplicate$ -- 937
+empty$ -- 1573
+format.name$ -- 380
+if$ -- 4466
+int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 6
-newline$ -- 46
-num.names$ -- 24
-pop$ -- 76
+missing$ -- 32
+newline$ -- 233
+num.names$ -- 150
+pop$ -- 384
 preamble$ -- 1
-purify$ -- 35
+purify$ -- 169
 quote$ -- 0
-skip$ -- 103
+skip$ -- 749
 stack$ -- 0
-substring$ -- 124
-swap$ -- 19
-text.length$ -- 1
+substring$ -- 820
+swap$ -- 249
+text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
-warning$ -- 2
-while$ -- 26
+type$ -- 363
+warning$ -- 0
+while$ -- 173
 width$ -- 0
-write$ -- 99
-(There were 3 warnings)
+write$ -- 590
