@@ -45,22 +45,22 @@
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.1}Quantum encryption}{5}{subsubsection.1.2.1}}
 \citation{BGIRSVY12}
 \citation{BGIRSVY12}
-\citation{ABFGSS15}
+\citation{BGIRSVY12}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.2}Quantum black-box obfuscation}{6}{subsubsection.1.2.2}}
 \@writefile{toc}{\contentsline {paragraph}{Definitions.}{6}{section*.2}}
-\@writefile{toc}{\contentsline {paragraph}{Applications.}{6}{section*.3}}
+\@writefile{toc}{\contentsline {paragraph}{Impossibility.}{6}{section*.3}}
+\citation{ABFGSS15}
 \citation{MS10}
 \citation{Aar09}
 \citation{AC12}
 \citation{BGIRSVY12}
-\citation{BGIRSVY12}
 \citation{GR07}
-\@writefile{toc}{\contentsline {paragraph}{Impossibility.}{7}{section*.4}}
+\@writefile{toc}{\contentsline {paragraph}{Applications.}{7}{section*.4}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {1.2.3}Quantum indistinguishability obfuscation}{7}{subsubsection.1.2.3}}
-\citation{GGSW13,GGHRSW13}
-\citation{GGSW13}
 \citation{GR07}
 \citation{ASS14}
+\citation{GGSW13,GGHRSW13}
+\citation{GGSW13}
 \citation{GGHRSW13}
 \citation{SW14}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Preliminaries}{8}{section.2}}
@@ -82,10 +82,10 @@
 \newlabel{sec:scheme}{{3.2}{10}{Symmetric-key encryption of quantum states}{subsection.3.2}{}}
 \newlabel{eq:quantum-one-time-pad}{{3.1}{10}{Symmetric-key encryption of quantum states}{equation.3.1}{}}
 \citation{ABFGSS15}
-\citation{ABFGSS15}
 \newlabel{def:encryption-scheme}{{3}{11}{}{definition.3}{}}
 \newlabel{def:IND}{{4}{11}{}{definition.4}{}}
 \newlabel{thm:IND-CCA1}{{2}{11}{}{theorem.2}{}}
+\citation{ABFGSS15}
 \citation{BGIRSVY12}
 \newlabel{thm:qOWF-implies-qSKE}{{3}{12}{}{theorem.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Quantum black-box obfuscation}{12}{section.4}}
@@ -132,17 +132,21 @@
 \citation{BGIRSVY12}
 \citation{BGIRSVY12}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Impossibility of obfuscation for cloneable outputs}{20}{subsubsection.4.3.2}}
-\newlabel{blackboxclone}{{6}{20}{}{definition.6}{}}
+\newlabel{def:blackboxcircuit}{{6}{20}{}{definition.6}{}}
+\newlabel{lemma-circuitdistribution}{{6}{20}{}{theorem.6}{}}
 \citation{BGIRSVY12}
-\newlabel{lemma-circuitdistribution}{{6}{21}{}{theorem.6}{}}
 \newlabel{hybrid-lemma}{{7}{21}{}{theorem.7}{}}
 \newlabel{eqn1}{{4.3.2}{22}{Impossibility of obfuscation for cloneable outputs}{Item.38}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{22}{section.5}}
 \newlabel{sec:indistinguishability}{{5}{22}{Quantum indistinguishability obfuscation}{section.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Definitions}{22}{subsection.5.1}}
 \newlabel{def:indistinguishability}{{8}{22}{}{definition.8}{}}
+\citation{GGSW13}
+\citation{GGHRSW13}
+\citation{GN13}
+\citation{GGSW13}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Applications}{23}{subsection.5.2}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{24}{subsection.5.3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{23}{subsection.5.3}}
 \citation{JWB03}
 \citation{Watrous02}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{25}{subsection.5.4}}
@@ -155,9 +159,9 @@
 \bibcite{BGIRSVY01}{{6}{2001}{{Barak et~al.}}{{Barak, Goldreich, Impagliazzo, Rudich, Sahai, Vadhan, and Yang}}}
 \bibcite{BGIRSVY12}{{7}{2012}{{Barak et~al.}}{{Barak, Goldreich, Impagliazzo, Rudich, Sahai, Vadhan, and Yang}}}
 \bibcite{BGKPS14}{{8}{2014}{{Barak et~al.}}{{Barak, Garg, Kalai, Paneth, and Sahai}}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{26}{section.6}}
 \bibcite{BBBV}{{9}{1997}{{Bennett et~al.}}{{Bennett, Bernstein, Brassard, and Vazirani}}}
 \bibcite{BBBW83}{{10}{1983}{{Bennett et~al.}}{{Bennett, Brassard, Breidbart, and Wiesner}}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion}{26}{section.6}}
 \bibcite{BCCGKPR14}{{11}{2014}{{Bitansky et~al.}}{{Bitansky, Canetti, Cohn, Goldwasser, Kalai, Paneth, and Rosen}}}
 \bibcite{BZ14}{{12}{2014}{{Boneh and Zhandry}}{{}}}
 \bibcite{BR14}{{13}{2014}{{Brakerski and Rothblum}}{{}}}
@@ -171,15 +175,16 @@
 \bibcite{GGM86}{{21}{1986}{{Goldreich et~al.}}{{Goldreich, Goldwasser, and Micali}}}
 \bibcite{GK05}{{22}{2005}{{Goldwasser and Kalai}}{{}}}
 \bibcite{GR07}{{23}{2007}{{Goldwasser and Rothblum}}{{}}}
-\bibcite{HILL99}{{24}{1999}{{H{\r a}stad et~al.}}{{H{\r a}stad, Impagliazzo, Levin, and Luby}}}
-\bibcite{HSW14}{{25}{2014}{{Hohenberger et~al.}}{{Hohenberger, Sahai, and Waters}}}
-\bibcite{JWB03}{{26}{2005}{{Janzing et~al.}}{{Janzing, Wocjan, and Beth}}}
-\bibcite{MS10}{{27}{2010}{{Mosca and Stebila}}{{}}}
-\bibcite{SW14}{{28}{2014}{{Sahai and Waters}}{{}}}
-\bibcite{Watrous02}{{29}{2002}{{Watrous}}{{}}}
-\bibcite{Wee05}{{30}{2005}{{Wee}}{{}}}
-\bibcite{Wie1983}{{31}{1983}{{Wiesner}}{{}}}
-\bibcite{Zhandry2012}{{32}{2012}{{Zhandry}}{{}}}
+\bibcite{GN13}{{24}{2013}{{Gosset and Nagaj}}{{}}}
+\bibcite{HILL99}{{25}{1999}{{H{\r a}stad et~al.}}{{H{\r a}stad, Impagliazzo, Levin, and Luby}}}
+\bibcite{HSW14}{{26}{2014}{{Hohenberger et~al.}}{{Hohenberger, Sahai, and Waters}}}
+\bibcite{JWB03}{{27}{2005}{{Janzing et~al.}}{{Janzing, Wocjan, and Beth}}}
+\bibcite{MS10}{{28}{2010}{{Mosca and Stebila}}{{}}}
+\bibcite{SW14}{{29}{2014}{{Sahai and Waters}}{{}}}
+\bibcite{Watrous02}{{30}{2002}{{Watrous}}{{}}}
+\bibcite{Wee05}{{31}{2005}{{Wee}}{{}}}
+\bibcite{Wie1983}{{32}{1983}{{Wiesner}}{{}}}
+\bibcite{Zhandry2012}{{33}{2012}{{Zhandry}}{{}}}
 \@writefile{toc}{\contentsline {section}{\numberline {A}Old VBB definitions}{29}{appendix.A}}
 \@writefile{toc}{\contentsline {section}{\numberline {B}[OLD NOTES]}{30}{appendix.B}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {B.1}Preliminaries}{30}{subsection.B.1}}

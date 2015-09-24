@@ -1,4 +1,4 @@
-\begin{thebibliography}{32}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -204,6 +204,16 @@ Shafi Goldwasser and GuyN. Rothblum.
 \newblock ISBN 978-3-540-70935-0.
 \newblock \doi{10.1007/978-3-540-70936-7_11}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-540-70936-7_11}.
+
+\bibitem[Gosset and Nagaj(2013)]{GN13}
+David Gosset and Daniel Nagaj.
+\newblock Quantum 3-sat is qma1-complete.
+\newblock In \emph{54th Annual {IEEE} Symposium on Foundations of Computer
+  Science, {FOCS} 2013, 26-29 October, 2013, Berkeley, CA, {USA}}, pages
+  756--765. {IEEE} Computer Society, 2013.
+\newblock ISBN 978-0-7695-5135-7.
+\newblock \doi{10.1109/FOCS.2013.86}.
+\newblock URL \url{http://dx.doi.org/10.1109/FOCS.2013.86}.
 
 \bibitem[H{\aa}stad et~al.(1999)H{\aa}stad, Impagliazzo, Levin, and
   Luby]{HILL99}

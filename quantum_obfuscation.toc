@@ -6,8 +6,8 @@
 \contentsline {subsubsection}{\numberline {1.2.1}Quantum encryption}{5}{subsubsection.1.2.1}
 \contentsline {subsubsection}{\numberline {1.2.2}Quantum black-box obfuscation}{6}{subsubsection.1.2.2}
 \contentsline {paragraph}{Definitions.}{6}{section*.2}
-\contentsline {paragraph}{Applications.}{6}{section*.3}
-\contentsline {paragraph}{Impossibility.}{7}{section*.4}
+\contentsline {paragraph}{Impossibility.}{6}{section*.3}
+\contentsline {paragraph}{Applications.}{7}{section*.4}
 \contentsline {subsubsection}{\numberline {1.2.3}Quantum indistinguishability obfuscation}{7}{subsubsection.1.2.3}
 \contentsline {section}{\numberline {2}Preliminaries}{8}{section.2}
 \contentsline {subsection}{\numberline {2.1}Classical states, transformations, and algorithms}{8}{subsection.2.1}
@@ -31,7 +31,7 @@
 \contentsline {section}{\numberline {5}Quantum indistinguishability obfuscation}{22}{section.5}
 \contentsline {subsection}{\numberline {5.1}Definitions}{22}{subsection.5.1}
 \contentsline {subsection}{\numberline {5.2}Applications}{23}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{24}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.3}Equivalence of indistinguishability and best-possible}{23}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Impossibility of statistical obfuscators}{25}{subsection.5.4}
 \contentsline {section}{\numberline {6}Discussion}{26}{section.6}
 \contentsline {section}{\numberline {A}Old VBB definitions}{29}{appendix.A}
