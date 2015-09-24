@@ -558,7 +558,7 @@ $$
 $$
 \end{enumerate}
 \begin{theorem}
-There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no ensemble of distributions over pairs of quantum circuits is a two-circuit black-box obfuscation of this ensemble of distributions.
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no ensemble of distributions over pairs of quantum circuits is a two-circuit black-box obfuscation of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
@@ -576,18 +576,20 @@ V_{a, b} &: \ket{C,\, z} \longmapsto
 \end{cases}
 \end{align}
 
-Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable.  In practice we'll use the related circuit $D'_{a,b}$, which acts on three registers, an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state.  $D'_{a,b}$, given as input a quantum state $\rho$ on $m$ qubits, initializes the first $n$ bits of the work register to $|a\rangle$, runs $\mathcal{J}(\rho,|a\rangle)$, and if the output is $|b\rangle$, flips the contents of the output register.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $I_{2n}$.
+Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable.  For this section where we are referring to obfuscation procedures that output quantum states, we'll use the related circuit $D'_{a,b}$ which, on input a state $\rho$, uses the interpreter algorithm $\algo{J}$ to ``run" $\rho$ on input $|a\rangle$ and flips the output qubit iff it gets $|b\rangle$.  
+
+Formally, we can think of $D'_{a,b}$ as the circuit which acts on three registers, an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state.  $D'_{a,b}$, given as input a quantum state $\rho$ on $m$ qubits, initializes the first $n$ bits of the work register to $|a\rangle$, runs $\mathcal{J}(\rho\otimes|a\rangle)$, and if the output is $|b\rangle$, flips the contents of the output register.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $I_{2n}$.
 
 Now we notice that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
 \begin{equation}\label{eqn1}\Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, V_{a,b}}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{Id_{2n}, V_{a,b}}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr] \Bigr| \leq \epsilon_1(n)\,.\end{equation}
 Where the probability is taken over choice of $a,b$ and the measurement outcome of the quantum algorithms.
  This is because with only polynomial queries, $\mathcal S$, which does not have knowledge of $a$ or $b$, is forced to distinguish between unitaries which act identically on all but an exponentially small fraction of the total space.  This is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}.
   
-However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply runs $\mathcal{J}(\mathcal{O}(D),\mathcal{O}(C))$ and measures the output register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $\algo A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(I_{2n})$, since the only way this happens is if $a=b$, which happens with negligible probability.  
+However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply runs $\mathcal{J}(\mathcal{O}(D)\otimes\mathcal{O}(C))$ and measures the output register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $\algo A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(I_{2n})$, since the only way this happens is if $a=b$, which happens with negligible probability.  
 Thus there exists a negligible function $\epsilon_2$ so that:
 \begin{equation}\label{eqn2}\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D'_{a,b}),\mathcal{O}(I_{2n})) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D'_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n)\,.\end{equation}
 
-Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $(C_{a,b},D'_{a,b})$ with probability $1/2$ and probability $1/2$ outputting $(I_{2n},D'_{a,b})$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
+Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $C_{a,b}\otimes D'_{a,b}$ with probability $1/2$ and probability $1/2$ outputting $I_{2n}\otimes D'_{a,b}$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
 \end{proof}
 %%-------OLD--------
 %Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
@@ -623,7 +625,7 @@ Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b
 %
 %Next, we should address the following question: if the obfuscated states are cloneable (or if we are allowed to ask the obfuscator for more than one copy), does one-circuit black-box obfuscation become impossible? In other words, can we change the above proof so that it works even when $C_0$ and $C_1$ are functionally equivalent? The natural function choice is one that, conditioned on a control wire, applies either $C_j$ or $D_z$ for random $z \in \{0, 1\}^n$ and random $j \in \{0, 1\}$. Does this work?
 
-\subsubsection{Impossibility of obfuscation for cloneable outputs}
+\subsubsection{Impossibility of black-box obfuscation with circuit outputs}
 %%%
 
 Our goal in this section is to modify the black-box quantum two-circuit impossibility proof, in the prior section, to demonstrate impossibility of quantum circuit obfuscation with cloneable outputs.
@@ -655,7 +657,7 @@ $$
 
 Our main impossibility result is a modification of the proof in the prior section, following the classical proof \cite{BGIRSVY12}.
 \begin{theorem}
-There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no ensemble of distributions over circuits is a black-box quantum obfuscation with circuit output, of this ensemble of distributions.
+There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no ensemble of distributions over circuits is a black-box quantum obfuscation with circuit output, of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
 \end{theorem}
 \begin{proof}
 This proof works by carefully extending the two-circuit construction.  Let $\mathcal O$ be a black-box quantum obfuscator with circuit outputs.
@@ -679,7 +681,7 @@ To fix this issue, following the construction in the classical impossibility pro
 
 \begin{proof}  We follow closely the proof of Lemma 3.6 from the classical impossibility result \cite{BGIRSVY12}, basically constructing a basic quantum private-key "homomorphic encryption" scheme.  We think of each circuit $D\in \supp(\mathcal{D}_{a,b})$ as the combined quantum circuit of the following three circuits which depend on a private key $K\in\{0,1\}^{2n}$ which will be used with the IND-CCA1-secure symmetric-key quantum encryption scheme from Theorem \ref{thm:IND-CCA1}.
 \begin{enumerate}
-\item{$E_{K,a}$ outputs  $\Enc_{K}(|a\rangle)$}.  
+\item{$E_{K,a}(r)$ takes a polynomial length input $r$, which we will think of as the source of randomness, and uses this randomness to output  $\Enc_{K}(|a\rangle)$}.  
 \item{$\Homorcl_K(C,\rho,r)$ takes a quantum circuit $C$, a state $\rho$, and a polynomial length string $r$, which we will think of as the source of randomness, and uses this randomness to output $\Enc_K(C(\Dec_K(\rho)))$}.
 \item{$B_{K,a,b}$ takes a quantum state $\rho$ and outputs $|a\rangle$, if $\Dec_{K}(\rho)=|b\rangle$, and otherwise outputs $|0^n\rangle$.}	
 \end{enumerate}
