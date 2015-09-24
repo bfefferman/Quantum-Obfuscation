@@ -555,11 +555,7 @@ We also define a \emph{state-pair family} analogously. If $\mathcal C'$ is a sta
 With these definitions, we can now state our first impossibility result.
 
 \begin{theorem}
-<<<<<<< HEAD
 There exists a poly-time quantum circuit-pair family $\mathcal C$ such that no state-pair family is a two-circuit black-box obfuscation of $\mathcal C$.
-=======
-There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over pairs quantum circuits, $(C_n, D_n)$, of size poly(n), such that no ensemble of distributions over pairs of quantum circuits is a two-circuit black-box obfuscation of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
->>>>>>> origin/master
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
@@ -582,13 +578,7 @@ Note that both of these unitaries can be implemented by efficient quantum circui
 
 Things are somewhat complicated by the fact that the obfuscator outputs states instead of circuits. We will need to enable $\algo A$ to execute these states on one another. It will thus be necessary to replace $D_{a, b}$ with a related circuit $D_{a, b}'$. Roughly speaking, this circuit will check if its input, when interpreted as a quantum advice state to the algorithm $\algo J$, maps the input $a$ to the output $b$. A precise description follows. First, $D_{a, b}'$ will have three registers: an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state. When given as input a quantum state $\rho$ on $m$ qubits, it will initialize the first $n$ bits of the work register to $|a\rangle$, then execute the appropriate unitary circuit of $\algo J$ on $\rho \otimes \ket{a}$. Finally, if the output register of the latter computation contains $\ket{b}$, $D_{a, b}'$ will flip the contents of the output register. We remark that, by a simple counting argument over circuits, this occurs for only an exponentially small fraction of possible input states $\rho$.
 
-<<<<<<< HEAD
 Recall that the $2n$-qubit identity operator is denoted by $\one_{2n}$, and is implemented by the obvious circuit which we will denote by $I_{2n}$. We observe that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
-=======
-Note that both of these unitaries can be implemented by efficient quantum circuits, $C_{a,b}$ and $D_{a,b}$, respectively, since the analogous classical function is efficiently computable.  For this section where we are referring to obfuscation procedures that output quantum states, we'll use the related circuit $D'_{a,b}$ which, on input a state $\rho$, uses the interpreter algorithm $\algo{J}$ to ``run" $\rho$ on input $|a\rangle$ and flips the output qubit iff it gets $|b\rangle$.  
-
-Formally, we can think of $D'_{a,b}$ as the circuit which acts on three registers, an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state.  $D'_{a,b}$, given as input a quantum state $\rho$ on $m$ qubits, initializes the first $n$ bits of the work register to $|a\rangle$, runs $\mathcal{J}(\rho\otimes|a\rangle)$, and if the output is $|b\rangle$, flips the contents of the output register.  Further, define $Id_{2n}:|x\rangle|y\rangle\longmapsto|x\rangle|y\rangle$ to be the identity unitary on $2n$ qubits.  Clearly, this can be implemented by an efficient quantum circuit, which we call $I_{2n}$.
->>>>>>> origin/master
 
 \begin{equation}\label{eqn11}
 \Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, D_{a,b}'}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr]
@@ -597,7 +587,6 @@ Formally, we can think of $D'_{a,b}$ as the circuit which acts on three register
 \end{equation}
 Here the probability is taken over the uniformly random choice of $a$ and $b$ as well as all of the measurement outcomes of $\algo S$. The above is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}. Indeed, given the definitions of $U_{a, b}$ and $D_{a, b}'$, it's clear that with only polynomial queries and no knowledge of $a$ or $b$, $\algo S$ is faced precisely with unstructured search for an exponentially small ``marked space.'' This marked space is only encountered if $\algo S$ correctly guesses $a$, or correctly guesses an obfuscation of a circuit that maps $a$ to $b$.
   
-<<<<<<< HEAD
 Now consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply executes the quantum algorithm $\mathcal{J}$ on their tensor product, accepting if and only if the outcome is $1$. Notice that this succeeds with constant probability $\alpha > 0$ if $C$ is functionally equivalent to $C_{a,b}$ and $D$ is functionally equivalent to $D_{a,b}'$. On the other hand, this same algorithm $\algo A$ accepts with at most negligible probability when $C$ is functionally equivalent to $I_{2n}$ (and $D$ is still functionally equivalent to $D_{a, b}'$); indeed, this only happens is if $a = b$. Thus there exists a negligible function $\epsilon_2$ so that:
 
 \begin{equation}\label{eqn2}
@@ -605,16 +594,6 @@ Now consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated
 - \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D'_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| 
 \geq \alpha-\epsilon_2(n)\,.
 \end{equation}
-=======
-However, consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply runs $\mathcal{J}(\mathcal{O}(D)\otimes\mathcal{O}(C))$ and measures the output register, accepting iff it measures 1.  Notice that this succeeds with constant probability $\alpha>0$ if given inputs $\mathcal{O}(C_{a,b})$ and $\mathcal{O}(D_{a,b})$, whereas this same algorithm $\algo A$ accepts with at most negligible probability when given input states $\mathcal{O}(D_{a,b})$ and $\mathcal{O}(I_{2n})$, since the only way this happens is if $a=b$, which happens with negligible probability.  
-Thus there exists a negligible function $\epsilon_2$ so that:
-\begin{equation}\label{eqn2}\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D'_{a,b}),\mathcal{O}(I_{2n})) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(D'_{a,b})\otimes\mathcal{O}(C_{a,b})\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_2(n)\,.\end{equation}
-
-Now consider the distribution $\mathcal{H}_n$ that is generated by choosing $a,b$ uniformly at random from $\{0,1\}^n$, then outputting the respective pair of circuits $C_{a,b}\otimes D'_{a,b}$ with probability $1/2$ and probability $1/2$ outputting $I_{2n}\otimes D'_{a,b}$.  For this distribution, properties \ref{eqn1} and \ref{eqn2} together contradict the virtual black-box condition of the obfuscation procedure.
-\end{proof}
-%%-------OLD--------
-%Classically, Barak et al. proved impossibility of generic black-box circuit obfuscation. We don't know how to prove the same fact for quantum circuits, but we can replicate the first step of their proof, namely the impossibility of black-box two-circuit obfuscation. We define a \textbf{black-box quantum two-circuit obfuscator} just as in the definition above, but with a different virtual black-box condition:
->>>>>>> origin/master
 
 To complete the proof, we explicitly define the poly-time circuit-pair family $\mathcal C$. The distribution $\mathcal C_n$ is generated by choosing $a, b$ uniformly at random from $\{0,1\}^n$, and then choosing a bit $r \in {0, 1}$ at random; if $r = 0$, we output the circuit pair $(C_{a,b}, D'_{a,b})$, and otherwise we output $(I_{2n}, D'_{a,b})$. For this distribution, equations \eqref{eqn11} and \eqref{eqn2} together show that no state-pair family is an obfuscation of $\mathcal C$.
 \end{proof}

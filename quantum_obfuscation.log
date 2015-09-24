@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  24 SEP 2015 22:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  24 SEP 2015 22:18
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
 bfuscation/quantum_obfuscation.tex
@@ -1070,7 +1070,7 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1331.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1331.
 
 Package rerunfilecheck Info: File `quantum_obfuscation.out' has not changed.
-(rerunfilecheck)             Checksum: 3477C934D60A12967D9F1ECBE30E6AD0;2852.
+(rerunfilecheck)             Checksum: AD96D9F7A92250C9CFB42AEBAE704351;2861.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1331.
  )
 (\end occurred inside a group at level 1)
@@ -1080,7 +1080,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1331.
 Here is how much of TeX's memory you used:
  21771 strings out of 493698
  379835 string characters out of 3141991
- 527319 words of memory out of 3000000
+ 527328 words of memory out of 3000000
  24159 multiletter control sequences out of 15000+200000
  84510 words of font info for 346 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1105,7 +1105,7 @@ ype1/urw/palatino/uplri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/ur
 w/symbol/usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol/usy
 r.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/P
 rogram Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on quantum_obfuscation.pdf (37 pages, 461676 bytes).
+Output written on quantum_obfuscation.pdf (37 pages, 461813 bytes).
 PDF statistics:
  836 PDF objects out of 1000 (max. 8388607)
  220 named destinations out of 1000 (max. 500000)
