@@ -349,7 +349,7 @@ Any reasonable notion of obfuscation involves giving the obfuscated circuit $\al
 
 In the quantum case, there are several complications. First, we are considering the obfuscation of quantum functionalities. This implies that the end user (and hence also any adversary) should be in possession of a quantum computer, and likewise for the simulator. Second, it is conceivable that the obfuscation may not just be another quantum circuit, which is simply a classical state describing a quantum computation. The obfuscator might instead output a quantum state, which is then to be employed by the end user to execute the desired functionality in some well-specified manner. These considerations motivate the following definition.
 \begin{definition}\label{def:vbb-obfuscator}
-A \textbf{black-box quantum obfuscator} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is a polynomial-size $n$-qubit quantum circuit, the output of $\algo O$ is an $m$-qubit state $\algo O(C)$ satisfying
+A \textbf{black-box quantum obfuscator} is a quantum algorithm $\algo O$ and a QPT $\algo J$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is an $m$-qubit state $\algo O(C)$ satisfying
 \begin{enumerate}
 \item (polynomial expansion) $m = \text{poly}(n)$;
 \item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \rho ) - U_C \rho U_C^\dagger \bigr\|_\emph{tr} \leq \negl(n)$ for all $\rho \in \states(\mathcal H_n);$
@@ -359,11 +359,11 @@ $$
 $$
 \end{enumerate}
 \end{definition}
-We remark that one could consider variants where the ``interpreter'' algorithm $\algo J$ is fixed once and for all, or where $\algo O(C)$ itself consists of both a quantum ``advice state'' and a circuit which the end user should execute on the advice state and the desired input. It is straightforward to show that all of these variants are equivalent, in the sense that a black-box quantum obfuscator of each variant exists if and only if the other variants exist. Since we are primarily concerned with possibility vs impossibility, we will stick with the formulation in \expref{Definition}{def:vbb-obfuscator}.\\
+We emphasize that while the ``interpreter'' algorithm $\algo J$ must be polynomial-time, the obfuscator itself need not be. In applications, it will be necessary to make the obfuscator polynomial-time; on the other hand, our impossibility results will hold even for inefficient obfuscators. One could consider variants of \expref{Definition}{def:vbb-obfuscator} where the interpreter algorithm is fixed once and for all, or where $\algo O(C)$ itself consists of both a quantum ``advice state'' and a circuit which the end user should execute on the advice state and the desired input. It is straightforward to show that all of these variants are equivalent, in the sense that a black-box quantum obfuscator of each variant exists if and only if the other variants exist. Since we are primarily concerned with possibility vs impossibility, we will stick with the formulation in \expref{Definition}{def:vbb-obfuscator}. We also remark that the interpreter is a natural addition to the classical black-box definition when passing to the quantum case. In order for the definition to make sense, there should be \emph{some efficient way} to use $\algo O(C)$ to implement $U_C$; whatever that efficient procedure is, we have here called it an interpreter and denoted it by $\algo J$.
 
-\noindent\ga{Insert more careful version (with ensembles and distributions) of \expref{Definition}{def:vbb-obfuscator} here.}\\
+%\noindent\ga{Insert more careful version (with ensembles and distributions) of \expref{Definition}{def:vbb-obfuscator} here.}\\
 
-Finally, we point out that the no-cloning theorem opens up the possibility of \emph{computationally unbounded adversaries.} In the classical case, such an adversary could simply execute the circuit on every input, and thus learn far more than is possible for a polynomial-time black-box simulator. Quantumly, however, a computationally unbounded adversary is restricted both by the no-cloning theorem and the limitations of measurement. The adversary may not be able to acquire multiple copies of the obfuscated state, and the single state may be partially (or completely) destroyed when measured. It is thus not \emph{a priori} clear that an unbounded adversary could always outmatch a polynomial-time black-box simulator. The appropriate definition is a straightforward modification of \expref{Definition}{def:vbb-obfuscator}, where we replace the third condition with the following:
+We also point out that the no-cloning theorem opens up the possibility of \emph{computationally unbounded adversaries.} In the classical case, such an adversary could simply execute the circuit on every input, and thus learn far more than is possible for a polynomial-time black-box simulator. Quantumly, however, a computationally unbounded adversary is restricted both by the no-cloning theorem and the limitations of measurement. The adversary may not be able to acquire multiple copies of the obfuscated state, and the single state may be partially (or completely) destroyed when measured. It is thus not \emph{a priori} clear that an unbounded adversary could always outmatch a polynomial-time black-box simulator. The appropriate definition is a straightforward modification of \expref{Definition}{def:vbb-obfuscator}, where we replace the third condition with the following:
 
 \begin{enumerate}
 \setcounter{enumi}{2}
@@ -373,19 +373,10 @@ $$
 $$
 \end{enumerate}
 
-
-
-
-\noindent \ga{Note that our two-circuit impossibility proof holds even for these kinds of obfuscators, for a simple reason: there's already a QPT adversary that no QPT simulator can beat.}\\
-
-\noindent \ga{Somewhere in here we need to mention that, when using obfuscated states, we will frequently write things like $\mathcal O(C) \ket{\varphi}$, which has the obvious meaning, but technically stands for appropriately using the interpreter (or the circuit given by the obfuscator), together with the advice state, as prescribed by the definition.}\\
-
-\noindent \ga{Do we want to discuss inefficient obfuscators? I guess we can show that inefficient perfect indistinguishability obfuscators exist... and that these are black-box for any circuits that *do* have black-box obfuscations...}\\
-
-\subsection{Applications}\label{sec:vbb-applications}
+\subsection{Applications of efficient black-box obfuscators}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we motivate the study of quantum black-box obfuscation by giving a few example applications. Many of these are motivated by known classical applications of classical black-box obfuscators. Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications (such as quantum-secure one-way functions) will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
+In this section, we motivate the study of quantum black-box obfuscation by giving a few example applications. Unsurprisingly, these applications require that the obfuscation algorithm is itself quantum polynomial-time; strictly speaking, this is not required of \expref{Definition}{def:vbb-obfuscator}. Many of these applications are motivated by known classical applications of classical black-box obfuscators. Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications (such as quantum-secure one-way functions) will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
 
 \subsubsection{Quantum-secure one-way functions}
 %%%
@@ -600,10 +591,10 @@ To complete the proof, we explicitly define the poly-time circuit-pair family $\
 \subsubsection{Generalizing the impossibility result}
 %%%
 
-Our goal in this section is to extend the two-circuit impossibility proof from the prior section to the case of obfuscating a single circuit. For our impossibility proof, we require an additional condition on the obfuscator: that each of its outputs is reusable a polynomial number of times. This is a natural condition which is automatically satisfied by classical obfuscators, since their outputs can be perfectly copied.
+Our goal in this section is to extend the two-circuit impossibility proof from the prior section to the case of obfuscating a single circuit. For our impossibility proof, we require an additional condition on the obfuscator: that each of its outputs is reusable a polynomial number of times. This is a natural condition which is automatically satisfied by classical obfuscators (as well as quantum obfuscators with classical outputs), since their outputs can be perfectly copied.
 
 \begin{definition}\label{def:vbb-reusable}
-A \textbf{reusable-black-box quantum obfuscator} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output $\mathcal{O}(C)$ is a quantum state satisfying
+A \textbf{reusable-black-box quantum obfuscator} is a quantum algorithm $\algo O$ and a QPT $\algo J$ such that whenever $C$ is an $n$-qubit quantum circuit, $\mathcal{O}(C)$ is an $m$-qubit quantum state satisfying
 \begin{enumerate}
 \item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
 \item (functional equivalence) $\bigl\| \algo J ( \rho \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
@@ -620,7 +611,7 @@ We remark that reusability can be achieved in any number of ways: by providing a
 To state the result, we define (in analogy to circuit-pair families and state-pair families) a \emph{circuit family} to be an ensemble of distributions over circuits, and a \emph{state family} to be an ensemble of distributions over states. A state family $\mathcal C'$ is said to be an obfuscation of a circuit family $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies \expref{Definition}{def:vbb-reusable}. With these definitions, we will prove the following theorem.
 
 \begin{theorem}\label{thm:single-impossibility}
-If quantum-secure one-way functions exist, There exists a quantum circuit family $\mathcal C$ such that no state family is a reusable-black-box quantum obfuscation of $\mathcal C$.
+If quantum-secure one-way functions exist, then there exists a quantum circuit family $\mathcal C$ such that no state family is a reusable-black-box quantum obfuscation of $\mathcal C$.
 \end{theorem}
 
 Since the full proof of \expref{Theorem}{thm:single-impossibility} is somewhat lengthy and involved, we will first prove a simpler case, showing that quantum circuits cannot be obfuscated into quantum circuits, under any of the definitions considered so far---even the strongest one, \expref{Definition}{def:vbb-obfuscator}.) This corollary (stated below as \expref{Theorem}{thm:cor}) is arguably the most direct quantum generalization of the impossibility result of ~\cite{BGIRSVY01}. Once we have proved it, we will explain in detail how the proof should be adapted in order to achieve \expref{Theorem}{thm:single-impossibility}.
@@ -710,28 +701,70 @@ First, we replace the responses to all of $\algo{S}$'s queries to the $\Homorcl_
 
 %Notice that Lemma \ref{hybrid-lemma} suffices to establish Property 3, since giving the simulator algorithm black-box access to the three unitaries that comprise $D_{a,b}$ is equivalent to giving $S$ black-box access to each circuit separately.  Notice that black-box access to  $E_{K,a}$ is no more powerful than giving it access to polynomially many queries of $\Enc_{K}$, and giving black-box access to $B_{K,a,b}$ does not allow $S$ to discover $a$ with more than negligible probability, since it returns $|0^n\rangle$ on all but an exponentially small fraction of the space.  Lemma \ref{hybrid-lemma} proves security in the presence of the $\Homorcl$ and $\Enc$ oracle.
 
-\ga{STOPPED EDITING HERE.
-To do: finish this proof; explain how to extend to full Theorem 5 proof.} \newpage
-
-
-
-
-Now we are ready to adapt the two-circuit impossibility proof of Section \ref{sec-twocircuit} to the single circuit case.  First for given $a,b$ let the distribution $\mathcal{D}_{a,b}$ be the distribution over circuits constructed in Lemma \ref{lemma-circuitdistribution}.  Then consider the following two distributions over circuits: \begin{enumerate}
- 	\item{$\mathcal{F}_{n}$: Choose $a,b$ uniformly at random from $\{0,1\}^n$,  sample a circuit $D$ from $\mathcal{D}_{a,b}$ and output $C_{a,b}\# D_{a,b}$ 
-}
-\item{$\mathcal{G}_{n}$: Choose $a,b$ uniformly at random from $\{0,1\}^n$,  sample a circuit $D$ from $\mathcal{D}_{a,b}$ and output $I_{2n}\# D_{a,b}$ }
- \end{enumerate}
- By Property 2 of Lemma \ref{lemma-circuitdistribution} 
- there exists an algorithm $\algo{A}$ that, on input $\mathcal{O}(C)$, accepts if $C$ was sampled from $\algo{F}_n$ and rejects if $C$ was sampled from $\algo{G}_n$.  Thus there exists a constant $\alpha$ and a negligible function $\epsilon_1$ so that:
-$$\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(\mathcal{F}_n)) = 1\bigr]- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(\mathcal{G}_n)\bigr) = 1\bigr] \Bigr| \geq \alpha-\epsilon_1(n)\,.$$
- 
- While by Property 3 of Lemma \ref{lemma-circuitdistribution}, we know that for every QPT $S$ there exists some negligible function $\epsilon_2$ so that: 
- $$\label{eqn1}\Bigl| \text{Pr}\bigl[\mathcal S^{\mathcal{F}_n}\bigl(\ket{0}^{\otimes n}\bigr) = 1\bigr]- \text{Pr}\bigl[\mathcal S^{\mathcal{G}_n}\bigl(\ket{0}^{\otimes n}\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n)\,.$$
-Notice that this contradicts the virtual black-box condition of Definition \ref{def:black-box}.
-  
- 
+Now we are ready to describe the unobfuscatable family of quantum circuits and complete the proof of \expref{Theorem}{thm:cor}. First, for a fixed $a,b \in \{0, 1\}^n$ we let $\mathcal{D}_{a,b}$ be the distribution over circuits constructed in \expref{Lemma}{lemma-circuitdistribution}. Then consider the following two distributions over circuits: 
+\begin{enumerate}
+\item $\mathcal{F}_{n}$: Choose $a,b \inrand \{0,1\}^n$,  sample a circuit $D_{a, b}$ from $\mathcal{D}_{a,b}$ and output $C_{a,b}\# D_{a,b}$ 
+\item $\mathcal{G}_{n}$: Choose $a,b \inrand \{0,1\}^n$,  sample a circuit $D_{a, b}$ from $\mathcal{D}_{a,b}$ and output $I_{2n}\# D_{a,b}$
+\end{enumerate}
+By Property 2 of \expref{Lemma}{lemma-circuitdistribution} there exists an algorithm $\algo{A}$ that, on input $\mathcal{O}(C_0)$, accepts if $C_0$ was sampled from $\algo{F}_n$ and rejects if $C$ was sampled from $\algo{G}_n$.  Thus there exists a constant $\alpha$ and a negligible function $\epsilon_1$ so that:
+$$
+\Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(\mathcal{F}_n)) = 1\bigr]
+- \text{Pr}\bigl[\mathcal A\bigl(\mathcal{O}(\mathcal{G}_n)\bigr) = 1\bigr] \Bigr| 
+\geq \alpha-\epsilon_1(n)\,.
+$$
+On the other hand, by Property 3 of \expref{Lemma}{lemma-circuitdistribution}, we know that for every QPT $S$ there exists some negligible function $\epsilon_2$ so that: 
+$$
+\Bigl| \text{Pr}\bigl[\mathcal S^{\mathcal{F}_n}\bigl(\ket{0}^{\otimes n}\bigr) = 1\bigr]
+- \text{Pr}\bigl[\mathcal S^{\mathcal{G}_n}\bigl(\ket{0}^{\otimes n}\bigr) = 1\bigr] \Bigr| 
+\leq \epsilon_2(n)\,.
+$$
+We conclude that the circuit family formed by taking the union of $\mathcal F_n$ with $\mathcal G_n$ (and assigning them each equal probability) is an unobfuscatable circuit family.
 \end{proof}
 
+We now return to the proof of \expref{Theorem}{thm:single-impossibility}, and show how to extend the above proof to the case where the obfuscator outputs reusable quantum states.
+
+\begin{proof} (of \expref{Theorem}{thm:single-impossibility})
+Our proof will still use the same distribution $\mathcal D_{a, b}$ over circuits, which were provided by \expref{Lemma}{lemma-circuitdistribution} and described above, but with some slight modifications. The goal will still be to take two copies of $\algo O(C_0)$ for any circuit $C_0$ sampled from that distribution, and give an algorithm $\algo A$ that can ``execute one copy on the other.'' This will enable us to distinguish if $C_0$ is from the distribution $\mathcal F_n$, or the distribution $\mathcal G_n$ (just as above), a task which is impossible with only black-box access.
+
+However, executing one copy of $\algo O(C_0)$ on another is now somewhat more complicated, due to the fact that we no longer have explicit circuit descriptions in hand, and must instead use the interpreter $\algo J$ (with some register initialized to $\algo O(C_0)$) whenever we want to run $C_0$. To do this, we will need to describe a new distribution $\mathcal D_{a, b}'$ of circuits, closely related to the distribution $\mathcal D_{a, b}$ from \expref{Lemma}{lemma-circuitdistribution}.
+
+\textbf{Attempt 1.~}To warm up, a first attempt at describing $\algo A$ and the modified circuits $D_{a, b}'$ from the distribution $\mathcal D_{a, b}'$ is as follows. First, we simply define $D_{a, b}'$ to be a composition of circuits which simply output both $a$ and $b$. Set $C_0 = C \# D_{a, b}'$, and suppose that inputting $\ket{0}$ in the first register executes the first circuit in the combination, while $\ket{1}$ executes the second circuit in the combination. The algorithm $\algo A$ is in possession of two copies of $\algo O(C_0)$. It performs:
+\begin{enumerate}
+\item run $\algo J ( \algo O(C_0) \otimes \ket{1} \ket{0^n})$ to retrieve $\ket{a} \ket{b}$ (by functional equivalence of $\algo O$);
+\item run $\algo J( \algo O(C_0) \otimes \ket{0} \ket{a})$ (now using the other copy of $\algo O(C_0)$);
+\item compare the result to $\ket{b}$.
+\end{enumerate}
+This does exactly what we want, except of course that the black-box simulator $\algo S$ will also be able to retrieve $a$ and perform this experiment. Our valiant attempt failed.
+
+\textbf{Attempt 2.~}Undeterred, we now try a more sophisticated approach, returning to the idea of encryption and homomorphic execution. We now ask that (as before) $\mathcal D_{a, b}'$ outputs an encryption $\Enc(a)$ of $a$ (when given the flag $A$), implements a $\Homorcl$ oracle (when given the flag $H$), and checks if the input is $\Enc(b)$ (when given the flag $B$). We again set $C_0 = C \# D_{a, b}'$ and give $\algo A$ two copies of $\algo O(C_0)$; for convenience we denote them $\algo O(C_0)$ and $\algo O(C_0)'$. Now, $\algo A$ performs: 
+\begin{enumerate}
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1A} \otimes \ket{0^n}]\bigr)$ to retrieve $\Enc(a)$;
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1H} \otimes \algo O(C_0)' \otimes \ket{0} \otimes \Enc(a)]\bigr)$ to ``homomorphically run $C$'';
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1B} \otimes \rho]\bigr)$ where $\rho$ is the output of the previous step; output the result.
+\end{enumerate}
+The first and last step are largely self-explanatory: we start with the encryption of $a$, and check at the end that we have the encryption of $b$. What happened in the second step? We tried to homomorphically evaluate\footnote{Selecting $C$ was done by passing the bit flag $\ket 0$ into the control register.} $C$ on $\Enc(a)$. By functional equivalence of $\algo O$, we executed the first copy of $C_0$ on input $\ket{1H} \otimes \algo O(C_0)' \otimes \Enc(a)$; this specifies that $D_{a, b}'$ should run the $\Homorcl$ oracle with input $\mathcal O(C_0)' \otimes \Enc(a)$. To make this sensible, we can redefine $\Homorcl$ to accept two registers, and homomorphically evaluate the appropriate circuit of $\algo J$; the result is that, whenever $\Homorcl$ is called on $\mathcal O(C) \otimes \Enc(z)$ for a circuit $C$ and state $z$, the output is $\Enc(C(z))$.
+
+This attempts looks like it succeeds, but there is a disastrous flaw: $\Homorcl$ must now accept inputs with at least as many qubits as $\algo O(C_0)$, which is significantly bigger than the circuit description allowed for $\Homorcl$ itself (since it is a part of $D_{a, b}'$ and hence also of $C_0$).
+
+\textbf{Attempt 3.~} In the final attempt, we will repair the flaw of Attempt 2. The key is to again offload some of the execution, but this time from the $\Homorcl$ oracle to the main algorithm $\algo A$. More precisely, we will expand step (2) in Attempt 2, and execute it gate-by-gate. In this iteration, $\Homorcl$ is back to its original version, and is used only to apply two-qubit gates. It accepts $n$ input qubits, decrypts them, applies the desired gate (as specified in another register), and then re-encrypts. In addition, will also expand $D_{a, b}'$ to provide an $\Enc$ oracle (when given the flag E); we can do this for free, by equation \eqref{eq:hom-gap} in \expref{Lemma}{lemma-circuitdistribution}. The final algorithm $\algo A$ will proceed as follows. Here we have let $m$ denote the number of qubits of $\algo O(C_0)'$, and we let $J_m$ be the circuit of $\algo J$ for executing $m$-qubit obfuscated states.
+\begin{enumerate}
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1E} \otimes \algo O(C_0)'_{(k)}]\bigr)$ for all $k \in [m]$, to encrypt all qubits of $\algo O(C_0)'$; 
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1A} \otimes \ket{0^n}]\bigr)$ to retrieve $\Enc(a)$;
+\item let $j = 0$ and let $\sigma_j := \Enc(a)$;
+\item let $G_j$ be the $j$th gate in the description of $J_m$;
+\begin{enumerate}
+\item let $s, t$ be the qubits $G_j$ acts on; assume $s$ is a qubit of $\algo O(C_0)'$ and $t$ is a qubit of $\sigma_j$;\footnote{This assumption is only made for simplicity of the algorithm description; the other possibilities are similar.}
+\item set $\sigma_{j+1} = \algo J \bigl( \algo O(C_0) \otimes [\ket{1H} \otimes \ket{G_j, s, t} \otimes \Enc(\algo O(C_0)'_{(s)}) \otimes \sigma_j]\bigr)$;\,\footnote{The notation $\algo O(C_0)'_{(s)}$ is meant to indicate that only the $s$-th qubit of that state is to be placed in the input register.}
+\item if $j = |J_m|$, continue; otherwise increment $j$ by $1$ and go to step 4.
+\end{enumerate}
+\item run $\algo J \bigl( \algo O(C_0) \otimes [\ket{1B} \otimes \sigma_j]\bigr)$ and output the result.
+\end{enumerate}
+A few remarks are in order. First, the reusability of the state $\algo O(C)$ was crucial in our ability to repeatedly execute the $\Homorcl$ oracle in step 4.(b). Second, one checks that by the functional equivalence of the obfuscator and the definition of the $\Homorcl$ oracle, if $C_0 = C_{a, b} \# D_{a, b}'$ then the state $\sigma_j$ when step 5. is reached will indeed be $\Enc(b)$. Third, note that the ``compactness'' issue of $\Homorcl$ from Attempt 2 has been resolved, and the input to $C_0$ in step 4.(b) is now of size $n$ (plus a constant.) 
+
+Finally, despite all of the difficulties in defining the algorithm $\algo A$ appropriately, the hardness of the corresponding search problem for the black-box simulator $\algo S$ is essentially unchanged from the proof of \expref{Theorem}{thm:cor}. The only difference is that $D_{a, b}'$ now also provides an encryption oracle; the encryption scheme we selected is certainly secure in this setting. 
+
+To finish the proof, we again build a circuit family by choosing $C_{a, b} \# D_{a, b}'$ or $I_{2n} \# D_{a, b}'$, each with equal probability, for random $a$ and $b$. By the above arguments, this circuit family is unobfuscatable. This concludes the proof of \expref{Theorem}{thm:single-impossibility}.
+\end{proof}
 
 
 
