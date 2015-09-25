@@ -35,6 +35,7 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{definition}{Definition}
 \newtheorem{question}{Question}
+\newtheorem{problem}{Problem}
 
 %% Define a satisfactory mathbb 1.
 \newcommand{\one}{\mathds 1}
@@ -222,7 +223,7 @@ Lastly, we consider an alternative formulation of obfuscation, motivated by the 
 \item \textbf{Quantum best-possible obfuscator.} This is an algorithm precisely as above, except for the obfuscation condition: it now states that $\algo O(C)$ is the state that ``leaks least,'' among all states which are ``functionally-equivalent'' to $C$. There are again three variants: perfect, statistical, and computational.
 \item \textbf{Equivalence of definitions.} We prove that each of the three variants of quantum indistinguishability obfuscation is equivalent to the analogous variant of quantum best-possible obfuscation.
 \item \textbf{Impossibility of perfect and statistical indistinguishability obfuscation.} We end with a quantum version of the main result of~\cite{GR07}: a proof that perfect and statistical quantum indistinguishability obfuscation is impossible, unless coQMA is contained in QSZK. We remark that an analogous containment in the classical setting (i.e., coMA $\subseteq$ SZK) would imply a collapse of the polynomial-time hierarchy to the second level. One consequence of this result is that extending the obfuscator proposed in~\cite{ASS14} to full indistinguishability is impossible.
-\item \textbf{Application: witness encryption for QMA$_1$.} Motivated by an analogue discussed in~\cite{GGSW13, GGHRSW13}, we show that a quantum indistinguishability obfuscator enables witness encryption for QMA$_1$. A witness encryption scheme for a language $L$ in QMA$_1$ encrypts plaintexts $x$ using a particular instance $l$. The security condition states that, if $l \in L$, then a valid witness $w$ for $l \in L$ allows decryption; on the other hand, if $l \notin L$, then ciphertexts are indistinguishable. While witness encryption has several applications classically~\cite{GGSW13}, the quantum analogue has not been considered previously.
+\item \textbf{Application: witness encryption for QMA.} Motivated by an analogue discussed in~\cite{GGSW13, GGHRSW13}, we show that a quantum indistinguishability obfuscator enables witness encryption for QMA. A witness encryption scheme for a language $L$ in QMA encrypts plaintexts $x$ using a particular instance $l$. The security condition states that, if $l \in L$, then a valid witness $w$ for $l \in L$ allows decryption; on the other hand, if $l \notin L$, then ciphertexts are indistinguishable. While witness encryption has several applications classically~\cite{GGSW13}, the quantum analogue has not been considered previously.
 \end{enumerate}
 
 We remark that, in the classical setting, indistinguishability obfuscation also implies functional encryption~\cite{GGHRSW13} and many more applications through the very successful ``punctured programs'' technique developed by Sahai and Waters~\cite{SW14}. We suspect that these results can also be adapted to the quantum setting, but leave them open for now.
@@ -826,41 +827,46 @@ To finish the proof, we again build a circuit family by choosing $C_{a, b} \# D_
 \section{Quantum indistinguishability obfuscation}\label{sec:indistinguishability}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Definitions}
+In this section, we analyze a different definition of quantum obfuscation, motivated by classical definitions established by Goldwasser and Rothblum~\cite{GR07}. As opposed to the black-box approach, these definitions assess the quality of an obfuscation in relative terms, e.g., as compared to other functionally-equivalent circuits (or states).  
+
+\subsection{Definitions, and an application}
 %%%%%%%%%%%%%%%%%%%%%%
+
+We begin with the notion of a quantum indistinguishability obfuscator. 
 
 \begin{definition}\label{def:indistinguishability}
-An \textbf{indistinguishability quantum obfuscator} is a pair $(\mathcal J, \mathcal O)$ where $\mathcal J$ is an interpreter and $\mathcal O$ is a quantum algorithm which on input an $n$-qubit quantum circuit $C$ outputs an $m$-qubit quantum state $\mathcal O(C)$, such that
+A \textbf{quantum indistinguishability obfuscator} is a quantum algorithm $\mathcal O$ and a QPT $\mathcal J$ such that whenever $C$ is an $n$-qubit quantum circuit $C$, $\mathcal O(C)$ is an $m$-qubit quantum state satisfying
 \begin{enumerate}
 \item (polynomial slowdown) $m = \text{poly}(n, |C|).$
-\item (functional equivalence) there exists a negligible $\epsilon_1$ such that $\bigl\| \mathcal J_n^{\mathcal O(C)} - U_C \bigr\|_\diamond \leq \epsilon_1(n, |C|)$;
-\item (indistinguishability) if a pair of circuits $C_1$ and $C_2$ satisfy $|C_1| = |C_2|$ and $\bigl\|U_{C_1} - U_{C_2}\bigr\|_\diamond \leq \epsilon_3(n, |C|)$, then $\bigl\|\mathcal O(C_1) - \mathcal O(C_2)\bigr\|_\emph{tr} \leq \epsilon_4(n, |C|)$.
+\item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \rho ) - U_C \rho U_C^\dagger \bigr\|_\emph{tr} \leq \negl(n)$ for all $\rho \in \states(\mathcal H_n);$ 
+\item (indistinguishability) if circuits $C_1, C_2$ satisfy $|C_1| = |C_2|$ and $\|U_{C_1} - U_{C_2}\| \leq \negl(n)$, then the states $\mathcal O(C_1)$ are indistinguishable.
 \end{enumerate}
 \end{definition}
-\noindent As before, we will select $\epsilon_3$ and $\epsilon_4$ appropriately later. For a definition of best-possible obfuscation, we replace condition (3) above with the following:
+\noindent We consider three versions of the notion of indistinguishability in the third condition above. These are perfect indistinguishability (i.e., the states are identical), statistical indistinguishability (i.e., the states have negligible trace distance), and computational indistinguishability (i.e., the states are not distinguishable by QPT adversaries.) We remark that the condition of equal length can be relaxed to any fixed polynomial (e.g., $|C_1|$ can be of length at most $|C_2|^2$.)
 
+We also define a notion of \textbf{quantum best-possible obfuscator}. This is an algorithm $\algo O$ and QPT $\algo J$ precisely as in \expref{Definition}{def:indistinguishability}, but now with condition (3) replaced with the following:
 \begin{enumerate}
 \setcounter{enumi}{2}
-\item \emph{(best-possible) for every pair of quantum circuits $C_1$ and $C_2$ that satisfy $|C_1| = |C_2|$ and $\bigl\|U_{C_1} - U_{C_2}\bigr\|_\diamond \leq \epsilon_3(n, |C|)$ and every quantum adversary $\mathcal A$, there exists a quantum simulator $\mathcal S$ and a negligible $\epsilon_2$ such that}
+\item \emph{(best-possible) for every pair $C_1, C_2$ satisfying $|C_1| = |C_2|$ and $\|U_{C_1} - U_{C_2}\| \leq \negl(n)$ and every QPT $\mathcal A$, there exists a QPT $\mathcal S$ such that}
 $$
-\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1)) = 1] - \text{Pr}\bigl[\mathcal S\bigl(C_2\bigr) = 1\bigr] \Bigr| \leq \epsilon_2(n, |C|)\,.
+\Bigl| \text{Pr}[\mathcal A(\mathcal O(C_1)) = 1] - \text{Pr}\bigl[\mathcal S\bigl(C_2\bigr) = 1\bigr] \Bigr| \leq \negl(n)\,.
 $$
 \end{enumerate}
+\noindent The intuition behind the above definition is the following: any information $\mathcal A(\mathcal O(C_1))$ that is ``leaked'' by the obfuscation $\mathcal O(C_1)$ can actually be recovered from any functionally equivalent, similarly-sized circuit $C_2$. In this sense, the obfuscation $\mathcal O(C_1)$ leaks the least amount of information possible. When using the best-possible definition, we will frequently refer to $\mathcal A$ as a ``learner'' (and even denote it by $\mathcal L$) to emphasize its role in the intuition. While \expref{Definition}{def:indistinguishability} is not as naturally motivated, it is easier to formulate. As we will later show, the two definitions are equivalent for efficient obfuscators. We will thus be free to work with the definition that is more natural for whatever task is at hand. 
 
-The intuition behind the above definition is the following: any information $\mathcal A(\mathcal O(C_1))$ that is ``leaked'' by the obfuscation $\mathcal O(C_1)$ can actually be recovered from \emph{any} functionally equivalent, similarly-sized circuit $C_2$. In this sense, among all such circuits, the circuit $\mathcal O(C_1)$ is one that leaks the least. It's not hard to see that an efficient obfuscator satisfies the best-possible condition if and only if it satisfies the indistinguishability condition. This justifies \expref{Definition}{def:indistinguishability} as a natural choice.
+%\ga{To mention somewhere: GR07 observed that, if a circuit family \emph{has} a black-box obfuscation, then a computational indistinguishability obfuscator must compute it. So it's conceivable that many of the interesting black-box applications carry over to the quantum case. Of course, one could say that this is exactly why the recent classical results have worked.}
 
-\ga{To mention somewhere: GR07 observed that, if a circuit family \emph{has} a black-box obfuscation, then a computational indistinguishability obfuscator must compute it. So it's conceivable that many of the interesting black-box applications carry over to the quantum case. Of course, one could say that this is exactly why the recent classical results have worked.}
+Before proving an impossibility result, we mention an application of indistinguishability obfuscation; this application survives the impossibility result, and is motivated by analogous application of classical indistinguishability obfuscators.\\
 
+\noindent {\bf Application: quantum witness encryption.} The classical idea of witness encryption was first studied in~\cite{GGSW13}; its connection to indistinguishability obfuscation was first considered in~\cite{GGHRSW13}. In the quantum case, we set up the problem as follows. Suppose Alice wishes to encrypt a quantum state $\rho$, but not to a particular key or for a particular person; instead, the encryption is tied to a challenge question, and anyone that can answer the question correctly can decrypt the plaintext. 
 
-\subsection{Applications}
-%%%%%%%%%%%%%%%%%%%%%%
+More formally, we consider a QMA language $L$, %, such as Quantum $3$SAT \cite{GN13}.  
+and would like to enable Alice to encrypt her state $\rho$ using a particular problem instance $H$. %, in this case a Hamiltonian $H=\sum_{i=1}^r \Pi_{i}$, which is the sum of 3-local projectors that act on an $n$-qubit Hilbert space.  
+If $H$ is a ``yes" instance, %i.e., if there exists a ground state with energy 0, 
+then we'd like to allow Bob, who holds a witness state, to be able to decrypt Alice's message.  Likewise, if $H$ is a no instance, we demand that no QPT algorithm can distinguish between encryptions of any two quantum states  on the same number of qubits.  Interestingly, the definition says nothing about the case where $H$ is a yes instance but a ground state is not known. While this may seem counterintuitive, the classical primitive has a number of natural applications (e.g., public-key encryption and identity encryption, see \cite{GGSW13}). 
 
-\noindent {\bf Example: quantum witness encryption.} The classical idea of witness encryption comes from a paper of Garg, Gentry, Sahai and Waters \cite{GGSW13}, and its connection to indistinguishability obfuscation was first considered by Garg et. al. \cite{GGHRSW13}. In the quantum case, we set up the problem as follows. Suppose Alice wishes to encrypt a quantum state $\rho$, but not to a particular key or for a particular person; instead, the encryption is tied to a challenge question, and anyone that can answer the question correctly can decrypt the plaintext. 
-
-More formally, we consider any QMA$_{1}$ language $L$, such as Quantum $3$SAT \cite{GN13}.  We would like Alice to be able to encrypt her state $\rho$ using a particular problem instance, in this case a Hamilonian $H=\sum_{i=1}^r \Pi_{i}$, which is the sum of 3-local projectors that act on an $n$ qubit Hilbert space.  If $H$ is a ``yes" instance, i.e., if there exists a ground state with energy 0, we'd like to allow Bob, who holds the ground state, to be able to decrypt Alice's message.  Likewise, if $H$ is a no instance, we demand that no QPT algorithm can distinguish between encryptions of any two quantum states  on the same number of qubits.  Interestingly, the definition says nothing about the case where $H$ is a yes instance but a ground state is not known. While this may seem counterintuitive, the classical primitive has a number of natural applications (e.g., public-key encryption and identity encryption, see \cite{GGSW13}). 
-
-We now show that Witness Encryption for languages in QMA$_1$ is possible, assuming the existence of a quantum computational indistinguishability obfuscator.  Given an instance $H$ of quantum $3$SAT and a quantum state $\rho$, consider the quantum circuit $Q_{H,\rho}(\sigma)$, which outputs $\rho$ if $\sigma$ is the ground state of $H$ and else outputs the all $0$ basis state.  We claim the Indistinguishability Obfuscation $\algo{O}(Q_{H,\rho})$ is a valid witness encryption for Quantum $3$SAT and $\rho$.  Correctness of decryption is clear, since the ability to provide a valid ground state for $H$ allows Bob to use $\algo{O}(Q_{H,\rho})$ to obtain Alice's state $\rho$.  Of course, if $H$ does not have a ground state with energy $0$, no matter which state Bob provides, $Q_{H,\rho}$ outputs 0, and so by the definition of Indistinguishability Obfuscation, the obfuscation of $F_{H,\rho_1}$ will be computationally indistinguishable from the obfuscation of $F_{H,\rho_2}$ for any two quantum states $\rho_1,\rho_2$ on the same number of qubits.  Notice that unlike the classical case (with an NP language) we will need to repeat the verification procedure so as to amplify our soundness probability to be negligible.
-
+We now show that Witness Encryption for QMA is possible, assuming the existence of a quantum computational indistinguishability obfuscator. It is well-known (see, e.g.,~\cite{GN13}) that QMA contains languages $L$ which have a poly-time uniform circuit family $\mathcal C_L$ with completeness $1-2^{-\Omega(n)}$ and soundness $2^{-\Omega(n)}$. Given an instance $H$ of such a language $L$, and a quantum state $\rho$, consider the quantum circuit $Q_{H,\rho}(\sigma)$, which runs the appropriate circuit from $\mathcal C_L$ and outputs $\rho$ on accept, and $\ket{0^n}$ otherwise.  We claim the computational-indistinguishability obfuscation $\algo{O}(Q_{H,\rho})$ is a valid witness encryption for $L$ and $\rho$.  Correctness of decryption is clear, since the ability to provide a valid witness for $L$ allows Bob to use $\algo{O}(Q_{H,\rho})$ to obtain Alice's state $\rho$.  Of course, if $H$ is not in $L$, then no witness will suffice; more precisely, $\|Q_{H,\rho_1} - Q_{H, \rho_2}\| \leq 2^{-\Omega(n)}$ for any two quantum states $\rho_1, \rho_2$ on the same number of qubits. By the indistinguishability condition of \expref{Definition}{def:indistinguishability}, the obfuscation of $Q_{H,\rho_1}$ will be computationally indistinguishable from the obfuscation of $Q_{H,\rho_2}$.
+% Notice that unlike the classical case (with an NP language) we will need to repeat the verification procedure so as to amplify our soundness probability to be negligible.
 %Alice outputs a ciphertext $F_\phi \ket x$ where $\phi$ is a quantum 3-SAT formula, such that there exists an efficient algorithm Eval with the property that Eval$(F_\phi\ket x, \ket y) = \ket x$ if $\ket y$ is a satisfying assignment for $\phi$. The security requirement is that if $\phi$ does not have a satisfying assignment, then the ensembles $F_\phi \ket x$ and $F_\phi \ket {x'}$ are quantum indistinguishable (formally, this now requires a definition of distinguishing \emph{quantum} ensembles) whenever $\ket x$ and $\ket{x'}$ are quantum states on the same number of qubits. 
 %
 %The problem of quantum witness encryption can be solved using a quantum best-possible obfuscator $\mathcal O$, as follows. First, Alice selects a random Clifford (or Pauli) circuit $C$. She then writes down a quantum circuit $M_C$ which accepts two registers (and some ancillas), such that $M \ket z \ket y \ket 0 = \ket {C^{-1}z} \ket y \ket 0$ when $\ket y$ is a satisfying assignment for $\phi$, and $M \ket z \ket{y'} \ket 0 = \ket z \ket{y'} \ket 0$ for $\ket{y'}$ not a satisfying assignment for $\phi$. The ciphertext $F_\phi \ket x$ will consist of the pair $(C \ket x, \mathcal O(M_C))$. A recipient with a satisfying assignment $\ket y$ can decrypt by computing $\mathcal O(M_C) \ket {Cx} \ket y \ket 0$. On the other hand, if no satisfying assignment exists, then $M_C$ acts like the identity operator on every input. By the definition of best-possible, a quantum adversary can learn nothing more from $\mathcal O(M_C)$ than she could from the trivial circuit with no gates. Moreover, by the design property of Cliffords (or Paulis) the adversary also observes $\ket{Cx}$ to be a maximally mixed state.
@@ -875,46 +881,38 @@ We now show that Witness Encryption for languages in QMA$_1$ is possible, assumi
 \subsection{Equivalence of indistinguishability and best-possible}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\ga{some old stuff below should be removed, but most still applies}
+%\ga{some old stuff below should be removed, but most still applies}
 
-In what follows, for the sake of simplicity we omit the perfect, statistical, and classical variants of the definitions; one can arrive at these versions simply by replacing quantum indistinguishability of the relevant ensembles to one of the other notions. We will always be obfuscating quantum circuits, so when the word ``quantum'' appears in front of ``obfuscator'', this refers to the type of indistinguishability. We say that two uniform quantum circuit families $\mathcal C'$ and $\mathcal C''$ are equivalent if they consist of functionally equivalent circuits of the same size; more precisely, for every $n$, $|\mathcal C'_n| = |\mathcal C''_n| = 1$ and $|C'_n| = |C''_n|$  and $U_{C'_n} = U_{C''_n}$.
+In what follows, for the sake of simplicity we omit the perfect, statistical, and classical variants of the definitions; one can arrive at these versions simply by replacing quantum indistinguishability of the relevant ensembles to one of the other notions. We say that two quantum circuit families $\mathcal C'$ and $\mathcal C''$ are equivalent if they consist of functionally equivalent circuits of the same size; more precisely, for every $n$, $|\mathcal C'_n| = |\mathcal C''_n| = 1$ and $|C'_n| = |C''_n|$  and $U_{C'_n} = U_{C''_n}$. We begin with the following straightforward observation.
 
-\begin{itemize}
-\item the exact-same-length condition seems too strong, but it does appear in GR too, along with a later comment about how it can be removed. I guess some care is needed.
-\end{itemize}
+%\begin{definition} A classical probabilistic algorithm $\mathcal O$ that takes as input a quantum circuit $C$ and outputs another quantum circuit $\mathcal O(C)$ is a quantum {\bf best-possible obfuscator} for the family $\mathcal C$ if it satisfies properties (1) and (2) from Definition \ref{def:black-box}, as well as the following property:
+%\begin{enumerate}
+%\setcounter{enumi}{2}
+%\item for any learner (uniform quantum circuit family) $\mathcal L$, there is a simulator (uniform quantum circuit family) $\mathcal S$ and a negligible $\phi$ such that, for all uniform equivalent subfamilies $\mathcal C', \mathcal C''$ of $\mathcal C$, the two ensembles $\mathcal L(\mathcal O(\mathcal C'))$ and $\mathcal S(\mathcal C'')$ are quantumly indistinguishable.
+%\end{enumerate}
+%\end{definition}
+%\ga{some old stuff below}
+%\begin{definition} A classical probabilistic algorithm $\mathcal O$ that takes as input a quantum circuit $C$ and outputs another quantum circuit $\mathcal O(C)$ is a quantum {\bf indistinguishability obfuscator} for the family $\mathcal C$ if it satisfies properties (1) and (2) from Definition \ref{def:black-box}, as well as the following property:
+%\begin{enumerate}
+%\setcounter{enumi}{2}
+%\item for all uniform equivalent subfamilies $\mathcal C', \mathcal C''$ of $\mathcal C$, the two ensembles $\mathcal O(\mathcal C')$ and $\mathcal O(\mathcal C'')$ are quantumly indistinguishable.
+%\end{enumerate}
+%\end{definition}
+%\begin{itemize}
+%\item in all of the above, we could have considered obfuscating quantum states, or even using quantum algorithms to obfuscate classical descriptions of a %quantum circuit. Why is this the ``right'' case (or at least an interesting one)?
+%\end{itemize}
+%With the definitions set up as above, many of the proofs of Goldwasser and Rothblum go through with little to no changes.
 
-\begin{definition} A classical probabilistic algorithm $\mathcal O$ that takes as input a quantum circuit $C$ and outputs another quantum circuit $\mathcal O(C)$ is a quantum {\bf best-possible obfuscator} for the family $\mathcal C$ if it satisfies properties (1) and (2) from Definition \ref{def:black-box}, as well as the following property:
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item for any learner (uniform quantum circuit family) $\mathcal L$, there is a simulator (uniform quantum circuit family) $\mathcal S$ and a negligible $\phi$ such that, for all uniform equivalent subfamilies $\mathcal C', \mathcal C''$ of $\mathcal C$, the two ensembles $\mathcal L(\mathcal O(\mathcal C'))$ and $\mathcal S(\mathcal C'')$ are quantumly indistinguishable.
-\end{enumerate}
-\end{definition}
-
-
-\ga{some old stuff below}
-
-\begin{definition} A classical probabilistic algorithm $\mathcal O$ that takes as input a quantum circuit $C$ and outputs another quantum circuit $\mathcal O(C)$ is a quantum {\bf indistinguishability obfuscator} for the family $\mathcal C$ if it satisfies properties (1) and (2) from Definition \ref{def:black-box}, as well as the following property:
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item for all uniform equivalent subfamilies $\mathcal C', \mathcal C''$ of $\mathcal C$, the two ensembles $\mathcal O(\mathcal C')$ and $\mathcal O(\mathcal C'')$ are quantumly indistinguishable.
-\end{enumerate}
-\end{definition}
-
-\begin{itemize}
-\item in all of the above, we could have considered obfuscating quantum states, or even using quantum algorithms to obfuscate classical descriptions of a quantum circuit. Why is this the ``right'' case (or at least an interesting one)?
-\end{itemize}
-
-With the definitions set up as above, many of the proofs of Goldwasser and Rothblum go through with little to no changes.
-
-\begin{proposition} There exists an inefficient perfect indistinguishability obfuscator for all quantum circuits.
+\begin{proposition} There exists an inefficient algorithm which is a perfect indistinguishability obfuscator for all quantum circuits, and whose outputs are quantum circuits.
 \end{proposition}
 \begin{proof}
-The obfuscator just picks the lexicographically first circuit which implements the same unitary as the given circuit. Looping through lexicographically ordered circuits can be done in PSPACE, and equivalence-checking can be done in QMA $\subset$ QIP = PSPACE too.
+The algorithm simply picks the lexicographically first circuit which implements the same unitary as the given circuit. Iterating lexicographically through all polynomial-size circuits can be done in PSPACE, and equivalence-checking can be done in QMA $\subset$ PSPACE as well.
 \end{proof}
 
-\begin{itemize}
-\item what's the smallest class that one can do this in?
-\end{itemize}
+%\begin{itemize}
+%\item what's the smallest class that one can do this in?
+%\end{itemize}
+Next, we show that best-possible implies indistinguishability, for both efficient and inefficient obfuscators. In our proofs, we will need to explicitly refer to uniform circuit families of circuits, as defined above.
 
 \begin{proposition} If $\mathcal O$ is a best-possible quantum obfuscator for a circuit family $\mathcal C$, then it is also a quantum indistinguishability obfuscator for $\mathcal C$.
 \end{proposition}
@@ -922,29 +920,34 @@ The obfuscator just picks the lexicographically first circuit which implements t
 Let $\mathcal C'$ and $\mathcal C''$ be uniform equivalent subfamilies of $\mathcal C$, and let $\mathcal L$ be the trivial learner that simply implements the identity operator. By the best-possible property, there is a simulator $\mathcal S$ such that $\mathcal S(\mathcal C'')$ is quantum indistinguishable from $\mathcal L ( \mathcal O( \mathcal C')) = \mathcal O ( \mathcal C')$. By the same property, we also have that $\mathcal S(\mathcal C'')$ is quantum indistinguishable from $\mathcal L(\mathcal O (\mathcal C'')) = \mathcal O( \mathcal C'')$. By the transitivity property of indistinguishability, it follows that $\mathcal O(\mathcal C')$ is indistinguishable from $\mathcal O(\mathcal C'')$.
 \end{proof}
 
+The other direction requires efficiency of the obfuscator. 
 \begin{proposition} If $\mathcal O$ is an efficient quantum indistinguishability obfuscator for a circuit family $\mathcal C$, then it is also an efficient quantum best-possible obfuscator for $\mathcal C$.
 \end{proposition}
 \begin{proof}
-Let $\mathcal C'$ and $\mathcal C''$ be equivalent subfamilies of $\mathcal C$, and let $\mathcal L$ be a (quantum) learner whose output on $\mathcal C'$ is the ensemble $\mathcal L(\mathcal O (\mathcal C'))$. We define a (quantum) simulator by setting $\mathcal S = \mathcal L \circ \mathcal O$; its output on $\mathcal C''$ is then the ensemble $\mathcal L(\mathcal O(\mathcal C''))$. Since the ensembles $\mathcal O(\mathcal C')$ and $\mathcal O(\mathcal C'')$ are quantum indistinguishable, so are their images under $\mathcal L$.
+Let $\mathcal C'$ and $\mathcal C''$ be equivalent subfamilies of $\mathcal C$, and let $\mathcal L$ be a learner whose output on $\mathcal C'$ is the ensemble $\mathcal L(\mathcal O (\mathcal C'))$. We define a simulator by setting $\mathcal S = \mathcal L \circ \mathcal O$; its output on $\mathcal C''$ is then the ensemble $\mathcal L(\mathcal O(\mathcal C''))$. Since the ensembles $\mathcal O(\mathcal C')$ and $\mathcal O(\mathcal C'')$ are quantum indistinguishable, so are their images under $\mathcal L$.
 \end{proof}
+
+
+
 \subsection{Impossibility of statistical obfuscators}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Recall the following computational problems and corresponding completeness results.
+In this section, we show that efficient perfect or statistical indistinguishability obfuscation is impossible. We begin by recalling the following computational problems and corresponding completeness results.
 
-\begin{definition} \emph{Identity Check.}\\
+\begin{problem} \emph{Identity Check.}\\
 \indent Input: an $n$-qubit quantum circuit $C$ and parameters $a$,$b$ so that $b-a\geq 1/poly(n)$. \\
 \indent Promise: $\min_\alpha \| U - e^{i \alpha} I \|$ is less than $a$ or greater than $b$.\\
 \indent Output: YES in the former case and NO in the latter.
-\end{definition}
+\end{problem}
+
 \begin{theorem} 
 The problem Identity Check is coQMA-complete \cite{JWB03}. 
 \end{theorem}
 
-Given an $m$-qubit state $\rho$, let $\tr_{(l, m)}[\rho]$ denote the result of tracing out qubits $l$ through $m$. Nothing is traced out if $l > m$.
+Given an $m$-qubit state $\rho$ and indices $l, k \geq 0$, we let $\tr_{l,k} [\rho]$ denote the result of tracing out qubits $l$ through $k$ of $\rho$. We adopt the convention that nothing is traced out (i.e., $\tr_{l,k}[\rho] = \rho$) if $l > m$.
 
 \begin{definition} \emph{Quantum State Distinguishability}\\
-\indent Input: $m$-qubit quantum circuits $C_1$ and $C_2$, positive integer $k \leq m$ and parameters $a,b$ such that $a<b^2$.\\
+\indent Input: $m$-qubit quantum circuits $C_0$ and $C_1$, positive integer $k \leq m$ and parameters $a,b$ with $a<b^2$.\\
 \indent Promise: let $\rho_i = \tr_{(k+1, m)}[C_i\ket{0^m}\bra{0^m}C_i^\dagger]$; then $\|\rho_0 - \rho_1\|_\emph{tr}$ is less than $a$ or greater than $b$.\\
 \indent Output: YES in the former case and NO in the latter.
 \end{definition}
@@ -953,15 +956,15 @@ Given an $m$-qubit state $\rho$, let $\tr_{(l, m)}[\rho]$ denote the result of t
 The problem Quantum State Distinguishability is QSZK-complete \cite{Watrous02}.
 \end{theorem}
 
-We will in fact only need the containment part of the above theorem.
+As a matter of fact, we will only need the containment in QSZK for the Quantum State Distinguishability problem. We prove the following.
 
 \begin{theorem}
-If there exists a polynomial-time indistinguishability quantum obfuscator, then coQMA is contained in QSZK.
+If there exists a polynomial-time quantum statistical indistinguishability obfuscator, then coQMA is contained in QSZK.
 \end{theorem}
 \begin{proof}
 We will actually show coQMA $\subset$ BQP$^{\text{QSZK}}$; since BQP is contained in QSZK, the result will follow. Let $a$ and $b$ satisfy $b-a = 1 / \text{poly}(n)$. We will solve Identity Check using a subroutine that solves Quantum State Distinguishability. 
 
-Let $C$ be the input, i.e., a classical description of an $n$-qubit quantum circuit. Create an identity circuit $D$ with an equal number of inputs as $C$, and of equal length to $C$. Let $O_C$ be a circuit that initializes a register with the classical state $\ket{C}$ containing the classical description of $C$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|C|$. Likewise, let $O_D$ be be a circuit that initializes a register with the classical state $\ket{D}$ containing the classical description of $D$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|D| = |C|$. Note that, after tracing out ancillas, the outputs of these circuits are given by
+Let $C$ be the input, i.e., a classical description of an $n$-qubit quantum circuit. Create an identity circuit $D$ with an equal number of inputs as $C$, and of equal length to $C$. Let $O_C$ be a circuit that initializes a register with the classical state $\ket{C}$ containing the classical description of $C$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|C|$. Likewise, let $O_D$ be a circuit that initializes a register with the classical state $\ket{D}$ containing the classical description of $D$, and applies the circuit of $\mathcal O$ which corresponds to the input length $|D| = |C|$. Note that, after tracing out ancillas, the outputs of these circuits are given by
 $$
 \tr_\text{anc.} \bigl[O_C\ket{0}\bra{0}O_C^\dagger\bigr] = \mathcal O(C)
 \qquad \text{and} \qquad
@@ -1030,12 +1033,13 @@ The above amounts to a BQP$^\text{QSZK}$ protocol for a coQMA-hard problem, thus
 \section{Discussion}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Open questions:
+We briefly list some open questions, and leave more detailed discussions for a future version.
+
 \begin{itemize}
-\item can you achieve single-copy vbb obfuscation with quantum states? What about information-theoretic? For classical or quantum computations?
-\item can we extend the proof to show that the state must be consumable? Is that easier in the quantum case?
-\item can you achieve quantum circuit-to-circuit obfuscation under the comp. indistinguishability condition?
-\item what happens if we think about obfuscating measurements, or CPTP circuits?
+\item Can you achieve single-copy quantum black-box obfuscation with quantum states, either for classical or quantum functionality? Is information-theoretic security possible if we give up on reusability? 
+\item Can our black-box impossibility proofs be adapted to show that the state \emph{must be consumable}, even if only partly? Is it conceivable that, if we restrict to only classical functionality, that the advice state is \emph{perfectly preserved} with each execution?
+\item Are there quantum versions of the recent classical breakthroughs for computational indistinguishability obfuscation? Can we achieve quantum circuit-to-circuit obfuscation under that condition? Which of the classical applications carry over to the quantum setting?
+\item Our impossibility proofs apply to unitary circuits, and thus trivially also to circuits that include measurements, or arbitrary CPTP maps. If we \emph{require} the ability to obfuscate such computations as well, are stronger impossibility results possible?
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

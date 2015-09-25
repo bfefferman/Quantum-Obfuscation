@@ -105,7 +105,7 @@ Encryption of data is fundamental to secure communication. Beyond encryption of 
 
 In its most powerful ``quantum black-box'' instantiation, a quantum obfuscator would turn a description of a quantum program $f$ into a quantum state $\rho_f$, such that anyone in possession of $\rho_f$ can repeatedly evaluate $f$ on inputs of their choice, but never learn \emph{anything else} about the original program. We formalize this notion of obfuscation, and prove an impossibility result: such obfuscation is only possible in a setting where the adversary never has access to more than one obfuscation (of either the same program, or of different programs.) Our proof involves a novel technical idea: chosen-ciphertext-secure encryption for quantum states. In addition, we show that some applications of obfuscation still appear possible in spite of our impossibility result. These include CPA-secure encryption, fully-homomorphic encryption, and quantum money. 
 
-We also define quantum versions of indistinguishability obfuscation and best-possible obfuscation. We then show that these notions are equivalent, and that their perfect and statistical variants are impossible to achieve. The remaining (i.e., computational) variant would still have an application of interest: witness encryption for QMA$_1$.
+We also define quantum versions of indistinguishability obfuscation and best-possible obfuscation. We then show that these notions are equivalent, and that their perfect and statistical variants are impossible to achieve. The remaining (i.e., computational) variant would still have an application of interest: witness encryption for QMA.
 \end{abstract}
 
 
@@ -113,7 +113,7 @@ We also define quantum versions of indistinguishability obfuscation and best-pos
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Obfuscation.} Obfuscation is \emph{encryption of functionality}, and is arguably the most powerful cryptographic ability that may yet be possible. It implies (with some caveats) almost any other cryptographic construction imaginable. It could be used to protect intellectual property in software, and provide secure software patching. In all of these applications, an \emph{obfuscator} is an efficient algorithm which rewrites programs so that they satisfy:
+\subsection{Obfuscation.} Obfuscation is \emph{encryption of functionality}, and is arguably the most powerful cryptographic ability that may yet be possible. It implies (with some caveats) almost any other cryptographic construction imaginable. It could also be used to protect intellectual property in software, and provide secure software patching. In all of these applications, an \emph{obfuscator} is an efficient algorithm which rewrites programs so that they satisfy:
 \begin{enumerate}\label{def:obf-informal}
 \item \emph{functional equivalence:} input/output functionality is unchanged;
 \item \emph{polynomial slowdown:} efficiency is maintained;
@@ -194,10 +194,10 @@ A QPT is an indistinguishability obfuscator if and only if it is a best-possible
 \noindent We also show that these definitions are only achievable when the distinguishability is guaranteed only against computationally bounded (quantum) adversaries.
 
 \begin{theorem}
-If quantum statistical-indistinguishability obfuscators exist, then coQMA $\subseteq$ QSZK.
+If efficient quantum statistical-indistinguishability obfuscators exist, then coQMA $\subseteq$ QSZK.
 \end{theorem}
 
-This means that, just as in the classical world, computational indistinguishability is the only surviving variant. We end with an application for such an obfuscator: quantum witness encryption for QMA$_{1}$. Witness encryption for a QMA$_{1}$ language $L$ provides for encryption of a plaintext $x$ to a potential instance $l$. The security guarantee is that (i.) if $l \in L$, then any valid witness allows for decryption of $x$, and (ii.) if $l \notin L$, then encryptions of different plaintexts are indistinguishable. 
+This means that, just as in the classical world, computational indistinguishability is the only surviving variant. We end with an application for such an obfuscator: quantum witness encryption for QMA. Witness encryption for a QMA language $L$ provides for encryption of a plaintext $x$ to a potential instance $l$. The security guarantee is that (i.) if $l \in L$, then any valid witness allows for decryption of $x$, and (ii.) if $l \notin L$, then encryptions of different plaintexts are indistinguishable. 
 
 \begin{theorem}
 Quantum computational-indistinguishability obfuscation implies witness encryption for QMA$_1$.

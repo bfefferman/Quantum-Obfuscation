@@ -27,8 +27,7 @@
 \contentsline {subsubsection}{\numberline {3.3.1}Impossibility of two-circuit obfuscation}{18}{subsubsection.3.3.1}
 \contentsline {subsubsection}{\numberline {3.3.2}Generalizing the impossibility result}{20}{subsubsection.3.3.2}
 \contentsline {section}{\numberline {4}Quantum indistinguishability obfuscation}{25}{section.4}
-\contentsline {subsection}{\numberline {4.1}Definitions}{25}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Applications}{25}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Equivalence of indistinguishability and best-possible}{26}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Impossibility of statistical obfuscators}{27}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.1}Definitions, and an application}{25}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Equivalence of indistinguishability and best-possible}{26}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Impossibility of statistical obfuscators}{27}{subsection.4.3}
 \contentsline {section}{\numberline {5}Discussion}{28}{section.5}

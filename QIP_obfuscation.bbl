@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{19}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -66,22 +66,6 @@ Boaz Barak, Sanjam Garg, Yael~Tauman Kalai, Omer Paneth, and Amit Sahai.
 \newblock \doi{10.1007/978-3-642-55220-5_13}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-642-55220-5_13}.
 
-\bibitem[Bennett et~al.(1997)Bennett, Bernstein, Brassard, and Vazirani]{BBBV}
-Charles~H. Bennett, Ethan Bernstein, Gilles Brassard, and Umesh~V. Vazirani.
-\newblock Strengths and weaknesses of quantum computing.
-\newblock \emph{{SIAM} J. Comput.}, 26\penalty0 (5):\penalty0 1510--1523, 1997.
-\newblock \doi{10.1137/S0097539796300933}.
-\newblock URL \url{http://dx.doi.org/10.1137/S0097539796300933}.
-
-\bibitem[Bennett et~al.(1983)Bennett, Brassard, Breidbart, and Wiesner]{BBBW83}
-CharlesH. Bennett, Gilles Brassard, Seth Breidbart, and Stephen Wiesner.
-\newblock Quantum cryptography, or unforgeable subway tokens.
-\newblock In David Chaum, RonaldL. Rivest, and AlanT. Sherman, editors,
-  \emph{Advances in Cryptology}, pages 267--275. Springer US, 1983.
-\newblock ISBN 978-1-4757-0604-8.
-\newblock \doi{10.1007/978-1-4757-0602-4_26}.
-\newblock URL \url{http://dx.doi.org/10.1007/978-1-4757-0602-4_26}.
-
 \bibitem[Bitansky et~al.(2014)Bitansky, Canetti, Cohn, Goldwasser, Kalai,
   Paneth, and Rosen]{BCCGKPR14}
 Nir Bitansky, Ran Canetti, Henry Cohn, Shafi Goldwasser, Yael~Tauman Kalai,
@@ -117,23 +101,6 @@ Zvika Brakerski and GuyN. Rothblum.
 \newblock \doi{10.1007/978-3-642-54242-8_1}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-642-54242-8_1}.
 
-\bibitem[Broadbent and Jeffery(2015.)]{BJ15}
-Anne Broadbent and Stacey Jeffery.
-\newblock {Quantum homomorphic encryption for circuits of low {$T$}-gate
-  complexity}.
-\newblock \emph{Crypto 2015 (to appear)}, December 2015.
-
-\bibitem[Farhi et~al.(2012)Farhi, Gosset, Hassidim, Lutomirski, and
-  Shor]{FGHLS12}
-Edward Farhi, David Gosset, Avinatan Hassidim, Andrew Lutomirski, and Peter
-  Shor.
-\newblock Quantum money from knots.
-\newblock In \emph{Proceedings of the 3rd Innovations in Theoretical Computer
-  Science Conference}, ITCS '12, pages 276--289, New York, NY, USA, 2012. ACM.
-\newblock ISBN 978-1-4503-1115-1.
-\newblock \doi{10.1145/2090236.2090260}.
-\newblock URL \url{http://doi.acm.org/10.1145/2090236.2090260}.
-
 \bibitem[Garg et~al.(2013{\natexlab{a}})Garg, Gentry, Halevi, Raykova, Sahai,
   and Waters]{GGHRSW13}
 S.~Garg, C.~Gentry, S.~Halevi, M.~Raykova, A.~Sahai, and B.~Waters.
@@ -165,13 +132,6 @@ Sanjam Garg, Craig Gentry, Shai Halevi, and Daniel Wichs.
 \newblock \doi{10.1007/978-3-662-44371-2_29}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44371-2_29}.
 
-\bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
-Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
-\newblock How to construct random functions.
-\newblock \emph{Journal of the ACM}, 33\penalty0 (4):\penalty0 792--807, 1986.
-\newblock ISSN 0004-5411.
-\newblock \doi{http://doi.acm.org/10.1145/6490.6503}.
-
 \bibitem[Goldwasser and Rothblum(2007)]{GR07}
 Shafi Goldwasser and GuyN. Rothblum.
 \newblock On best-possible obfuscation.
@@ -181,15 +141,6 @@ Shafi Goldwasser and GuyN. Rothblum.
 \newblock ISBN 978-3-540-70935-0.
 \newblock \doi{10.1007/978-3-540-70936-7_11}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-540-70936-7_11}.
-
-\bibitem[H{\aa}stad et~al.(1999)H{\aa}stad, Impagliazzo, Levin, and
-  Luby]{HILL99}
-Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
-\newblock A pseudorandom generator from any one-way function.
-\newblock \emph{SIAM J. Comput.}, 28:\penalty0 1364--1396, March 1999.
-\newblock ISSN 0097-5397.
-\newblock \doi{http://dx.doi.org/10.1137/S0097539793244708}.
-\newblock URL \url{http://dx.doi.org/10.1137/S0097539793244708}.
 
 \bibitem[Hohenberger et~al.(2014)Hohenberger, Sahai, and Waters]{HSW14}
 Susan Hohenberger, Amit Sahai, and Brent Waters.
@@ -201,11 +152,6 @@ Susan Hohenberger, Amit Sahai, and Brent Waters.
 \newblock ISBN 978-3-642-55219-9.
 \newblock \doi{10.1007/978-3-642-55220-5_12}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-642-55220-5_12}.
-
-\bibitem[Janzing et~al.(2005)Janzing, Wocjan, and Beth]{JWB03}
-Dominik Janzing, Pawel Wocjan, and Thomas Beth.
-\newblock Non-identity check is qma-complete.
-\newblock In \emph{International Journal of Quantum Information}, 2005.
 
 \bibitem[Mosca and Stebila(2010)]{MS10}
 Michele Mosca and Douglas Stebila.
@@ -228,25 +174,5 @@ Amit Sahai and Brent Waters.
 \newblock ISBN 978-1-4503-2710-7.
 \newblock \doi{10.1145/2591796.2591825}.
 \newblock URL \url{http://doi.acm.org/10.1145/2591796.2591825}.
-
-\bibitem[Watrous(2002)]{Watrous02}
-John Watrous.
-\newblock Limits on the power of quantum statistical zero-knowledge.
-\newblock In \emph{43rd Symposium on Foundations of Computer Science {(FOCS}
-  2002), 16-19 November 2002, Vancouver, BC, Canada, Proceedings}, page 459.
-  {IEEE} Computer Society, 2002.
-\newblock ISBN 0-7695-1822-2.
-\newblock \doi{10.1109/SFCS.2002.1181970}.
-\newblock URL \url{http://dx.doi.org/10.1109/SFCS.2002.1181970}.
-
-\bibitem[Wiesner(1983)]{Wie1983}
-Stephen Wiesner.
-\newblock Conjugate coding.
-\newblock \emph{ACM Sigact News}, 15\penalty0 (1):\penalty0 78--88, 1983.
-
-\bibitem[Zhandry(2012)]{Zhandry2012}
-Mark Zhandry.
-\newblock {How to Construct Quantum Random Functions}.
-\newblock In \emph{FOCS 2012}, pages 679--687. IEEE, 2012.
 
 \end{thebibliography}

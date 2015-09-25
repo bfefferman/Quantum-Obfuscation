@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  25 SEP 2015 18:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (MiKTeX 2.9) (preloaded format=pdflatex 2015.4.17)  26 SEP 2015 01:27
 entering extended mode
 **C:/Users/Gorjan/Dropbox/work/cryptography/obfuscation/impossibility/Quantum-O
 bfuscation/QIP_obfuscation.tex
@@ -786,7 +786,6 @@ LaTeX Font Info:    Overwriting math alphabet `\EuScript' in version `bold'
 \c@definition=\count150
 \c@question=\count151
 
-\bibstyle{plainnat}
 (QIP_obfuscation.aux
 
 LaTeX Warning: Label `sec:intro' multiply defined.
@@ -959,25 +958,6 @@ Package microtype Info: Loading generic settings for font family
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
-
-Underfull \hbox (badness 6396) in paragraph at lines 70--75
-[]\OT1/ppl/m/n/10.95 (+20) Charles H. Ben-nett, Ethan Bern-stein, Gilles Bras-s
-ard, and Umesh V. Vazi-rani.
- []
-
-
-Underfull \hbox (badness 2478) in paragraph at lines 70--75
-\OT1/ppl/m/n/10.95 (+20) Strengths and weak-nesses of quan-tum com-put-ing.  \O
-T1/ppl/m/it/10.95 (+20) SIAM J. Com-put.\OT1/ppl/m/n/10.95 (+20) , 26(5):1510--
-
- []
-
-
-Underfull \hbox (badness 1028) in paragraph at lines 70--75
-\OT1/ppl/m/n/10.95 (+20) 1523, 1997.  doi:[][]10.1137/S0097539796300933[][].  U
-RL [][]$\OT1/pcr/m/n/10.95 http : / / dx . doi . org / 10 . 1137 /$
- []
-
 Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
@@ -989,49 +969,33 @@ Missing character: There is no â in font pplri7t!
 Missing character: There is no € in font pplri7t!
 Missing character: There is no “ in font pplri7t!
 
-Underfull \hbox (badness 4429) in paragraph at lines 169--174
-[]\OT1/ppl/m/n/10.95 (+20) Oded Gol-dre-ich, Shafi Gold-wasser, and Sil-vio Mi-
-cali.  How to con-struct ran-
- []
-
-
-Underfull \hbox (badness 7759) in paragraph at lines 169--174
-\OT1/ppl/m/n/10.95 (+20) dom func-tions.  \OT1/ppl/m/it/10.95 (+20) Jour-nal of
- the ACM\OT1/ppl/m/n/10.95 (+20) , 33(4):792--807, 1986.  ISSN 0004-5411.
- []
-
-
-Underfull \hbox (badness 2035) in paragraph at lines 217--221
+Underfull \hbox (badness 2035) in paragraph at lines 163--167
 []\OT1/ppl/m/n/10.95 (+20) Chris Peik-ert.  What does gchq ``cau-tion-ary tale'
 ' mean for lat-tice cryp-tog-ra-phy?
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [5])
-[6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 212.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 212.
+) [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 214.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 214.
  (QIP_obfuscation.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 212.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 212.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 214.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 214.
 Package rerunfilecheck Info: File `QIP_obfuscation.out' has not changed.
 (rerunfilecheck)             Checksum: 659CA044A653630B16D3898A41CA0529;538.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 212.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 214.
  ) 
 Here is how much of TeX's memory you used:
- 21672 strings out of 493698
- 377717 string characters out of 3141991
- 520890 words of memory out of 3000000
- 24144 multiletter control sequences out of 15000+200000
- 62243 words of font info for 253 fonts, out of 3000000 for 9000
+ 21627 strings out of 493698
+ 377127 string characters out of 3141991
+ 519333 words of memory out of 3000000
+ 24113 multiletter control sequences out of 15000+200000
+ 62101 words of font info for 251 fonts, out of 3000000 for 9000
  1186 hyphenation exceptions out of 8191
- 55i,8n,54p,1515b,509s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,54p,1515b,481s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files (x86)/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Progra
 m Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program 
 Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Fi
@@ -1045,9 +1009,9 @@ ype1/urw/palatino/uplr8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw
 /palatino/uplri8a.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/symbol
 /usyr.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><
 C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on QIP_obfuscation.pdf (6 pages, 193179 bytes).
+Output written on QIP_obfuscation.pdf (5 pages, 184681 bytes).
 PDF statistics:
- 268 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
+ 237 PDF objects out of 1000 (max. 8388607)
+ 51 named destinations out of 1000 (max. 500000)
  37965 words of extra memory for PDF output out of 42996 (max. 10000000)
 
