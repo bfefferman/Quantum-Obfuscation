@@ -537,7 +537,7 @@ If the relevant obfuscation is a consumable state, then this would result in a t
 \subsubsection{Impossibility of two-circuit obfuscation}\label{sec-twocircuit}
 %%%
 Barak et. al. \cite{BGIRSVY12} showed that black-box obfuscation is impossible by constructing an explicit circuit family that cannot be black-box obfuscated. 
-Here we present a similar result, showing that quantum black-box obfuscation is impossible in any setting where the adversary can gain access to two outputs of the obfuscator on \emph{different} inputs. We formalize this notion by defining a ``black-box two-circuit obfuscator,''  defined just as in Definition \ref{def:vbb-obfuscator} but with the following strengthening of the virtual black-box condition:
+We begin with a similar result in the quantum setting. We show that quantum black-box obfuscation is impossible in any setting where the adversary can gain access to two outputs of the obfuscator on \emph{different} inputs. We formalize this notion by defining a ``black-box two-circuit obfuscator,''  defined just as in Definition \ref{def:vbb-obfuscator} but with the following strengthening of the virtual black-box condition:
 \begin{enumerate}
 \setcounter{enumi}{2}
 \item \emph{(two-circuit virtual black-box) for every pair of quantum circuits $C_1$ and $C_2$ and every quantum adversary $\mathcal A$ there exists a quantum simulator $\mathcal S^{U_{C_1}, U_{C_2}}$ and a negligible $\epsilon_2$ such that}
@@ -550,12 +550,12 @@ We now show that there exists a family of circuits which is unobfuscatable under
 
 We first define a \emph{circuit-pair family} to be an ensemble of distributions over pairs of circuits. More precisely, if $\mathcal C$ is a circuit-pair family, then there exists a Turing machine M which, on input a positive integer parameter $n$ (in unary), outputs a classical description of a pair of circuits $(C_n, D_n)$ drawn at random from some distribution $\mathcal C_n$ on pairs of poly$(n)$-size circuits. If $M$ is polynomial-time, then we say that $\mathcal C$ is a \emph{poly-time circuit-pair family.}
 
-We also define a \emph{state-pair family} analogously. If $\mathcal C'$ is a state-pair family, then there exists a (not necessarily polynomial-time) quantum algorithm which, on input $n$ in unary, outputs a pair of density operators $(\rho_n, \sigma_n)$ drawn at random from some distribution $\mathcal C_n'$ on quantum states on poly$(n)$-many qubits. 
+We also define a \emph{state-pair family} analogously. If $\mathcal C'$ is a state-pair family, then there exists a (not necessarily polynomial-time) quantum algorithm which, on input $n$ in unary, outputs a pair of density operators $(\rho_n, \sigma_n)$ drawn at random from some distribution $\mathcal C_n'$ on quantum states on poly$(n)$-many qubits. Given a circuit-pair family $\mathcal C$ and a state-pair family $\mathcal C'$, we say that $\mathcal C'$ is an obfuscation of $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies the two-circuit obfuscation definition above.
 
 With these definitions, we can now state our first impossibility result.
 
 \begin{theorem}
-There exists a poly-time quantum circuit-pair family $\mathcal C$ such that no state-pair family is a two-circuit black-box obfuscation of $\mathcal C$.
+There exists a poly-time quantum circuit-pair family $\mathcal C$ such that no state-pair family is an obfuscation of $\mathcal C$.
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
@@ -601,23 +601,54 @@ To complete the proof, we explicitly define the poly-time circuit-pair family $\
 \subsubsection{Impossibility of black-box obfuscation}
 %%%
 
-\ga{stopped editing here.}
+Our goal in this section is to extend the two-circuit impossibility proof from the prior section to the case of obfuscating a single circuit. For our impossibility proof, we require an additional condition on the obfuscator: that each of its outputs is reusable a fixed polynomial number of times. This is a natural condition which is automatically satisfied by classical obfuscators, since their outputs can be perfectly copied.
 
-Our goal in this section is to modify the black-box quantum two-circuit impossibility proof, in the prior section, to demonstrate impossibility of quantum circuit obfuscation with cloneable outputs.
-
-We first prove this in the simpler setting in which the output of the obfuscator is a quantum circuit.
-
-\begin{definition}\label{def:blackboxcircuit}
-A \textbf{black-box quantum obfuscator with circuit output} is a QPT $\algo O$ such that whenever $C$ is an $n$-qubit quantum circuit, the output is a quantum circuit $\algo O(C)$ so that:
+\begin{definition}\label{def:vbb-reusable}
+A \textbf{reusable-black-box quantum obfuscator} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output $\mathcal{O}(C)$ is a quantum state satisfying
 \begin{enumerate}
-\item (polynomial slowdown)  $|\algo O(C)| = \text{poly}(n, |C|)$;
-\item (functional equivalence) $\bigl\| U_{\algo{O}(C)} - U_{C}\|_\diamond \leq \negl(n, |C|)$;
+\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
+\item (functional equivalence) $\bigl\| \algo J ( \rho \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
+\item (reusability) after execution of $\algo J$, an output register contains a state which satisfies (2.);
 \item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that:
 $$
-\Bigl| \emph{Pr}[\mathcal A(\algo{O}(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
+\Bigl| \emph{Pr}[\mathcal A(\rho_{(i)}) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
 $$
 \end{enumerate}
 \end{definition}
+
+We remark that reusability can be achieved in any number of ways: by providing a state which partially survives uses by the interpreter $\algo J$, by providing sufficiently many copies, or by providing a means of cloning the state. We prove impossibility of the above definition in any setting where the adversary receives two copies of the obfuscator output, even on identical inputs. This is automatically satisfied if the obfuscator provides multiple copies in order to satisfy reusability, or if the state is (even approximately) cloneable. 
+
+To state the result, we define (in analogy to circuit-pair families and state-pair families) a \emph{circuit family} to be an ensemble of distributions over circuits, and a \emph{state family} to be an ensemble of distributions over states. A state family $\mathcal C'$ is said to be an obfuscation of a circuit family $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies \expref{Definition}{def:vbb-reusable}. With these definitions, we will prove the following theorem.
+
+\begin{theorem}\label{thm:single-impossibility}
+There exists a quantum circuit family $\mathcal C$ such that no state family is a reusable-black-box quantum obfuscation of $\mathcal C$.
+\end{theorem}
+
+For readability, we will actually first prove a corollary which shows that quantum circuits cannot be obfuscated into quantum circuits, under any of the definitions considered so far (even the strongest, \expref{Definition}{def:vbb-obfuscator}.) This corollary is arguably the most direct quantum generalization of the impossibility result of ~\cite{BGIRSVY01}. Once we have proved the corollary, we will explain in detail how the proof should be adapted in order to achieve \expref{Theorem}{thm:single-impossibility}.
+
+\begin{corollary}
+There exists a quantum circuit family $\mathcal C$ such that no quantum circuit family is a black-box obfuscation of $\mathcal C$.
+\end{corollary}
+
+\noindent \ga{Stopped editing here.} \newpage
+
+%\begin{theorem}
+%There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no ensemble of distributions over circuits is a black-box quantum obfuscation with circuit output, of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
+%\end{theorem}
+%
+%We first prove this in the simpler setting in which the output of the obfuscator is a quantum circuit.
+%
+%\begin{definition}\label{def:blackboxcircuit}
+%A \textbf{black-box quantum obfuscator with circuit output} is a QPT $\algo O$ such that whenever $C$ is an $n$-qubit quantum circuit, the output is a quantum circuit $\algo O(C)$ so that:
+%\begin{enumerate}
+%\item (polynomial slowdown)  $|\algo O(C)| = \text{poly}(n, |C|)$;
+%\item (functional equivalence) $\bigl\| U_{\algo{O}(C)} - U_{C}\|_\diamond \leq \negl(n, |C|)$;
+%\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that:
+%$$
+%\Bigl| \emph{Pr}[\mathcal A(\algo{O}(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
+%$$
+%\end{enumerate}
+%\end{definition}
 %\begin{definition}\label{blackboxclone}
 %A \textbf{black-box quantum obfuscator with cloneable outputs} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output $\mathcal{O}(C)$ is a $2m$-qubit state $\rho\otimes\rho$, where  $\rho$ satisfies:
 %\begin{enumerate}
