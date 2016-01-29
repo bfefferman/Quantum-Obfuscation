@@ -1,3 +1,9 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: quantum_obfuscation.aux
 The style file: plainnat.bst
 Database file #1: QuantumCrypto.bib
+Repeated entry---line 6960 of file QuantumCrypto.bib
+ : @inproceedings{Watrous06
+ :                         ,
+I'm skipping whatever remains of this entry
+Warning--empty school in Gentry09
+(There was 1 error message)

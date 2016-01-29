@@ -1,4 +1,4 @@
-\begin{thebibliography}{33}
+\begin{thebibliography}{36}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -181,6 +181,12 @@ Sanjam Garg, Craig Gentry, Shai Halevi, and Daniel Wichs.
 \newblock \doi{10.1007/978-3-662-44371-2_29}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44371-2_29}.
 
+\bibitem[Gentry(2009)]{Gentry09}
+Craig Gentry.
+\newblock \emph{A Fully Homomorphic Encryption Scheme}.
+\newblock PhD thesis, Stanford, CA, USA, 2009.
+\newblock AAI3382729.
+
 \bibitem[Goldreich et~al.(1986)Goldreich, Goldwasser, and Micali]{GGM86}
 Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
 \newblock How to construct random functions.
@@ -240,6 +246,14 @@ Dominik Janzing, Pawel Wocjan, and Thomas Beth.
 \newblock Non-identity check is qma-complete.
 \newblock In \emph{International Journal of Quantum Information}, 2005.
 
+\bibitem[Merkle(1978)]{Merkle78}
+Ralph~C. Merkle.
+\newblock Secure communications over insecure channels.
+\newblock \emph{Commun. ACM}, 21\penalty0 (4):\penalty0 294--299, April 1978.
+\newblock ISSN 0001-0782.
+\newblock \doi{10.1145/359460.359473}.
+\newblock URL \url{http://doi.acm.org/10.1145/359460.359473}.
+
 \bibitem[Mosca and Stebila(2010)]{MS10}
 Michele Mosca and Douglas Stebila.
 \newblock Quantum coins.
@@ -265,6 +279,12 @@ John Watrous.
 \newblock ISBN 0-7695-1822-2.
 \newblock \doi{10.1109/SFCS.2002.1181970}.
 \newblock URL \url{http://dx.doi.org/10.1109/SFCS.2002.1181970}.
+
+\bibitem[Watrous(2006)]{Watrous06}
+John Watrous.
+\newblock {Zero-knowledge Against Quantum Attacks}.
+\newblock In \emph{STOC '06}, pages 296--305. ACM, 2006.
+\newblock URL \url{http://doi.acm.org/10.1145/1132516.1132560}.
 
 \bibitem[Wee(2005)]{Wee05}
 Hoeteck Wee.
