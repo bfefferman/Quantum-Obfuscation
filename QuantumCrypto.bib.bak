@@ -6957,6 +6957,24 @@
   url = {http://doi.acm.org/10.1145/1132516.1132560}
 }
 
+@InProceedings{Watrous06,
+  author =    {Watrous, John},
+  title =     {Zero-knowledge Against Quantum Attacks},
+  booktitle = {Proceedings of the Thirty-eighth Annual ACM Symposium on Theory of Computing},
+  year =      {2006},
+  series =    {STOC '06},
+  pages =     {296--305},
+  address =   {New York, NY, USA},
+  publisher = {ACM},
+  acmid =     {1132560},
+  doi =       {10.1145/1132516.1132560},
+  isbn =      {1-59593-134-1},
+  keywords =  {quantum cryptography, zero-knowledge proof systems},
+  location =  {Seattle, WA, USA},
+  numpages =  {10},
+  url =       {http://doi.acm.org/10.1145/1132516.1132560}
+}
+
 @INPROCEEDINGS{Wee05,
   author = {Wee, Hoeteck},
   title = {On Obfuscating Point Functions},

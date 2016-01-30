@@ -835,7 +835,17 @@ In this section, we analyze a different definition of quantum obfuscation, motiv
 \subsection{Ensembles of circuits and states}
 %%%%%%%%%%%%%%%%%%%%%%
 
-We first set down some basic terminology for dealing with infinite collections of circuits and states. We take the point of view that any quantum circuit $C$ can include unitary gates, as well as measurement gates and instructions for discarding qubits. We overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map that the circuit implements. A \textbf{circuit ensemble} is an infinite collection $\{C_s : s \in S\}$ of circuits indexed by some set $S \subset \{0, 1\}^*$, such that both the size and the number of qubits of $C_s$ are bounded by some fixed polynomial function of $|s|$. A \textbf{uniform circuit ensemble} is a circuit ensemble together with a deterministic Turing Machine which, on input $s \in S$, outputs a classical description of $C_s$. Similarly, we define a \textbf{state ensemble} to be an infinite collection $\{\rho_x : x \in X\}$ of density operators indexed by some set $X \subset \{0, 1\}^*$, such that $\rho_x \in \states(\mathcal H_{p(|x|)})$ where $p$ is bounded by some fixed polynomial function. Finally, a \textbf{uniform state ensemble} will be a state ensemble $\{\rho_x : x \in X\}$ together with a uniform circuit ensemble $\{C_x : x \in X\}$ such that $\rho_x = C_x |0^m\rangle$ for the appropriate choice of $m$. We remark that a QPT is defined by choosing a uniform circuit ensemble, and that the set of possible outputs of a QPT are a uniform state ensemble.
+We first set down some basic terminology for dealing with infinite collections of circuits and states. We take the point of view that any quantum circuit $C$ can include unitary gates, as well as measurement gates and instructions for discarding qubits. We overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map that the circuit implements. 
+
+A \textbf{circuit ensemble} is an infinite collection $\{C_s : s \in S\}$ of circuits indexed by some set $S \subset \{0, 1\}^*$, such that both the size and the number of qubits of $C_s$ are bounded by some fixed polynomial function of $|s|$. We will denote ensembles by italicized capital letters (optionally, with the indexing set in the subscript.) Elements of the ensemble will be denoted by the corresponding non-italicized capital letter (optionally, with the index in the subscript.) So, for example, we may write $\mathcal C_S := \{C_s : s \in S\}$. A \textbf{uniform circuit ensemble} is a circuit ensemble together with a deterministic Turing Machine which, on input $s \in S$, outputs a classical description of $C_s$. Given two circuit ensembles $\mathcal C_S$ and $\mathcal D_S$, we say that $\mathcal C_S$ is functionally equivalent to $\mathcal D_S$ if the circuits themselves are functionally equivalent, i.e., if $\|C_s - D_s\|_\diamond \leq \negl(|s|)$ for all $s \in S$. 
+
+Similarly, we define a \textbf{state ensemble} to be an infinite collection $\{\rho_x : x \in X\}$ of density operators indexed by some set $X \subset \{0, 1\}^*$, such that $\rho_x \in \states(\mathcal H_{p(|x|)})$ where $p$ is bounded by some fixed polynomial function. We remark that a circuit ensemble is a special case of a state ensemble, where each state is a classical string describing wires, gates, and so on. A \textbf{uniform state ensemble} will be a state ensemble $\{\rho_x : x \in X\}$ together with a uniform circuit ensemble $\{C_x : x \in X\}$ such that $\rho_x = C_x |0^m\rangle$ for appropriately chosen $m$. We remark that a QPT is defined by choosing a uniform circuit ensemble, and that the set of possible outputs of a QPT are a uniform state ensemble. In particular, if $\mathcal S$ is a state ensemble and $\algo A$ is a QPT, then (ignoring some uninteresting bookkeeping) we may write $\algo A(\mathcal S)$ to denote the state ensemble that results from running $\algo A$ on inputs from $\mathcal S$. Note that if $\mathcal S$ is uniform, then $\algo A(\mathcal S)$ is also uniform.
+
+Next, we consider three different notions of distinguishability for state ensembles, in order of decreasing power. Let $\mathcal R = \{\rho_x : x \in X\}$ and $\mathcal S = \{\sigma_x : x \in X\}$ be two state ensembles. We say that $\mathcal R$ and $\mathcal S$ are \textbf{perfectly indistinguishable} if $\rho_x = \sigma_x$ for every $x \in X$. While this is a fairly unnatural notion for general quantum states, it is more reasonable (and is easy to test for individual cases) if $\rho_x$ and $\sigma_x$ happen to all be classical. A weaker notion is \textbf{statistical indistinguishability}, which demands that $\|\rho_x - \sigma_x\|_\text{tr} \leq \poly(|x|)$ for all but finitely many $x \in X$. We say that $\mathcal R$ and $\mathcal S$ are \textbf{computationally indistinguishable} if for every QPT $\algo A$,
+$$
+\left|\Pr[\algo A(\rho_x) = 1] - \Pr[\algo A(\sigma_x) = 1]\right| \leq \negl(|x|)
+$$
+for all but finitely many $x$; here the probabilities are taken over the coins and measurements of $\algo A$. One may also consider a non-uniform version of the above definition, in which $\algo A$ is a non-uniform circuit family which is allowed access to an auxiliary state ensemble $\{\xi_x : x \in X\}$. All of our results hold for both the uniform and the non-uniform setting; we will focus on the uniform setting for convenience.
 
 
 \subsection{Definitions, and an application}
@@ -843,33 +853,35 @@ We first set down some basic terminology for dealing with infinite collections o
 
 We begin with the notion of a quantum indistinguishability obfuscator. As before, the interpreter and the obfuscated state must be efficient, while the obfuscation algorithm itself might not be. We also assume that all ``interpreter'' algorithms $\mathcal J$ have two registers: an advice register (where the obfuscated state is to be inserted), and an input register (where the input is to be inserted.) It will thus be convenient to write, e.g., $\mathcal J_{\rho}$ for the CPTP map corresponding to executing $\mathcal J$ with the advice register initialized to the state $\rho$.
 
-\begin{definition}\label{def:indistinguishability1}
-A \textbf{quantum translator} is a quantum algorithm $\mathcal O$ and a QPT $\mathcal J$ such that if $C$ is an $n$-qubit, $\poly(n)$-size quantum circuit, then $\mathcal O(C)$ is a quantum state satisfying
+\begin{definition}\label{def:translator}
+A \textbf{quantum translator} is a quantum algorithm $\mathcal O$ and a QPT $\mathcal J$ such that whenever $\mathcal C$ is a circuit ensemble and $C \in \mathcal C$ is an $n$-qubit circuit, 
 \begin{enumerate}
 \item (polynomial slowdown) $\mathcal O(C)$ has at most $\poly(n)$ qubits;
-\item (functional equivalence) $\bigl\| \algo J_\rho - C \bigr\|_\diamond \leq \negl(n)$;
+\item (functional equivalence) $\bigl\| \algo J_{\mathcal O(C)} - C \bigr\|_\diamond \leq \negl(n)$;
 \end{enumerate}
 \end{definition}
 
-\begin{definition}\label{def:indistinguishability1}
-A \textbf{quantum statistical-indistinguishability obfuscator} is a quantum translator $(\mathcal O, \mathcal J)$ such that whenever a pair of circuits $C_1, C_2$ satisfy $|C_1| = |C_2|$ and $\|C_1 - C_2\|_\diamond \leq \negl(n)$, then we have $\|\mathcal O(C_1) - \mathcal O(C_2)\|_\emph{tr} \leq \negl(n)$.
+\begin{definition}\label{def:indistinguishability}
+A \textbf{quantum statistical (resp., computational) indistinguishability obfuscator} is a quantum translator $(\mathcal O, \mathcal J)$ such that whenever $\mathcal C_S$ and $\mathcal D_S$ are functionally-equivalent circuit ensembles with $|C_s| = |D_s|$ for all $s \in S$, then $\mathcal O(\mathcal C_S)$ and $\mathcal O(\mathcal D_S)$ are statistically (resp., computationally) indistinguishable.
 \end{definition}
-\noindent Note that an obfuscator which simply outputs circuit descriptions is included as a special case of the above; in that case, $\mathcal O(C)$ is always a quantum circuit, and $\mathcal J$ is a universal circuit which executes $\mathcal O(C)$ on the state given in the input register. One may also define a quantum perfect-indistinguishability obfuscator, where the obfuscated states $\mathcal O(C_1)$ and $\mathcal O(C_2)$ are identical. We remark that the condition of equal length can be relaxed to any fixed polynomial (e.g., $|C_1|$ can be of length at most $|C_2|^2$.)
 
-In order to define a computational variant of the above, we recall the definition of computationally indistinguishable ensembles of quantum states, as set down by Watrous~\cite{Watrous06}.
-\begin{definition}~\cite{Watrous06} Let $S \subset \{0, 1\}^*$ be an infinite set, let $m : \{0, 1\}^* \rightarrow \N$ be a polynomially-bounded function, and let $\rho_x$ and $\xi_x$ be mixed states on $m(x)$ qubits for each $x \in S$. Then the ensembles $\{\rho_x : x \in S\}$ and $\{\xi_x : x \in S\}$ are \textbf{computationally indistinguishable} if, for every choice of
-\begin{enumerate} 
-\item polynomials $p$ and $q$;
-\item polynomially-bounded function $k : \{0, 1\}^* \rightarrow \N$;
-\item a collection  $\{\rho_x : x \in S\}$, where $\sigma_x$ is a mixed state on $k(x)$ qubits;
-\item a quantum circuit $Q$ of size at most $p(|x|)$ and type $(m(x) + k(x), 1)$;
-\end{enumerate}
-it holds that
+Note that an obfuscator which simply outputs circuit descriptions is included as a special case of the above; in that case, $\mathcal O(C)$ is always a quantum circuit, and $\mathcal J$ is a universal circuit which executes $\mathcal O(C)$ on the state given in the input register. One may also define a quantum perfect-indistinguishability obfuscator, where the obfuscated states $\mathcal O(C_1)$ and $\mathcal O(C_2)$ are identical. We remark that the condition of equal length can be relaxed to any fixed polynomial (e.g., $|C_1|$ can be of length at most $|C_2|^2$.)
+
+Next, we consider the question of functional equivalence for state ensembles. If we fix a quantum translator $(\mathcal O, \mathcal J)$, then the QPT $\mathcal J$ defines a notion of implementing functionality via states. We then say that two state ensembles $\mathcal R_X$ and $\mathcal S_X$ are functionally equivalent if
 $$
-| \bra{1} Q(\rho_x \otimes \sigma_x) \ket{1} - \bra{1} Q(\xi_x \otimes \sigma_x) \ket{1}| \leq \frac{1}{q(|x|)}
+\bigl\| \algo J_{\rho_x} - \algo J_{\sigma x} \bigr\|_\diamond \leq \negl(|x|)
 $$
-for all but finitely many $x \in S$.
+for all but finitely many $x \in X$, $\rho_x \in \mathcal R_X$ and $\sigma_x \in \mathcal S_X$. This allows us to consider the relative strength of obfuscation in one state ensemble versus another, as follows.
+
+\begin{definition}\label{def:best-possible}
+A \textbf{quantum statistical (resp., computational) best-possible obfuscator} is a quantum translator $(\mathcal O, \mathcal J)$ such that for any QPT $\algo A$ there exists a QPT $\algo S$ with the following property: for every circuit ensemble $\mathcal C_X$ and any state ensemble $\mathcal R_X$ which is functionally-equivalent to $\mathcal O(\mathcal C_X)$ and has same-size states\footnote{meaning that, for each $x \in X$, the corresponding states in the two ensembles have the same number of qubits}, we have that $\algo A(\mathcal O(\mathcal C_X))$ and $\algo S(\mathcal R_X)$ are statistically (resp., computationally) indistinguishable.
 \end{definition}
+
+This definition captures the relative ``leakage'' of the obfuscated state ensemble: among all functionally-equivalent state ensembles, it leaks the least.
+
+\ga{Should this definition somehow vary over the interpreters $\algo J$ as well? }
+
+\ga{--- Stopped editing here. --- }
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum indistinguishability obfuscation}\label{sec:indistinguishability}
@@ -882,7 +894,7 @@ In this section, we analyze a different definition of quantum obfuscation, motiv
 
 We begin with the notion of a quantum indistinguishability obfuscator. As before, the interpreter and the obfuscated state must be efficient, while the obfuscation algorithm itself might not be.
 
-\begin{definition}\label{def:indistinguishability}
+\begin{definition}
 A \textbf{quantum indistinguishability obfuscator} is a quantum algorithm $\mathcal O$ and a QPT $\mathcal J$ such that whenever $C$ is an $n$-qubit quantum circuit $C$, $\mathcal O(C)$ is an $m$-qubit quantum state satisfying
 \begin{enumerate}
 \item (polynomial slowdown) $m = \text{poly}(n, |C|).$
@@ -1097,6 +1109,22 @@ We briefly list some open questions, and leave more detailed discussions for a f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \appendix
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+The definition of computationally indistinguishable ensembles of quantum states, as set down by Watrous~\cite{Watrous06}.
+\begin{definition}~\cite{Watrous06} Let $S \subset \{0, 1\}^*$ be an infinite set, let $m : \{0, 1\}^* \rightarrow \N$ be a polynomially-bounded function, and let $\rho_x$ and $\xi_x$ be mixed states on $m(x)$ qubits for each $x \in S$. Then the ensembles $\{\rho_x : x \in S\}$ and $\{\xi_x : x \in S\}$ are \textbf{computationally indistinguishable} if, for every choice of
+\begin{enumerate} 
+\item polynomials $p$ and $q$;
+\item polynomially-bounded function $k : \{0, 1\}^* \rightarrow \N$;
+\item a collection  $\{\rho_x : x \in S\}$, where $\sigma_x$ is a mixed state on $k(x)$ qubits;
+\item a quantum circuit $Q$ of size at most $p(|x|)$ and type $(m(x) + k(x), 1)$;
+\end{enumerate}
+it holds that
+$$
+| \bra{1} Q(\rho_x \otimes \sigma_x) \ket{1} - \bra{1} Q(\xi_x \otimes \sigma_x) \ket{1}| \leq \frac{1}{q(|x|)}
+$$
+for all but finitely many $x \in S$.
+\end{definition}
 
 \end{document}
 
