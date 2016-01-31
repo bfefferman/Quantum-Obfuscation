@@ -1,4 +1,4 @@
-\begin{thebibliography}{36}
+\begin{thebibliography}{38}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -107,7 +107,7 @@ Dan Boneh and Mark Zhandry.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-662-44371-2_27}.
 
 \bibitem[Brakerski and Rothblum(2014)]{BR14}
-Zvika Brakerski and GuyN. Rothblum.
+Zvika Brakerski and Guy~N. Rothblum.
 \newblock Virtual black-box obfuscation for all circuits via generic graded
   encoding.
 \newblock In Yehuda Lindell, editor, \emph{Theory of Cryptography}, volume 8349
@@ -241,6 +241,15 @@ Susan Hohenberger, Amit Sahai, and Brent Waters.
 \newblock \doi{10.1007/978-3-642-55220-5_12}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-642-55220-5_12}.
 
+\bibitem[Jain et~al.(2010)Jain, Ji, Upadhyay, and Watrous]{JJUW10}
+Rahul Jain, Zhengfeng Ji, Sarvagya Upadhyay, and John Watrous.
+\newblock {QIP} = {PSPACE}.
+\newblock In \emph{Proceedings of the 42nd {ACM} Symposium on Theory of
+  Computing, {STOC} 2010, Cambridge, Massachusetts, USA, 5-8 June 2010}, pages
+  573--582, 2010.
+\newblock \doi{10.1145/1806689.1806768}.
+\newblock URL \url{http://doi.acm.org/10.1145/1806689.1806768}.
+
 \bibitem[Janzing et~al.(2005)Janzing, Wocjan, and Beth]{JWB03}
 Dominik Janzing, Pawel Wocjan, and Thomas Beth.
 \newblock Non-identity check is qma-complete.
@@ -259,6 +268,13 @@ Michele Mosca and Douglas Stebila.
 \newblock Quantum coins.
 \newblock \emph{Error-Correcting Codes, Finite Geometries and Cryptography},
   523:\penalty0 35--47, 2010.
+
+\bibitem[Rosgen and Watrous(2005)]{RW05}
+B.~Rosgen and J.~Watrous.
+\newblock On the hardness of distinguishing mixed-state quantum computations.
+\newblock In \emph{Computational Complexity, 2005. Proceedings. Twentieth
+  Annual IEEE Conference on}, pages 344--354, June 2005.
+\newblock \doi{10.1109/CCC.2005.21}.
 
 \bibitem[Sahai and Waters(2014)]{SW14}
 Amit Sahai and Brent Waters.
@@ -282,8 +298,11 @@ John Watrous.
 
 \bibitem[Watrous(2006)]{Watrous06}
 John Watrous.
-\newblock {Zero-knowledge Against Quantum Attacks}.
-\newblock In \emph{STOC '06}, pages 296--305. ACM, 2006.
+\newblock Zero-knowledge against quantum attacks.
+\newblock In \emph{Proceedings of the Thirty-eighth Annual ACM Symposium on
+  Theory of Computing}, STOC '06, pages 296--305, New York, NY, USA, 2006. ACM.
+\newblock ISBN 1-59593-134-1.
+\newblock \doi{10.1145/1132516.1132560}.
 \newblock URL \url{http://doi.acm.org/10.1145/1132516.1132560}.
 
 \bibitem[Wee(2005)]{Wee05}

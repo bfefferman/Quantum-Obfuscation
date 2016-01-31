@@ -1139,23 +1139,22 @@
   url = {http://dx.doi.org/10.1007/978-3-642-13013-7_29}
 }
 
-@INCOLLECTION{BR14,
-  author = {Brakerski, Zvika and Rothblum, GuyN.},
-  title = {Virtual Black-Box Obfuscation for All Circuits via Generic Graded
-	Encoding},
+@InCollection{BR14,
+  author =    {Brakerski, Zvika and Rothblum, Guy N.},
+  title =     {Virtual Black-Box Obfuscation for All Circuits via Generic Graded Encoding},
   booktitle = {Theory of Cryptography},
   publisher = {Springer Berlin Heidelberg},
-  year = {2014},
-  editor = {Lindell, Yehuda},
-  volume = {8349},
-  series = {Lecture Notes in Computer Science},
-  pages = {1-25},
-  doi = {10.1007/978-3-642-54242-8_1},
-  isbn = {978-3-642-54241-1},
-  language = {English},
-  owner = {Gorjan},
+  year =      {2014},
+  editor =    {Lindell, Yehuda},
+  volume =    {8349},
+  series =    {Lecture Notes in Computer Science},
+  pages =     {1-25},
+  doi =       {10.1007/978-3-642-54242-8_1},
+  isbn =      {978-3-642-54241-1},
+  language =  {English},
+  owner =     {Gorjan},
   timestamp = {2015.09.20},
-  url = {http://dx.doi.org/10.1007/978-3-642-54242-8_1}
+  url =       {http://dx.doi.org/10.1007/978-3-642-54242-8_1}
 }
 
 @ARTICLE{BR2003,
@@ -4377,6 +4376,18 @@
   url =                  {http://dx.doi.org/10.1145/100216.100269}
 }
 
+@InProceedings{RW05,
+  author =    {Rosgen, B. and Watrous, J.},
+  title =     {On the hardness of distinguishing mixed-state quantum computations},
+  booktitle = {Computational Complexity, 2005. Proceedings. Twentieth Annual IEEE Conference on},
+  year =      {2005},
+  pages =     {344-354},
+  month =     {June},
+  doi =       {10.1109/CCC.2005.21},
+  issn =      {1093-0159},
+  keywords =  {circuit complexity;interactive systems;quantum computing;theorem proving;PSPACE-hard porblem;QMA;discrete quantum mechanical process;local interactions;mixed-state quantum circuits;mixed-state quantum computations;probabilistic circuits;quantum interactive proof systems;quantum state inputs;unitary quantum circuits;Circuit noise;Circuit simulation;Complexity theory;Computational modeling;Computer science;Discrete transforms;Noise measurement;Power system modeling;Quantum computing;Quantum mechanics}
+}
+
 @ARTICLE{Shannon1949,
   author = {Shannon, C. E.},
   title = {Communication Theory of Secrecy Systems*},
@@ -6941,20 +6952,6 @@
   owner = {Gorjan},
   timestamp = {2015.09.12},
   url = {http://doi.acm.org/10.1145/380752.380759}
-}
-
-@INPROCEEDINGS{Watrous06,
-  author = {Watrous, John},
-  title = {{Zero-knowledge Against Quantum Attacks}},
-  booktitle = {STOC '06},
-  year = {2006},
-  pages = {296--305},
-  publisher = {ACM},
-  keywords = {quantum cryptography, zero-knowledge proof systems},
-  numpages = {10},
-  owner = {Gorjan},
-  timestamp = {2015.09.12},
-  url = {http://doi.acm.org/10.1145/1132516.1132560}
 }
 
 @InProceedings{Watrous06,
