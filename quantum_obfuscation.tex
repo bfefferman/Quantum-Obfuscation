@@ -995,17 +995,14 @@ We now show that witness encryption for QMA is possible, assuming the existence 
 
 
 %%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
+\section{Open problems}
 %%%%%%%%%%%%%%%%%%%%%%
 
-We briefly list some open questions, and leave more detailed discussions for a future version.
+The central remaining open problem is whether quantum-mechanical means of obfuscation are possible, within the restricted framework placed by our results. In the classical setting, it is known that black-box obfuscation and statistical obfuscation are impossible; on the other hand, it is generally believed that computational-indistinguishability obfuscation can be achieved. In the quantum setting, on the other hand, much less is known. Although our results place some significant restrictions, several possibilities remain. For example, it is conceivable that \emph{information-theoretically secure black-box obfuscation} of a program is possible using quantum-mechanical means. Moreover, such a construction may even enable the user to use the obfuscated state to evaluate the program a polynomial number of times. Such an obfuscator would be tremendously powerful, and would be another example of quantum supremacy in the world of cryptography. It is difficult to imagine how such an obfuscation would function for arbitrary quantum programs (due to restrictions placed by the monogamy of entanglement); it is perhaps more reasonable to imagine it for classical functions. In that case, one could imagine using the state to perform the computation, then copying the (classical) output of the program, and restoring the obfuscated state by undoing the unitary circuit.
 
-\begin{itemize}
-\item Can you achieve single-copy quantum black-box obfuscation with quantum states, either for classical or quantum functionality? Is information-theoretic security possible if we give up on reusability? 
-\item Can our black-box impossibility proofs be adapted to show that the state \emph{must be consumable}, even if only partly? Is it conceivable that, if we restrict to only classical functionality, that the advice state is \emph{perfectly preserved} with each execution?
-\item Are there quantum versions of the recent classical breakthroughs for computational indistinguishability obfuscation? Can we achieve quantum circuit-to-circuit obfuscation under that condition? Which of the classical applications carry over to the quantum setting?
-\item Our impossibility proofs apply to unitary circuits, and thus trivially also to circuits that include measurements, or arbitrary CPTP maps. If we \emph{require} the ability to obfuscate such computations as well, are stronger impossibility results possible?
-\end{itemize}
+In the indistinguishability setting, constructions for obfuscating quantum programs are not known. It is conceivable that classical ideas (such as those in~\cite{GGHRSW13}) can be translated to the quantum setting. However, a key ingredient in~\cite{GGHRSW13} is fully-homomorphic encryption, which is yet to be achieved quantumly---although significant progress in this direction was recently made by Broadbent and Jeffery~\cite{BJ15}.
+
+In terms of applications, our results raise another interesting question: what applications can we envision for obfuscators whose outputs are not cloneable or reproducible? Many of the standard applications are restricted in the case. On the other hand, one may be able to design applications where the inability to copy the obfuscator's output is a desired feature. In fact, one can imagine quantum obfuscators where the number of executions is highly limited in a manner analogous to one-time programs; this could also be of use in cryptographic settings.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{QuantumCrypto}

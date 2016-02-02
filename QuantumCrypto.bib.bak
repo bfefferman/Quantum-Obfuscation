@@ -213,15 +213,15 @@
   timestamp = {2010.07.26}
 }
 
-@MISC{Aar05,
-  author = {Scott Aaronson},
-  title = {Ten Semi-Grand Challenges for Quantum Computing Theory},
-  howpublished = {http://www.scottaaronson.com/writings/qchallenge.html},
-  month = {July},
-  year = {2005},
-  note = {Retrieved 09/15},
-  owner = {Gorjan},
-  timestamp = {2015.09.20}
+@Misc{Aar05,
+  author =    {Scott Aaronson},
+  title =     {Ten Semi-Grand Challenges for Quantum Computing Theory},
+  month =     {July},
+  year =      {2005},
+  note =      {Retrieved 02/16},
+  owner =     {Gorjan},
+  timestamp = {2015.09.20},
+  url =       {http://www.scottaaronson.com/writings/qchallenge.html}
 }
 
 @INPROCEEDINGS{Aar09,
@@ -278,13 +278,12 @@
   timestamp = {2015.06.05}
 }
 
-@ARTICLE{ABFGSS15,
-  author = {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni
-	and Christian Schaffner and Michael StJules},
-  title = {Computational security for quantum encryption},
-  journal = {To appear.},
-  year = {2015},
-  owner = {Gorjan},
+@Article{ABFGSS15,
+  author =    {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni and Christian Schaffner and Michael StJules},
+  title =     {Computational security for quantum encryption},
+  journal =   {To appear.},
+  year =      {2016},
+  owner =     {Gorjan},
   timestamp = {2015.09.12}
 }
 
@@ -511,24 +510,22 @@
   url = {http://dx.doi.org/10.1007/978-1-4757-0602-4_26}
 }
 
-@INCOLLECTION{BCCGKPR14,
-  author = {Bitansky, Nir and Canetti, Ran and Cohn, Henry and Goldwasser, Shafi
-	and Kalai, Yael Tauman and Paneth, Omer and Rosen, Alon},
-  title = {The Impossibility of Obfuscation with Auxiliary Input or a Universal
-	Simulator},
+@InCollection{BCCGKPR14,
+  author =    {Bitansky, Nir and Canetti, Ran and Cohn, Henry and Goldwasser, Shafi and Kalai, Yael Tauman and Paneth, Omer and Rosen, Alon},
+  title =     {The Impossibility of Obfuscation with Auxiliary Input or a Universal Simulator},
   booktitle = {Advances in Cryptology CRYPTO 2014},
   publisher = {Springer Berlin Heidelberg},
-  year = {2014},
-  editor = {Garay, JuanA. and Gennaro, Rosario},
-  volume = {8617},
-  series = {Lecture Notes in Computer Science},
-  pages = {71-89},
-  doi = {10.1007/978-3-662-44381-1_5},
-  isbn = {978-3-662-44380-4},
-  language = {English},
-  owner = {Gorjan},
+  year =      {2014},
+  editor =    {Garay, Juan A. and Gennaro, Rosario},
+  volume =    {8617},
+  series =    {Lecture Notes in Computer Science},
+  pages =     {71-89},
+  doi =       {10.1007/978-3-662-44381-1_5},
+  isbn =      {978-3-662-44380-4},
+  language =  {English},
+  owner =     {Gorjan},
   timestamp = {2015.09.20},
-  url = {http://dx.doi.org/10.1007/978-3-662-44381-1_5}
+  url =       {http://dx.doi.org/10.1007/978-3-662-44381-1_5}
 }
 
 @INPROCEEDINGS{BCG+2002,
@@ -1591,24 +1588,23 @@
   url = {http://dx.doi.org/10.1007/978-3-642-13190-5_27}
 }
 
-@INCOLLECTION{CD08,
-  author = {Canetti, Ran and Dakdouk, RonnyRamzi},
-  title = {Obfuscating Point Functions with Multibit Output},
+@InCollection{CD08,
+  author =    {Canetti, Ran and Dakdouk, Ronny Ramzi},
+  title =     {Obfuscating Point Functions with Multibit Output},
   booktitle = {Advances in Cryptology – EUROCRYPT 2008},
   publisher = {Springer Berlin Heidelberg},
-  year = {2008},
-  editor = {Smart, Nigel},
-  volume = {4965},
-  series = {Lecture Notes in Computer Science},
-  pages = {489-508},
-  doi = {10.1007/978-3-540-78967-3_28},
-  isbn = {978-3-540-78966-6},
-  keywords = {obfuscation; composable obfuscation; multibit point function obfuscation;
-	digital locker; point function obfuscation},
-  language = {English},
-  owner = {Gorjan},
+  year =      {2008},
+  editor =    {Smart, Nigel},
+  volume =    {4965},
+  series =    {Lecture Notes in Computer Science},
+  pages =     {489-508},
+  doi =       {10.1007/978-3-540-78967-3_28},
+  isbn =      {978-3-540-78966-6},
+  keywords =  {obfuscation; composable obfuscation; multibit point function obfuscation; digital locker; point function obfuscation},
+  language =  {English},
+  owner =     {Gorjan},
   timestamp = {2015.09.20},
-  url = {http://dx.doi.org/10.1007/978-3-540-78967-3_28}
+  url =       {http://dx.doi.org/10.1007/978-3-540-78967-3_28}
 }
 
 @INPROCEEDINGS{ChainModel,
@@ -2891,22 +2887,22 @@
   url = {http://doi.acm.org/10.1145/1374376.1374407}
 }
 
-@INCOLLECTION{GR07,
-  author = {Goldwasser, Shafi and Rothblum, GuyN.},
-  title = {On Best-Possible Obfuscation},
+@InCollection{GR07,
+  author =    {Goldwasser, Shafi and Rothblum, Guy N.},
+  title =     {On Best-Possible Obfuscation},
   booktitle = {Theory of Cryptography},
   publisher = {Springer Berlin Heidelberg},
-  year = {2007},
-  editor = {Vadhan, SalilP.},
-  volume = {4392},
-  series = {Lecture Notes in Computer Science},
-  pages = {194-213},
-  doi = {10.1007/978-3-540-70936-7_11},
-  isbn = {978-3-540-70935-0},
-  language = {English},
-  owner = {Gorjan},
+  year =      {2007},
+  editor =    {Vadhan, SalilP.},
+  volume =    {4392},
+  series =    {Lecture Notes in Computer Science},
+  pages =     {194-213},
+  doi =       {10.1007/978-3-540-70936-7_11},
+  isbn =      {978-3-540-70935-0},
+  language =  {English},
+  owner =     {Gorjan},
   timestamp = {2015.09.19},
-  url = {http://dx.doi.org/10.1007/978-3-540-70936-7_11}
+  url =       {http://dx.doi.org/10.1007/978-3-540-70936-7_11}
 }
 
 @INPROCEEDINGS{Gro96,
@@ -3337,6 +3333,25 @@
   owner = {huelsing},
   timestamp = {2011.08.10},
   url = {http://dx.doi.org/10.1007/11681878_23}
+}
+
+@Article{HR14,
+  author =     {Harrow, Aram W. and Rosenbaum, David J.},
+  title =      {Uselessness for an Oracle Model with Internal Randomness},
+  journal =    {Quantum Info. Comput.},
+  year =       {2014},
+  volume =     {14},
+  number =     {7\&\#38;8},
+  pages =      {608--624},
+  month =      may,
+  acmid =      {2638687},
+  address =    {Paramus, NJ},
+  issn =       {1533-7146},
+  issue_date = {May 2014},
+  keywords =   {quantum computing, query complexity, unbounded-error, uselessness},
+  numpages =   {17},
+  publisher =  {Rinton Press, Incorporated},
+  url =        {http://dl.acm.org/citation.cfm?id=2638682.2638687}
 }
 
 @INCOLLECTION{HSW14,

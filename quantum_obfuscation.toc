@@ -33,4 +33,4 @@
 \contentsline {subsection}{\numberline {4.2}Definitions: indistinguishability, best-possible}{25}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Impossibility of statistical obfuscation}{26}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Application: quantum witness encryption}{28}{subsection.4.4}
-\contentsline {section}{\numberline {5}Discussion}{28}{section.5}
+\contentsline {section}{\numberline {5}Open problems}{28}{section.5}
