@@ -221,6 +221,14 @@ David Gosset and Daniel Nagaj.
 \newblock \doi{10.1109/FOCS.2013.86}.
 \newblock URL \url{http://dx.doi.org/10.1109/FOCS.2013.86}.
 
+\bibitem[Harrow and Rosenbaum(2014)]{HR14}
+Aram~W. Harrow and David~J. Rosenbaum.
+\newblock Uselessness for an oracle model with internal randomness.
+\newblock \emph{Quantum Info. Comput.}, 14\penalty0 (7\&\#38;8):\penalty0
+  608--624, May 2014.
+\newblock ISSN 1533-7146.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=2638682.2638687}.
+
 \bibitem[H{\aa}stad et~al.(1999)H{\aa}stad, Impagliazzo, Levin, and
   Luby]{HILL99}
 Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
@@ -295,15 +303,6 @@ John Watrous.
 \newblock ISBN 0-7695-1822-2.
 \newblock \doi{10.1109/SFCS.2002.1181970}.
 \newblock URL \url{http://dx.doi.org/10.1109/SFCS.2002.1181970}.
-
-\bibitem[Watrous(2006)]{Watrous06}
-John Watrous.
-\newblock Zero-knowledge against quantum attacks.
-\newblock In \emph{Proceedings of the Thirty-eighth Annual ACM Symposium on
-  Theory of Computing}, STOC '06, pages 296--305, New York, NY, USA, 2006. ACM.
-\newblock ISBN 1-59593-134-1.
-\newblock \doi{10.1145/1132516.1132560}.
-\newblock URL \url{http://doi.acm.org/10.1145/1132516.1132560}.
 
 \bibitem[Wee(2005)]{Wee05}
 Hoeteck Wee.

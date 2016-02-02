@@ -53,6 +53,20 @@
   biburl    = {http://dblp.uni-trier.de/rec/bib/conf/focs/GossetN13},
   bibsource = {dblp computer science bibliography, http://dblp.org}
 }
+
+@InProceedings{JJUW10,
+  author =    {Rahul Jain and Zhengfeng Ji and Sarvagya Upadhyay and John Watrous},
+  title =     {{QIP} = {PSPACE}},
+  booktitle = {Proceedings of the 42nd {ACM} Symposium on Theory of Computing, {STOC} 2010, Cambridge, Massachusetts, USA, 5-8 June 2010},
+  year =      {2010},
+  pages =     {573--582},
+  bibsource = {dblp computer science bibliography, http://dblp.org},
+  biburl =    {http://dblp.uni-trier.de/rec/bib/conf/stoc/JainJUW10},
+  crossref =  {DBLP:conf/stoc/2010},
+  doi =       {10.1145/1806689.1806768},
+  timestamp = {Fri, 12 Oct 2012 12:16:22 +0200},
+  url =       {http://doi.acm.org/10.1145/1806689.1806768}
+}
 @INPROCEEDINGS{Watrous02,
   author = {John Watrous},
   title = {Limits on the Power of Quantum Statistical Zero-Knowledge},
