@@ -278,9 +278,9 @@
   timestamp = {2015.06.05}
 }
 
-@Article{ABFGSS15,
+@Article{ABFGSS16,
   author =    {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni and Christian Schaffner and Michael StJules},
-  title =     {Computational security for quantum encryption},
+  title =     {Computational security of quantum encryption},
   journal =   {To appear.},
   year =      {2016},
   owner =     {Gorjan},
@@ -900,16 +900,18 @@
   timestamp = {2011.04.28}
 }
 
-@ARTICLE{BJ15,
-  author = {Broadbent, Anne and Jeffery, Stacey},
-  title = {{Quantum homomorphic encryption for circuits of low {$T$}-gate complexity}},
-  journal = {Crypto 2015 (to appear)},
-  year = {2015.},
-  month = dec,
-  archiveprefix = {arXiv},
-  eprint = {1412.8766},
-  keywords = {Quantum Physics},
-  primaryclass = {quant-ph}
+@InBook{BJ15,
+  chapter =   {Quantum Homomorphic Encryption for Circuits of Low T-gate Complexity},
+  pages =     {609--629},
+  title =     {Advances in Cryptology -- CRYPTO 2015: 35th Annual Cryptology Conference, Santa Barbara, CA, USA, August 16-20, 2015, Proceedings, Part II},
+  publisher = {Springer Berlin Heidelberg},
+  year =      {2015},
+  author =    {Broadbent, Anne and Jeffery, Stacey},
+  editor =    {Gennaro, Rosario and Robshaw, Matthew},
+  address =   {Berlin, Heidelberg},
+  doi =       {10.1007/978-3-662-48000-7_30},
+  isbn =      {978-3-662-48000-7},
+  url =       {http://dx.doi.org/10.1007/978-3-662-48000-7_30}
 }
 
 @INCOLLECTION{Black2002,

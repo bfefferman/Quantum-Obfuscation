@@ -2,13 +2,13 @@
 \contentsline {subsection}{\numberline {1.1}Background}{4}{subsection.1.1}
 \contentsline {subsubsection}{\numberline {1.1.1}Classical obfuscation}{4}{subsubsection.1.1.1}
 \contentsline {subsubsection}{\numberline {1.1.2}Quantum obfuscation}{5}{subsubsection.1.1.2}
+\contentsline {subsubsection}{\numberline {1.1.3}Quantum encryption}{5}{subsubsection.1.1.3}
 \contentsline {subsection}{\numberline {1.2}Summary of results}{5}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}Quantum encryption}{5}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}Quantum black-box obfuscation}{6}{subsubsection.1.2.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Quantum black-box obfuscation}{6}{subsubsection.1.2.1}
 \contentsline {paragraph}{Definitions.}{6}{section*.2}
 \contentsline {paragraph}{Impossibility.}{6}{section*.3}
 \contentsline {paragraph}{Applications.}{7}{section*.4}
-\contentsline {subsubsection}{\numberline {1.2.3}Quantum indistinguishability obfuscation}{7}{subsubsection.1.2.3}
+\contentsline {subsubsection}{\numberline {1.2.2}Quantum indistinguishability obfuscation}{7}{subsubsection.1.2.2}
 \contentsline {subsection}{\numberline {1.3}Notation and terminology}{8}{subsection.1.3}
 \contentsline {subsubsection}{\numberline {1.3.1}Classical}{8}{subsubsection.1.3.1}
 \contentsline {subsubsection}{\numberline {1.3.2}Quantum}{9}{subsubsection.1.3.2}
@@ -33,4 +33,6 @@
 \contentsline {subsection}{\numberline {4.2}Definitions: indistinguishability, best-possible}{25}{subsection.4.2}
 \contentsline {subsection}{\numberline {4.3}Impossibility of statistical obfuscation}{26}{subsection.4.3}
 \contentsline {subsection}{\numberline {4.4}Application: quantum witness encryption}{28}{subsection.4.4}
-\contentsline {section}{\numberline {5}Open problems}{28}{section.5}
+\contentsline {section}{\numberline {5}Conclusion}{28}{section.5}
+\contentsline {subsection}{\numberline {5.1}Open problems}{28}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Acknowledgements}{29}{subsection.5.2}

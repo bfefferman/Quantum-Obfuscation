@@ -4,5 +4,6 @@ Database file #1: QuantumCrypto.bib
 A bad cross reference---entry "JJUW10"
 refers to entry "DBLP:conf/stoc/2010", which doesn't exist
 Warning--I didn't find a database entry for "DBLP:conf/stoc/2010"
+Warning--can't use both author and editor fields in BJ15
 Warning--empty school in Gentry09
 (There was 1 error message)
