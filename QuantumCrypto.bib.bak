@@ -279,12 +279,12 @@
 }
 
 @Article{ABFGSS16,
-  author =    {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni and Christian Schaffner and Michael StJules},
+  author =    {Gorjan Alagic and Anne Broadbent and Bill Fefferman and Tommaso Gagliardoni and Christian Schaffner and Michael St. Jules},
   title =     {Computational security of quantum encryption},
-  journal =   {To appear.},
   year =      {2016},
   owner =     {Gorjan},
-  timestamp = {2015.09.12}
+  timestamp = {2015.09.12},
+  url =       {http://arxiv.org/abs/1602.01441}
 }
 
 @INPROCEEDINGS{AC12,
@@ -335,6 +335,17 @@
   owner = {huelsing},
   timestamp = {2012.08.01},
   url = {http://dx.doi.org/10.1007/978-3-642-14623-7_6}
+}
+
+@InProceedings{AJJ14,
+  author =    {Gorjan Alagic and Stacey Jeffery and Stephen Jordan},
+  title =     {Circuit obfuscation using braids},
+  booktitle = {Proceedings of TQC 2014},
+  year =      {2014},
+  volume =    {27},
+  pages =     {141-160},
+  owner =     {Gorjan},
+  timestamp = {2015.09.20}
 }
 
 @INPROCEEDINGS{AKN1998,
@@ -401,17 +412,6 @@
   review = {Propose ROX a ROM based MPP-domain extender},
   timestamp = {2011.03.30},
   url = {http://portal.acm.org/citation.cfm?id=1781454.1781466}
-}
-
-@INPROCEEDINGS{ASS14,
-  author = {Gorjan Alagic and Stacey Jeffery and Stephen Jordan},
-  title = {Circuit obfuscation using braids},
-  booktitle = {Proceedings of TQC 2014},
-  year = {2014},
-  volume = {27},
-  pages = {141-160},
-  owner = {Gorjan},
-  timestamp = {2015.09.20}
 }
 
 @INCOLLECTION{Ateniese2000,
@@ -1254,6 +1254,20 @@
   oai2identifier = {1506.01328},
   owner = {albraodb},
   timestamp = {2015.06.15}
+}
+
+@InBook{Broadbent2013,
+  chapter =   {Quantum One-Time Programs},
+  pages =     {344--360},
+  title =     {Advances in Cryptology -- CRYPTO 2013: 33rd Annual Cryptology Conference, Santa Barbara, CA, USA, August 18-22, 2013. Proceedings, Part II},
+  publisher = {Springer Berlin Heidelberg},
+  year =      {2013},
+  author =    {Broadbent, Anne and Gutoski, Gus and Stebila, Douglas},
+  editor =    {Canetti, Ran and Garay, Juan A.},
+  address =   {Berlin, Heidelberg},
+  doi =       {10.1007/978-3-642-40084-1_20},
+  isbn =      {978-3-642-40084-1},
+  url =       {http://dx.doi.org/10.1007/978-3-642-40084-1_20}
 }
 
 @INCOLLECTION{Buchmann2007,

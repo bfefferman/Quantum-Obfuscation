@@ -1,4 +1,4 @@
-\begin{thebibliography}{38}
+\begin{thebibliography}{39}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -29,11 +29,12 @@ Gorjan Alagic, Stacey Jeffery, and Stephen Jordan.
 \newblock In \emph{Proceedings of TQC 2014}, volume~27, pages 141--160, 2014.
 
 \bibitem[Alagic et~al.(2016)Alagic, Broadbent, Fefferman, Gagliardoni,
-  Schaffner, and StJules]{ABFGSS16}
+  Schaffner, and Jules]{ABFGSS16}
 Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
-  Schaffner, and Michael StJules.
+  Schaffner, and Michael~St. Jules.
 \newblock Computational security of quantum encryption.
-\newblock \emph{To appear.}, 2016.
+\newblock 2016.
+\newblock URL \url{http://arxiv.org/abs/1602.01441}.
 
 \bibitem[Barak et~al.(2001)Barak, Goldreich, Impagliazzo, Rudich, Sahai,
   Vadhan, and Yang]{BGIRSVY01}
@@ -127,6 +128,16 @@ Anne Broadbent and Stacey Jeffery.
 \newblock ISBN 978-3-662-48000-7.
 \newblock \doi{10.1007/978-3-662-48000-7_30}.
 \newblock URL \url{http://dx.doi.org/10.1007/978-3-662-48000-7_30}.
+
+\bibitem[Broadbent et~al.(2013)Broadbent, Gutoski, and Stebila]{BDG13}
+Anne Broadbent, Gus Gutoski, and Douglas Stebila.
+\newblock \emph{Advances in Cryptology -- CRYPTO 2013: 33rd Annual Cryptology
+  Conference, Santa Barbara, CA, USA, August 18-22, 2013. Proceedings, Part
+  II}, chapter Quantum One-Time Programs, pages 344--360.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
+\newblock ISBN 978-3-642-40084-1.
+\newblock \doi{10.1007/978-3-642-40084-1_20}.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-40084-1_20}.
 
 \bibitem[Canetti and Dakdouk(2008)]{CD08}
 Ran Canetti and Ronny~Ramzi Dakdouk.

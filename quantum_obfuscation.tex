@@ -258,7 +258,6 @@ A \textbf{deterministic classical algorithm} $\algo A$ is simply a circuit ensem
 For our purposes, the space of pure states of a quantum device will be identified with a Hilbert space $\mathcal H_n \cong (\C_2)^{\otimes n}$ of a finite number $n$ of qubits. We will identify some fixed orthonormal basis (called the \emph{computational basis}) of $\mathcal H_n$ with the corresponding space $\{0, 1\}^n$ of classical states, so that, e.g, $\ket{x}$ for $x \in \{0, 1\}^n$ denotes a basis element of $\mathcal H_n$. The space of density operators (i.e., general quantum states) of $n$ qubits will be denoted $\states (\mathcal H_n)$; this is the set of positive semidefinite, Hermitian trace-one operators in $\End(\mathcal H_n)$. A state in $\states (\mathcal H_n)$ can be interpreted as a probabilistic mixture $\sum_j p_j \ket{\varphi_j}\bra{\varphi_j}$ of pure states, albeit not in a unique way. We will discuss valid quantum transformations of three types. The first are measurements, which act on a state $\ket{\psi} \in \mathcal H_n$ by projecting some or all of the qubits into the computational basis states $\{\ket{0}, \ket{1}\}$. The second are unitary maps, i.e., linear operators $U: \mathcal H_n \rightarrow \mathcal H_n$ satisfying $U^\dagger U = \one_n$, where $\one_n$ denotes the $n$-qubit identity operator. The third are CPTP maps, i.e., completely positive trace-preserving maps $\Phi : \states (\mathcal H_n) \rightarrow \states (\mathcal H_m)$. CPTP maps are the most general type of evolution, encompassing unitary maps, measurement, and adding or discarding (or tracing out) qubits. For example, a unitary operator $U \in U(\mathcal H_n)$ can be expressed as a CPTP map by writing $\rho \mapsto U\rho U^\dagger$, where $\rho \in \states (\mathcal H_n)$.
 
 A \textbf{quantum circuit} $C$ is a sequence of local unitary gates on a fixed number (say $n$) of qubits; these gates , when composed together, implement some unitary operator $U_C \in U(2^n)$. Definitions of circuit ensembles and distributions over circuit ensembles are defined precisely as in the classical case. A \textbf{quantum polynomial time algorithm} (or \textbf{QPT} for short) $\mathcal A$ is a uniform ensemble of quantum circuits; algorithms can also include measurements and discarding (or tracing-out) of subsystems, so long as these also admit efficient classical descriptions. The input and output size of a quantum algorithm can vary, and will have to be deduced from context. For example, given a QPT $\mathcal A$, the expression $\Pr[\mathcal A(\ket{0^n}) = 1]$ will take the value zero unless $\mathcal A$ has a specific, labeled output qubit which is measured at the end of the computation.
-%\wf{This next definition is pulled from Section 4 and its a bit out of place here, but I couldn't think of a better place to put it, now that Section 4 doesn't contain circuit definitions, do you have a better idea for this?}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum encryption}\label{sec:encryption}
@@ -378,8 +377,6 @@ $$
 \end{enumerate}
 \end{definition}
 We emphasize that while the ``interpreter'' algorithm $\algo J$ must be polynomial-time, the obfuscator itself need not be. In applications, it will be necessary to make the obfuscator polynomial-time; on the other hand, our impossibility results will hold even for inefficient obfuscators. One could consider variants of \expref{Definition}{def:vbb-obfuscator} where the interpreter algorithm is fixed once and for all, or where $\algo O(C)$ itself consists of both a quantum ``advice state'' and a circuit which the end user should execute on the advice state and the desired input. It is straightforward to show that all of these variants are equivalent, in the sense that a black-box quantum obfuscator of each variant exists if and only if the other variants exist. Since we are primarily concerned with possibility vs impossibility, we will stick with the formulation in \expref{Definition}{def:vbb-obfuscator}. We also remark that the interpreter is a natural addition to the classical black-box definition when passing to the quantum case. In order for the definition to make sense, there should be \emph{some efficient way} to use $\algo O(C)$ to implement $U_C$; whatever that efficient procedure is, we have here called it an interpreter and denoted it by $\algo J$.
-
-%\noindent\ga{Insert more careful version (with ensembles and distributions) of \expref{Definition}{def:vbb-obfuscator} here.}\\
 
 We also point out that the no-cloning theorem opens up the possibility of \emph{computationally unbounded adversaries.} In the classical case, such an adversary could simply execute the circuit on every input, and thus learn far more than is possible for a polynomial-time black-box simulator. Quantumly, however, a computationally unbounded adversary is restricted both by the no-cloning theorem and the limitations of measurement. The adversary may not be able to acquire multiple copies of the obfuscated state, and the single state may be partially (or completely) destroyed when measured. It is thus not \emph{a priori} clear that an unbounded adversary could always outmatch a polynomial-time black-box simulator. The appropriate definition is a straightforward modification of \expref{Definition}{def:vbb-obfuscator}, where we replace the third condition with the following:
 
@@ -638,40 +635,6 @@ Since the full proof of \expref{Theorem}{thm:single-impossibility} is somewhat l
 If quantum-secure one-way functions exist, then there exists a quantum circuit family $\mathcal C$ such that no quantum circuit family is a black-box obfuscation of $\mathcal C$.
 \end{theorem}
 
-
-%\begin{theorem}
-%There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no ensemble of distributions over circuits is a black-box quantum obfuscation with circuit output, of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
-%\end{theorem}
-%
-%We first prove this in the simpler setting in which the output of the obfuscator is a quantum circuit.
-%
-%\begin{definition}\label{def:blackboxcircuit}
-%A \textbf{black-box quantum obfuscator with circuit output} is a QPT $\algo O$ such that whenever $C$ is an $n$-qubit quantum circuit, the output is a quantum circuit $\algo O(C)$ so that:
-%\begin{enumerate}
-%\item (polynomial slowdown)  $|\algo O(C)| = \text{poly}(n, |C|)$;
-%\item (functional equivalence) $\bigl\| U_{\algo{O}(C)} - U_{C}\|_\diamond \leq \negl(n, |C|)$;
-%\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that:
-%$$
-%\Bigl| \emph{Pr}[\mathcal A(\algo{O}(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
-%$$
-%\end{enumerate}
-%\end{definition}
-%\begin{definition}\label{blackboxclone}
-%A \textbf{black-box quantum obfuscator with cloneable outputs} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output $\mathcal{O}(C)$ is a $2m$-qubit state $\rho\otimes\rho$, where  $\rho$ satisfies:
-%\begin{enumerate}
-%\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
-%\item (functional equivalence) $\bigl\| \algo J ( \rho \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
-%\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that:
-%$$
-%\Bigl| \emph{Pr}[\mathcal A(\rho_{(i)}) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
-%$$
-%\end{enumerate}
-%\end{definition}
-
-%Our main impossibility result is a modification of the proof in the prior section, following the classical proof \cite{BGIRSVY12}.
-%\begin{theorem}
-%There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no ensemble of distributions over circuits is a black-box quantum obfuscation with circuit output, of $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$.
-%\end{theorem}
 \begin{proof}
 Let $\mathcal O$ be a black-box quantum obfuscator satisfying \expref{Definition}{def:vbb-obfuscator}, such that its outputs are classical bitstrings. Since these states are used to describe an efficiently implementable quantum computation, we can assume that these bitstrings are in fact quantum circuits under some particular encoding. 
 
@@ -716,8 +679,6 @@ where the probabilities are over $k \inrand \{0,1\}^n$ and the measurement outco
 
 First, we replace the responses to all of $\algo{S}$'s queries to the $\Homorcl_k$ oracle with encryptions of $|0^n\rangle$, and deploy a hybrid argument to show that the success probability of $\algo S$ is not significantly affected. To this end, consider the following hybrids of the computation of $\algo S$ on input $\Enc_k(\ket{a})$: in the $i$-th hybrid, the first $i$ oracle queries of $\algo S$ are answered using $\Homorcl_k$, and the rest are answered with $\Enc_k(|0^n\rangle)$.  Notice that any gap in distinguishing between the $i$ and $i+1$st hybrid must be due to the $i+1$st query $\algo S$ makes to $\Homorcl_k$. We can use this to create a CCA1 adversary $\algo T$ which breaks the encryption scheme, as follows. The QPT $\algo T$ simulates $\algo S$ and replies to its first $i$ oracle queries by means of $\algo T$'s $\Enc_k$ and $\Dec_k$ oracles. Upon receiving the challenge ciphertext, $\algo T$ passes it to $\algo S$ as the response to its $i+1$st oracle query. Finally, $\algo T$ answers the remaining oracle queries of $\algo S$ with $\Enc_K(|0^n\rangle)$. We conclude that, if $\algo S$ violated \eqref{eq:hom-gap}, then $\algo T$ succeeds with non-negligible probability. This establishes (by contradiction) that we can replace the oracle queries of $\algo S$ with $\Enc_k(\ket 0)$. With this replacement, $\algo S$ can distinguish an encryption of $|0^n\rangle$ from an encryption of $\ket{a}$, when given access to only an encryption oracle, which again contradicts IND-CCA1 security of the scheme. 
 \end{proof}
-
-%Notice that Lemma \ref{hybrid-lemma} suffices to establish Property 3, since giving the simulator algorithm black-box access to the three unitaries that comprise $D_{a,b}$ is equivalent to giving $S$ black-box access to each circuit separately.  Notice that black-box access to  $E_{K,a}$ is no more powerful than giving it access to polynomially many queries of $\Enc_{K}$, and giving black-box access to $B_{K,a,b}$ does not allow $S$ to discover $a$ with more than negligible probability, since it returns $|0^n\rangle$ on all but an exponentially small fraction of the space.  Lemma \ref{hybrid-lemma} proves security in the presence of the $\Homorcl$ and $\Enc$ oracle.
 
 Now we are ready to describe the unobfuscatable family of quantum circuits and complete the proof of \expref{Theorem}{thm:cor}. First, for a fixed $a,b \in \{0, 1\}^n$ we let $\mathcal{D}_{a,b}$ be the distribution over circuits constructed in \expref{Lemma}{lemma-circuitdistribution}. Then consider the following two distributions over circuits: 
 \begin{enumerate}
@@ -785,61 +746,6 @@ To finish the proof, we again build a circuit family by choosing $C_{a, b} \# D_
 \end{proof}
 
 
-
-%The main impossibility proof goes here. Outline:
-%
-%\begin{itemize}
-%\item show how to paste the above pair of circuits to make a single circuit;
-%\item running circuit on itself computes something a simulator cannot;
-%\item but running circuits on themselves doesn't work, so we need to patch it with encryption...
-%\end{itemize}
-%This proof will now be divided into three parts.  In the first part we 
-%
-%
-
-
-%\begin{definition}\label{blackboxclone}
-%A \textbf{black-box quantum obfuscator with cloneable outputs} is a pair of QPTs $(\algo J, \algo O)$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is a $2m$-qubit state $\algo O(C)\otimes \algo O(C)$ satisfying
-%\begin{enumerate}
-%\item (polynomial slowdown)  $m = \text{poly}(n, |C|)$;
-%\item (functional equivalence) $\bigl\| \algo J ( \algo O(C) \otimes \,\cdot\, ) - C \,\cdot\, C^\dagger \bigr\|_\diamond \leq \negl(n, |C|)$;
-%\item (virtual black-box) for every QPT adversary $\mathcal A$ there exists a QPT simulator $\mathcal S^{U_C}$ such that
-%$$
-%\Bigl| \emph{Pr}[\mathcal A(\mathcal O(C)) = 1] - \emph{Pr}\bigl[\mathcal S^{U_C}\bigl(\ket{0}^{\otimes |C|}\bigr) = 1\bigr] \Bigr| \leq \negl(n, |C|)\,.
-%$$
-%\end{enumerate}
-%\end{definition}
-%Our main impossibility result is, in analogue to the proof in the prior section and in \cite{BGIRSVY12}:
-%\begin{theorem}
-%There exists an ensemble of distributions $\lbrace\mathcal{H}_n\rbrace_{n\in\mathbb{N}}$ over quantum circuits, $C_n$, of size poly(n), such that no pair of quantum circuits is a black-box quantum obfuscation with cloneable outputs, of this ensemble of distributions.
-%\end{theorem}
-%\begin{proof}
-%This proof works by carefully extending the two-circuit construction to show that a similar construction establishes impossibility for the cloneable case.  
-%First we give a general definition which will be useful:
-%\begin{definition}We define the {\bf combined quantum circuit} of a finite collection of quantum circuits each with $n$ input qubits, $\lbrace C_1,C_2,...,C_k \rbrace$, to be the circuit that takes two registers, a control register of $\log{k}$ qubits, and an input register of $n$ qubits, and controlled on the value of the first register applies the respective quantum circuit to the input register.   
-%\end{definition}
-%
-%Notice that if each circuit $C_i$ in the collection is polynomial size, and $k$ is bounded by a polynomial in $n$, then the associated combined quantum circuit is also polynomial size. 
-%
-%Now consider the two unitaries  $U_{a,b}$ and $V_{a,b}$ from Section \ref{sec-twocircuit}, and their respective quantum circuits $C_{a,b}$ and $D_{a,b}$, as well as the circuit $Z_{2n}$, which simply implements the identity operator on $2n$ qubits.  Also consider the combined circuits of $C_{a,b}$ and $D_{a,b}$ which we denote $C_{a,b}\#D_{a,b}$ and the combined quantum circuit of $Z_{2n}$ and $D_{a,b}$ which we denote by $Z_{2n}\#D_{a,b}$.  Clearly, the     	
-%\end{proof}
-
-
-
-
-
-%The main impossibility proof goes here. Outline:
-%
-%\begin{itemize}
-%\item show how to paste the above pair of circuits to make a single circuit;
-%\item running circuit on itself computes something a simulator cannot;
-%\item but running circuits on themselves doesn't work, so we need to patch it with encryption...
-%\end{itemize}
-%This proof will now be divided into three parts.  In the first part we 
-%
-%
-
-
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum indistinguishability obfuscation}\label{sec:indistinguishability}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -854,13 +760,6 @@ For our discussions on indistinguishability obfuscation, we modify the notations
 First, henceforth we take the point of view that any quantum circuit $C$ can include unitary gates \emph{as well as measurement gates and instructions for discarding qubits.} In keeping with this view, we overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map that the circuit implements. 
 
 Second, we allow our ensembles to be indexed by infinite sets of strings rather than the natural numbers. As before, we will denote ensembles by italicized capital letters (and optionally place the indexing set in the subscript.) Elements of the ensemble will be denoted by the corresponding non-italicized capital letter (optionally, with the index in the subscript.) So, for example, we may write $\mathcal C_S := \{C_s : s \in S\}$. Just as in the single-circuit case, we will overload this notation for circuit ensembles and use it to also refer to the corresponding family of CPTP maps. We will need one new definition in this context: given two circuit ensembles $\mathcal C_S$ and $\mathcal D_S$, we say that $\mathcal C_S$ is \textbf{functionally equivalent} to $\mathcal D_S$ (denoted $\mathcal C_S \cong \mathcal D_S$) if the circuits themselves are functionally equivalent, i.e., if $\|C_s - D_s\|_\diamond \leq \negl(|s|)$ for all $s \in S$. 
-
-%%The following has now been incorporated into Section 1.3, and so I commented this out, it's still here for reference
-%\ga{It might be better to put this near the start, and use it for both VBB and IO sections.}
-%We first set down some basic terminology for dealing with infinite collections of circuits and states. We take the point of view that any quantum circuit $C$ can include unitary gates, as well as measurement gates and instructions for discarding qubits. We overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map that the circuit implements. 
-%
-%A \textbf{circuit ensemble} is an infinite collection $\{C_s : s \in S\}$ of circuits indexed by some set $S \subset \{0, 1\}^*$, such that both the size and the number of qubits of $C_s$ are bounded by some fixed polynomial function of $|s|$. We will denote ensembles by italicized capital letters (optionally, with the indexing set in the subscript.) Elements of the ensemble will be denoted by the corresponding non-italicized capital letter (optionally, with the index in the subscript.) So, for example, we may write $\mathcal C_S := \{C_s : s \in S\}$. Just as in the single-circuit case, we will overload this notation for circuit ensembles and use it to also refer to the corresponding family of CPTP maps. A \textbf{uniform circuit ensemble} is a circuit ensemble together with a deterministic polynomial-time Turing Machine which, on input $s \in S$, outputs a classical description of $C_s$. Given two circuit ensembles $\mathcal C_S$ and $\mathcal D_S$, we say that $\mathcal C_S$ is functionally equivalent to $\mathcal D_S$ (denoted $\mathcal C_S \cong \mathcal D_S$) if the circuits themselves are functionally equivalent, i.e., if $\|C_s - D_s\|_\diamond \leq \negl(|s|)$ for all $s \in S$. 
-%\wf{There's a notation change in this section whereby circuit and state ensembles are indexed by elements of a set, instead of natural numbers, does this bother you?  I think it's ok.}
 
 We will also now need to handle infinite collections of states. We thus define a \textbf{state ensemble} to be an infinite collection $\{\rho_x : x \in X\}$ of density operators indexed by some set $X \subset \{0, 1\}^*$, such that $\rho_x \in \states(\mathcal H_{p(|x|)})$ where $p$ is bounded by some fixed polynomial function. We remark that a circuit ensemble is a special case of a state ensemble, where each state is a classical string describing wires, gates, and so on. A \textbf{uniform state ensemble} will be a state ensemble $\{\rho_x : x \in X\}$ together with a uniform circuit ensemble $\{C_x : x \in X\}$ such that $\rho_x = C_x |0^m\rangle$ for appropriately chosen $m$. We remark that a QPT is defined by choosing a uniform circuit ensemble, and that the set of possible outputs of a QPT are a uniform state ensemble. In particular, if $\mathcal S$ is a state ensemble and $\algo A$ is a QPT, then (ignoring some uninteresting bookkeeping) we may write $\algo A(\mathcal S)$ to denote the state ensemble that results from running $\algo A$ on inputs from $\mathcal S$. Note that if $\mathcal S$ is uniform, then $\algo A(\mathcal S)$ is also uniform.
 
@@ -1014,12 +913,12 @@ The central remaining open problem is whether quantum-mechanical means of obfusc
 
 In the indistinguishability setting, constructions for obfuscating quantum programs are not known. It is conceivable that classical ideas (such as those in~\cite{GGHRSW13}) can be translated to the quantum setting. However, a key ingredient in~\cite{GGHRSW13} is fully-homomorphic encryption, which is yet to be achieved quantumly---although significant progress in this direction was recently made by Broadbent and Jeffery~\cite{BJ15}.
 
-In terms of applications, our results raise another interesting question: what applications can we envision for obfuscators whose outputs are not cloneable or reproducible? Many of the standard applications are restricted in the case. On the other hand, one may be able to design applications where the inability to copy the obfuscator's output is a desired feature. In fact, one can imagine quantum obfuscators where the number of executions is highly limited in a manner analogous to one-time programs; this could also be of use in cryptographic settings.
+In terms of applications, our results raise another interesting question: what applications can we envision for obfuscators whose outputs are not cloneable or reproducible? Many of the standard applications are restricted in the case. On the other hand, one may be able to design applications where the inability to copy the obfuscator's output is a desired feature. In fact, one can imagine quantum obfuscators where the number of executions is highly limited in a manner analogous to one-time programs (see, e.g.,~\cite{BDG13}); this could also be of use in cryptographic settings.
 
 \subsection{Acknowledgements}
 %%%%%%%%%%%%%%%%%%%%%%
 
-G.\,A. would like to thank Stacey Jeffery and Anne Broadbent for many engaging discussions, and to the organizers of the  G.\,A. was supported by a Sapere Aude grant of the Danish Council for Independent Research, the ERC Starting Grant "QMULT" and the CHIST-ERA project "CQC". B.\,F would like to thank Brad Lackey, Daniel Apon and Jonathan Katz for helpful conversations.  This work was supported by the Department of Defense.  
+G.\,A. would like to thank Stacey Jeffery and Anne Broadbent for many engaging discussions. G.\,A. was supported by a Sapere Aude grant of the Danish Council for Independent Research, the ERC Starting Grant "QMULT" and the CHIST-ERA project "CQC". B.\,F would like to thank Brad Lackey, Daniel Apon and Jonathan Katz for helpful conversations.  This work was supported by the Department of Defense.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \bibliography{QuantumCrypto}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
