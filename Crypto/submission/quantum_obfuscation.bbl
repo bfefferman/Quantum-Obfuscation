@@ -1,0 +1,252 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\begin{thebibliography}{GGHW14}
+
+\bibitem[Aar05]{Aar05}
+Scott Aaronson.
+\newblock Ten semi-grand challenges for quantum computing theory, July 2005.
+\newblock Retrieved 02/16.
+
+\bibitem[Aar09]{Aar09}
+Scott Aaronson.
+\newblock Quantum copy-protection and quantum money.
+\newblock In {\em Computational Complexity, 2009. CCC'09. 24th Annual IEEE
+  Conference on}, pages 229--242. IEEE, 2009.
+
+\bibitem[ABF{\etalchar{+}}16]{ABFGSS16}
+Gorjan Alagic, Anne Broadbent, Bill Fefferman, Tommaso Gagliardoni, Christian
+  Schaffner, and Michael~St. Jules.
+\newblock Computational security of quantum encryption.
+\newblock 2016.
+
+\bibitem[AC12]{AC12}
+Scott Aaronson and Paul Christiano.
+\newblock Quantum money from hidden subspaces.
+\newblock In {\em Proceedings of the forty-fourth annual ACM symposium on
+  Theory of computing}, pages 41--60. ACM, 2012.
+
+\bibitem[AJJ14]{AJJ14}
+Gorjan Alagic, Stacey Jeffery, and Stephen Jordan.
+\newblock Circuit obfuscation using braids.
+\newblock In {\em Proceedings of TQC 2014}, volume~27, pages 141--160, 2014.
+
+\bibitem[BBBV97]{BBBV}
+Charles~H. Bennett, Ethan Bernstein, Gilles Brassard, and Umesh~V. Vazirani.
+\newblock Strengths and weaknesses of quantum computing.
+\newblock {\em {SIAM} J. Comput.}, 26(5):1510--1523, 1997.
+
+\bibitem[BBBW83]{BBBW83}
+CharlesH. Bennett, Gilles Brassard, Seth Breidbart, and Stephen Wiesner.
+\newblock Quantum cryptography, or unforgeable subway tokens.
+\newblock In David Chaum, RonaldL. Rivest, and AlanT. Sherman, editors, {\em
+  Advances in Cryptology}, pages 267--275. Springer US, 1983.
+
+\bibitem[BCC{\etalchar{+}}14]{BCCGKPR14}
+Nir Bitansky, Ran Canetti, Henry Cohn, Shafi Goldwasser, Yael~Tauman Kalai,
+  Omer Paneth, and Alon Rosen.
+\newblock The impossibility of obfuscation with auxiliary input or a universal
+  simulator.
+\newblock In Juan~A. Garay and Rosario Gennaro, editors, {\em Advances in
+  Cryptology CRYPTO 2014}, volume 8617 of {\em Lecture Notes in Computer
+  Science}, pages 71--89. Springer Berlin Heidelberg, 2014.
+
+\bibitem[BGI{\etalchar{+}}01]{BGIRSVY01}
+Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
+  Salil~P. Vadhan, and Ke~Yang.
+\newblock On the (im)possibility of obfuscating programs.
+\newblock In {\em Proceedings of the 21st Annual International Cryptology
+  Conference on Advances in Cryptology}, CRYPTO '01, pages 1--18, London, UK,
+  UK, 2001. Springer-Verlag.
+
+\bibitem[BGI{\etalchar{+}}12]{BGIRSVY12}
+Boaz Barak, Oded Goldreich, Russell Impagliazzo, Steven Rudich, Amit Sahai,
+  Salil Vadhan, and Ke~Yang.
+\newblock On the (im)possibility of obfuscating programs.
+\newblock {\em J. ACM}, 59(2):6:1--6:48, May 2012.
+
+\bibitem[BGK{\etalchar{+}}14]{BGKPS14}
+Boaz Barak, Sanjam Garg, Yael~Tauman Kalai, Omer Paneth, and Amit Sahai.
+\newblock Protecting obfuscation against algebraic attacks.
+\newblock In PhongQ. Nguyen and Elisabeth Oswald, editors, {\em Advances in
+  Cryptology – EUROCRYPT 2014}, volume 8441 of {\em Lecture Notes in Computer
+  Science}, pages 221--238. Springer Berlin Heidelberg, 2014.
+
+\bibitem[BGS13]{BDG13}
+Anne Broadbent, Gus Gutoski, and Douglas Stebila.
+\newblock {\em Advances in Cryptology -- CRYPTO 2013: 33rd Annual Cryptology
+  Conference, Santa Barbara, CA, USA, August 18-22, 2013. Proceedings, Part
+  II}, chapter Quantum One-Time Programs, pages 344--360.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2013.
+
+\bibitem[BJ15]{BJ15}
+Anne Broadbent and Stacey Jeffery.
+\newblock {\em Advances in Cryptology -- CRYPTO 2015: 35th Annual Cryptology
+  Conference, Santa Barbara, CA, USA, August 16-20, 2015, Proceedings, Part
+  II}, chapter Quantum Homomorphic Encryption for Circuits of Low T-gate
+  Complexity, pages 609--629.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2015.
+
+\bibitem[BR14]{BR14}
+Zvika Brakerski and Guy~N. Rothblum.
+\newblock Virtual black-box obfuscation for all circuits via generic graded
+  encoding.
+\newblock In Yehuda Lindell, editor, {\em Theory of Cryptography}, volume 8349
+  of {\em Lecture Notes in Computer Science}, pages 1--25. Springer Berlin
+  Heidelberg, 2014.
+
+\bibitem[BZ14]{BZ14}
+Dan Boneh and Mark Zhandry.
+\newblock Multiparty key exchange, efficient traitor tracing, and more from
+  indistinguishability obfuscation.
+\newblock In JuanA. Garay and Rosario Gennaro, editors, {\em Advances in
+  Cryptology – CRYPTO 2014}, volume 8616 of {\em Lecture Notes in Computer
+  Science}, pages 480--499. Springer Berlin Heidelberg, 2014.
+
+\bibitem[CD08]{CD08}
+Ran Canetti and Ronny~Ramzi Dakdouk.
+\newblock Obfuscating point functions with multibit output.
+\newblock In Nigel Smart, editor, {\em Advances in Cryptology – EUROCRYPT
+  2008}, volume 4965 of {\em Lecture Notes in Computer Science}, pages
+  489--508. Springer Berlin Heidelberg, 2008.
+
+\bibitem[DH76]{DH76}
+Whitfield Diffie and Martin~E. Hellman.
+\newblock New directions in cryptography.
+\newblock {\em IEEE transactions on Information Theory}, 22(6):644--654, 1976.
+
+\bibitem[FGH{\etalchar{+}}12]{FGHLS12}
+Edward Farhi, David Gosset, Avinatan Hassidim, Andrew Lutomirski, and Peter
+  Shor.
+\newblock Quantum money from knots.
+\newblock In {\em Proceedings of the 3rd Innovations in Theoretical Computer
+  Science Conference}, ITCS '12, pages 276--289, New York, NY, USA, 2012. ACM.
+
+\bibitem[Gen09]{Gentry09}
+Craig Gentry.
+\newblock {\em A Fully Homomorphic Encryption Scheme}.
+\newblock PhD thesis, Stanford, CA, USA, 2009.
+\newblock AAI3382729.
+
+\bibitem[GGH{\etalchar{+}}13]{GGHRSW13}
+S.~Garg, C.~Gentry, S.~Halevi, M.~Raykova, A.~Sahai, and B.~Waters.
+\newblock Candidate indistinguishability obfuscation and functional encryption
+  for all circuits.
+\newblock In {\em Foundations of Computer Science (FOCS), 2013 IEEE 54th Annual
+  Symposium on}, pages 40--49, Oct 2013.
+
+\bibitem[GGHW14]{GGHW14}
+Sanjam Garg, Craig Gentry, Shai Halevi, and Daniel Wichs.
+\newblock On the implausibility of differing-inputs obfuscation and extractable
+  witness encryption with auxiliary input.
+\newblock In JuanA. Garay and Rosario Gennaro, editors, {\em Advances in
+  Cryptology – CRYPTO 2014}, volume 8616 of {\em Lecture Notes in Computer
+  Science}, pages 518--535. Springer Berlin Heidelberg, 2014.
+
+\bibitem[GGM86]{GGM86}
+Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
+\newblock How to construct random functions.
+\newblock {\em Journal of the ACM}, 33(4):792--807, 1986.
+
+\bibitem[GGSW13]{GGSW13}
+Sanjam Garg, Craig Gentry, Amit Sahai, and Brent Waters.
+\newblock Witness encryption and its applications.
+\newblock In {\em Proceedings of the Forty-fifth Annual ACM Symposium on Theory
+  of Computing}, STOC '13, pages 467--476, New York, NY, USA, 2013. ACM.
+
+\bibitem[GK05]{GK05}
+S.~Goldwasser and Y.T. Kalai.
+\newblock On the impossibility of obfuscation with auxiliary input.
+\newblock In {\em Foundations of Computer Science, 2005. FOCS 2005. 46th Annual
+  IEEE Symposium on}, pages 553--562, Oct 2005.
+
+\bibitem[GN13]{GN13}
+David Gosset and Daniel Nagaj.
+\newblock Quantum 3-sat is qma1-complete.
+\newblock In {\em 54th Annual {IEEE} Symposium on Foundations of Computer
+  Science, {FOCS} 2013, 26-29 October, 2013, Berkeley, CA, {USA}}, pages
+  756--765. {IEEE} Computer Society, 2013.
+
+\bibitem[GR07]{GR07}
+Shafi Goldwasser and Guy~N. Rothblum.
+\newblock On best-possible obfuscation.
+\newblock In SalilP. Vadhan, editor, {\em Theory of Cryptography}, volume 4392
+  of {\em Lecture Notes in Computer Science}, pages 194--213. Springer Berlin
+  Heidelberg, 2007.
+
+\bibitem[HILL99]{HILL99}
+Johan H{\aa}stad, Russell Impagliazzo, Leonid~A. Levin, and Michael Luby.
+\newblock A pseudorandom generator from any one-way function.
+\newblock {\em SIAM J. Comput.}, 28:1364--1396, March 1999.
+
+\bibitem[HR14]{HR14}
+Aram~W. Harrow and David~J. Rosenbaum.
+\newblock Uselessness for an oracle model with internal randomness.
+\newblock {\em Quantum Info. Comput.}, 14(7\&\#38;8):608--624, May 2014.
+
+\bibitem[HSW14]{HSW14}
+Susan Hohenberger, Amit Sahai, and Brent Waters.
+\newblock Replacing a random oracle: Full domain hash from indistinguishability
+  obfuscation.
+\newblock In PhongQ. Nguyen and Elisabeth Oswald, editors, {\em Advances in
+  Cryptology EUROCRYPT 2014}, volume 8441 of {\em Lecture Notes in Computer
+  Science}, pages 201--220. Springer Berlin Heidelberg, 2014.
+
+\bibitem[JJUW10]{JJUW10}
+Rahul Jain, Zhengfeng Ji, Sarvagya Upadhyay, and John Watrous.
+\newblock {QIP} = {PSPACE}.
+\newblock In {\em Proceedings of the 42nd {ACM} Symposium on Theory of
+  Computing, {STOC} 2010, Cambridge, Massachusetts, USA, 5-8 June 2010}, pages
+  573--582, 2010.
+
+\bibitem[JWB05]{JWB03}
+Dominik Janzing, Pawel Wocjan, and Thomas Beth.
+\newblock Non-identity check is qma-complete.
+\newblock In {\em International Journal of Quantum Information}, 2005.
+
+\bibitem[Mer78]{Merkle78}
+Ralph~C. Merkle.
+\newblock Secure communications over insecure channels.
+\newblock {\em Commun. ACM}, 21(4):294--299, April 1978.
+
+\bibitem[MS10]{MS10}
+Michele Mosca and Douglas Stebila.
+\newblock Quantum coins.
+\newblock {\em Error-Correcting Codes, Finite Geometries and Cryptography},
+  523:35--47, 2010.
+
+\bibitem[RW05]{RW05}
+B.~Rosgen and J.~Watrous.
+\newblock On the hardness of distinguishing mixed-state quantum computations.
+\newblock In {\em Computational Complexity, 2005. Proceedings. Twentieth Annual
+  IEEE Conference on}, pages 344--354, June 2005.
+
+\bibitem[SW14]{SW14}
+Amit Sahai and Brent Waters.
+\newblock How to use indistinguishability obfuscation: Deniable encryption, and
+  more.
+\newblock In {\em Proceedings of the 46th Annual ACM Symposium on Theory of
+  Computing}, STOC '14, pages 475--484, New York, NY, USA, 2014. ACM.
+
+\bibitem[Wat02]{Watrous02}
+John Watrous.
+\newblock Limits on the power of quantum statistical zero-knowledge.
+\newblock In {\em 43rd Symposium on Foundations of Computer Science {(FOCS}
+  2002), 16-19 November 2002, Vancouver, BC, Canada, Proceedings}, page 459.
+  {IEEE} Computer Society, 2002.
+
+\bibitem[Wee05]{Wee05}
+Hoeteck Wee.
+\newblock On obfuscating point functions.
+\newblock In {\em Proceedings of the Thirty-seventh Annual ACM Symposium on
+  Theory of Computing}, STOC '05, pages 523--532, New York, NY, USA, 2005. ACM.
+
+\bibitem[Wie83]{Wie1983}
+Stephen Wiesner.
+\newblock Conjugate coding.
+\newblock {\em ACM Sigact News}, 15(1):78--88, 1983.
+
+\bibitem[Zha12]{Zhandry2012}
+Mark Zhandry.
+\newblock {How to Construct Quantum Random Functions}.
+\newblock In {\em FOCS 2012}, pages 679--687. IEEE, 2012.
+
+\end{thebibliography}
