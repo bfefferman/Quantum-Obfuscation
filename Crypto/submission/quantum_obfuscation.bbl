@@ -141,11 +141,6 @@ Sanjam Garg, Craig Gentry, Shai Halevi, and Daniel Wichs.
   Cryptology – CRYPTO 2014}, volume 8616 of {\em Lecture Notes in Computer
   Science}, pages 518--535. Springer Berlin Heidelberg, 2014.
 
-\bibitem[GGM86]{GGM86}
-Oded Goldreich, Shafi Goldwasser, and Silvio Micali.
-\newblock How to construct random functions.
-\newblock {\em Journal of the ACM}, 33(4):792--807, 1986.
-
 \bibitem[GGSW13]{GGSW13}
 Sanjam Garg, Craig Gentry, Amit Sahai, and Brent Waters.
 \newblock Witness encryption and its applications.

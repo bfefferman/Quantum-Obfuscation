@@ -134,7 +134,7 @@
 \begin{abstract}
 Encryption of data is fundamental to secure communication in the modern world. Beyond encryption of data lies \emph{obfuscation}, i.e., encryption of functionality. It is well-known that the most powerful means of obfuscating classical programs, so-called ``black-box obfuscation,'' is provably impossible~\cite{BGIRSVY01}. For years since, obfuscation was believed to always be either impossible or useless, depending on the particulars of its formal definition. However, several recent results have yielded candidate schemes that satisfy a definition weaker than black-box, and yet still have numerous applications.
 
-In this work, we initialize the rigorous study of obfuscating programs \emph{via quantum-mechanical means.} We define notions of quantum obfuscation which encompass several natural variants. The input to the obfuscator can describe classical or quantum functionality, and the output can be a circuit description or a quantum state. The obfuscator can also satisfy one of a number of obfuscation conditions: black-box, information-theoretic black-box, indistinguishability, and best-possible; the last two conditions come in three variants: perfect, statistical, and computational. We discuss a number of applications, including quantum fully-homomorphic encryption and public-key quantum money. We then prove several impossibility results, extending a number of foundational papers on classical obfuscation to the quantum setting. We prove that quantum black-box obfuscation is impossible in a setting where adversaries can possess more than one output of the obfuscator (possibly even on the same input.) In particular, generic transformation of quantum circuits into black-box-obfuscated quantum circuits is impossible. We also show that statistical indistinguishability obfuscation is impossible, up to an unlikely complexity-theoretic collapse. Our proofs involve a new tool: chosen-ciphertext-secure encryption of quantum data, which was recently shown to be possible provided that quantum-secure one-way functions exist~\cite{ABFGSS16}. 
+In this work, we initiate the rigorous study of obfuscating programs \emph{via quantum-mechanical means.} We define notions of quantum obfuscation which encompass several natural variants. The input to the obfuscator can describe classical or quantum functionality, and the output can be a circuit description or a quantum state. The obfuscator can also satisfy one of a number of obfuscation conditions: black-box, indistinguishability, and best-possible; the last two conditions come in three variants: perfect, statistical, and computational. We discuss a number of applications, including quantum witness encryption and public-key quantum money. We then prove several impossibility results, extending a number of foundational papers on classical obfuscation to the quantum setting. We prove that quantum black-box obfuscation is impossible in a setting where adversaries can possess more than one output of the obfuscator (possibly even on the same input.) In particular, generic transformation of quantum circuits into black-box-obfuscated quantum circuits is impossible. We also show that statistical indistinguishability obfuscation is impossible, up to an unlikely complexity-theoretic collapse. Our proofs involve a new tool: chosen-ciphertext-secure encryption of quantum data, which was recently shown to be possible provided that quantum-secure one-way functions exist~\cite{ABFGSS16}. 
 
 We emphasize that our results leave open one intriguing possibility: black-box obfuscation of classical or quantum circuits into a single, uncloneable  quantum state. This indicates that, in spite of our results, quantum obfuscation may be significantly more powerful than its classical counterpart.
 \end{abstract}
@@ -149,7 +149,7 @@ Obfuscation, Encryption, Quantum \end{keywords}
 \section{Introduction}\label{sec:intro}
 %%%%%%%%%%%%%%%%%%%%%%
 
-The ability to encrypt data is central to modern communications. Basic methods for performing this task with privately-exchanged encryption keys have been known for hundreds of years. More advanced, public-key encryption methods were developed much more recently, beginning with the work of Merkle~\cite{Merkle78} and Diffie and Hellman~\cite{DH76} in the 1970s. These public-key methods have found widespread practical application in virtually all Internet communications. More advanced theoretical methods for encrypting data, such as fully-homomorphic encryption, have only been discovered recently~\cite{Gentry09}, but show great promise for practical application.
+The ability to encrypt data is central to modern communications. Basic methods for performing this task with privately-exchanged encryption keys have been known for hundreds of years. More advanced, public-key encryption methods were developed much more recently, beginning with the work of Merkle~\cite{Merkle78} and Diffie and Hellman~\cite{DH76} in the 1970s. These public-key methods have found widespread practical application in virtually all Internet communications. More advanced theoretical methods for encrypting data, such as fully-homomorphic encryption, have only been discovered more recently~\cite{Gentry09}, but show great promise for practical applications.
 
 Arguably the most powerful encryption ability is \emph{obfuscation}; this is the ability to \emph{encrypt functionality}. Obfuscation implies (with some caveats) the ability to perform almost any cryptographic task imaginable, including public-key and fully-homomorphic encryption. Unlike in the case of data encryption, our theoretical understanding of obfuscation is still fairly limited. 
 
@@ -159,25 +159,25 @@ To understand obfuscation, it is useful to think about an obvious application: p
 \item \emph{polynomial slowdown:} if the input program is efficient, then the output program is efficient;
 \item \emph{obfuscation:} the code of the output program is ``hard to understand.''
 \end{enumerate}
-The last condition can be formulated rigorously in a number of ways. One possibility is the so-called ``virtual black-box'' condition, which says that the obfuscated program is no more useful than an impenetrable box which simply accepts inputs and produces outputs. While this condition appears to be too strong in the classical world, there are other formulations (with varying levels of strength and usefulness) which may be achievable.
+The last condition can be formulated rigorously in a number of ways. One possibility is the so-called ``virtual black-box'' condition, which says that the obfuscated program is no more useful than an impenetrable box which simply accepts inputs and produces outputs. While this condition appears to be too strong in the classical world, there are other formulations (with varying levels of strength and usefulness) which may be achievable. Arguably the most likely of these is computational-indistinguishability obfuscation; promising candidates and numerous applications have been proposed for this case~(see, e.g.,~\cite{GGHRSW13, BGKPS14, BCCGKPR14, BZ14, BR14, GGHW14, HSW14}.)
 
-The study of encrypting classical data and classical programs is significantly complicated by the advent of \emph{quantum computation.} One well-known consequence of the presence of quantum computers is that certain data encryption schemes, such as those based on the hardness of factoring or the discrete logarithm, are no longer secure. It is conceivable that certain classical obfuscation schemes are also not secure against quantum adversaries. On the other hand, quantum mechanics also appears to enable certain cryptographic tasks (such as information-theoretically secure key exchange) that are impossible classically. It is thus natural to ask what quantum computation means for obfuscation of programs. In particular, we would like to answer the following questions:
+The study of encrypting classical data and classical programs is significantly complicated by the advent of \emph{quantum computation.} One well-known consequence of the presence of quantum computers is that certain data encryption schemes, such as those based on the hardness of factoring or discrete logarithm, are no longer secure. It is conceivable that certain classical obfuscation schemes are also not secure against quantum adversaries. On the other hand, quantum mechanics also appears to enable certain cryptographic tasks (such as information-theoretically secure key exchange) that are impossible classically. It is thus natural to ask what quantum computation means for obfuscation of programs. In particular, we would like to answer the following questions:
 
 \begin{itemize}
-\item what are some natural formulations of quantum-mechanical program obfuscation?
+\item what are the ``right'' formulations of quantum-mechanical program obfuscation?
 \item is it possible to quantumly obfuscate classical and/or quantum programs?
 \item which of the classical results about obfuscation carry over to the quantum setting?
-\item are there applications of quantum obfuscation that are impossible classically?
+\item how do the applications of quantum obfuscation differ from the classical case?
 \end{itemize}
 
-We remark that, in order to address the above questions, we must also properly address the question of encrypting quantum data---a strictly simpler task than encrypting functionality. While information-theoretic encryption of quantum data has been considered before, in this setting we are interested in encryption of quantum data \emph{with computational assumptions}\footnote{Note that information-theoretic obfuscation is impossible if the adversary can execute the obfuscated program on all possible inputs; indeed, a computationally unbounded adversary can use this ability to learn everything there is to know about the program.}. This latter subject has not yet received significant attention in literature.
+We remark that, in order to address the above questions, we must also properly address the question of encrypting quantum data---a strictly simpler task than encrypting functionality. While information-theoretic encryption of quantum data has been considered before, in this setting we are interested in encryption of quantum data \emph{with computational assumptions}\footnote{Note that information-theoretic obfuscation is impossible if the adversary can execute the obfuscated program on all possible inputs; indeed, a computationally unbounded adversary can use this ability to learn everything there is to know about the program.}. Thankfully, this subject has been explored recently, and the basic results we will need are now available~\cite{BJ15, ABFGSS16}.
 
-Before continuing, we draw attention to the distinction between obfuscating \emph{programs} and obfuscating \emph{circuits}. While these two forms of obfuscation are closely related, there are some important technical differences. In this work, as in most theoretical works on obfuscation, we will focus on obfuscation of circuits. We view the circuit model as more convenient; it also tends to be preferred in the theoretical literature on both cryptography and quantum computation.
+Before continuing, we draw attention to the distinction between obfuscating \emph{programs} (e.g., Turing Machines) and obfuscating \emph{circuits}. While these two forms of obfuscation are closely related, there are some important technical differences. In this work, as in most theoretical works on obfuscation, we will focus on obfuscation of circuits. We view the circuit model as more convenient; it is also more standard and convenient in quantum computation.
 
 \subsection{Background}
 %%%%%%%%%%%%%%%%%%%%%%
 
-We now briefly review the current state of affairs in research on obfuscation and quantum encryption with computational security assumptions. The classical case has been studied significantly. On the other hand, quantum obfuscation has received little to no attention, outside the proposal in~\cite{AJJ14}. Quantum encryption is an active current area of research.
+We now briefly review the current state of affairs in research on obfuscation and quantum encryption with computational security assumptions. The classical case has been studied significantly. On the other hand, quantum obfuscation has received little to no attention, outside the proposal in~\cite{AJJ14} and some related work in copy-protection (e.g.,~\cite{Aar09}.) %Quantum encryption is an active current area of research.
 
 \subsubsection{Classical obfuscation} 
 %%%%
@@ -197,16 +197,16 @@ Quantum obfuscation is essentially an unexplored topic, and the present work app
 
 In~\cite{Aar09}, Aaronson proposed two relevant results. The first was a \emph{complexity-theoretic no-cloning theorem}, stating that cloning an unknown, random state by means of a black-box ``reflection oracle'' requires exponentially many queries. The second theorem stated that an oracle exists relative to which ``software copy-protection'' is possible. Unfortunately, a full version of~\cite{Aar09} with proofs never appeared, although the complexity-theoretic no-cloning theorem was eventually proved in a paper on quantum money~\cite{AC12}. In related work, Mosca and Stebila proposed a black-box quantum money scheme, and suggested the possibility of using a quantum circuit obfuscator in place of the black box~\cite{MS10}.
 
-More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{AJJ14}. The proposed obfuscator compiles the circuits into braids using certain high-dimensional representations of the braid group, and then applies an algorithm for putting braids into normal form. Although it is efficient, this algorithm does not satisfy any of the aforementioned obfuscation definitions; instead, it satisfies perfect indistinguishability for a restricted set of circuit equivalences. The usefulness of such an obfuscator is unclear at this time.
+More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{AJJ14}. The proposed obfuscator compiles circuits into braids using certain high-dimensional representations of the braid group, and then applies an algorithm for putting braids into normal form. Although it is efficient, this algorithm does not satisfy any of the aforementioned obfuscation definitions; instead, it satisfies perfect indistinguishability for a restricted set of circuit equivalences. The usefulness of such an obfuscator is unclear at this time.
 
 \subsubsection{Quantum encryption}
 %%%%
 
-In order to discuss quantum obfuscation of functionality, we require a more basic primitive: quantum encryption of data. As we will see later, information-theoretic encryption is insufficient for our purposes, and we must thus rely on computational assumptions. In particular, we require (i.) reusability of the key, and (ii.) chosen-ciphertext security. Recent results have shown that this is possible to achieve under the assumption that quantum-resistant one-way functions exist~\cite{ABFGSS16}. For readability, we briefly summarize the relevant results from~\cite{ABFGSS16} below, and in more detail in \expref{Section}{sec:encryption}.
+In order to discuss quantum obfuscation of functionality, we require a more basic primitive: quantum encryption of data. As we will see later, information-theoretic encryption is insufficient for our purposes, and we must thus rely on computational assumptions. In particular, we require (i.) reusability of the key, and (ii.) non-adaptive chosen-ciphertext security. Recent results have shown that this is possible to achieve under the assumption that quantum-resistant one-way functions exist~\cite{ABFGSS16}. For completeness, we briefly summarize the relevant results from~\cite{ABFGSS16} below, and in more detail in \expref{Section}{sec:encryption}.
 \begin{enumerate}
-\item \textbf{Quantum encryption schemes.} One can define a notion of symmetric-key encryption scheme for quantum states, with reusable keys; these schemes consist of three quantum algorithms (key generation, encryption, and decryption) which satisfy correctness: under a fixed key, encryption followed by decryption must be equivalent to the identity. Such schemes first appeared in~\cite{BJ15}.
-\item \textbf{Chosen-ciphertext security for quantum encryption.} One may also define IND-CCA1 security (or \emph{indistinguishability of ciphertexts under non-adaptive chosen ciphertext attacks}) for these schemes; this formalizes the idea of a ``lunchtime attack,'' where an adversary has complete access to all aspects of the encryption scheme except the key itself, and is tasked with decrypting a challenge ciphertext later (presumably after lunch.) 
-\item \textbf{An IND-CCA1-secure construction.} If quantum-secure one-way functions (qOWF) exist, then so do IND-CCA1-secure symmetric-key encryption schemes for quantum states. These qOWFs are deterministic classical functions which are easy to compute, but hard to invert for quantum adversaries. 
+\item \textbf{Quantum encryption schemes.} A symmetric-key encryption scheme (for quantum states, with classical keys) consists of three quantum algorithms (key generation, encryption, and decryption) which satisfy correctness: under a fixed key, encryption followed by decryption is equivalent to the identity. Such schemes first appeared in~\cite{BJ15}.
+\item \textbf{Chosen-ciphertext security for quantum encryption.} One may also define IND-CCA1 security (or \emph{indistinguishability of ciphertexts under non-adaptive chosen ciphertext attacks}) for these schemes; this formalizes the idea of a ``lunchtime attack,'' where an adversary has complete access to all aspects of the encryption scheme except the key itself, and is tasked with decrypting a challenge ciphertext later. 
+\item \textbf{An IND-CCA1-secure construction.} If quantum-secure one-way functions (qOWF) exist, then so do IND-CCA1-secure symmetric-key encryption schemes for quantum states. These qOWFs are deterministic classical functions which are easy to compute, but hard to invert for quantum adversaries. The quantum IND-CCA1 scheme is a simple analogue of the standard classical construction using PRFs.
 \end{enumerate}
 
 \subsection{Summary of results}
@@ -220,12 +220,12 @@ In this section, we summarize our results and discussions. These are divided by 
 \paragraph{Definitions.} Our main results concern definitions, applications, and (im)possibility of quantum obfuscation in the virtual black-box setting. We will begin by defining the following.
 
 \begin{enumerate}
-\item \textbf{Quantum black-box obfuscator.} This is a polynomial-time quantum algorithm $\algo O$ which accepts quantum circuits $C$ as input, and produces quantum states $\algo O(C)$ as output. It preserves functionality, in the sense that there is a publicly known way to use $\algo O(C)$ and any input state $\ket{\psi}$ to produce the state $C \ket{\psi}$\,. It satisfies a black-box condition, which states that for polynomial-time quantum algorithms, possession of $\algo O(C)$ can be simulated by black-box access to $C$. This definition is a natural analogue of the classical black-box definition given in~\cite{BGIRSVY12}.
+\item \textbf{Quantum black-box obfuscator.} This is a polynomial-time quantum algorithm $\algo O$ which accepts quantum circuits $C$ as input, and produces quantum states $\algo O(C)$ as output. It preserves functionality, in the sense that there is a publicly known way to use $\algo O(C)$ and any input state $\ket{\psi}$ to produce the state $C \ket{\psi}$\,. It satisfies a black-box condition: for polynomial-time quantum algorithms, possession of $\algo O(C)$ can be simulated by black-box access to $C$. This definition is a natural analogue of the classical black-box definition given in~\cite{BGIRSVY12}.
 \item \textbf{Quantum ``two-circuit'' black-box obfuscator.} This obfuscator is precisely as above, except the obfuscation condition is strengthened to hold over arbitrary \emph{pairs of circuits} $(C_1, C_2)$. For us, this definition will be primarily useful because of its role in establishing certain impossibility results.
-\item \textbf{Information-theoretic quantum black-box obfuscator.} This is a modification of the above definition, in which we posit that \emph{any} adversary with access to $\algo O(C)$ can be simulated by a \emph{polynomial-time} quantum simulator with black-box access to $C$. This definition is impossible classically, for obvious reasons: both $\algo O(C)$  and $\algo O$ can be copied and reused an arbitrary number of times, enabling unbounded adversaries to discover everything about $C$.
+\item \textbf{Information-theoretic quantum black-box obfuscator.} This is a modification of the above definition, in which we posit that \emph{any} adversary with access to $\algo O(C)$ can be simulated by a \emph{polynomial-time} quantum simulator with black-box access to $C$. This definition is impossible classically for obvious reasons. It is not a priori clear if the quantum case is impossible: if $\algo O(C)$ is a single quantum state, even unbounded adversaries are restricted by no-cloning and the (in general irreversible) properties of measurement.
 \end{enumerate}
 
-\paragraph{Impossibility.} We prove three impossibility results, which place several important restrictions on quantum obfuscation. Our impossibility proofs are based on the ideas of Barak et al.~\cite{BGIRSVY12}, with several important quantum adaptations, and a new quantum ingredient: the aforementioned IND-CCA1 quantum encryption.
+\paragraph{Impossibility.} We prove three impossibility results, which place several important restrictions on quantum obfuscation. Our impossibility proofs are based on the ideas of Barak et al.~\cite{BGIRSVY12}, with several important quantum adaptations, and a new quantum ingredient: the aforementioned IND-CCA1 quantum encryption scheme.
 \begin{enumerate}
 \item \textbf{Two-state black-box obfuscation is impossible.} We prove that there exist families of circuit pairs which can reveal a secret if one is in possession of a circuit description for both of them, but not if one only has black-box access. This impossibility persists even if the obfuscation output is a quantum state, as opposed to a circuit description. Unlike the other results, it is also true even if the obfuscated states are \emph{not reusable.}
 \item \textbf{If qOWFs exist, then obfuscation with more than one output is impossible.} For this proof, we combine the pairs from the circuit families in the two-circuit impossibility proof in order to build a single unobfuscatable family. The ability to execute obfuscated states from this family \emph{on themselves} is crucial here, and has two requirements: (i.) access to more than one obfuscation, even if the obfuscations are quantum states, and (ii.) secure encryption, which in turn requires the existence of qOWFs. This result applies both to quantum black-box obfuscators (as in the first definition above) and the information-theoretic variant (as in the third definition above.) 
@@ -234,14 +234,15 @@ In this section, we summarize our results and discussions. These are divided by 
 We emphasize that, while our techniques are very similar to Barak et al., our results are not a simple consequence of the fact that classical functions (and in particular, the Barak et al. unobfuscatable functions) are special cases of quantum functions. This ``special case'' argument fails for obvious reasons when the output of the obfuscator can be a quantum state. As it turns out, it also fails when the output is a quantum circuit; briefly, the reasons are (i.) it is now permitted to specify (even approximate) quantum circuits for classical functions, (ii.) the black-box simulator now has quantum access, which is significantly more powerful than classical (see, e.g., ~\cite{HR14}) and (iii.) the Barak et al. adversary is insufficient since it can only perform classical gates homomorphically. The last point is where the aforementioned quantum encryption tools become necessary.
 
 
-\paragraph{Applications.} We then move on to discuss potential applications of quantum black-box obfuscators. We emphasize that (with the exception of the first one), all of these applications are still possible \emph{in some form} in spite of the above impossibility result. We view this as a strong indication that quantum obfuscation should be studied further. While some of the applications are analogues of known classical applications (as outlined in \cite{BGIRSVY12},) the last is special to the quantum setting. We are certain that many other quantum-specific applications are possible, given the combined advantage of obfuscation and no-cloning.
+\paragraph{Applications.} We then move on to discuss potential applications of quantum black-box obfuscators. Some of these applications may still be possible, in some form, in spite of our impossibility results. We view this as a strong indication that quantum obfuscation should be studied further. While some of the applications are analogues of known classical applications (as outlined in \cite{BGIRSVY12},) the last is special to the quantum setting. It is likely that there are other applications which are unique to the quantum setting. We remark that, since black-box obfuscation implies computationally best-possible obfuscation (which, in turn, implies computational indistinguishability obfuscation (iO),) the numerous recently discovered applications of iO may also apply here.
 
 \begin{enumerate}
-\item \textbf{Quantum-secure one-way functions.} We show that, if there exists a classical probabilistic algorithm for quantum obfuscation, then quantum-secure one-way functions exist. The above impossibility result rules this out, but the implication is nonetheless interesting; for one, it enables the very proof of the impossibility result itself! The one-way functions are essentially the functions computed by the obfuscator (with fixed randomness) on circuits with a ``hidden output.'' We are unable to extend this application to the setting of efficient quantum algorithms for obfuscation. We leave this as an interesting open problem, and note its connection to developing foundational primitives for quantum encryption.
-%%\item \textbf{IND-CPA-secure private-key quantum encryption.} In this application, the obfuscation algorithm can be quantum; moreover, we do not demand the existence of one-way functions or any other primitive.
-\item \textbf{qOWF imply IND-CPA public-key encryption.} This application combines IND-CCA1-secure private-key encryption (which follows from qOWFs) with obfuscation of the encryption circuits. The result is public-key encryption of quantum states without the need for trapdoor permutations (unlike in~\cite{ABFGSS16} and, indirectly, in~\cite{BJ15}.)
-\item \textbf{qOWF imply IND-CPA quantum fully homomorphic encryption.} This application combines the previous application, together with obfuscation of a universal decrypt-compute-encrypt circuit. Depending on the properties of the obfuscator, it may also satisfy \emph{compactness} (the requirement that communication between client and server does not scale with the size of the computation.)
-\item \textbf{Public-key quantum money}. Using circuit obfuscation to produce public-key quantum money was first proposed by Mosca and Stebila~\cite{MS10}, using a complexity-theoretic no-cloning theorem proposed by Aaronson~\cite{Aar09} and proved by Aaronson and Christiano~\cite{AC12}. We outline the ideas here, and discuss the new limitations placed by our results.
+\item \textbf{Quantum-secure one-way functions.} We show that, if there exists a classical probabilistic algorithm for quantum obfuscation, then quantum-secure one-way functions exist. The above impossibility result rules this out, but the implication is nonetheless interesting; for one, it enables the very proof of the impossibility result itself! 
+%The one-way functions are essentially the functions computed by the obfuscator (with fixed randomness) on circuits with a ``hidden output.''  We leave this as an interesting open problem, and note its connection to developing foundational primitives for quantum encryption.
+We are unable to extend this application to the setting of efficient quantum algorithms for obfuscation. Instead, we give the next application.
+\item \textbf{Private-key quantum encryption for long messages.} This application uses only the obfuscator, and no other assumptions. We remark that such schemes require the qOWF assumption otherwise.
+\item \textbf{Public-key quantum encryption from IND-CPA private-key quantum encryption.} In this case, we show (via quantum semantic security~\cite{ABFGSS16}) that providing the obfuscated encryption circuit as the public key transforms private-key encryption into public-key encryption. In this case, we require a stronger notion of obfuscation, which is guaranteed \emph{in the presence of auxiliary information.}
+\item \textbf{Public-key quantum money}. Using circuit obfuscation to produce public-key quantum money was first proposed by Mosca and Stebila~\cite{MS10}, using a complexity-theoretic no-cloning theorem proposed by Aaronson~\cite{Aar09} and proved by Aaronson and Christiano~\cite{AC12}. We outline the idea, and adapt it based on the new limitations placed by our results.
 \end{enumerate}
 
 We emphasize that all the above applications except quantum money also work for achieving \emph{classical functionality} from a quantum obfuscator; however, depending on the details of the obfuscator and the application, this may require quantum algorithms for encryption and decryption, or even quantum ciphertexts.
@@ -250,17 +251,17 @@ We emphasize that all the above applications except quantum money also work for 
 \subsubsection{Quantum indistinguishability obfuscation}
 %%%%
 
-Lastly, we consider an alternative formulation of obfuscation, motivated by the classical definitions of indistinguishability obfuscation and best-possible obfuscation, as set down by Barak et al.~\cite{BGIRSVY12} and Goldwasser and Rothblum~\cite{GR07}. We establish quantum analogues of the central results in those classical papers. In this setting, rather than comparing the obfuscation of the circuit to that of a black-box, we compare it to the obfuscations of other, functionally-equivalent circuits. Starting with the new definitions, our results are as follows.
+We also consider an alternative formulation of obfuscation, motivated by the classical definitions of indistinguishability obfuscation and best-possible obfuscation, as set down by Barak et al.~\cite{BGIRSVY12} and Goldwasser and Rothblum~\cite{GR07}. We establish quantum analogues of the central results in those classical papers. In this setting, rather than comparing the obfuscation of the circuit to that of a black-box, we compare it to obfuscations of other, functionally-equivalent circuits. Starting with the new definitions, our results are as follows.
 
 \begin{enumerate}
-\item \textbf{Quantum indistinguishability obfuscator.} Just as in the black-box definition, this is a polynomial-time quantum algorithm $\algo O$ which accepts quantum circuits $C$ as input, and produces ``functionally-equivalent'' quantum states $\algo O(C)$ as output. The obfuscation condition now states that functionally equivalent circuits are mapped to \emph{indistinguishable} states. Based on the kind of indistinguishability deployed in the definition, there are three variants of an indistinguishability obfuscator: perfect, statistical, and computational.
+\item \textbf{Quantum indistinguishability obfuscator.} Just as in the black-box definition, this is a polynomial-time quantum algorithm $\algo O$ which accepts quantum circuits $C$ as input, and produces ``functionally-equivalent'' quantum states $\algo O(C)$ as output. The obfuscation condition now states that functionally equivalent circuits are mapped to \emph{indistinguishable} states. Based on the kind of indistinguishability enjoyed by these states, there are three variants: perfect, statistical, and computational.
 \item \textbf{Quantum best-possible obfuscator.} This is an algorithm precisely as above, except for the obfuscation condition: it now states that $\algo O(C)$ is the state that ``leaks least,'' among all states which are ``functionally-equivalent'' to $C$. There are again three variants: perfect, statistical, and computational.
 \item \textbf{Equivalence of definitions.} We prove that each of the three variants of quantum indistinguishability obfuscation is equivalent to the analogous variant of quantum best-possible obfuscation, so long as the obfuscator is efficient.
-\item \textbf{Impossibility of perfect and statistical indistinguishability obfuscation.} We end with a quantum version of the main result of~\cite{GR07}: a proof that perfect and statistical quantum indistinguishability obfuscation is impossible, unless coQMA is contained in QSZK. We remark that an analogous containment in the classical setting (i.e., coMA $\subseteq$ SZK) would imply a collapse of the polynomial-time hierarchy to the second level. Moreover, for the case of obfuscating arbitrary quantum computations (i.e., completely positive, trace-preserving maps), we obtain that statistical quantum indistinguishability obfuscation would imply that PSPACE is contained in QSZK. One consequence of these results is that extending the obfuscator proposed in~\cite{AJJ14} to full indistinguishability is impossible, barring highly unlikely collapses of complexity classes.
-\item \textbf{Application: witness encryption for QMA.} Motivated by an analogue discussed in~\cite{GGSW13, GGHRSW13}, we show that a quantum indistinguishability obfuscator enables witness encryption for QMA. A witness encryption scheme for a language $L$ in QMA encrypts plaintexts $x$ using a particular instance $l$. The security condition states that, if $l \in L$, then a valid witness $w$ for $l \in L$ allows decryption; on the other hand, if $l \notin L$, then ciphertexts are indistinguishable. While witness encryption has several applications classically~\cite{GGSW13}, the quantum analogue has not been considered previously.
+\item \textbf{Impossibility of perfect and statistical indistinguishability obfuscation.} We give a quantum version of the main result of~\cite{GR07}: perfect and statistical quantum indistinguishability obfuscation is impossible, unless coQMA is contained in QSZK. An analogous containment in the classical setting (i.e., coMA $\subseteq$ SZK) would imply a collapse of the polynomial-time hierarchy to the second level. Moreover, for the case of obfuscating arbitrary quantum computations (i.e., including measurements and adding/discarding ancillas), we obtain that statistical quantum indistinguishability obfuscation would imply PSPACE $\subseteq$ QSZK. %One consequence of these results is that extending the obfuscator proposed in~\cite{AJJ14} to full indistinguishability is impossible, barring highly unlikely collapses of complexity classes.
+\item \textbf{Application: witness encryption for QMA.} We show that a quantum indistinguishability obfuscator enables witness encryption for QMA. A witness encryption scheme for a language $L$ in QMA encrypts plaintexts $x$ using a particular instance $l$. The security condition states that, if $l \in L$, then a valid witness $w$ for $l \in L$ allows decryption; on the other hand, if $l \notin L$, then ciphertexts are indistinguishable. While witness encryption has several applications classically~\cite{GGSW13}, the quantum analogue has not been considered previously.
 \end{enumerate}
 
-We remark that, in the classical setting, indistinguishability obfuscation also implies functional encryption~\cite{GGHRSW13} and many more applications through the very successful ``punctured programs'' technique developed by Sahai and Waters~\cite{SW14}. We suspect that these results can also be adapted to the quantum setting, but leave them open for now.
+We remark that, in the classical setting, indistinguishability obfuscation also implies functional encryption~\cite{GGHRSW13} and many more applications through the ``punctured programs'' technique developed by Sahai and Waters~\cite{SW14}. We suspect that these results can also be adapted to the quantum setting, but leave them open for now.
 
 \subsection{Notation and terminology}\label{sec:notation}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -285,10 +286,11 @@ A \textbf{quantum circuit} $C$ is a sequence of local unitary gates on a fixed n
 \section{Quantum encryption}\label{sec:encryption}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we discuss a recently developed encryption scheme for quantum states, with computational assumptions~\cite{ABFGSS16}. The scheme satisfies a notion of non-adaptive chosen-ciphertext security, under the assumption that quantum-secure one-way functions exist. Further details can be found in \cite{ABFGSS16}.
+In this section, we recall a recently developed encryption scheme for quantum states, with computational assumptions~\cite{ABFGSS16}. The scheme satisfies a notion of non-adaptive chosen-ciphertext security, under the assumption that quantum-secure one-way functions exist. We begin with the following definitions.
+%Further details can be found in \cite{ABFGSS16}.
 %given in \expref{Appendix}{sec:appendix}, together with the (relatively straightforward) proof sketches.
 
-We begin with two primitives for encryption: quantum-secure one-way functions, and quantum-secure pseudorandom functions. These are both classical, efficiently computable functions which are in some sense resistant to quantum analysis. In the case of one-way functions, we demand that inversion is hard; in the case of pseudorandom functions, we demand that distinguishing from perfectly random functions is hard.
+%We begin with two primitives for encryption: quantum-secure one-way functions, and quantum-secure pseudorandom functions. These are both classical, efficiently computable functions which are in some sense resistant to quantum analysis. In the case of one-way functions, we demand that inversion is hard; in the case of pseudorandom functions, we demand that distinguishing from perfectly random functions is hard.
 
 \begin{definition}\label{def:quantum-secure-owf}
 A PT-computable function $f:\{0,1\}^* \rightarrow \{0, 1\}^*$ is a quantum-secure one-way function (qOWF) if for every QPT $\algo A$, 
@@ -307,7 +309,7 @@ $$
 where $\mathcal F_{n, m}$ denotes the space of all functions from $\{0,1\}^n$ to $\{0,1\}^m$.
 \end{definition}
 
-Classically, one-way functions are the fundamental primitive underpinning encryption. A series of basic results shows that one-way functions can be turned into pseudorandom functions, which can then be used for defining probabilistic encryption schemes. This series of results carries over to the quantum-secure case without much of a change (although some proofs are somewhat more involved.) For example, it is known how to construct qPRFs from qOWFs 
+Classically, one-way functions are the fundamental primitive underpinning encryption. A series of basic results shows that one-way functions can be turned into pseudorandom functions, which can then be used for defining probabilistic encryption schemes. This series of results carries over to the quantum-secure case without much fuss (although some proofs are more involved.) For example, it is known how to construct qPRFs from qOWFs 
 \begin{theorem}\cite{HILL99, Zhandry2012}
 \label{thm:qOWF-implies-qPRF}If quantum-secure one-way functions exist, then so do quantum-secure pseudorandom functions.
 \end{theorem}
@@ -318,7 +320,8 @@ It is well-known how to encrypt quantum states with information-theoretic securi
 \end{equation}
 where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$. 
 
-One disadvantage of the quantum one-time pad is that parties must share two bits of randomness for every qubit which they wish to transmit securely. In particular, one cannot securely exchange multiple messages with the same key. To address this issue, we must settle for computational security assumptions and use pseudorandomness to select $r$. A general encryption scheme for quantum states is then defined as follows.
+%One disadvantage of the quantum one-time pad is that parties must share two bits of randomness for every qubit which they wish to transmit securely. In particular, one cannot securely exchange multiple messages with the same key. To address this issue, we must settle for computational security assumptions and use pseudorandomness to select $r$. 
+A general encryption scheme for quantum states is defined as follows.
 
 \begin{definition}\label{def:encryption-scheme}
 A symmetric-key quantum encryption scheme is a triple of QPTs:
@@ -330,7 +333,7 @@ A symmetric-key quantum encryption scheme is a triple of QPTs:
 where $m$ and $c$ are polynomial functions of $n$, and the QPTs satisfy $\| \Dec_k \circ \Enc_k - \one_m \|_\diamond \leq \negl(n)$ for all $k \in \emph{\supp}\,\KeyGen(1^n)$.
 \end{definition}
 
-Public-key quantum encryption schemes are defined in an analogous manner. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable. In some cases, the ciphertexts will need to remain indistinguishable even to adversaries which possess oracle access to the encryption algorithm (and sometimes also even the decryption algorithm.) This security notion is captured by the following definition.
+Public-key quantum encryption schemes (with classical keys) are defined in an analogous manner~\cite{BJ15}. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable. In some cases, the ciphertexts will need to remain indistinguishable even to adversaries which possess oracle access to the encryption algorithm (and sometimes also even the decryption algorithm.) This security notion is captured by the following definition.
 
 \begin{definition}\label{def:IND}
 A symmetric-key quantum encryption scheme is IND-secure if for all QPTs $\algo A, \algo A'$,
@@ -348,17 +351,17 @@ It turns out that qPRFs can be used to construct simple symmetric-key quantum en
 \item $\Enc_k(\rho)$: choose $r \inrand \{0, 1\}^n$; output $\ket{r}\bra{r} \otimes P_{f_k(r)} \rho P_{f_k(r)}^{\dagger}$;
 \item $\Dec_k(\ket{r}\bra{r} \otimes \sigma)$: output  $P_{f_k(r)}^\dagger \rho P_{f_k(r)}$\,.
 \end{itemize}
-In the decryption algorithm, we may assume that the first register is always measured prior to decrypting. Correctness of the scheme is straightforward to check: decrypting with the same key and randomness simply undoes the Pauli operation. The proof of IND-CCA1 security can be found in \cite{ABFGSS16}.
-
-\begin{theorem}\label{thm:IND-CCA1}
-If quantum-secure pseudorandom functions exist, then so do IND-CCA1-secure symmetric-key quantum encryption schemes.
-\end{theorem}
-
-By combining \expref{Theorem}{thm:qOWF-implies-qPRF} and \expref{Theorem}{thm:IND-CCA1}, we have the following.
-
+In the decryption algorithm, we may assume that the first register is always measured prior to decrypting. Correctness of the scheme is straightforward to check: decrypting with the same key and randomness simply undoes the Pauli operation. IND-CCA1 security was shown in \cite{ABFGSS16}. Combining this with \expref{Theorem}{thm:qOWF-implies-qPRF}, we have 
 \begin{theorem}\label{thm:qOWF-implies-qSKE}
 If quantum-secure one-way functions exist, then so do IND-CCA1-secure symmetric-key quantum encryption schemes.
 \end{theorem}
+
+%\begin{theorem}\label{thm:IND-CCA1}
+%If quantum-secure pseudorandom functions exist, then so do IND-CCA1-secure symmetric-key quantum encryption schemes.
+%\end{theorem}
+%
+%By combining \expref{Theorem}{thm:qOWF-implies-qPRF} and \expref{Theorem}{thm:IND-CCA1}, we have the following.
+
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum black-box obfuscation}\label{sec:black-box}
@@ -400,7 +403,7 @@ $$
 
 In this section, we motivate the study of quantum black-box obfuscation by giving a few example applications. Unsurprisingly, these applications require that the obfuscation algorithm is itself quantum polynomial-time; strictly speaking, this is not required of \expref{Definition}{def:vbb-obfuscator}. Many of these applications are motivated by known classical applications of classical black-box obfuscators. Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications (such as quantum-secure one-way functions) will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
 
-\subsubsection{Quantum-secure one-way functions}
+\subsubsection{Quantum-secure one-way functions.}
 %%%
 
 The first application shows that, if there exists a classical algorithm for obfuscating quantum computations, then quantum-secure one-way functions exist. In this section alone, we will assume that functional equivalence property of the black-box obfuscator in Definition \ref{def:vbb-obfuscator} is strengthened to be exact (that is, the trace distance is $0$).  By the results discussed in \expref{Section}{sec:encryption}, this also implies the existence of quantum-secure pseudorandom generators, quantum-secure pseudorandom functions, and IND-CCA1-secure symmetric-key quantum encryption schemes.
@@ -463,59 +466,55 @@ We remark that the above proof fails if the obfuscator is a quantum algorithm---
 %as desired. IND-CPA security follows from the black-box property of the obfuscator, as follows. Let $\algo A$ be an adversary with access to the encryption oracle. Since the output of the encryption is a product state, $\algo A$ can be simulated by an adversary $\algo S$ that has only the first register of the ciphertext (i.e., $P_r \rho P_r^\dagger$) and black-box access to the unitary $U'_{r, k}$. It's then clear that $\algo S$ can only succeed in the challenge stage of \expref{Definition}{def:IND} by discovering the secret input for $U'_{r, k}$ or by guessing the response to the challenge. In any case, $\algo S$ (and hence also $\algo A$) succeeds with probability at most $1/2 + \negl(n)$.
 %\end{proof}
 
+\subsubsection{Private-key encryption for long messages.}
+%%%
+
+Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two registers (of, in general, different sizes):
+$$
+U'_{r, k} : \ket{x,\, y} \longmapsto
+\begin{cases}
+\ket{x,\, P_r^\dagger y} &\text{ if } x = k;\\
+\ket{x,\, y} &\text{ otherwise},
+\end{cases}
+$$
+Now consider the following scheme for encrypting $l(n)$-qubit quantum states.
+\begin{itemize}
+\item $\KeyGen(1^n)$: output $k \inrand \{0, 1\}^n$;
+\item $\Enc_{k}(\rho)$: choose $r \inrand \{0, 1\}^{2\,l(n)}$; output $P_r \rho P_r^\dagger \otimes \algo O(U_{r, k})$;
+\item $\Dec_{k}(\sigma \otimes \tau)$: output  the second register of $\algo J(\tau \otimes \ket{k}\bra{k} \otimes \sigma)$.
+\end{itemize}
+To check correctness, we apply the functionality-preserving property of the obfuscator. A decryption of a valid encryption with the same key yields
+$$
+\Dec_k (\Enc_k (\rho))  
+= \tr_1 \left[\algo J(\algo O(U_{r, k}) \otimes \ket{k}\bra{k} \otimes P_r \rho P_r^\dagger)\right] \\
+= \tr_1 \left[U_{r, k} (\ket{k}\bra{k} \otimes P_r \rho P_r^\dagger) U_{r, k}^\dagger\right] \\
+ = \rho
+$$
+as desired. We argue briefly that the scheme satisfies semantic security, which was defined and shown equivalent to IND in~\cite{ABFGSS16}. Let $\algo A$ be a SEM adversary; we are charged with describing a simulator $\algo A'$. By the black-box property, $\algo A$ on input $\Enc_k(\rho)$ can be simulated by an adversary $\algo S$ who receives $P_r \rho P_r^\dagger$ and only queries $U_{r, k}$ as a black box. We note that, since $r$ is selected uniformly at random, and the plaintext and the obfuscated circuit are independent, we do not require the obfuscator to be secure in the presence of auxiliary information. Indeed, we can rewrite $P_r \rho P_r^\dagger = P_r' \rho' P_r'^\dagger$ for any other $r'$ (and some $\rho'$) and this does not change the execution of $\algo A$ or $\algo S$. By a Grover lower bound, $\algo S$ will succeed at distinguishing its oracle from the identity with at most negligible probability. Given this, the input of $\algo S$ simply appears maximally mixed. We can thus simply define the simulator $\algo A'$ to execute $\algo A$ on $(\one/d) \otimes \mathcal O(\one)$, regardless of the plaintext.
+
 \subsubsection{Public-key encryption from private-key encryption}
 %%%
+\ga{Needs to be rewritten completely. Commented out for now.}
+%As we now show, combining black-box obfuscation with one-way functions yields even stronger encryption functionality.
+%\begin{prop}\label{prop:PKE}
+%If quantum black-box obfuscators and quantum-secure one-way functions exist, then so do IND-CPA-secure public-key quantum encryption schemes.
+%\end{prop}
+%\begin{proof} (Sketch.)
+%Under the hypothesis, \expref{Theorem}{thm:qOWF-implies-qSKE} implies the existence of IND-CCA1-secure symmetric-key encryption schemes for quantum states. Let $(\KeyGen, \Enc, \Dec)$ be such a scheme; for concreteness, we may take the scheme described in \expref{Theorem}{thm:IND-CCA1}. For $x \in \{0, 1\}^n$, let $\Enc_{(x)}$ denote the encryption circuit for key $x$; this is the circuit that accepts two input registers (one for randomness, and one for the plaintext) and outputs the ciphertext. Now define a public-key encryption scheme $(\KeyGen', \Enc', \Dec')$ as follows.
+%\begin{itemize}
+%\item $\KeyGen'(1^n)$: output $sk : = k \inrand \{0, 1\}^n$ (secret key) and $pk := \algo O\left(\Enc_{(sk)}\right)$ (public key);
+%\item $\Enc'_{pk}(\rho)$: choose $r \inrand \{0, 1\}^n$; output $pk( \ket{r}\bra{r} \otimes \rho)$;
+%\item $\Dec'_{sk}(\sigma)$: output  $\Dec_{sk}(\sigma)$\,.
+%\end{itemize}
+%The correctness of this scheme follows directly from the functionality-preserving property of $\algo O$ and the correctness of the private-key scheme. To prove IND-CPA security for the public-key scheme, we rely on the black-box property. It implies that any QPT adversary $\algo A$ with access to the public key can be simulated by a QPT $\algo S$ having only black-box access to $\Enc_{(sk)}$. The QPT $\algo S$, in turn, can be simulated by a QPT $\algo S'$ which has both decryption and encryption oracles for the private-key scheme $(\KeyGen, \Enc, \Dec)$. It may not be immediately obvious that the decryption oracle is necessary; this is the case because black-box access to $\Enc_{(sk)}$ enables $\algo S$ to select the randomness used for encryption, thus gaining the ability to evaluate pairs $(r, f_{sk}(r))$ where $f$ is the qPRF from the private-key scheme. 
 
-As we now show, combining black-box obfuscation with one-way functions yields even stronger encryption functionality.
+%Now we have that, if $\algo A$ can distinguish ciphertexts during the challenge, then so can $\algo S'$; since the ciphertexts themselves are the same for the public-key scheme and the private-key scheme, this contradicts the IND-CCA1 security of the private-key scheme.
+%\end{proof}
 
-\begin{prop}\label{prop:PKE}
-If quantum black-box obfuscators and quantum-secure one-way functions exist, then so do IND-CPA-secure public-key quantum encryption schemes.
-\end{prop}
-\begin{proof} (Sketch.)
-Under the hypothesis, \expref{Theorem}{thm:qOWF-implies-qSKE} implies the existence of IND-CCA1-secure symmetric-key encryption schemes for quantum states. Let $(\KeyGen, \Enc, \Dec)$ be such a scheme; for concreteness, we may take the scheme described in \expref{Theorem}{thm:IND-CCA1}. For $x \in \{0, 1\}^n$, let $\Enc_{(x)}$ denote the encryption circuit for key $x$; this is the circuit that accepts two input registers (one for randomness, and one for the plaintext) and outputs the ciphertext. Now define a public-key encryption scheme $(\KeyGen', \Enc', \Dec')$ as follows.
-\begin{itemize}
-\item $\KeyGen'(1^n)$: output $sk : = k \inrand \{0, 1\}^n$ (secret key) and $pk := \algo O\left(\Enc_{(sk)}\right)$ (public key);
-\item $\Enc'_{pk}(\rho)$: choose $r \inrand \{0, 1\}^n$; output $pk( \ket{r}\bra{r} \otimes \rho)$;
-\item $\Dec'_{sk}(\sigma)$: output  $\Dec_{sk}(\sigma)$\,.
-\end{itemize}
-The correctness of this scheme follows directly from the functionality-preserving property of $\algo O$ and the correctness of the private-key scheme. To prove IND-CPA security for the public-key scheme, we rely on the black-box property. It implies that any QPT adversary $\algo A$ with access to the public key can be simulated by a QPT $\algo S$ having only black-box access to $\Enc_{(sk)}$. The QPT $\algo S$, in turn, can be simulated by a QPT $\algo S'$ which has both decryption and encryption oracles for the private-key scheme $(\KeyGen, \Enc, \Dec)$. It may not be immediately obvious that the decryption oracle is necessary; this is the case because black-box access to $\Enc_{(sk)}$ enables $\algo S$ to select the randomness used for encryption, thus gaining the ability to evaluate pairs $(r, f_{sk}(r))$ where $f$ is the qPRF from the private-key scheme. 
+%A few remarks are in order. First, in~\cite{ABFGSS16} it is shown that IND-CPA-secure public-key quantum encryption schemes exist under the assumption that quantum-secure trapdoor permutations exist. This is a stronger assumption than one-way functions. \expref{Proposition}{prop:PKE} can then be thought of as replacing this strengthening of assumptions with an obfuscator. In~\cite{BJ15} it is shown how to use quantum-secure classical public-key encryption to produce quantum public-key encryption (by encrypting the key for the quantum one-time pad); this amounts to the same assumption on primitives as in~\cite{ABFGSS16}. An important difference between~\cite{ABFGSS16, BJ15} and \expref{Proposition}{prop:PKE} is that the scheme from \expref{Proposition}{prop:PKE} may have public keys which are quantum states. Such schemes have not been considered before, and (due to no-cloning) would have significantly different features from their classical counterparts.  However, since this is not our primary focus we leave the formal definition of these schemes for future work. 
 
-Now we have that, if $\algo A$ can distinguish ciphertexts during the challenge, then so can $\algo S'$; since the ciphertexts themselves are the same for the public-key scheme and the private-key scheme, this contradicts the IND-CCA1 security of the private-key scheme.
-\end{proof}
+%An interesting question is if there could be public-key encryption for classical data with classical ciphertexts, but where the encryption procedure is performed by a quantum algorithm. While this question remains open, our impossibility results will show that this cannot be achieved in a generic way via \expref{Proposition}{prop:PKE}.
 
-A few remarks are in order. First, in~\cite{ABFGSS16} it is shown that IND-CPA-secure public-key quantum encryption schemes exist under the assumption that quantum-secure trapdoor permutations exist. This is a stronger assumption than one-way functions. \expref{Proposition}{prop:PKE} can then be thought of as replacing this strengthening of assumptions with an obfuscator. In~\cite{BJ15} it is shown how to use quantum-secure classical public-key encryption to produce quantum public-key encryption (by encrypting the key for the quantum one-time pad); this amounts to the same assumption on primitives as in~\cite{ABFGSS16}. An important difference between~\cite{ABFGSS16, BJ15} and \expref{Proposition}{prop:PKE} is that the scheme from \expref{Proposition}{prop:PKE} may have public keys which are quantum states. Such schemes have not been considered before, and (due to no-cloning) would have significantly different features from their classical counterparts.  However, since this is not our primary focus we leave the formal definition of these schemes for future work. 
-
-An interesting question is if there could be public-key encryption for classical data with classical ciphertexts, but where the encryption procedure is performed by a quantum algorithm. While this question remains open, our impossibility results will show that this cannot be achieved in a generic way via \expref{Proposition}{prop:PKE}.
-
-\subsubsection{Quantum fully homomorphic encryption}
-%%%
-
-We briefly recall the idea of fully homomorphic encryption (FHE). For thorough definitions and the appropriate notions of security in the fully quantum case, see~\cite{BJ15}. Without considering all of the details, we will view QFHE as an encryption scheme (just as in \expref{Definition}{def:encryption-scheme}), but where $\KeyGen$ produces an extra ``evaluation'' key $k_{\opn{eval}}$, and there is an ``evaluation'' algorithm:
-\begin{itemize}
-\item $\Eval_{k_{\opn{eval}}} : \states (\mathcal H_m \otimes \mathcal H_g) \longrightarrow \states (\mathcal H_m)$.
-\end{itemize}
-We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. A classical string describing the choice of gate $G$ (and which qubits $k, k+1, \dots$ of $\rho$ it should be applied to) is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
-
-\begin{prop}\label{prop:QFHE}
-If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
-\end{prop}
-\begin{proof} (Sketch.)
-We will consider the public-key case, which turns out to be simpler. Let $(\algo O, \algo J)$ be a quantum obfuscator, and $(\KeyGen, \Enc, \Dec)$ an IND-CPA-secure public-key scheme. We adapt $\KeyGen$ to produce an evaluation key, and describe the evaluation algorithm. We will require a universal circuit $U_\mu$ for performing gates on $m$-qubit states; this circuit accepts two inputs: an $m$-qubit state, and a description of a gate and indices of the qubits to which the gate should be applied. In our usage, $m$ will be the number of qubits of the ciphertext state.
-\begin{itemize}
-\item $\KeyGen'(1^n)$: output $\KeyGen(1^n) = (sk, pk)$ and $k_{\opn{eval}} = \mathcal O(\Enc_{pk} \circ U_\mu \circ \Dec_{sk})$;
-\item $\Eval_{k_{\opn{eval}}} : \rho \otimes \ket{G}\bra{G} \longmapsto \algo J (k_{\opn{eval}} \otimes \rho \otimes \ket{G}\bra{G})$.
-\end{itemize}
-where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate. A circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ is given below; the gate register is represented by the bottom wire.\\ 
-$$
-\Qcircuit @C=1em @R=1.0em {
-&\gate{\Dec_{sk}} 	&\multigate{1}{~~U_\mu~~} 	&\gate{\Enc_{pk}} 	&\qw\\
-&\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
-}
-$$
-We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows directly from the definition of $\Eval$ and the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$. The black-box property implies that each execution of the $\Eval$ algorithm is no more useful than providing the server with an encryption of $G\rho G^\dagger$. However, in the IND-CPA setting, the adversary can already use the CPA oracle to produce encryptions of \emph{arbitrary} plaintexts of her choice (as opposed to just ones which are modifications of the plaintext provided by the client.) There is one additional wrinkle: by repeatedly applying gates (or even just the identity), the adversary can also produce multiple encryptions during the challenge round. However, as shown in~\cite{BJ15}, single-message IND-CPA is equivalent to multiple-message IND-CPA. By the assumption that $(\KeyGen, \Enc, \Dec)$ is IND-CPA secure, it follows that the homomorphic scheme is also secure.
-
-We remark that, in general, the encryption procedure $\Enc_{pk}$ may require an external source of randomness. This is certainly the case in classical encryption, but may not be required if the $\Enc$ algorithm is allowed to perform measurements. In any case, since we are starting with an IND-CPA public-key scheme, the adversary already has access to the public key and the ability to encrypt with randomness of her choice; the ability to choose randomness in $\Eval$ is of no additional benefit.
-\end{proof}
 
 \subsubsection{Public-key quantum money}
 %%%
@@ -995,3 +994,32 @@ In terms of applications, our results raise another interesting question: what a
 \end{document}
 
 
+\subsubsection{Quantum fully homomorphic encryption}
+%%%
+
+We briefly recall the idea of fully homomorphic encryption (FHE). For thorough definitions and the appropriate notions of security in the fully quantum case, see~\cite{BJ15}. Without considering all of the details, we will view QFHE as an encryption scheme (just as in \expref{Definition}{def:encryption-scheme}), but where $\KeyGen$ produces an extra ``evaluation'' key $k_{\opn{eval}}$, and there is an ``evaluation'' algorithm:
+\begin{itemize}
+\item $\Eval_{k_{\opn{eval}}} : \states (\mathcal H_m \otimes \mathcal H_g) \longrightarrow \states (\mathcal H_m)$.
+\end{itemize}
+We imagine a party (henceforth, \emph{server}) in possession of $k_{\opn{eval}}$ and a ciphertext $\Enc_k(\rho)$ provided by another party (henceforth, \emph{client}.) The evaluation algorithm then enables the server to produce the ciphertext $\Enc_k(G_k \rho G_k^\dagger)$, where $G$ is a gate of the server's choice. A classical string describing the choice of gate $G$ (and which qubits $k, k+1, \dots$ of $\rho$ it should be applied to) is input into the register $\mathcal H_g$. In general, we may consider the case where $k_{\opn{eval}}$ is itself a quantum state. Depending on the details of the scheme, this key may be partly or fully consumed by $\Eval$; indeed, this is the case in~\cite{BJ15}. Depending on the consumption rate, this might violate the (classically standard) \emph{compactness} requirement for FHE, namely that the amount of communication between the client and the server should scale only with the size of the ciphertext, and not with the size of the computation the server wishes to perform.
+
+\begin{prop}\label{prop:QFHE}
+If quantum black-box obfuscators and one-way functions exist, then so do IND-CPA-secure quantum fully homomorphic encryption schemes.
+\end{prop}
+\begin{proof} (Sketch.)
+We will consider the public-key case, which turns out to be simpler. Let $(\algo O, \algo J)$ be a quantum obfuscator, and $(\KeyGen, \Enc, \Dec)$ an IND-CPA-secure public-key scheme. We adapt $\KeyGen$ to produce an evaluation key, and describe the evaluation algorithm. We will require a universal circuit $U_\mu$ for performing gates on $m$-qubit states; this circuit accepts two inputs: an $m$-qubit state, and a description of a gate and indices of the qubits to which the gate should be applied. In our usage, $m$ will be the number of qubits of the ciphertext state.
+\begin{itemize}
+\item $\KeyGen'(1^n)$: output $\KeyGen(1^n) = (sk, pk)$ and $k_{\opn{eval}} = \mathcal O(\Enc_{pk} \circ U_\mu \circ \Dec_{sk})$;
+\item $\Eval_{k_{\opn{eval}}} : \rho \otimes \ket{G}\bra{G} \longmapsto \algo J (k_{\opn{eval}} \otimes \rho \otimes \ket{G}\bra{G})$.
+\end{itemize}
+where $\ket{G}\bra{G}$ is again just a classical string instructing $U_\mu$ to apply the desired gate. A circuit for $\Enc_{pk} \circ U_\mu \circ \Dec_{sk}$ is given below; the gate register is represented by the bottom wire.\\ 
+$$
+\Qcircuit @C=1em @R=1.0em {
+&\gate{\Dec_{sk}} 	&\multigate{1}{~~U_\mu~~} 	&\gate{\Enc_{pk}} 	&\qw\\
+&\qw 			&\ghost{~~U_\mu~~}		&\qw 			&\qw\\ \\
+}
+$$
+We now want to show that $(\KeyGen', \Enc, \Dec, \Eval)$ is a public-key QFHE scheme. The homomorphic property follows directly from the definition of $\Eval$ and the functionality-preserving property of the obfuscator. The security of the encryption scheme follows from IND-CPA security of $(\KeyGen, \Enc, \Dec)$ and the black-box property of $(\algo O, \algo J)$. The black-box property implies that each execution of the $\Eval$ algorithm is no more useful than providing the server with an encryption of $G\rho G^\dagger$. However, in the IND-CPA setting, the adversary can already use the CPA oracle to produce encryptions of \emph{arbitrary} plaintexts of her choice (as opposed to just ones which are modifications of the plaintext provided by the client.) There is one additional wrinkle: by repeatedly applying gates (or even just the identity), the adversary can also produce multiple encryptions during the challenge round. However, as shown in~\cite{BJ15}, single-message IND-CPA is equivalent to multiple-message IND-CPA. By the assumption that $(\KeyGen, \Enc, \Dec)$ is IND-CPA secure, it follows that the homomorphic scheme is also secure.
+
+We remark that, in general, the encryption procedure $\Enc_{pk}$ may require an external source of randomness. This is certainly the case in classical encryption, but may not be required if the $\Enc$ algorithm is allowed to perform measurements. In any case, since we are starting with an IND-CPA public-key scheme, the adversary already has access to the public key and the ability to encrypt with randomness of her choice; the ability to choose randomness in $\Eval$ is of no additional benefit.
+\end{proof}
