@@ -237,7 +237,7 @@ We emphasize that, while our techniques are very similar to Barak et al., our re
 \paragraph{Applications.} We then move on to discuss potential applications of quantum black-box obfuscators. Some of these applications may still be possible, in some form, in spite of our impossibility results. We view this as a strong indication that quantum obfuscation should be studied further. While some of the applications are analogues of known classical applications (as outlined in \cite{BGIRSVY12},) the last is special to the quantum setting. It is likely that there are other applications which are unique to the quantum setting. We remark that, since black-box obfuscation implies computationally best-possible obfuscation (which, in turn, implies computational indistinguishability obfuscation (iO),) the numerous recently discovered applications of iO may also apply here.
 
 \begin{enumerate}
-\item \textbf{Quantum-secure one-way functions.} We show that, if there exists a classical probabilistic algorithm for quantum obfuscation, then quantum-secure one-way functions exist. The above impossibility result rules this out, but the implication is nonetheless interesting; for one, it enables the very proof of the impossibility result itself! 
+\item \textbf{Quantum-secure one-way functions.} We show that, if there exists a classical probabilistic algorithm for quantum obfuscation, then quantum-secure one-way functions exist. The above impossibility result rules this out, but the implication is nonetheless interesting; for one, it enables the proof of the impossibility result itself. 
 %The one-way functions are essentially the functions computed by the obfuscator (with fixed randomness) on circuits with a ``hidden output.''  We leave this as an interesting open problem, and note its connection to developing foundational primitives for quantum encryption.
 We are unable to extend this application to the setting of efficient quantum algorithms for obfuscation. Instead, we give the next application.
 \item \textbf{Private-key quantum encryption for long messages.} This application uses only the obfuscator, and no other assumptions. We remark that such schemes require the qOWF assumption otherwise.
@@ -406,10 +406,10 @@ In this section, we motivate the study of quantum black-box obfuscation by givin
 \subsubsection{Quantum-secure one-way functions.}
 %%%
 
-The first application shows that, if there exists a classical algorithm for obfuscating quantum computations, then quantum-secure one-way functions exist. In this section alone, we will assume that functional equivalence property of the black-box obfuscator in Definition \ref{def:vbb-obfuscator} is strengthened to be exact (that is, the trace distance is $0$).  By the results discussed in \expref{Section}{sec:encryption}, this also implies the existence of quantum-secure pseudorandom generators, quantum-secure pseudorandom functions, and IND-CCA1-secure symmetric-key quantum encryption schemes.
+The first application shows that, if there exists a classical algorithm for obfuscating quantum computations, then quantum-secure one-way functions exist. In this section alone, we will assume that functional equivalence property of the black-box obfuscator in Definition \ref{def:vbb-obfuscator} is strengthened to be exact (that is, the trace distance is $0$).  By the results discussed in \expref{Section}{sec:encryption}, this also implies the existence of quantum-secure pseudorandom generators, quantum-secure pseudorandom functions, and IND-CCA1-secure symmetric-key quantum encryption schemes. We say that a quantum black-box obfuscator is \emph{perfect} if it preserves functionality perfectly.
 
 \begin{prop}
-If there exists a classical probabilistic algorithm which is a quantum black-box obfuscator, then quantum-secure one-way functions exist.
+If there exists a classical probabilistic algorithm which is a (perfect) quantum black-box obfuscator, then quantum-secure one-way functions exist.
 \end{prop}
 \begin{proof}
 The proof is essentially the same as that of Lemma 3.8 in \cite{BGIRSVY12}. For all $a \in \{0, 1\}^n$ and $b \in \{0, 1\}$, we define 
@@ -469,9 +469,9 @@ We remark that the above proof fails if the obfuscator is a quantum algorithm---
 \subsubsection{Private-key encryption for long messages.}
 %%%
 
-Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two registers (of, in general, different sizes):
+Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two registers of, in general, different sizes:
 $$
-U'_{r, k} : \ket{x,\, y} \longmapsto
+V_{r, k} : \ket{x,\, y} \longmapsto
 \begin{cases}
 \ket{x,\, P_r^\dagger y} &\text{ if } x = k;\\
 \ket{x,\, y} &\text{ otherwise},
@@ -480,21 +480,35 @@ $$
 Now consider the following scheme for encrypting $l(n)$-qubit quantum states.
 \begin{itemize}
 \item $\KeyGen(1^n)$: output $k \inrand \{0, 1\}^n$;
-\item $\Enc_{k}(\rho)$: choose $r \inrand \{0, 1\}^{2\,l(n)}$; output $P_r \rho P_r^\dagger \otimes \algo O(U_{r, k})$;
+\item $\Enc_{k}(\rho)$: choose $r \inrand \{0, 1\}^{2\,l(n)}$; output $P_r \rho P_r^\dagger \otimes \algo O(V_{r, k})$;
 \item $\Dec_{k}(\sigma \otimes \tau)$: output  the second register of $\algo J(\tau \otimes \ket{k}\bra{k} \otimes \sigma)$.
 \end{itemize}
 To check correctness, we apply the functionality-preserving property of the obfuscator. A decryption of a valid encryption with the same key yields
 $$
 \Dec_k (\Enc_k (\rho))  
-= \tr_1 \left[\algo J(\algo O(U_{r, k}) \otimes \ket{k}\bra{k} \otimes P_r \rho P_r^\dagger)\right] \\
-= \tr_1 \left[U_{r, k} (\ket{k}\bra{k} \otimes P_r \rho P_r^\dagger) U_{r, k}^\dagger\right] \\
+= \tr_1 \left[\algo J(\algo O(V_{r, k}) \otimes \ket{k}\bra{k} \otimes P_r \rho P_r^\dagger)\right] \\
+= \tr_1 \left[U_{r, k} (\ket{k}\bra{k} \otimes P_r \rho P_r^\dagger) V_{r, k}^\dagger\right] \\
  = \rho
 $$
-as desired. We argue briefly that the scheme satisfies semantic security, which was defined and shown equivalent to IND in~\cite{ABFGSS16}. Let $\algo A$ be a SEM adversary; we are charged with describing a simulator $\algo A'$. By the black-box property, $\algo A$ on input $\Enc_k(\rho)$ can be simulated by an adversary $\algo S$ who receives $P_r \rho P_r^\dagger$ and only queries $U_{r, k}$ as a black box. We note that, since $r$ is selected uniformly at random, and the plaintext and the obfuscated circuit are independent, we do not require the obfuscator to be secure in the presence of auxiliary information. Indeed, we can rewrite $P_r \rho P_r^\dagger = P_r' \rho' P_r'^\dagger$ for any other $r'$ (and some $\rho'$) and this does not change the execution of $\algo A$ or $\algo S$. By a Grover lower bound, $\algo S$ will succeed at distinguishing its oracle from the identity with at most negligible probability. Given this, the input of $\algo S$ simply appears maximally mixed. We can thus simply define the simulator $\algo A'$ to execute $\algo A$ on $(\one/d) \otimes \mathcal O(\one)$, regardless of the plaintext.
+as desired. We argue briefly that the scheme satisfies semantic security, which was defined and shown equivalent to IND in~\cite{ABFGSS16}. Let $\algo A$ be a SEM adversary; we are charged with describing a simulator $\algo A'$. By the black-box property, $\algo A$ on input $\Enc_k(\rho)$ can be simulated by an adversary $\algo S$ who receives $P_r \rho P_r^\dagger$ and only queries $V_{r, k}$ as a black box. We note that, since $r$ is selected uniformly at random, and the plaintext and the obfuscated circuit are independent, we do not require the obfuscator to be secure in the presence of auxiliary information. Indeed, we can rewrite $P_r \rho P_r^\dagger = P_r' \rho' P_r'^\dagger$ for any other $r'$ (and some $\rho'$) and this does not change the execution of $\algo A$ or $\algo S$. By a Grover lower bound, $\algo S$ will succeed at distinguishing its oracle from the identity with at most negligible probability. Given this, the input of $\algo S$ simply appears maximally mixed. We can thus simply define the simulator $\algo A'$ to execute $\algo A$ on $(\one/d) \otimes \mathcal O(\one)$, regardless of the plaintext.
 
-\subsubsection{Public-key encryption from private-key encryption}
+\subsubsection{Public-key encryption from private-key encryption.}
 %%%
-\ga{Needs to be rewritten completely. Commented out for now.}
+For this application, we will need a stronger form of black-box obfuscation. Namely, the obfuscator should be secure in the presence of auxiliary information (see, e.g., Definition 3 in \cite{GK05}). This amounts to requiring that the black-box condition now states
+$$
+|\Pr[\algo A( \algo O(C) \otimes \rho) = \pi(C, \rho)] - \Pr[\algo S^{U_C}(\ket{0^n} \otimes \rho) = \pi(C, \rho)]| \leq \negl(n)\,,
+$$
+where $\pi$ is any predicate, and the auxiliary information $\rho$ is allowed to depend on $C$. It's conceivable that the construction is possible even without auxiliary information; we leave this as an open problem.
+
+Let $\Pi = (\KeyGen, \Enc, \Dec)$ be a symmetric-key quantum encryption scheme, with classical keys. We define a public-key quantum encryption scheme $\Pi' = (\KeyGen', \Enc', \Dec')$ so that key generation outputs the key of $\Pi_S$ as the private key, and $\algo O(\Enc_k)$ as the public key. We will assume that the obfuscator outputs circuits, so that the public key is classical. One could also consider the case where public keys are quantum; more care is then required in setting down the definition of public-key schemes.
+
+We argue that, if $\Pi$ satisfies SEM-CPA (see ~\cite{ABFGSS16}) then $\Pi'$ satisfies SEM (for public-key schemes.) A $\Pi'$ SEM adversary $\algo A$ receives the public key $\algo O(\Enc_k)$ and a state
+$$
+\sigma_{AB} := [(\Enc_k)_A \otimes \one_B]\rho_{AB}
+$$
+which contains an encryption of the plaintext in register $A$, and a register $B$ of side information about the plaintext. Assume there exists such an $\algo A$, for which no simulator $\algo S$ (receiving only the public key and register $B$) exists. By black-box obfuscation with auxiliary information, there exists a QPT $\algo A_0^{\Enc_k}$ which simulates\,\footnote{Here one must check that it is sufficient to consider SEM adversaries which output predicates.} $\algo A$ on input $\sigma_{AB}$ and interacts with the public key in a black-box manner. Note that $\algo A_0$ is a valid (but perhaps not successful) SEM-CPA adversary against $\Pi$ : by functional equivalence of $\algo O$, the CPA oracle for $\Pi$ is equivalent to the oracle $\algo A_0$ expects. We claim that $\algo A_0$ (with the same plaintext, side information, and objective predicate as $\algo A$) has no simulator. For a contradiction, suppose $\algo S_0$ was such a simulator. We can then build a simulator $\algo S$ for $\algo A$ simply by running $\algo S_0$ and answering its CPA queries using the public key $\algo O(\Enc_k)$. We conclude that $\Pi'$ satisfies SEM, and thus also IND.
+
+
 %As we now show, combining black-box obfuscation with one-way functions yields even stronger encryption functionality.
 %\begin{prop}\label{prop:PKE}
 %If quantum black-box obfuscators and quantum-secure one-way functions exist, then so do IND-CPA-secure public-key quantum encryption schemes.
