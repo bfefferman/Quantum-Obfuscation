@@ -1,4 +1,5 @@
 \documentclass[envcountsame]{llncs}
+\usepackage{etex}
 \usepackage{authblk}
 \setcounter{tocdepth}{3}
 
@@ -110,9 +111,9 @@
 \title{On Quantum Obfuscation}
 \titlerunning{On Quantum Obfuscation}
 \author{Gorjan Alagic \inst{1} Bill Fefferman \inst{2}}
-\institute{QMATH, Department of Mathematical Sciences,\\ University of Copenhagen, Copenhagen, Denmark\\
+\institute{QMATH, Department of Mathematical Sciences, University of Copenhagen\\
 \email{galagic@gmail.com}
-\and Joint Center for Quantum Information and Computer Science (QuICS),\\ University of Maryland, College Park, MD, USA\\
+\and Joint Center for Quantum Information and Computer Science (QuICS), University of Maryland\\
 \email{wjf@umd.edu}}
 %\thanks{Department of Mathematical Sciences, University of Copenhagen. \textsf{galagic@gmail.com}}
 %\qquad
@@ -137,8 +138,8 @@ We discuss a number of applications, including quantum witness encryption and pu
 We emphasize that our results leave open an intriguing possibility: black-box obfuscation of classical or quantum circuits into a single, uncloneable  quantum state. This indicates that, in spite of our results, quantum obfuscation may be significantly more powerful than its classical counterpart.
 \end{abstract}
 
-\begin{keywords}
-Obfuscation, Encryption, Quantum \end{keywords}
+%\begin{keywords}
+%Obfuscation, Encryption, Quantum \end{keywords}
 %\newpage
 %\tableofcontents
 
@@ -151,7 +152,7 @@ Arguably, the most powerful theoretical cryptographic primitive is \emph{obfusca
 \begin{enumerate}\label{def:obf-informal}
 \item \emph{functional equivalence:} the input/output functionality of the input program does not change;
 \item \emph{polynomial slowdown:} if the input program is efficient, then the output program is efficient;
-\item \emph{obfuscation:} the code of the output program is ``hard to understand.''
+\item \emph{obfuscation:} the code of the output program is ``hard to understand.''\label{informal-obfuscation-condition}
 \end{enumerate}
 The last condition can be formulated rigorously in a number of ways. One possibility is the so-called ``virtual black-box'' condition, which says that the obfuscated program is no more useful than a black box which simply accepts inputs and produces outputs. This is impossible to achieve in the classical world~\cite{BGIRSVY12}. Another formulation of (3.) is computational-indistinguishability obfuscation; promising candidates and numerous applications have been proposed for this case~(see, e.g.,~\cite{GGHRSW13, BGKPS14, BCCGKPR14, BZ14, BR14, GGHW14, HSW14}.)
 
@@ -164,40 +165,38 @@ Theoretical cryptography is significantly complicated by the advent of \emph{qua
 \item how do the applications of quantum obfuscation differ from the classical case?
 \end{itemize}
 
-Before continuing, we draw attention to the distinction between obfuscating \emph{programs} (e.g., Turing Machines) and obfuscating \emph{circuits}. While these two forms of obfuscation are closely related, there are some important technical differences. In this work, as in most theoretical works on obfuscation, we will focus on obfuscation of circuits. We view the circuit model as more convenient; it is also more standard and convenient in quantum computation.
+Before continuing, we draw attention to the distinction between obfuscating \emph{programs} (e.g., Turing Machines) and obfuscating \emph{circuits}. While these two forms of obfuscation are closely related, there are some important technical differences. In this work, as in most theoretical works on obfuscation, we will focus on obfuscation of circuits. We view the circuit model as more convenient; it is also more standard in quantum computation.
 
 \subsection{Related work}
 %%%%%%%%%%%%%%%%%%%%%%
 
-The first major result in classical obfuscation was the 2001 proof by Barak et al. that virtual black-box obfuscation is impossible~\cite{BGIRSVY01, BGIRSVY12}, in the sense that there exist function families which are unobfuscatable (even inefficiently). They also showed that some of the most sought-after applications of black-box obfuscation are impossible. For instance, they showed that private-key encryption schemes cannot be transformed to public-key ones by obfuscating the encryption circuits in a generic manner. The years following the Barak et al. result saw some limited progress in theoretical obfuscation. It was proved possible for some limited forms of functionality~\cite{CD08, Wee05}, and some additional limits were placed, e.g., on black-box obfuscation with auxiliary input~\cite{GK05}. An important step in formulating feasible notions of obfuscation was taken by Goldwasser and Rothblum; they defined \emph{indistinguishability obfuscation} and \emph{best-possible obfuscation}~\cite{GR07}. Both of these definitions alter the obfuscation condition, while leaving the functional-equivalence and polynomial-slowdown conditions unchanged. Under indistinguishability, it is required that the obfuscator maps functionally-equivalent circuits to indistinguishable distributions. Under best-possible, the obfuscator maps any circuit to a circuit from which the end user can ``learn the least.'' Both definitions have a perfect, statistical, and computational variant. Goldwasser and Rothblum proved that the two definitions are equivalent, and that the perfect and statistical versions are impossible (unless the PH collapses)~\cite{GR07}. This left one possibility: computational indistinguishability obfuscation. In 2013, in a breakthrough result, Garg et al. proposed a convincing candidate for computational indistinguishability obfuscation~\cite{GGHRSW13}. Around the same time, another breakthrough by Sahai and Waters showed how to use a computational indistinguishability obfuscator to achieve a wide-range of applications, via a new ``punctured programs'' technique~\cite{SW14}. These applications include chosen-ciphertext-secure public-key encryption, injective trapdoor functions, and oblivious transfer. Sahai and Waters suggested that the applications were so wide-ranging that indistinguishability obfuscation might become a ``'central hub' for cryptography''~\cite{SW14}. These two breakthroughs were followed by a flurry of new activity in the area, including several new proposals and applications~\cite{BGKPS14, BCCGKPR14, BZ14, BR14, GGHW14, HSW14}.
+In 2001, Barak et al. proved that classical virtual black-box obfuscation (VBB) is impossible~\cite{BGIRSVY01, BGIRSVY12}: there exist function families which are unobfuscatable (even inefficiently). They also showed the most sought-after applications of VBB are impossible to achieve generically. VBB was later proven possible for some limited forms of functionality~\cite{CD08, Wee05}; further limits were placed on VBB with auxiliary input~\cite{GK05}. Goldwasser and Rothblum defined \emph{indistinguishability obfuscation} and \emph{best-possible obfuscation}~\cite{GR07}, altering the obfuscation condition \eqref{informal-obfuscation-condition}. Under indistinguishability, it is required that the obfuscator maps functionally-equivalent circuits to indistinguishable distributions. Under best-possible, the obfuscator maps any circuit to a circuit from which the end user can ``learn the least.'' Both definitions have perfect, statistical, and computational variants. Goldwasser and Rothblum proved that the indistinguishability and best-possible are equivalent, and that the perfect and statistical versions are impossible (unless the PH collapses)~\cite{GR07}. In 2013, in a breakthrough result, Garg et al. proposed a convincing candidate for computational indistinguishability obfuscation~\cite{GGHRSW13}. Around the same time, another breakthrough by Sahai and Waters showed how to use a computational indistinguishability obfuscator to achieve a wide-range of applications, via a new ``punctured programs'' technique~\cite{SW14}. These applications include chosen-ciphertext-secure public-key encryption, injective trapdoor functions, and oblivious transfer. Sahai and Waters suggested that the applications were so wide-ranging that indistinguishability obfuscation might become a ``'central hub' for cryptography''~\cite{SW14}. These two breakthroughs were followed by a flurry of new activity in the area (see, e.g.,~\cite{BGKPS14, BCCGKPR14, BZ14, BR14, GGHW14, HSW14}).
 
-Unlike classical obfuscation, quantum obfuscation is essentially an unexplored topic, and the present work appears to be the first rigorous treatment of the foundational questions. The question of whether quantum obfuscation is possible was posed as one of Scott Aaronson's ``semi-grand challenges'' for quantum computation~\cite{Aar05}. Since so little work on quantum obfuscation has appeared, we briefly mention some results that we believe are related. In~\cite{Aar09}, Aaronson proposed two relevant results. The first was a \emph{complexity-theoretic no-cloning theorem}, stating that cloning an unknown, random state by means of a black-box ``reflection oracle'' requires exponentially many queries. The second theorem stated that an oracle exists relative to which ``software copy-protection'' is possible. Unfortunately, a full version of~\cite{Aar09} with proofs never appeared, although the complexity-theoretic no-cloning theorem was eventually proved in a paper on quantum money~\cite{AC12}. In related work, Mosca and Stebila proposed a black-box quantum money scheme, and suggested the possibility of using a quantum circuit obfuscator in place of the black box~\cite{MS10}. More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{AJJ14}. The proposed obfuscator compiles circuits into braids using certain high-dimensional representations of the braid group, and then applies an algorithm for putting braids into normal form. Although it is efficient, this algorithm does not satisfy any of the aforementioned obfuscation definitions; instead, it satisfies perfect indistinguishability for a restricted set of circuit equivalences. The usefulness of such an obfuscator is unclear at this time.
+Unlike classical obfuscation, quantum obfuscation is essentially an unexplored topic, and the present work appears to be the first rigorous treatment of the foundational questions. The question of whether quantum obfuscation is possible was posed as one of Scott Aaronson's ``semi-grand challenges'' for quantum computation~\cite{Aar05}. Since so little work on quantum obfuscation has appeared, we briefly mention some results that we believe are related. In~\cite{Aar09}, Aaronson proposed two relevant results. The first was a \emph{complexity-theoretic no-cloning theorem}~\cite{Aar09, AC12}, stating that cloning an unknown, random state by means of a black-box ``reflection oracle'' requires exponentially many queries. The second theorem stated that an oracle exists relative to which ``software copy-protection'' is possible. Mosca and Stebila proposed a black-box quantum money scheme, and suggested the possibility of using a quantum circuit obfuscator in place of the black box~\cite{MS10}. More recently, Alagic, Jeffery and Jordan proposed obfuscators for both classical (reversible) circuits and quantum circuits, based on ideas from topological quantum computation~\cite{AJJ14}. The proposed obfuscator compiles circuits into braids using certain high-dimensional representations of the braid group, and then applies an algorithm for putting braids into normal form. This obfuscator satisfies perfect indistinguishability for a restricted set of circuit equivalences. The cryptographic usefulness of such an obfuscator is unclear at this time.
 
 \subsection{Summary of results}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we summarize our results and discussions. These are divided by subject, with quantum encryption covered in \expref{Section}{sec:encryption}, quantum black-box obfuscation in \expref{Section}{sec:black-box}, and quantum indistinguishability obfuscation in \expref{Section}{sec:indistinguishability}.
-
 \subsubsection{Quantum black-box obfuscation}
 %%%%
 
-\paragraph{Definitions.} Our main results concern definitions, applications, and (im)possibility of quantum obfuscation in the virtual black-box setting. We will begin by defining the following.
+\paragraph{Definitions.} We define the following new notions.
 
 \begin{enumerate}
-\item \textbf{Quantum black-box obfuscator.} This is a polynomial-time quantum algorithm (QPT) $\algo O$ which accepts quantum circuits $C$ as input, and produces quantum states $\algo O(C)$ as output. It preserves functionality, in the sense that there is a publicly known way to use $\algo O(C)$ and any input state $\ket{\psi}$ to produce the state $C \ket{\psi}$\,. It satisfies a black-box condition: for polynomial-time quantum algorithms, possession of $\algo O(C)$ can be simulated by black-box access to $C$. This definition is a natural analogue of the classical black-box definition given in~\cite{BGIRSVY12}.
+\item \textbf{Quantum black-box obfuscator.} This is a polynomial-time quantum algorithm (QPT) $\algo O$ which accepts quantum circuits $C$ as input, and produces quantum states $\algo O(C)$ as output. It preserves functionality: there is a public algorithm for using $\algo O(C)$ and any input state $\ket{\psi}$ to produce the state $C \ket{\psi}$\,. It satisfies a black-box condition: for polynomial-time quantum algorithms, possession of $\algo O(C)$ can be simulated by black-box access to $C$. This definition is a natural analogue of the classical black-box definition given in~\cite{BGIRSVY12}.
 \item \textbf{Quantum ``two-circuit'' black-box obfuscator.} This obfuscator is precisely as above, except the obfuscation condition is strengthened to hold over arbitrary \emph{pairs of circuits} $(C_1, C_2)$. For us, this definition will be primarily useful because of its role in establishing certain impossibility results.
 \item \textbf{Information-theoretic quantum black-box obfuscator.} This is a modification of the above definition, in which we posit that \emph{any} adversary with access to $\algo O(C)$ can be simulated by a \emph{polynomial-time} quantum simulator with black-box access to $C$. This definition is impossible classically for obvious reasons. It is not a priori clear if the quantum case is impossible: if $\algo O(C)$ is a single copy of a quantum state, even unbounded adversaries are restricted by no-cloning and the (in general irreversible) properties of measurement.
 \end{enumerate}
 
-\paragraph{Impossibility.} We prove three impossibility results, which place several important restrictions on quantum obfuscation. Our ideas are based on~\cite{BGIRSVY12}, with several important quantum adaptations, including a new application of IND-CCA1 quantum encryption~\cite{ABFGSS16}.
+\paragraph{Impossibility.} We place several important restrictions on quantum obfuscation. Our ideas are based on~\cite{BGIRSVY12}, with several important quantum adaptations, including a new application of IND-CCA1 quantum encryption~\cite{ABFGSS16}.
 \begin{enumerate}
 \item \textbf{Two-state black-box obfuscation is impossible.} We prove that there exist families of circuit pairs which can reveal a secret if one is in possession of a circuit description for both of them, but not if one only has black-box access. This impossibility persists even if the obfuscation output is a quantum state, as opposed to a circuit description. Unlike the other results, it is also true even if the obfuscated states are \emph{not reusable.}
 \item \textbf{If qOWFs exist, then obfuscation with more than one output is impossible.} For this proof, we combine the pairs from the circuit families in the two-circuit impossibility proof in order to build a single unobfuscatable family. The ability to execute obfuscated states from this family \emph{on themselves} is crucial here, and has two requirements: (i.) access to more than one obfuscation, even if the obfuscations are quantum states, and (ii.) secure encryption, which in turn requires the existence of qOWFs. 
 \item \textbf{Classical algorithms for quantum obfuscation are impossible, unconditionally.} This result follows directly from the previous result and Application 1 below. It can be viewed as an extension of the original Barak et al. impossibility result to the case of quantum functionality and quantum adversaries.
 \end{enumerate}
-We emphasize that, while our techniques are very similar to Barak et al., our results are not a simple consequence of the fact that classical functions (and in particular, the Barak et al. unobfuscatable functions) are special cases of quantum functions. This ``special case'' argument fails for obvious reasons when the output of the obfuscator can be a quantum state. As it turns out, it also fails when the output is a quantum circuit: (i.) it is now permitted to specify (even approximate) quantum circuits for classical functions, (ii.) the black-box simulator now has quantum access, which is significantly more powerful than classical (see, e.g., ~\cite{HR14}) and (iii.) the Barak et al. adversary is insufficient since it can only perform classical gates homomorphically. The last point is where the aforementioned quantum encryption tools become necessary.
+We emphasize that, while our techniques are very similar to Barak et al., our results are not a simple consequence of the fact that classical functions (and in particular, the Barak et al. unobfuscatable functions) are special cases of quantum functions. This ``special case'' argument fails for obvious reasons when the output of the obfuscator can be a quantum state. It also fails when the output is a circuit: (i.) one can now specify (approximate) quantum circuits for classical functions, (ii.) the black-box simulator now has quantum access, which is significantly more powerful than classical (see, e.g., ~\cite{HR14}) and (iii.) the Barak et al. adversary is insufficient since it can only perform classical gates homomorphically. 
 
-\paragraph{Applications.} We then move on to discuss potential applications of quantum black-box obfuscators. Some of these applications may still be possible, in some form, in spite of our impossibility results. Some of the applications are analogues of classical applications (as outlined in \cite{BGIRSVY12},) while the last is special to the quantum setting. It is likely that there are other applications which are unique to the quantum setting. We remark that, since black-box obfuscation implies computationally best-possible obfuscation (which, in turn, implies computational indistinguishability obfuscation (iO),) the numerous recently discovered applications of iO may also apply here.
+\paragraph{Applications.} We then move on to discuss potential applications of quantum black-box obfuscators. Some of these applications may still be possible, in some form, in spite of our impossibility results. Some are analogues of known classical applications, while the last is special to the quantum setting. We remark that, since black-box obfuscation implies computationally best-possible obfuscation (which, in turn, implies computational indistinguishability obfuscation (iO)~\cite{GR07}) the numerous applications of iO may also be available quantumly.
 
 \begin{enumerate}
 \item \textbf{Quantum-secure one-way functions.} We show that, if there exists a classical probabilistic algorithm for quantum obfuscation, then quantum-secure one-way functions exist. 
@@ -212,13 +211,13 @@ We emphasize that all the above applications except quantum money also work for 
 \subsubsection{Quantum indistinguishability obfuscation}
 %%%%
 
-We also consider an alternative formulation of obfuscation, motivated by the classical definitions of indistinguishability obfuscation and best-possible obfuscation, as set down by Barak et al.~\cite{BGIRSVY12} and Goldwasser and Rothblum~\cite{GR07}. We establish quantum analogues of the central results in those classical papers. 
+We also consider quantum versions of indistinguishability and best-possible obfuscation~\cite{BGIRSVY12, GR07}, and prove analogues of the central results of those papers. 
 
 \begin{enumerate}
 \item \textbf{Quantum indistinguishability obfuscator.} Just as in the black-box definition, this is a QPT $\algo O$ which accepts quantum circuits $C$ as input, and produces ``functionally-equivalent'' quantum states $\algo O(C)$ as output. The obfuscation condition now states that functionally equivalent circuits are mapped to \emph{indistinguishable states}. Based on the type of this indistinguishability, there are three variants: perfect, statistical, and computational.
 \item \textbf{Quantum best-possible obfuscator.} In this case, the obfuscation condition demands that $\algo O(C)$ is the state that ``leaks least,'' among all states which are ``functionally-equivalent'' to $C$. There are again three variants: perfect, statistical, and computational.
 \item \textbf{Equivalence of definitions.} We prove that each of the three variants of quantum indistinguishability obfuscation is equivalent to the analogous variant of quantum best-possible obfuscation, so long as the obfuscator is efficient.
-\item \textbf{Impossibility of perfect and statistical indistinguishability obfuscation.} We give a quantum version of the main result of~\cite{GR07}: perfect and statistical quantum indistinguishability obfuscation is impossible, unless coQMA is contained in QSZK. An analogous containment in the classical setting (i.e., coMA $\subseteq$ SZK) would imply a collapse of the polynomial-time hierarchy to the second level. Moreover, for the case of obfuscating arbitrary quantum computations (i.e., including measurements and adding/discarding ancillas), we obtain that statistical quantum indistinguishability obfuscation would imply PSPACE $\subseteq$ QSZK. %One consequence of these results is that extending the obfuscator proposed in~\cite{AJJ14} to full indistinguishability is impossible, barring highly unlikely collapses of complexity classes.
+\item \textbf{Impossibility of perfect and statistical indistinguishability obfuscation.} We give a quantum version of the main result of~\cite{GR07}: perfect and statistical quantum indistinguishability obfuscation is impossible, unless coQMA is contained in QSZK. An analogous containment in the classical setting (i.e., coMA $\subseteq$ SZK) would imply a collapse of the PH to the second level. For the case of obfuscating arbitrary quantum computations (i.e., CPTP maps), we obtain that statistical quantum iO would imply PSPACE $\subseteq$ QSZK. %One consequence of these results is that extending the obfuscator proposed in~\cite{AJJ14} to full indistinguishability is impossible, barring highly unlikely collapses of complexity classes.
 \item \textbf{Application: witness encryption for QMA.} We show that a quantum indistinguishability obfuscator enables witness encryption for QMA. A witness encryption scheme for a language $L$ in QMA encrypts plaintexts $x$ using a particular instance $l$. The security condition states that, if $l \in L$, then a valid witness $w$ for $l \in L$ allows decryption; on the other hand, if $l \notin L$, then ciphertexts are indistinguishable. While witness encryption has several applications classically~\cite{GGSW13}, the quantum analogue has not been considered previously.
 \end{enumerate}
 
@@ -245,17 +244,14 @@ A \textbf{quantum circuit} $C$ is a sequence of local unitary gates on a fixed n
 \subsection{Quantum encryption}\label{sec:encryption}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we recall a recently developed encryption scheme for quantum states, with computational assumptions~\cite{ABFGSS16}. The scheme satisfies a notion of non-adaptive chosen-ciphertext security, under the assumption that quantum-secure one-way functions exist. We will need quantum-secure one-way functions (qOWF) and pseudorandom functions (PRFs), and quantum encryption schemes, all defined in \expref{Appendix}{app:primitives}. We will also need the following result.
+In this section, we recall an encryption scheme for quantum states, with computational assumptions~\cite{ABFGSS16}. The scheme satisfies a notion of non-adaptive chosen-ciphertext security, under the assumption that quantum-secure one-way functions exist. We will need quantum-secure one-way functions (qOWF) and pseudorandom functions (qPRFs), and quantum encryption schemes, all defined in \expref{Appendix}{app:primitives}. We will also need the following result.
 
 \begin{theorem}\cite{HILL99, Zhandry2012}
-\label{thm:qOWF-implies-qPRF}If quantum-secure one-way functions exist, then so do quantum-secure pseudorandom functions.
+\label{thm:qOWF-implies-qPRF}If qOWFs exist, then so do qPRFs.
 \end{theorem}
 
-Next, we recall the so-called quantum one-time pad (QOTP). To encrypt a single-qubit state $\rho$, we choose two classical bits at random to select a random Pauli matrix $P \in \{\one, X, Y, Z\}$, and perform $\rho \mapsto P \rho P^\dagger$. To encrypt an $n$-qubit quantum state $\rho$, we select $r \inrand \{0,1\}^{2n}$ and apply
-\begin{equation}\label{eq:quantum-one-time-pad}
-\rho \longmapsto P_r \rho P_r^\dagger\,,
-\end{equation}
-where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$. The QOTP provides information-theoretically secure one-time encryption. The encryption schemes we will need must produce ciphertexts which are computationally indistinguishable even to adversaries which possess oracle access to encryption and decryption.
+Next, recall the quantum one-time pad (QOTP). To encrypt a single-qubit state $\rho$, we use two classical random bits to select a Pauli matrix $P \in \{\one, X, Y, Z\}$, and apply $\rho \mapsto P \rho P^\dagger$. To encrypt an $n$-qubit quantum state $\rho$, we select $r \inrand \{0,1\}^{2n}$ and apply $\rho \longmapsto P_r \rho P_r^\dagger$,
+where $P_r$ denotes the element of the $n$-qubit Pauli group indexed by $r$. The QOTP only provides information-theoretic one-time secrecy. We will need stronger security, as follows.
 
 \begin{definition}\label{def:IND}
 A symmetric-key quantum encryption scheme is IND-secure if for all QPTs $\algo A, \algo A'$,
@@ -267,27 +263,21 @@ $$
 where $\Xi_\sigma: \rho \mapsto \sigma$ is the ``forgetful'' map, and $s$ is a polynomial function of $n$. If $\algo A$ and $\algo A'$ have oracle access to $\Enc_k$, then we say that the scheme is IND-CPA secure. If in addition $\algo A'$ has oracle access to $\Dec_k$, then we say that the scheme is IND-CCA1 secure.
 \end{definition}
 
-It turns out that qPRFs can be used to construct simple symmetric-key quantum encryption schemes that satisfy all of the above security conditions. Let $\{f_k : \{0, 1\}^n \rightarrow \{0, 1\}^{2n}\}$ be a qPRF, and consider the following scheme:
-\begin{itemize}
-\item $\KeyGen(1^n)$: output $k \inrand \{0, 1\}^n$;
-\item $\Enc_k(\rho)$: choose $r \inrand \{0, 1\}^n$; output $\ket{r}\bra{r} \otimes P_{f_k(r)} \rho P_{f_k(r)}^{\dagger}$;
-\item $\Dec_k(\ket{r}\bra{r} \otimes \sigma)$: output  $P_{f_k(r)}^\dagger \rho P_{f_k(r)}$\,.
-\end{itemize}
-IND-CCA1 security was shown in \cite{ABFGSS16}. Combining this with \expref{Theorem}{thm:qOWF-implies-qPRF}, we have 
+It turns out that qPRFs can be used to construct simple symmetric-key quantum encryption schemes that satisfy all of the above security conditions. Let $f$ be a length-doubling qPRF, and consider the scheme which encrypts $\rho$ by choosing $r \inrand \{0, 1\}^n$ and outputting $\ket{r}\bra{r} \otimes P_{f_k(r)} \rho P_{f_k(r)}^{\dagger}$ (and decrypts in the obvious way). This scheme satisfies IND-CCA1~\cite{ABFGSS16}. Combining this with \expref{Theorem}{thm:qOWF-implies-qPRF}, we have 
 \begin{theorem}\label{thm:qOWF-implies-qSKE}
-If quantum-secure one-way functions exist, then so do IND-CCA1-secure symmetric-key quantum encryption schemes.
+If qOWFs exist, then so do IND-CCA1-secure symmetric-key quantum encryption schemes.
 \end{theorem}
 
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum black-box obfuscation}\label{sec:black-box}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we discuss the virtual black-box framework for quantum obfuscation. We begin with definitions (\expref{Section}{sec:vbb-definitions}) and applications (\expref{Section}{sec:vbb-applications}), and finish with new impossibility results (\expref{Section}{vbb:impossibility}). 
+%In this section, we discuss the virtual black-box framework for quantum obfuscation. We begin with definitions (\expref{Section}{sec:vbb-definitions}) and applications (\expref{Section}{sec:vbb-applications}), and finish with new impossibility results (\expref{Section}{vbb:impossibility}). 
 
 \subsection{Definitions}\label{sec:vbb-definitions}
 %%%%%%%%%%%%%%%%%%%%%%
 
-Obfuscation involves giving an untrusted party an object $\algo O(C)$ for implementing some chosen functionality $f_C$. In the black-box formulation of obfuscation, we demand that this is effectively all that the untrusted party will ever be able to do. The rigorous formulation uses the simulation paradigm: anything which can be efficiently learned from the obfuscated circuit, should also be efficiently learnable simply by evaluating $f_C$ some polynomial number of times~\cite{BGIRSVY12}.
+Obfuscation involves giving an untrusted party an object $\algo O(C)$ for implementing some chosen functionality $f_C$. In the black-box formulation of obfuscation, we demand that this is effectively all that the untrusted party will ever be able to do. The rigorous formulation uses the simulation paradigm: anything that is efficiently learnable from the obfuscated circuit, is also efficiently learnable by evaluating $f_C$ some polynomial number of times~\cite{BGIRSVY12}.
 
 \begin{definition}\label{def:vbb-obfuscator}
 A \textbf{black-box quantum obfuscator} is a quantum algorithm $\algo O$ and a QPT $\algo J$ such that whenever $C$ is an $n$-qubit quantum circuit, the output of $\algo O$ is an $m$-qubit state $\algo O(C)$ satisfying
@@ -302,7 +292,7 @@ $$
 \end{definition}
 We emphasize that while the ``interpreter'' algorithm $\algo J$ must be polynomial-time, the obfuscator itself need not be. One could consider variants of \expref{Definition}{def:vbb-obfuscator} where the interpreter algorithm is fixed once and for all, or where $\algo O(C)$ itself consists of both a quantum ``advice state'' and a circuit which the end user should execute on the advice state and the desired input. It is straightforward to show that all of these variants are equivalent, in the sense that a black-box quantum obfuscator of each variant exists if and only if the other variants exist. 
 
-We also point out that the no-cloning theorem opens up the possibility of \emph{computationally unbounded adversaries.} The appropriate definition is a straightforward modification of \expref{Definition}{def:vbb-obfuscator}, where we replace the third condition with the following:
+The no-cloning theorem opens up the possibility of \emph{computationally unbounded adversaries.} The appropriate definition is a modification of \expref{Definition}{def:vbb-obfuscator}, where we replace the third condition with the following:
 
 \begin{enumerate}
 \setcounter{enumi}{2}
@@ -315,22 +305,22 @@ $$
 \subsection{Applications of efficient black-box obfuscators}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we give a few example applications of quantum black-box obfuscation. The proofs are fairly simple and are given in \expref{Appendix}{app:proofs}. Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
+In this section, we give a few example applications of quantum black-box obfuscation. The proofs are fairly simple and are given in \expref{Appendix}{app:proofs}. Our impossibility results will put some restrictions on these applications; some of the applications will be used in the impossibility proofs themselves. While most of the applications are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
 
 \paragraph{Quantum-secure one-way functions.}
 %%%
 
-The first application yields quantum-secure one-way functions exist, and thus also secure quantum encryption (recall \expref{Theorem}{thm:qOWF-implies-qSKE}). We say that an obfuscator is \emph{perfect} if the functional equivalence condition is exact (that is, trace distance $0$).  
+The first application yields qOWFs exist, and thus also quantum encryption (\expref{Theorem}{thm:qOWF-implies-qSKE}). An obfuscator is \emph{perfect} if the functional equivalence condition is exact (that is, trace distance $0$).  
 
 \begin{prop}
 If there exists a classical probabilistic algorithm which is a (perfect) quantum black-box obfuscator, then quantum-secure one-way functions exist.
 \end{prop}
-The proof is essentially the same as that of Lemma 3.8 in \cite{BGIRSVY12}. We remark that the proof fails if the obfuscator is a quantum algorithm---even if its output is itself classical. One-way functions must be deterministic; while one can turn a classical probabilistic algorithm into a deterministic one by making the coins part of the input, this is not possible quantumly. 
+The proof is very similart o Lemma 3.8 in \cite{BGIRSVY12}, but fails if the obfuscator is a quantum algorithm---even if its output is itself classical. One-way functions must be deterministic; while one can turn a classical probabilistic algorithm into a deterministic one by making the coins part of the input, this is not possible quantumly. 
 
 \paragraph{Private-key encryption for long messages.}
 %%%
 
-Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR, and with two registers of, in general, different sizes:
+Let $(\algo O, \algo J)$ be a quantum black-box obfuscator. We consider an adaptation of the unitary operator $U_{a, b}$ defined above, but now with Pauli group action instead of XOR and two registers:
 $$
 V_{r, k} : \ket{x,\, y} \longmapsto
 \begin{cases}
@@ -344,14 +334,7 @@ Now consider the following scheme for encrypting $l(n)$-qubit quantum states.
 \item $\Enc_{k}(\rho)$: choose $r \inrand \{0, 1\}^{2\,l(n)}$; output $P_r \rho P_r^\dagger \otimes \algo O(V_{r, k})$;
 \item $\Dec_{k}(\sigma \otimes \tau)$: output  the second register of $\algo J(\tau \otimes \ket{k}\bra{k} \otimes \sigma)$.
 \end{itemize}
-Correctness is a consequence of the functionality-preserving property of the obfuscator:
-$$
-\Dec_k (\Enc_k (\rho))  
-= \tr_1 \left[\algo J(\algo O(V_{r, k}) \otimes \ket{k}\bra{k} \otimes P_r \rho P_r^\dagger)\right] \\
-= \tr_1 \left[U_{r, k} (\ket{k}\bra{k} \otimes P_r \rho P_r^\dagger) V_{r, k}^\dagger\right] \\
- = \rho\,.
-$$
-For a security argument, see \expref{Appendix}{app:proofs}.
+Correctness is a consequence of the functionality-preserving property. For a security argument, see \expref{Appendix}{app:proofs}.
 
 \paragraph{Public-key encryption from private-key encryption.}
 %%%
@@ -379,11 +362,10 @@ $$
 $$
 and accepting iff the measurement returns $1$. It's easy to check that the above succeeds only on valid states; moreover, in that case, the state $\ket{\psi}$ is output in the second register, so that verification can be repeated. One can show resistance of the above scheme to counterfeiting via a Complexity-Theoretic No-Cloning Theorem~\cite{Aar09, AC12}. 
 
-Unfortunately, we will later show that obfuscation of quantum circuits in the form required by Mosca and Stebila is impossible. What remains possible is a setting in which both $\ket{\psi}$ and $\mathcal O(U_\psi)$ are quantum states, and another circuit (which is publicly known and independent of $\ket{\psi}$) is used for verification. Moreover, as we will also show, any black-box obfuscation scheme which outputs states that can be efficiently cloned is also impossible. We thus conjecture the following.
+Unfortunately, we will show that obfuscation of circuits into circuits is impossible. What remains possible is a setting in which both $\ket{\psi}$ and $\mathcal O(U_\psi)$ are quantum states, and another circuit (which is publicly known and independent of $\ket{\psi}$) is used for verification. Moreover, as we will also show, any black-box obfuscation scheme which outputs states that can be efficiently cloned is also impossible. We thus conjecture the following.
 \begin{conjecture}
 If quantum black-box obfuscators exist, then so does public-key quantum money.
 \end{conjecture}
-We remark that the public-key money states discussed above should be authenticated by the bank.
 
 \subsection{Impossibility results}\label{vbb:impossibility}
 %%%%%%%%%%%%%%%%%%%%%%
@@ -405,21 +387,22 @@ We first define a \emph{circuit-pair family} to be an ensemble of distributions 
 
 We also define a \emph{state-pair family} analogously. If $\mathcal C'$ is a state-pair family, then there exists a (not necessarily polynomial-time) quantum algorithm which, on input $n$ in unary, outputs a pair of density operators $(\rho_n, \sigma_n)$ drawn at random from some distribution $\mathcal C_n'$ on quantum states on poly$(n)$-many qubits. Given a circuit-pair family $\mathcal C$ and a state-pair family $\mathcal C'$, we say that $\mathcal C'$ is an obfuscation of $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies the two-circuit obfuscation definition above.
 
-With these definitions, we can now state our first impossibility result.
+%With these definitions, we can now state our first impossibility result.
 
 \begin{theorem}\label{thm:pair-impossibility}
-There exists a poly-time quantum circuit-pair family $\mathcal C$ such that no state-pair family is an obfuscation of $\mathcal C$.
+There exists a poly-time circuit-pair family $\mathcal C$ such that no state-pair family is an obfuscation of $\mathcal C$.
 \end{theorem}
 \begin{proof}
 Let $(\mathcal O, \mathcal J)$ be a black-box quantum two-circuit obfuscator. 
 The poly-time quantum circuit-pair family $\mathcal C$ consists of quantum circuits for implementing the following pairs of unitary operators. Each pair is parameterized by an input size $n$, as well as bitstrings $a, b$ chosen uniformly at random from $\{0, 1\}^n$.
 \begin{align}\label{eq:pair-impossible}
-U_{a, b} &: \ket{x,\, y} \longmapsto
+U_{a, b} : \ket{x,\, y} \longmapsto
 \begin{cases}
 \ket{x,\, y \oplus b} &\text{ if } x = a;\\
 \ket{x,\, y} &\text{ otherwise}.
-\end{cases}\\
-V_{a, b} &: \ket{C,\, z} \longmapsto
+\end{cases}
+\qquad \qquad
+V_{a, b} : \ket{C,\, z} \longmapsto
 \begin{cases}
 \ket{C,\, z \oplus 1} &\text{ if } C(a) = b;\\
 \ket{C,\, z} &\text{ otherwise}.
@@ -427,20 +410,20 @@ V_{a, b} &: \ket{C,\, z} \longmapsto
 \end{align}
 The registers indexed by $x$ and $y$ are of size $n$. The register indexed by $C$ accepts a circuit description (under some fixed encoding), and needs to be able to handle inputs of size $|\algo O(C_{a, b})|$ (i.e. of size equal to the number of qubits in the state $\algo O(C_{a, b})$). Here $C_{a, b}$ is a fixed, explicit poly$(n)$-size circuit for $U_{a, b}$. The second register of $V_{a, b}$ has size one. 
 
-Note that both of these unitaries can be implemented by efficient quantum circuits. We choose some particular set of such circuits, and henceforth denote them by $C_{a,b}$ and $D_{a,b}$, respectively. The idea for the proof is as follows. Consider an adversary $\algo A$ which is ignorant of the randomly selected $a$ and $b$, and consider two scenarios: in the first, $\algo A$ is given access to \emph{any} pair of \emph{circuits} that implement $U_{a, b}$ and $V_{a, b}$; in the second, $\algo A$ only has oracle access to $U_{a, b}$ and $V_{a, b}$. The point is that, in the first case, $\algo A$ can execute $V_{a, b}$ on a circuit for $U_{a, b}$; provided that the latter is not too long, $\algo A$ will achieve something that is impossible to do with only black-box access. Specifically, it is only in the first case that $\algo A$ will be able to tell if the first circuit/oracle implements $U_{a, b}$, or if it has surreptitiously been replaced by the identity operator!
+Both unitaries can be implemented by efficient quantum circuits. Choose some particular set of such circuits, and denote them by $C_{a,b}$ and $D_{a,b}$, respectively. The idea for the proof is as follows. Consider an adversary $\algo A$ which does not know $a$ and $b$, and consider two scenarios: in the first, $\algo A$ is given access to \emph{any} pair of \emph{circuits} that implement $U_{a, b}$ and $V_{a, b}$; in the second, $\algo A$ only has oracle access to $U_{a, b}$ and $V_{a, b}$. The point is that, in the first case, $\algo A$ can execute $V_{a, b}$ on a circuit for $U_{a, b}$; provided that the latter is not too long, $\algo A$ will achieve something that is impossible to do with only black-box access. Specifically, it is only in the first case that $\algo A$ will be able to tell if the first circuit/oracle implements $U_{a, b}$, or if it has surreptitiously been replaced by the identity operator!
 
 Things are somewhat complicated by the fact that the obfuscator outputs states instead of circuits. We will need to enable $\algo A$ to execute these states on one another. It will thus be necessary to replace $D_{a, b}$ with a related circuit $D_{a, b}'$. Roughly speaking, this circuit will check if its input, when interpreted as a quantum advice state to the algorithm $\algo J$, maps the input $a$ to the output $b$. A precise description follows. First, $D_{a, b}'$ will have three registers: an input register of $m$ qubits, a work register of $2n$ qubits, and an output register of $1$ qubit initialized in the $|0\rangle$ state. When given as input a quantum state $\rho$ on $m$ qubits, it will initialize the first $n$ bits of the work register to $|a\rangle$, then execute the appropriate unitary circuit of $\algo J$ on $\rho \otimes \ket{a}$. Finally, if the output register of the latter computation contains $\ket{b}$, $D_{a, b}'$ will flip the contents of the output register. We remark that, by a simple counting argument over circuits, this occurs for only an exponentially small fraction of possible input states $\rho$.
 
-Recall that the $2n$-qubit identity operator is denoted by $\one_{2n}$, and is implemented by the obvious circuit which we will denote by $I_{2n}$. We observe that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
+Recall that the $2n$-qubit identity operator is denoted by $\one_{2n}$, and is implemented by the empty circuit $I_{2n}$. We observe that, for every QPT algorithm $\mathcal S$ there exists a polynomial $t$ and a negligible $\epsilon_1$ so that:
 
 \begin{equation}\label{eqn11}
 \Bigl| \text{Pr}\bigl[\mathcal S^{U_{a,b}, D_{a,b}'}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr]
 - \text{Pr}\bigl[\mathcal S^{Id_{2n}, D_{a,b}'}\bigl(\ket{0}^{\otimes t(n)}\bigr) = 1\bigr] \Bigr| 
 \leq \epsilon_1(n)\,.
 \end{equation}
-Here the probability is taken over the uniformly random choice of $a$ and $b$ as well as all of the measurement outcomes of $\algo S$. The above is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}. Indeed, given the definitions of $U_{a, b}$ and $D_{a, b}'$, it's clear that with only polynomial queries and no knowledge of $a$ or $b$, $\algo S$ is faced precisely with unstructured search for an exponentially small ``marked space.'' This marked space is only encountered if $\algo S$ correctly guesses $a$, or correctly guesses an obfuscation of a circuit that maps $a$ to $b$.
+Here the probability is taken over uniformly random $a$ and $b$ and all of the measurement outcomes of $\algo S$. The above is an easy corollary of the tightness of the Grover bound for unstructured quantum search \cite{BBBV}. Indeed, given the definitions of $U_{a, b}$ and $D_{a, b}'$, it's clear that with only polynomial queries and no knowledge of $a$ or $b$, $\algo S$ is faced precisely with unstructured search for an exponentially small ``marked space.'' This marked space is only encountered if $\algo S$ correctly guesses $a$, or correctly guesses an obfuscation of a circuit that maps $a$ to $b$.
   
-Now consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, simply executes the quantum algorithm $\mathcal{J}$ on their tensor product, accepting if and only if the outcome is $1$. Notice that this succeeds with constant probability $\alpha > 0$ if $C$ is functionally equivalent to $C_{a,b}$ and $D$ is functionally equivalent to $D_{a,b}'$. On the other hand, this same algorithm $\algo A$ accepts with at most negligible probability when $C$ is functionally equivalent to $I_{2n}$ (and $D$ is still functionally equivalent to $D_{a, b}'$); indeed, this only happens is if $a = b$. Thus there exists a negligible function $\epsilon_2$ so that:
+Now consider the QPT algorithm $\mathcal{A}$ that, given as input the states $\mathcal{O}(C)$ and $\mathcal{O}(D)$, executes the quantum algorithm $\mathcal{J}$ on their tensor product, accepting if and only if the outcome is $1$. This succeeds with constant probability $\alpha > 0$ if $C$ is functionally equivalent to $C_{a,b}$ and $D$ is functionally equivalent to $D_{a,b}'$. This same algorithm $\algo A$ accepts with negligible probability when $C$ is functionally equivalent to $I_{2n}$ (and $D$ is still functionally equivalent to $D_{a, b}'$); indeed, this only happens is if $a = b$. Thus there exists a negligible function $\epsilon_2$ so that:
 
 \begin{equation}\label{eqn2}
 \Bigl| \text{Pr}\bigl[\mathcal A(\mathcal{O}(D'_{a,b}),\mathcal{O}(I_{2n})) = 1\bigr]
@@ -448,14 +431,14 @@ Now consider the QPT algorithm $\mathcal{A}$ that, given as input the obfuscated
 \geq \alpha-\epsilon_2(n)\,.
 \end{equation}
 
-To complete the proof, we explicitly define the poly-time circuit-pair family $\mathcal C$. The distribution $\mathcal C_n$ is generated by choosing $a, b$ uniformly at random from $\{0,1\}^n$, and then choosing a bit $r \in {0, 1}$ at random; if $r = 0$, we output the circuit pair $(C_{a,b}, D'_{a,b})$, and otherwise we output $(I_{2n}, D'_{a,b})$. For this distribution, equations \eqref{eqn11} and \eqref{eqn2} together show that no state-pair family is an obfuscation of $\mathcal C$.
+The circuit-pair family $\mathcal C$ is thus defined as follows. The distribution $\mathcal C_n$ is generated by choosing $a, b$ and $r$ uniformly at random; if $r = 0$, we output the circuit pair $(C_{a,b}, D'_{a,b})$, if $r = 1$ we output $(I_{2n}, D'_{a,b})$. For this distribution, equations \eqref{eqn11} and \eqref{eqn2} together show that no state-pair family is an obfuscation of $\mathcal C$.
 \qed
 \end{proof}
 
 \subsubsection{Generalizing the impossibility result}
 %%%
 
-Our goal in this section is to extend the two-circuit impossibility proof from the prior section to the case of obfuscating a single circuit. For our impossibility proof, we require an additional condition on the obfuscator: that each of its outputs is reusable a polynomial number of times. This is a natural condition which is automatically satisfied by classical obfuscators (as well as quantum obfuscators with classical outputs), since their outputs can be perfectly copied.
+We now extend the two-circuit impossibility proof to the case of obfuscating a single circuit. We require an additional condition on the obfuscator: that each of its outputs is reusable a polynomial number of times. This condition is automatically satisfied by classical obfuscators (as well as quantum obfuscators with classical outputs), since their outputs can be perfectly copied.
 
 \begin{definition}\label{def:vbb-reusable}
 A \textbf{reusable-black-box quantum obfuscator} is a quantum algorithm $\algo O$ and a QPT $\algo J$ such that whenever $C$ is an $n$-qubit quantum circuit, $\mathcal{O}(C)$ is an $m$-qubit quantum state satisfying
@@ -470,24 +453,23 @@ $$
 \end{enumerate}
 \end{definition}
 
-We remark that reusability can be achieved in any number of ways: by providing a state which partially survives uses by the interpreter $\algo J$, by providing sufficiently many copies, or by providing a means of cloning the state. We prove impossibility of the above definition in any setting where the adversary receives two copies of the obfuscator output, even on identical inputs. This is automatically satisfied if the obfuscator provides multiple copies in order to satisfy reusability, or if the state is (even approximately) cloneable. The key new obstacle is to prove impossibility even though the functionality for both copies is \emph{the same.}
+We are not concerned with how exactly $\algo J$ produces a copy of the reusable state (e.g., if the state is classical, then it's clear how to achieve this). We prove impossibility of the above definition in any setting where the adversary receives two copies of the obfuscator output, even on identical inputs. This is automatically satisfied if the obfuscator provides multiple copies in order to satisfy reusability, or if the state is (even approximately) cloneable. The key new obstacle is to prove impossibility even though the functionality for both copies is \emph{the same.}
 
-To state the result, we define (in analogy to circuit-pair families and state-pair families) a \emph{circuit family} to be an ensemble of distributions over circuits, and a \emph{state family} to be an ensemble of distributions over states. A state family $\mathcal C'$ is said to be an obfuscation of a circuit family $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies \expref{Definition}{def:vbb-reusable}. With these definitions, we will prove the following theorem.
+To state the result, we define (in analogy to circuit-pair families and state-pair families) a \emph{circuit family} to be an ensemble of distributions over circuits, and a \emph{state family} to be an ensemble of distributions over states. A state family $\mathcal C'$ is said to be an obfuscation of a circuit family $\mathcal C$ if there exists a computable map $\mathcal C \rightarrow \mathcal C'$ assigning to each circuit a corresponding state, in a manner that satisfies \expref{Definition}{def:vbb-reusable}. We will prove the following.
 
 \begin{theorem}\label{thm:single-impossibility}
 If quantum-secure one-way functions exist, then there exists a quantum circuit family $\mathcal C$ such that no state family is a reusable-black-box quantum obfuscation of $\mathcal C$.
 \end{theorem}
 
-Since the full proof of \expref{Theorem}{thm:single-impossibility} is somewhat lengthy and involved, we will first prove a simpler case, showing that quantum circuits cannot be obfuscated into quantum circuits, under any of the definitions considered so far.  This corollary (stated below as \expref{Theorem}{thm:cor}) is arguably the most direct quantum generalization of the impossibility result of ~\cite{BGIRSVY01}. Once we have proved it, we will explain in \expref{Appendix}{app:proof-theorem-8} how the proof can be adapted to prove \expref{Theorem}{thm:single-impossibility}.
+The full proof is somewhat involved, so we will first prove a simpler case: quantum circuits cannot be obfuscated into quantum circuits, under any of the definitions considered so far.  This corollary (stated below as \expref{Theorem}{thm:cor}) is arguably the most direct quantum generalization of the impossibility result of ~\cite{BGIRSVY01}. Once we have proved it, we will explain in \expref{Appendix}{app:proof-theorem-8} how the proof can be adapted to prove \expref{Theorem}{thm:single-impossibility}.
 
 \begin{theorem}\label{thm:cor}
 If quantum-secure one-way functions exist, then there exists a quantum circuit family $\mathcal C$ such that no quantum circuit family is a black-box obfuscation of $\mathcal C$.
 \end{theorem}
 
 \begin{proof}
-Let $\mathcal O$ be a black-box quantum obfuscator satisfying \expref{Definition}{def:vbb-obfuscator}, such that its outputs are classical bitstrings. Since these states are used to describe an efficiently implementable quantum computation, we can assume that these bitstrings are in fact quantum circuits under some particular encoding. 
+Let $\mathcal O$ be a black-box quantum obfuscator satisfying \expref{Definition}{def:vbb-obfuscator}, such that its outputs are classical bitstrings. We may assume that these bitstrings are in fact quantum circuits under some particular encoding. To construct the unobfuscatable circuit family, we will need a notion of combining the functionality of two quantum circuits into one. 
 
-To construct the unobfuscatable circuit family, we will need a notion of combining the functionality of two quantum circuits into one. 
 \begin{definition} The {\bf combined quantum circuit} of a finite collection $\lbrace C_1,C_2,...,C_k \rbrace$ of $n$-qubit quantum circuits is the circuit that has two registers (a control register of $\log{k}$ qubits, and an input register of $n$ qubits) and, controlled on the value of the first register, applies the respective quantum circuit to the input register.   
 \end{definition}
 
@@ -495,9 +477,7 @@ To construct the unobfuscatable circuit family, we will need a notion of combini
 
 Now recall the two circuits  $C_{a,b}$ and $D_{a,b}$ from Section \ref{sec-twocircuit}, as well as the circuit $I_{2n}$, which simply implements the identity operator on $2n$ qubits. Consider the combined quantum circuits $C_{a,b}\#D_{a,b}$ and $I_{2n}\#D_{a,b}$, sampled by selecting $a$ and $b$ uniformly at random from $\{0, 1\}^n$. We again choose $C = C_{a, b}$ or $C = I_{2n}$, each with probability $1/2$, and ask the adversary to determine which is the case. Using the same reasoning as in the proof of \expref{Theorem}{thm:pair-impossibility} from Section \ref{sec-twocircuit}, these combined quantum circuit distributions are indistinguishable from the perspective of any QPT simulator that is ignorant of $a$ and $b$, and is given only black-box access to $U_{C \# D_{a, b}}$.  On the other hand, unlike in the prior proof, it is not immediately apparent how to distinguish the two possibilities given a circuit description of $\algo{O}(C \#D_{a,b})$. Still, the idea is simple. Suppose we have two copies of the circuit. We can hard-wire the control register of one copy to implement $D_{a, b}$, and hard-wire the control register of the other copy to implement $C$. If we then run the first copy on the second, the result should be equivalent to implementing $D_{a, b}$ on input $C$, which will determine the nature of $C$ and conclude the proof just as in \expref{Theorem}{thm:pair-impossibility}.
 
-Unfortunately, this idea does not work as stated, because the two circuit copies have the same size. Since they are functionally nontrivial, their input size is much smaller than their description, making it impossible to run one on the other. The core difficulty is that $D_{a,b}$ cannot be made large enough to universally execute circuits of size $|\algo O(C \# D_{a, b})| > p(|D_{a, b}|)$ where $p$ is the running time of $\algo O$. This issue arises in the classical proof as well, and is resolved as follows. First, note that we could have $D_{a, b}$ simply provide $a$ and $b$, thus offloading the gate-by-gate execution of $C$ to the algorithm $\algo A$ in the black-box definition. Unfortunately, this would also provide the simulator $\algo S$ with $a$ and $b$, enabling it to simulate $\algo A$. The resolution is to have $D_{a, b}$ provide \emph{encryptions of} $a$ and $b$, as well as a \emph{quantum fully-homomorphic encryption (QFHE) oracle} for homomorphically applying the gates of $C$. We emphasize that the functionality and security of the QFHE oracle crucially depends on the obfuscation property; in particular, an actual QFHE scheme is not required for the proof.
-
-Concretely, we prove the following Lemma, which is a quantum analogue of Lemma 3.6 (including Claim 3.6.1) from~\cite{BGIRSVY12}.
+Unfortunately, this idea does not work as stated, because the two circuit copies have the same size. Since they are functionally nontrivial, their input size is much smaller than their description, making it impossible to run one on the other. The core difficulty is that $D_{a,b}$ cannot be made large enough to universally execute circuits of size $|\algo O(C \# D_{a, b})| > p(|D_{a, b}|)$ where $p$ is the running time of $\algo O$. This issue arises in the classical proof as well, and is resolved as follows. First, note that we could have $D_{a, b}$ simply provide $a$ and $b$, thus offloading the gate-by-gate execution of $C$ to the algorithm $\algo A$ in the black-box definition. Unfortunately, this would also provide the simulator $\algo S$ with $a$ and $b$, enabling it to simulate $\algo A$. The resolution is to have $D_{a, b}$ provide \emph{encryptions of} $a$ and $b$, as well as a \emph{quantum fully-homomorphic encryption (QFHE) oracle} for homomorphically applying the gates of $C$. We emphasize that the functionality and security of the QFHE oracle crucially depends on the obfuscation property; in particular, an actual QFHE scheme is not required for the proof. Concretely, we prove the following Lemma, an analogue of Lemma 3.6 (including Claim 3.6.1) from~\cite{BGIRSVY12}.
 
 \begin{lemma}\label{lemma-circuitdistribution}
 If quantum-secure one-way functions exist, then for each $n \in \mathbb{N}$ and $a, b\in\{0,1\}^n$, there exists a distribution $\mathcal{D}_{a,b}$ over circuits such that:
@@ -514,9 +494,7 @@ If quantum-secure one-way functions exist, then for each $n \in \mathbb{N}$ and 
 \item $\Homorcl_K(G,\rho)$; on input a gate description $G$ and a state $\rho$, it outputs $[\Enc_k \circ G \circ \Dec_k](\rho)$.
 \item $B_{k,a,b}$; on input $\rho$, it outputs $\ket{a}$ if $\Dec_{k}(\rho)= \ket{b}$ and $\ket{0^n}$ otherwise.
 \end{enumerate}
-We remark that the $\Homorcl$ oracle requires randomness in order to re-encrypt the state. This is handled in the usual way: we expand the input in some register via a (quantum-secure) pseudo-random function; these exist by the assumption of quantum-secure one-way functions and \expref{Theorem}{thm:qOWF-implies-qPRF}. 
-
-Clearly, given $a$ and $b$, $\mathcal{D}_{a,b}$ can be sampled efficiently by choosing $k$ uniformly at random and outputting the combined quantum circuit $D_{k, a, b} := E_{k,a}\#\Homorcl_{k}\#B_{k,a,b}$. This establishes Property 1 from the Lemma.  For Property 2, let $\algo{A}$ be the algorithm that, on input a quantum circuit $C$, (i.) uses the first two circuits comprising $D_{k,a,b}$ to homomorphically simulate $C$ gate-by-gate on $a$, and then (ii.) plugs the final state into $B_{K,a,b}$. 
+The $\Homorcl$ oracle requires randomness in order to re-encrypt the state. This is handled in the usual way, by expanding the input via a qPRF~\expref{Theorem}{thm:qOWF-implies-qPRF}. Clearly, given $a$ and $b$, $\mathcal{D}_{a,b}$ can be sampled efficiently by choosing $k$ uniformly at random and outputting the combined quantum circuit $D_{k, a, b} := E_{k,a}\#\Homorcl_{k}\#B_{k,a,b}$. This establishes Property 1 from the Lemma.  For Property 2, let $\algo{A}$ be the algorithm that, on input a quantum circuit $C$, (i.) uses the first two circuits comprising $D_{k,a,b}$ to homomorphically simulate $C$ gate-by-gate on $a$, and then (ii.) plugs the final state into $B_{K,a,b}$. 
 
 To complete the proof of \expref{Lemma}{lemma-circuitdistribution}, we must verify Property 3, i.e., that no QPT simulator algorithm that has black-box access to  each of the three algorithms comprising $D_{K,a,b}$ can discover $a$ with non-negligible probability.  This amounts to showing that
 \begin{equation}\label{eq:hom-gap}
@@ -526,7 +504,7 @@ To complete the proof of \expref{Lemma}{lemma-circuitdistribution}, we must veri
 \end{equation}
 where the probabilities are over $k \inrand \{0,1\}^n$ and the measurement outcomes of $\algo{S}$. We proceed by contradiction, and assume that there's a QPT $\algo{S}$ that violates the claim. 
 
-First, we replace the responses to all of $\algo{S}$'s queries to the $\Homorcl_k$ oracle with encryptions of $|0^n\rangle$, and deploy a hybrid argument to show that the success probability of $\algo S$ is not significantly affected. To this end, consider the following hybrids of the computation of $\algo S$ on input $\Enc_k(\ket{a})$: in the $i$-th hybrid, the first $i$ oracle queries of $\algo S$ are answered using $\Homorcl_k$, and the rest are answered with $\Enc_k(|0^n\rangle)$.  Notice that any gap in distinguishing between the $i$ and $i+1$st hybrid must be due to the $i+1$st query $\algo S$ makes to $\Homorcl_k$. We can use this to create a CCA1 adversary $\algo T$ which breaks the encryption scheme, as follows. The QPT $\algo T$ simulates $\algo S$ and replies to its first $i$ oracle queries by means of $\algo T$'s $\Enc_k$ and $\Dec_k$ oracles. Upon receiving the challenge ciphertext, $\algo T$ passes it to $\algo S$ as the response to its $i+1$st oracle query. Finally, $\algo T$ answers the remaining oracle queries of $\algo S$ with $\Enc_K(|0^n\rangle)$. We conclude that, if $\algo S$ violated \eqref{eq:hom-gap}, then $\algo T$ succeeds with non-negligible probability. This establishes (by contradiction) that we can replace the oracle queries of $\algo S$ with $\Enc_k(\ket 0)$. With this replacement, $\algo S$ can distinguish an encryption of $|0^n\rangle$ from an encryption of $\ket{a}$, when given access to only an encryption oracle, which again contradicts IND-CCA1 security of the scheme. This completes the proof of \expref{Lemma}{lemma-circuitdistribution}.
+First, we replace the responses to all of $\algo{S}$'s queries to the $\Homorcl_k$ oracle with encryptions of $|0^n\rangle$, and use a hybrid argument to show that the success probability of $\algo S$ is unaffected. In the $i$-th hybrid, the first $i$ oracle queries of $\algo S$ are answered using $\Homorcl_k$, and the rest are answered with $\Enc_k(|0^n\rangle)$.  Any gap in distinguishing between the $i$ and $i+1$st hybrid must be due to the $i+1$st query $\algo S$ makes to $\Homorcl_k$. We use this to create a CCA1 adversary $\algo T$ as follows. The QPT $\algo T$ simulates $\algo S$ and replies to its first $i$ oracle queries by means of $\algo T$'s $\Enc_k$ and $\Dec_k$ oracles. Upon receiving the challenge ciphertext, $\algo T$ passes it to $\algo S$ as the response to its $i+1$st oracle query. Finally, $\algo T$ answers the remaining oracle queries of $\algo S$ with $\Enc_K(|0^n\rangle)$. If $\algo S$ violated \eqref{eq:hom-gap}, then $\algo T$ succeeds with non-negligible probability. We can thus replace the oracle queries of $\algo S$ with $\Enc_k(\ket 0)$; then $\algo S$ can distinguish encryptions of $|0^n\rangle$ from encryptions of $\ket{a}$ using only an encryption oracle, contradicting IND-CCA1 security. 
 \qed 
 \end{proof}
 
@@ -551,35 +529,18 @@ We conclude that the union of $\mathcal F_n$ with $\mathcal G_n$ (and assigning 
 \qed
 \end{proof}
 
-\ga{Stopped editing and condensing here.}
-
 %%%%%%%%%%%%%%%%%%%%%%
 \section{Quantum indistinguishability obfuscation}\label{sec:indistinguishability}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we analyze a different definition of quantum obfuscation, motivated by classical definitions established by Goldwasser and Rothblum~\cite{GR07}. As opposed to the black-box approach, these definitions assess the quality of an obfuscation in relative terms, e.g., as compared to other functionally-equivalent circuits (or, in the quantum case, states).  
 
-\subsection{CPTP circuits and ensembles of states}
-%%%%%%%%%%%%%%%%%%%%%%
+%In this section, we analyze a different definition of quantum obfuscation, motivated by classical definitions established by Goldwasser and Rothblum~\cite{GR07}. As opposed to the black-box approach, these definitions assess the quality of an obfuscation in relative terms, e.g., as compared to other functionally-equivalent circuits (or, in the quantum case, states).  
 
-For our discussions on indistinguishability obfuscation, we modify the notations of \expref{Section}{sec:notation} slightly, as follows. 
-
-First, henceforth we take the point of view that any quantum circuit $C$ can include unitary gates \emph{as well as measurement gates and instructions for discarding qubits.} In keeping with this view, we overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map that the circuit implements. 
-
-Second, we allow our ensembles to be indexed by infinite sets of strings rather than the natural numbers. As before, we will denote ensembles by italicized capital letters (and optionally place the indexing set in the subscript.) Elements of the ensemble will be denoted by the corresponding non-italicized capital letter (optionally, with the index in the subscript.) So, for example, we may write $\mathcal C_S := \{C_s : s \in S\}$. Just as in the single-circuit case, we will overload this notation for circuit ensembles and use it to also refer to the corresponding family of CPTP maps. We will need one new definition in this context: given two circuit ensembles $\mathcal C_S$ and $\mathcal D_S$, we say that $\mathcal C_S$ is \textbf{functionally equivalent} to $\mathcal D_S$ (denoted $\mathcal C_S \cong \mathcal D_S$) if the circuits themselves are functionally equivalent, i.e., if $\|C_s - D_s\|_\diamond \leq \negl(|s|)$ for all $s \in S$. 
-
-We will also now need to handle infinite collections of states. We thus define a \textbf{state ensemble} to be an infinite collection $\{\rho_x : x \in X\}$ of density operators indexed by some set $X \subset \{0, 1\}^*$, such that $\rho_x \in \states(\mathcal H_{p(|x|)})$ where $p$ is bounded by some fixed polynomial function. We remark that a circuit ensemble is a special case of a state ensemble, where each state is a classical string describing wires, gates, and so on. A \textbf{uniform state ensemble} will be a state ensemble $\{\rho_x : x \in X\}$ together with a uniform circuit ensemble $\{C_x : x \in X\}$ such that $\rho_x = C_x |0^m\rangle$ for appropriately chosen $m$. We remark that a QPT is defined by choosing a uniform circuit ensemble, and that the set of possible outputs of a QPT are a uniform state ensemble. In particular, if $\mathcal S$ is a state ensemble and $\algo A$ is a QPT, then (ignoring some uninteresting bookkeeping) we may write $\algo A(\mathcal S)$ to denote the state ensemble that results from running $\algo A$ on inputs from $\mathcal S$. Note that if $\mathcal S$ is uniform, then $\algo A(\mathcal S)$ is also uniform.
-
-Next, we consider three different notions of distinguishability for state ensembles, in order of decreasing power. We will write $\mathcal R \approx \mathcal S$ to indicate that $\mathcal R$ and $\mathcal S$ are indistinguishable state ensembles; the type of indistinguishability should be clear from context. Let $\mathcal R = \{\rho_x : x \in X\}$ and $\mathcal S = \{\sigma_x : x \in X\}$ be two state ensembles. We say that $\mathcal R$ and $\mathcal S$ are \textbf{perfectly indistinguishable} if $\rho_x = \sigma_x$ for every $x \in X$. While this is an unnatural notion of indistinguishability for general quantum states, it is more reasonable (and is easy to test for individual cases) if $\rho_x$ and $\sigma_x$ happen to all be classical. A weaker notion is \textbf{statistical indistinguishability}, which demands that $\|\rho_x - \sigma_x\|_\text{tr} \leq \poly(|x|)$ for all but finitely many $x \in X$. In the weakest notion we will consider, we say that $\mathcal R$ and $\mathcal S$ are \textbf{computationally indistinguishable} if for every QPT $\algo A$,
-$$
-\left|\Pr[\algo A(\rho_x) = 1] - \Pr[\algo A(\sigma_x) = 1]\right| \leq \negl(|x|)
-$$
-for all but finitely many $x$; here the probabilities are taken over the coins and measurements of $\algo A$. One may also consider a non-uniform version of the above definition, in which $\algo A$ also ranges over non-uniform circuit families, and is allowed access to an auxiliary state ensemble $\{\xi_x : x \in X\}$. All of our results hold (with appropriate adjustments) for both the uniform and the non-uniform setting; we will focus on the uniform setting for convenience. 
 
 \subsection{Definitions: indistinguishability, best-possible}
 %%%%%%%%%%%%%%%%%%%%%%
 
-We begin with the notion of a quantum indistinguishability obfuscator. As before, the interpreter and the obfuscated state must be efficient, while the obfuscation algorithm itself might not be. We also assume that all ``interpreter'' algorithms $\mathcal J$ have two registers: an advice register (where the obfuscated state is to be inserted), and an input register (where the input is to be inserted.) It will thus be convenient to write, e.g., $\mathcal J_{\rho}$ for the CPTP map family defined by the circuits of $\mathcal J$ with the advice register initialized to the state $\rho$.
+We now consider quantum analogues of indistinguishability obfuscation. We will need some additional (but standard) notation and conventions for handling quantum circuits for CPTP maps, as well as generalized state ensembles. This is reviewed in \expref{Appendix}{app:CPTP}. As before, the interpreter $\mathcal J$ and the obfuscated state $\mathcal O(C)$ must be efficient, while the obfuscator $\mathcal O$ itself might not be. We assume that $\mathcal J$ has two registers: an advice register (where the obfuscated state is to be inserted), and an input register (where the input is to be inserted.) We will sometimes write $\mathcal J_{\rho}$ for the CPTP map family defined by $\mathcal J$ with the advice register initialized to $\rho$.
 
 \begin{definition}\label{def:translator}
 A \textbf{quantum translator} is a quantum algorithm $\mathcal O$ and a QPT $\mathcal J$ such that whenever $\mathcal C$ is a circuit ensemble and $C \in \mathcal C$ is an $n$-qubit circuit, 
@@ -593,42 +554,34 @@ A \textbf{quantum translator} is a quantum algorithm $\mathcal O$ and a QPT $\ma
 A \textbf{quantum statistical (resp., computational) indistinguishability obfuscator} is a quantum translator $(\mathcal O, \mathcal J)$ such that whenever $\mathcal C_S$ and $\mathcal D_S$ are functionally-equivalent circuit ensembles with $|C_s| = |D_s|$ for all $s \in S$, then $\mathcal O(\mathcal C_S)$ and $\mathcal O(\mathcal D_S)$ are statistically (resp., computationally) indistinguishable.
 \end{definition}
 
-Note that an obfuscator which simply outputs circuit descriptions is included as a special case of the above; in that case, $\mathcal O(C)$ is always a quantum circuit, and $\mathcal J$ is a universal circuit which executes $\mathcal O(C)$ on the state given in the input register. One may also define a quantum perfect-indistinguishability obfuscator, where the obfuscated states $\mathcal O(C_1)$ and $\mathcal O(C_2)$ are identical. We remark that the condition of equal length can be relaxed to any fixed polynomial (e.g., $|C_1|$ can be of length at most $|C_2|^2$.)
-
-The notion of indistinguishability obfuscation may not seem intuitive at first. To begin to see why it is a useful definition, we now show that it is equivalent to a semantic definition of obfuscation. To achieve this, we first need to properly define functional equivalence for state ensembles. If we fix a quantum translator $(\mathcal O, \mathcal J)$, then the QPT $\mathcal J$ defines a way to implement functionality via states. We then say that two state ensembles $\mathcal R_X$ and $\mathcal S_X$ are functionally equivalent if
-$$
-\bigl\| \algo J_{\rho_x} - \algo J_{\sigma x} \bigr\|_\diamond \leq \negl(|x|)
-$$
-for all but finitely many $x \in X$, $\rho_x \in \mathcal R_X$ and $\sigma_x \in \mathcal S_X$. In this case, we will write $\mathcal R_X \cong_{\algo J} \mathcal S_X$. This allows us to compare the relative strengths of one obfuscated ensemble versus another, as follows.
+An obfuscator which outputs circuit descriptions is a special case, where $\mathcal O(C)$ is a circuit and $\mathcal J$ is the universal circuit. The condition of equal length can be relaxed to any fixed polynomial (e.g., $|C_1|$ can be of length at most $|C_2|^2$.) To see that indistinguishability is a useful notion, we now show that it is equivalent to a semantic definition. Fixing a quantum translator $(\mathcal O, \mathcal J)$ defines a way to implement functionality via states. We then say that two state ensembles $\mathcal R_X$ and $\mathcal S_X$ are functionally equivalent if $\bigl\| \algo J_{\rho_x} - \algo J_{\sigma x} \bigr\|_\diamond \leq \negl(|x|)$ for all but finitely many $x \in X$, $\rho_x \in \mathcal R_X$ and $\sigma_x \in \mathcal S_X$. In this case, we will write $\mathcal R_X \cong_{\algo J} \mathcal S_X$. This allows us to compare the relative strengths of one obfuscated ensemble versus another, as follows.
 
 \begin{definition}\label{def:best-possible}
 A \textbf{quantum statistical (resp., computational) best-possible obfuscator} is a quantum translator $(\mathcal O, \mathcal J)$ such that for any QPT $\algo A$ there exists a QPT $\algo S$ with the following property: for every circuit ensemble $\mathcal C_X$ and any uniform state ensemble $\mathcal R_X$ which is functionally-equivalent to $\mathcal O(\mathcal C_X)$ and has same-size states\footnote{meaning that, for each $x \in X$, the corresponding states in the two ensembles have the same number of qubits.}, we have that $\algo A(\mathcal O(\mathcal C_X))$ and $\algo S(\mathcal R_X)$ are statistically (resp., computationally) indistinguishable.
 \end{definition}
 
-This definition captures the relative ``leakage'' of the obfuscated state ensemble: among all functionally-equivalent state ensembles (i.e., potential obfuscations), the best-possible obfuscation is the ensemble that leaks the least. From this point of view, we think of $\algo A$ as a ``learner'' which tries to learn something from the obfuscated ensemble, and $\algo S$ as a ``simulator'' which can learn the same thing as $\algo A$, but from any other functionally-equivalent ensemble.
+This definition captures the relative ``leakage'' of the obfuscated state ensemble: among all functionally-equivalent state ensembles (i.e., potential obfuscations), the best-possible obfuscation is the ensemble that leaks the least. Here we think of $\algo A$ as a ``learner'' which tries to learn something from the obfuscated ensemble, and $\algo S$ as a ``simulator'' which can learn the same thing as $\algo A$, but from any other functionally-equivalent ensemble.
 
 \begin{proposition} Let $(\algo O, \algo J)$ be a polynomial-time quantum translator. Then $(\algo O, \algo J)$ is a quantum statistical (resp., computational) best-possible obfuscator if and only if it is a quantum statistical (resp., computational) indistinguishability obfuscator.
 \end{proposition}
 \begin{proof}
-First, let $(\algo O, \algo J)$ be a best-possible obfuscator. Set $\mathcal A$ to be the trivial learner which simply implements the identity operator, and let $\mathcal S$  be the corresponding simulator. Let $\mathcal C$ and $\mathcal D$ be two functionally-equivalent circuit ensembles with same-size circuits. Note that their obfuscations are functionally-equivalent (i.e., $\algo O(\mathcal C) \cong_{\algo J} \algo O(\mathcal D)$) same-size ensembles. By two applications of the best-possible property (one on the left, and one on the right), we get
+First, let $(\algo O, \algo J)$ be a best-possible obfuscator. Set $\mathcal A$ to be the trivial learner which implements the identity operator, and let $\mathcal S$  be the corresponding simulator. Let $\mathcal C$ and $\mathcal D$ be two functionally-equivalent circuit ensembles with same-size circuits. Note that their obfuscations are functionally-equivalent (i.e., $\algo O(\mathcal C) \cong_{\algo J} \algo O(\mathcal D)$) same-size ensembles. By two applications of the best-possible property (one on the left, and one on the right), we get
 $$
 \algo O(C) = \algo A(\algo O(C)) \approx \algo S(\algo O(D)) \approx \algo A(\algo O(D)) = \algo O(D)\,,
 $$
-where $\approx$ denotes the appropriate form of indistinguishability (statistical or computational.) It follows that $(\algo O, \algo J)$  is an indistinguishability obfuscator.
+where $\approx$ denotes the appropriate form of indistinguishability (statistical or computational.) Note that this direction did not require the obfuscator to be efficient.
+
 
 For the other direction, let $(\algo O, \algo J)$ be an indistinguishability obfuscator. Given a learner $\algo A$, define a simulator $\algo S$ as follows. Let $(\mathcal C, \mathcal R)$ be a (circuit, ensemble) pair as in the best-possible definition. Since $\mathcal R$ is a uniform state ensemble, there is a corresponding circuit ensemble $\mathcal D$ for preparing it. Given a circuit $D \in \mathcal D$ and the corresponding circuit $J \in \algo J$ of the interpreter, we can then build a circuit $D \circ J$ which is functionally equivalent to the corresponding circuit $C \in \mathcal C$ (by the definition of a quantum translator.) Let $\mathcal {D \circ J}$ be the corresponding circuit family, and define $\algo S ( \mathcal R ) = \algo S ( \algo O ( \mathcal {D \circ J}))$. Now, by the indistinguishability property, $\algo O(\mathcal C) \approx \algo O (\mathcal {D \circ J})$, from which it follows that 
-$$
-\algo A( \algo O(\mathcal C)) \approx \algo A( \algo O(\mathcal {D \circ J})) = \algo S(\mathcal R)\,,
-$$
+$\algo A( \algo O(\mathcal C)) \approx \algo A( \algo O(\mathcal {D \circ J})) = \algo S(\mathcal R).$
 as desired.
 \end{proof}
 
-We remark that the forward implication did not require the obfuscator to be efficient.
 
 \subsection{Impossibility of statistical obfuscation}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we show that efficient perfect or statistical indistinguishability obfuscation is impossible. We begin by recalling the following computational problems about distinguishability of circuit ensembles and state ensembles, and some relevant complexity-theoretic results.
+Recalling the following computational problems, and corresponding complexity-theoretic results.
 
 \begin{problem} \textsf{\emph{Circuit distinguishability}}.\\
 \indent Input: two quantum circuits $C$ and $D$; parameter $\epsilon > 0$. \\
@@ -650,15 +603,16 @@ In this section, we show that efficient perfect or statistical indistinguishabil
 \emph{\cite{Watrous02}} The problem \textsf{\emph{Quantum State Distinguishability}} is QSZK-complete.
 \end{theorem}
 
-The following theorem is a straightforward matter of assembling the above results together with the definition of indistinguishability obfuscation.
+In the obfuscation setting, these two results imply the following.
 
 \begin{theorem}
-If there exists a polynomial-time quantum statistical indistinguishability obfuscator, then PSPACE is contained in QSZK.
+If there exists a poly-time quantum statistical indistinguishability obfuscator, then PSPACE $\subseteq$ QSZK.
 \end{theorem}
 \begin{proof}
 We will actually show QIP $\subset$ BQP$^{\text{QSZK}}$; since BQP is contained in QSZK and QIP = PSPACE~\cite{JJUW10}, the result will follow. We will solve \textsf{Circuit distinguishability} using a subroutine that solves \textsf{Quantum State Distinguishability}. Given the classical descriptions of $C$ and $D$, we run the obfuscator $\algo O$ on both to get states $\algo O(C)$ and $\algo O(D)$. Now we apply the subroutine, and output its result.
 
 Note that, if $C$ and $D$ are elements of a pair of functionally-equivalent circuit ensembles, then $\algo O(C)$ and $\algo O(D)$ will be indistinguishable and the subroutine will output YES. On the other hand, if $C$ and $D$ are far from being functionally equivalent, then there exists some input on which they differ significantly. It follows that $\algo O(C)$ and $\algo O(D)$ must be distinguishable; if they were not, then $\algo J_{\algo O(C)}$ and $\algo J_{\algo O(D)}$ would be functionally equivalent, contradicting the translator conditions in the definition of the obfuscator.
+\qed
 \end{proof}
 
 In addition, we can prove an impossibility result for the case of statistical obfuscators which can only obfuscate unitary circuits. We first recall the \textsf{Identity Check} problem. Given an $m$-qubit state $\rho$ and indices $l, k \geq 0$, we let $\tr_{l,k} [\rho]$ denote the result of tracing out qubits $l$ through $k$ of $\rho$. We adopt the convention that nothing is traced out (i.e., $\tr_{l,k}[\rho] = \rho$) if $l > m$.
@@ -692,6 +646,7 @@ Now apply the subroutine for solving quantum state distinguishability to the pai
 \item \textbf{soundness.} In this case, the obfuscated states satisfy $\|\mathcal O(C) - \mathcal O(D)\|_\text{tr} \geq \beta$. We claim that this implies $\|U_C - U_D\|_\diamond > b$. Suppose this is not the case, i.e., that these operators are in fact close; then by the indistinguishability property, it would follow that $\mathcal O(C)$ and $\mathcal O(D)$ are close as well, a contradiction.
 \end{itemize}
 The above amounts to a BQP$^\text{QSZK}$ protocol for a coQMA-hard problem, thus placing coQMA in QSZK.
+\qed
 \end{proof}
 
 \subsection{Application: quantum witness encryption}
@@ -780,6 +735,8 @@ Public-key quantum encryption schemes (with classical keys) are defined in an an
 
 \paragraph{Quantum-secure one-way functions.}
 %%%
+
+We now prove the following.
 
 \begin{prop}
 If there exists a classical probabilistic algorithm which is a (perfect) quantum black-box obfuscator, then quantum-secure one-way functions exist.
@@ -890,5 +847,16 @@ Finally, despite all of the difficulties in defining the algorithm $\algo A$ app
 To finish the proof, we again build a circuit family by choosing $C_{a, b} \# D_{a, b}'$ or $I_{2n} \# D_{a, b}'$, each with equal probability, for random $a$ and $b$. By the above arguments, this circuit family is unobfuscatable. This concludes the proof of \expref{Theorem}{thm:single-impossibility}.
 \end{proof}
 
+\section{Notation on CPTP circuits and state ensembles}\label{app:CPTP}
+%%%%%%%%%%%%%%%%%%%%%%
+
+For our discussions on indistinguishability obfuscation, we modify the notations of \expref{Section}{sec:notation} slightly, as follows. First, henceforth we take the point of view that any quantum circuit $C$ can include unitary gates \emph{as well as measurement gates and instructions for adding/discarding qubits.} We overload notation so that $C$ denotes both the circuit itself (i.e., a classical description of a set of wires and gates) as well as the CPTP map itself. 
+
+Second, we allow our ensembles to be indexed by infinite sets of strings rather than the natural numbers. As before, we will denote ensembles by italicized capital letters (and optionally place the indexing set in the subscript.) Elements of the ensemble will be denoted by the corresponding non-italicized capital letter (optionally, with the index in the subscript.) So, for example, we may write $\mathcal C_S := \{C_s : s \in S\}$. Just as in the single-circuit case, we will overload this notation for circuit ensembles and use it to also refer to the corresponding family of CPTP maps. We will need one new definition in this context: given two circuit ensembles $\mathcal C_S$ and $\mathcal D_S$, we say that $\mathcal C_S$ is \textbf{functionally equivalent} to $\mathcal D_S$ (denoted $\mathcal C_S \cong \mathcal D_S$) if the circuits themselves are functionally equivalent, i.e., if $\|C_s - D_s\|_\diamond \leq \negl(|s|)$ for all $s \in S$. 
+
+We will also now need to handle infinite collections of states. We thus define a \textbf{state ensemble} to be an infinite collection $\{\rho_x : x \in X\}$ of density operators indexed by some set $X \subset \{0, 1\}^*$, such that $\rho_x \in \states(\mathcal H_{p(|x|)})$ where $p$ is bounded by some fixed polynomial function. We remark that a circuit ensemble is a special case of a state ensemble, where each state is a classical string describing wires, gates, and so on. A \textbf{uniform state ensemble} will be a state ensemble $\{\rho_x : x \in X\}$ together with a uniform circuit ensemble $\{C_x : x \in X\}$ such that $\rho_x = C_x |0^m\rangle$ for appropriately chosen $m$. We remark that a QPT is defined by choosing a uniform circuit ensemble, and that the set of possible outputs of a QPT are a uniform state ensemble. In particular, if $\mathcal S$ is a state ensemble and $\algo A$ is a QPT, then (ignoring some uninteresting bookkeeping) we may write $\algo A(\mathcal S)$ to denote the state ensemble that results from running $\algo A$ on inputs from $\mathcal S$. Note that if $\mathcal S$ is uniform, then $\algo A(\mathcal S)$ is also uniform.
+
+Next, we consider three different notions of distinguishability for state ensembles, in order of decreasing power. We will write $\mathcal R \approx \mathcal S$ to indicate that $\mathcal R$ and $\mathcal S$ are indistinguishable state ensembles; the type of indistinguishability should be clear from context. Let $\mathcal R = \{\rho_x : x \in X\}$ and $\mathcal S = \{\sigma_x : x \in X\}$ be two state ensembles. We say that $\mathcal R$ and $\mathcal S$ are \textbf{perfectly indistinguishable} if $\rho_x = \sigma_x$ for every $x \in X$. While this is an unnatural notion of indistinguishability for general quantum states, it is more reasonable (and is easy to test for individual cases) if $\rho_x$ and $\sigma_x$ happen to all be classical. A weaker notion is \textbf{statistical indistinguishability}, which demands that $\|\rho_x - \sigma_x\|_\text{tr} \leq \poly(|x|)$ for all but finitely many $x \in X$. In the weakest notion we will consider, we say that $\mathcal R$ and $\mathcal S$ are \textbf{computationally indistinguishable} if for every QPT $\algo A$, $\left|\Pr[\algo A(\rho_x) = 1] - \Pr[\algo A(\sigma_x) = 1]\right| \leq \negl(|x|)$
+for all but finitely many $x$; here the probabilities are taken over the coins and measurements of $\algo A$. One may also consider a non-uniform version of the above definition, in which $\algo A$ also ranges over non-uniform circuit families, and is allowed access to an auxiliary state ensemble $\{\xi_x : x \in X\}$. All of our results hold (with appropriate adjustments) for both the uniform and the non-uniform setting; we will focus on the uniform setting for convenience. 
 
 \end{document}
