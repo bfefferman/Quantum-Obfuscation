@@ -19,7 +19,7 @@
 \usepackage{mathptmx}
 %\usepackage{palatino}
 \usepackage{eucal}
-\usepackage[a4paper, margin=1.5in]{geometry}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage{cleveref}
 
 \setcounter{secnumdepth}{3}
@@ -186,7 +186,7 @@ In this section, we summarize our results and discussions. These are divided by 
 \begin{enumerate}
 \item \textbf{Quantum black-box obfuscator.} This is a polynomial-time quantum algorithm (QPT) $\algo O$ which accepts quantum circuits $C$ as input, and produces quantum states $\algo O(C)$ as output. It preserves functionality, in the sense that there is a publicly known way to use $\algo O(C)$ and any input state $\ket{\psi}$ to produce the state $C \ket{\psi}$\,. It satisfies a black-box condition: for polynomial-time quantum algorithms, possession of $\algo O(C)$ can be simulated by black-box access to $C$. This definition is a natural analogue of the classical black-box definition given in~\cite{BGIRSVY12}.
 \item \textbf{Quantum ``two-circuit'' black-box obfuscator.} This obfuscator is precisely as above, except the obfuscation condition is strengthened to hold over arbitrary \emph{pairs of circuits} $(C_1, C_2)$. For us, this definition will be primarily useful because of its role in establishing certain impossibility results.
-\item \textbf{Information-theoretic quantum black-box obfuscator.} This is a modification of the above definition, in which we posit that \emph{any} adversary with access to $\algo O(C)$ can be simulated by a \emph{polynomial-time} quantum simulator with black-box access to $C$. This definition is impossible classically for obvious reasons. It is not a priori clear if the quantum case is impossible: if $\algo O(C)$ is a single quantum state, even unbounded adversaries are restricted by no-cloning and the (in general irreversible) properties of measurement.
+\item \textbf{Information-theoretic quantum black-box obfuscator.} This is a modification of the above definition, in which we posit that \emph{any} adversary with access to $\algo O(C)$ can be simulated by a \emph{polynomial-time} quantum simulator with black-box access to $C$. This definition is impossible classically for obvious reasons. It is not a priori clear if the quantum case is impossible: if $\algo O(C)$ is a single copy of a quantum state, even unbounded adversaries are restricted by no-cloning and the (in general irreversible) properties of measurement.
 \end{enumerate}
 
 \paragraph{Impossibility.} We prove three impossibility results, which place several important restrictions on quantum obfuscation. Our ideas are based on~\cite{BGIRSVY12}, with several important quantum adaptations, including a new application of IND-CCA1 quantum encryption~\cite{ABFGSS16}.
@@ -315,7 +315,7 @@ $$
 \subsection{Applications of efficient black-box obfuscators}\label{sec:vbb-applications}
 %%%%%%%%%%%%%%%%%%%%%%
 
-In this section, we give a few example applications of quantum black-box obfuscation. The proofs are fairly simple and are given in \expref{Appendix}{app:proofs} Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
+In this section, we give a few example applications of quantum black-box obfuscation. The proofs are fairly simple and are given in \expref{Appendix}{app:proofs}. Although our impossibility results will put some restrictions on these applications, they remain interesting. In fact, some of the applications will be used in the impossibility proofs themselves. We point out that, while most of the applications below are written in terms of quantum functionality (e.g., encryption of quantum states), one can just as well consider the weaker case of classical functionality, in this case achieved via quantum means (e.g., via a quantum algorithm for obfuscation.)
 
 \paragraph{Quantum-secure one-way functions.}
 %%%
